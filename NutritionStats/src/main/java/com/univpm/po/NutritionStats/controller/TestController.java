@@ -7,7 +7,7 @@ import com.univpm.po.NutritionStats.model.TestPerson;
 
 @RestController
 public class TestController {	
-	@GetMapping("hello")
+	@GetMapping("ciao")
 	public TestPerson getPerson(@RequestParam(name="param1",defaultValue = "Caio1")String surname) {
 		return new TestPerson("tizio",surname);
 	}	
