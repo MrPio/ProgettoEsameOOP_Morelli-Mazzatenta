@@ -17,6 +17,8 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 ## Application Route 🌎:
 Type | Route | Params | Description
 ---- | ---- | ---- | ----  
+GET | **/api/ean/{ean_code}** | | Return information about product by its ean code.
+GET | **/api/name/{food_name}** | | Return information about food by its name.
 POST | **/add/food** | day, meal| Add consumed food.
 POST | **/add/meal** | day| Add an entire meal (list of foods).
 GET | **/diary** | | Return all the data owned by the user.
