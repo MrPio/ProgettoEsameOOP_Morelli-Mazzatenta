@@ -16,5 +16,5 @@ GET | **/diary/{day_id}** | | Return the data of the user in specified day.
 GET | **/stats** | | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
 
 ## Application UML ☀:
-###Model:
+### Model:
 ![This is an image](graphics/NutritionStats-UML.jpg)
