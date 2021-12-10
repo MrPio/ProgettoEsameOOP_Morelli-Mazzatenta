@@ -1,9 +1,15 @@
 # NutritionStats
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
+### *Remote Access*
+
 >Remote access to this rest API: (***still not deployed***)
 > *https://nutritionstatsoop.herokuapp.com/*
-> 
+
+### *Android application (client)*
+
+>You can find here the client made for this API (***Android application***):
+> *https://github.com/MrPio/NutritionStats_client*
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 ## Application Route 🌎:
