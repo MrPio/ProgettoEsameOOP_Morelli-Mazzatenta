@@ -9,7 +9,7 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 ### *Android application (client)*
 
->You can find here the client made for this API (***Android application***):
+>You can find here the client frontend made for this API (***Android application***):
 >
 > *https://github.com/MrPio/NutritionStats_client*
 ----------------------------------------------------------------------------------------------------------------------------------------
