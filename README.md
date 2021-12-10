@@ -1,2 +1,4 @@
-# ProgettoEsameOOP_Morelli-Mazzatenta
-repository per il progetto del corso Programmazione ad Oggetti a.a. 2021/2022
+# NutritionStats
+project made for the Object Oriented Programming course a.a. 2021/2022
+
+>Remote access to this rest API https://nutritionstatsoop.herokuapp.com/

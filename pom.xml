@@ -14,7 +14,7 @@
 	<name>NutritionStats</name>
 	<description>genenerate statistics about user daily diet</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
