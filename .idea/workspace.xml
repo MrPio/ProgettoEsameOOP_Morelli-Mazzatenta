@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="readme changed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EudamamFoodDatabaseAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EudamamNutritionAnalysisAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutputImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Serialization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/SerializationImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/junit/InputOutputImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/junit/SerializationImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EudamamFoodDatabaseAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamFoodDatabaseAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EudamamNutritionAnalysisAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +27,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="package-info" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -36,6 +46,11 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="JUnit" name="SerializationImplTest" />
+    </enabled-run-configurations>
+  </component>
   <component name="ProjectId" id="21zvbJUcPG3xVARfUkwvZBuWBIx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -49,17 +64,46 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\valer\Documents\GitHub\ProgettoEsameOOP_Morelli-Mazzatenta\graphics" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.univpm.po.NutritionStats.utility" />
+      <recent name="com.univpm.po.NutritionStats.junit" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.NutritionStats">
+    <configuration name="NutritionStats" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.NutritionStatsApplication" />
       <module name="NutritionStats" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InputOutputImplTest" type="JUnit" factoryName="JUnit">
+      <module name="NutritionStats" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.junit" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.junit.InputOutputImplTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SerializationImplTest" type="JUnit" factoryName="JUnit">
+      <module name="NutritionStats" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.junit" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.junit.SerializationImplTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -75,6 +119,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.NutritionStats" />
+      <item itemvalue="JUnit.InputOutputImplTest" />
+      <item itemvalue="JUnit.SerializationImplTest" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -124,5 +173,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="readme changed" />
     <option name="LAST_COMMIT_MESSAGE" value="readme changed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.web.client.HttpClientErrorException$NotFound" package="org.springframework.web.client" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

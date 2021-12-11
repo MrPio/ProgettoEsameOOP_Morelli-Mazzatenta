@@ -1,4 +1,4 @@
 package com.univpm.po.NutritionStats.api;
 
-public class EudamamFoodDatabaseAPI {
+public class EdamamNutritionAnalysisAPI {
 }
