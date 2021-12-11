@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="readme changed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutputImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Serialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/SerializationImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/junit/InputOutputImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/junit/SerializationImplTest.java" afterDir="false" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Store chomp api calls on local file to avoid multiple calls on the same ean">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/DropboxAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/api/DropboxAPITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EudamamFoodDatabaseAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamFoodDatabaseAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EudamamNutritionAnalysisAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/TestPerson.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/EdamamApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/EdamamApiImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/TestService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +64,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -76,14 +74,89 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.univpm.po.NutritionStats.api" />
       <recent name="com.univpm.po.NutritionStats.utility" />
       <recent name="com.univpm.po.NutritionStats.junit" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NutritionStats">
+  <component name="RunManager" selected="JUnit.DropboxAPITest.downloadFilesInFolder">
     <configuration name="NutritionStats" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.NutritionStatsApplication" />
       <module name="NutritionStats" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DropboxAPITest" type="JUnit" factoryName="JUnit">
+      <module name="NutritionStats" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.api" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.api.DropboxAPITest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DropboxAPITest.downloadFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NutritionStats" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.api" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.api.DropboxAPITest" />
+      <option name="METHOD_NAME" value="downloadFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DropboxAPITest.downloadFilesInFolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NutritionStats" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.api" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.api.DropboxAPITest" />
+      <option name="METHOD_NAME" value="downloadFilesInFolder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DropboxAPITest.getFilesInFolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NutritionStats" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.api" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.api.DropboxAPITest" />
+      <option name="METHOD_NAME" value="getFilesInFolder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DropboxAPITest.uploadFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NutritionStats" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.api" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.api.DropboxAPITest" />
+      <option name="METHOD_NAME" value="uploadFile" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,9 +194,22 @@
     </configuration>
     <list>
       <item itemvalue="Application.NutritionStats" />
+      <item itemvalue="JUnit.DropboxAPITest" />
       <item itemvalue="JUnit.InputOutputImplTest" />
       <item itemvalue="JUnit.SerializationImplTest" />
+      <item itemvalue="JUnit.DropboxAPITest.getFilesInFolder" />
+      <item itemvalue="JUnit.DropboxAPITest.downloadFilesInFolder" />
+      <item itemvalue="JUnit.DropboxAPITest.uploadFile" />
+      <item itemvalue="JUnit.DropboxAPITest.downloadFile" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DropboxAPITest.downloadFilesInFolder" />
+        <item itemvalue="JUnit.DropboxAPITest.getFilesInFolder" />
+        <item itemvalue="JUnit.DropboxAPITest.downloadFile" />
+        <item itemvalue="JUnit.DropboxAPITest.uploadFile" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -155,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639164087668</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Store chomp api calls on local file to avoid multiple calls on the same ean">
+      <created>1639243808201</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639243808202</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,8 +264,12 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <MESSAGE value="readme changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme changed" />
+    <MESSAGE value="Store chomp api calls on local file to avoid multiple calls on the same ean" />
+    <option name="LAST_COMMIT_MESSAGE" value="Store chomp api calls on local file to avoid multiple calls on the same ean" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -13,7 +13,7 @@ public class ChompBarcodeSearchAPI {
     final static String API_KEY = "AzytZXSqpb3nMitJ";
     final static String URL = "https://chompthis.com/api/v2/food/branded/barcode.php?api_key=" + API_KEY;
 
-    public static JSONObject getEanInfo(String ean) throws ParseException {
+    public static JSONObject getEanInfo(String ean) {
         //Check in my database if I already have the information needed
         InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, ean + ".dat");
         if (inputOutputEan.existFile()) {
@@ -21,7 +21,7 @@ public class ChompBarcodeSearchAPI {
             return (JSONObject) serializationResult.loadObject();
         }
 
-        JSONObject result;
+        JSONObject result=null;
 
         String url = ChompBarcodeSearchAPI.URL + "&code=" + ean;
         RestTemplate rt = new RestTemplate();
@@ -30,7 +30,13 @@ public class ChompBarcodeSearchAPI {
             result = (JSONObject) parser.parse(rt.getForObject(url, String.class));
         } catch (HttpClientErrorException e) {
             System.out.println(e.getStatusCode());
-            result = (JSONObject) parser.parse("{\"result\":\"404 not found\"}");
+            try {
+                result = (JSONObject) parser.parse("{\"result\":\"404 not found\"}");
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
         //store the result to avoid different future calls on this same request
         SerializationImpl serializationResult = new SerializationImpl(DIR + ean + ".dat");
