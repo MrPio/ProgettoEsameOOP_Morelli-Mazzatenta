@@ -1,4 +1,4 @@
-package com.univpm.po.NutritionStats.Model;
+package com.univpm.po.NutritionStats.model.nutrient;
 
 public class Carbohydrate extends MacroNutrient {
 	private float value;

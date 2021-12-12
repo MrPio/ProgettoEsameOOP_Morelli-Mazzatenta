@@ -1,6 +1,6 @@
-package com.univpm.po.NutritionStats.Model;
+package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Sodium extends MineralSalts {
+public class Lipid extends MacroNutrient {
 
 	@Override
 	public float calculateCalories() {

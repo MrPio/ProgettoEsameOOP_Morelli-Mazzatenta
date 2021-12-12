@@ -1,6 +1,6 @@
-package com.univpm.po.NutritionStats.Model;
+package com.univpm.po.NutritionStats.model.nutrient;
 
-public class VitaminA extends Vitamins {
+public class Protein extends MacroNutrient {
 
 	@Override
 	public float calculateCalories() {

@@ -1,6 +1,6 @@
-package com.univpm.po.NutritionStats.Model;
+package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Iron extends MineralSalts {
+public class VitaminA extends Vitamins {
 
 	@Override
 	public float calculateCalories() {

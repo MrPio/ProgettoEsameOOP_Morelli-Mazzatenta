@@ -1,6 +1,6 @@
-package com.univpm.po.NutritionStats.Model;
+package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Lipid extends MacroNutrient {
+public class VitaminC extends Vitamins {
 
 	@Override
 	public float calculateCalories() {
