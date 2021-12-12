@@ -1,14 +1,10 @@
 package com.univpm.po.NutritionStats.api;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DropboxAPITest {
     final String desktopPath=System.getProperty("user.home") + "/Desktop/";

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Added support to upload/download files in dropbox cloud">
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Added support to remote database (Dropbox)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/junit/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutputImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/SerializationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/SerializationImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/api/DropboxAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/api/DropboxAPITest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,11 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.univpm.po.NutritionStats.junit" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.univpm.po.NutritionStats.model" />
       <recent name="com.univpm.po.NutritionStats.api" />
       <recent name="com.univpm.po.NutritionStats.utility" />
       <recent name="com.univpm.po.NutritionStats.junit" />
@@ -175,6 +181,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserTest" type="JUnit" factoryName="JUnit">
+      <module name="NutritionStats" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.junit" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.junit.UserTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,6 +204,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.NutritionStats" />
+      <item itemvalue="JUnit.UserTest" />
       <item itemvalue="JUnit.DropboxAPITest" />
       <item itemvalue="JUnit.InputOutputImplTest" />
       <item itemvalue="JUnit.SerializationImplTest" />
@@ -249,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639267099251</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added support to remote database (Dropbox)">
+      <created>1639268479872</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639268479872</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -271,7 +295,8 @@
     <MESSAGE value="readme changed" />
     <MESSAGE value="Store chomp api calls on local file to avoid multiple calls on the same ean" />
     <MESSAGE value="Added support to upload/download files in dropbox cloud" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added support to upload/download files in dropbox cloud" />
+    <MESSAGE value="Added support to remote database (Dropbox)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added support to remote database (Dropbox)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -280,11 +305,6 @@
           <properties class="org.springframework.web.client.HttpClientErrorException$NotFound" package="org.springframework.web.client" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
