@@ -1,5 +1,6 @@
-package com.univpm.po.NutritionStats.api;
+package com.univpm.po.NutritionStats;
 
+import com.univpm.po.NutritionStats.api.DropboxAPI;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

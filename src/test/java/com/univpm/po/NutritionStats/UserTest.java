@@ -1,4 +1,4 @@
-package com.univpm.po.NutritionStats.junit;
+package com.univpm.po.NutritionStats;
 
 import com.univpm.po.NutritionStats.model.User;
 import org.junit.jupiter.api.BeforeEach;
