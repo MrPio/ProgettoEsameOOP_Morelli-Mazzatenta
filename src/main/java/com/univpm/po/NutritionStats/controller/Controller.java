@@ -1,6 +1,7 @@
 package com.univpm.po.NutritionStats.controller;
 
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
+import com.univpm.po.NutritionStats.model.User;
 import com.univpm.po.NutritionStats.service.MainService;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,16 @@ public class Controller {
                 HttpStatus.OK);
     }
     @RequestMapping(path = ENDPOINT_SIGNUP, method = RequestMethod.POST)
-    public ResponseEntity<Object> requestSignUp(@RequestParam("email")String userEmail) {
+    public ResponseEntity<Object> requestSignUp(
+            @RequestParam("nickname")String nickname,
+            @RequestParam("email")String email,
+            @RequestParam("year")Integer year,
+            @RequestParam("weight")Integer weight,
+            @RequestParam("height")Integer height,
+            @RequestParam("diet")User.Diet diet,
+            @RequestParam("gender") User.Gender gender) {
         return new ResponseEntity<>(
-                MainService.requestSignUp(userEmail),
+                MainService.requestSignUp(new User(nickname,email,year,weight,height,diet,gender)),
                 HttpStatus.OK);
     }
 }
