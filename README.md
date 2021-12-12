@@ -24,7 +24,7 @@ POST | */add/meal* | day| Add an entire meal (list of foods).
 GET | */diary* | | Return all the data owned by the user.
 GET | */diary/{day_id}* | | Return the data of the user in specified day.
 POST | **/signup** | nickname, email, year, height,weight,diet,gender | Register new user.
-POST | */login* | nickname, email, password | Login user.
+POST | */login* | token | Login user.
 GET | */stats* | | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 ## Application UML ☀:
