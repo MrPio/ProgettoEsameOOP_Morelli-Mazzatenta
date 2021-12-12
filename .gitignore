@@ -34,3 +34,4 @@ build/
 
 ### MrPio ###
 Heroku_deploy.txt
+*.dat
