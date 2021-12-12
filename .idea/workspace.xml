@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Store chomp api calls on local file to avoid multiple calls on the same ean">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/DropboxAPI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/api/DropboxAPITest.java" afterDir="false" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Added support to upload/download files in dropbox cloud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/TestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/TestPerson.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/EdamamApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/EdamamApiImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/TestService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutputImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutputImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/SerializationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/SerializationImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +73,7 @@
       <recent name="com.univpm.po.NutritionStats.junit" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DropboxAPITest.downloadFilesInFolder">
+  <component name="RunManager" selected="Application.NutritionStats">
     <configuration name="NutritionStats" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.NutritionStatsApplication" />
       <module name="NutritionStats" />
@@ -248,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639243808202</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added support to upload/download files in dropbox cloud">
+      <created>1639267099251</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1639267099251</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,7 +270,8 @@
     </ignored-roots>
     <MESSAGE value="readme changed" />
     <MESSAGE value="Store chomp api calls on local file to avoid multiple calls on the same ean" />
-    <option name="LAST_COMMIT_MESSAGE" value="Store chomp api calls on local file to avoid multiple calls on the same ean" />
+    <MESSAGE value="Added support to upload/download files in dropbox cloud" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added support to upload/download files in dropbox cloud" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -278,6 +280,11 @@
           <properties class="org.springframework.web.client.HttpClientErrorException$NotFound" package="org.springframework.web.client" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

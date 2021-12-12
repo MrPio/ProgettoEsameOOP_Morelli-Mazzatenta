@@ -8,16 +8,26 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.File;
+
 public class ChompBarcodeSearchAPI {
     final static String DIR = "api_response/chomp/";
+    final static String DROPBOX_DIR="/api_response/chomp/";
     final static String API_KEY = "AzytZXSqpb3nMitJ";
     final static String URL = "https://chompthis.com/api/v2/food/branded/barcode.php?api_key=" + API_KEY;
 
     public static JSONObject getEanInfo(String ean) {
-        //Check in my database if I already have the information needed
+        //Check if I already have the information needed:
+        //in local database
         InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, ean + ".dat");
         if (inputOutputEan.existFile()) {
-            SerializationImpl serializationResult = new SerializationImpl(DIR + ean + ".dat");
+            SerializationImpl serializationResult = new SerializationImpl(DIR , ean + ".dat");
+            return (JSONObject) serializationResult.loadObject();
+        }
+        //in remote database
+        if(DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(ean + ".dat")){
+            DropboxAPI.downloadFile(DROPBOX_DIR+ean + ".dat",DIR + ean + ".dat");
+            SerializationImpl serializationResult = new SerializationImpl(DIR , ean + ".dat");
             return (JSONObject) serializationResult.loadObject();
         }
 
@@ -39,8 +49,9 @@ public class ChompBarcodeSearchAPI {
             e.printStackTrace();
         }
         //store the result to avoid different future calls on this same request
-        SerializationImpl serializationResult = new SerializationImpl(DIR + ean + ".dat");
+        SerializationImpl serializationResult = new SerializationImpl(DIR , ean + ".dat");
         serializationResult.saveObject(result);
+        DropboxAPI.uploadFile(new File(serializationResult.getFullPath()),DROPBOX_DIR);
         return result;
     }
 }

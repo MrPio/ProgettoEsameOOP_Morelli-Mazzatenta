@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class InputOutputImpl implements InputOutput {
-    String path = "";
-    String fileName;
+    private String path = "";
+    private String fileName;
 
     public InputOutputImpl(String fileName) {
         this.fileName = fileName;
@@ -15,9 +15,21 @@ public class InputOutputImpl implements InputOutput {
         this.path = path;
         this.fileName = fileName;
 
-        File dir=new File(path);
-        if(!dir.exists())
+        File dir = new File(path);
+        if (!dir.exists())
             dir.mkdirs();
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getFullPath() {
+        return path + fileName;
     }
 
     public String readFile() {
