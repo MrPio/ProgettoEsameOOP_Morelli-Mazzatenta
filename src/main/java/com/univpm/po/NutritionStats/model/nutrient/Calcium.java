@@ -1,9 +1,12 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Calcium extends MineralSalts {
+public class Calcium extends MineralSalt {
 
-	public float calculateCalories() {
-		return 0;
+	private float quantity;
+	public Calcium(float quantity) {
+		super(quantity);
 	}
-
+	public float getQuantity() {
+		return quantity;
+	}
 }

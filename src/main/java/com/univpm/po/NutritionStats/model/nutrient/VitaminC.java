@@ -1,11 +1,13 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class VitaminC extends Vitamins {
+public class VitaminC extends Vitamin {
 
-	@Override
-	public float calculateCalories() {
-		// TODO Auto-generated method stub
-		return 0;
+	private float quantity;
+	public VitaminC(float quantity) {
+		super(quantity);
+	}
+	public float getQuantity() {
+		return quantity;
 	}
 
 }

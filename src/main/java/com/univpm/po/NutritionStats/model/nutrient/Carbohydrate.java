@@ -1,27 +1,28 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
 public class Carbohydrate extends MacroNutrient {
-	private float value;
-	private float valueOnlySugar;
 	
-	public Carbohydrate(float value, float valueOnlySugar) {
-		super();
-		this.value = value;
-		this.valueOnlySugar = valueOnlySugar;
+	final static int percentageDailyCarbohydrate = 50;
+	private float quantity;
+	private float quantityOnlySugar;
+	
+	public Carbohydrate(float quantity, float quantityOnlySugar) {
+		super(quantity);
+		this.quantityOnlySugar = quantityOnlySugar;
 	}
 	
-	public float getValue() {
-		return value;
+	public float getQuantity() {
+		return quantity;
 	}
 
 
-	public float getValueOnlySugar() {
-		return valueOnlySugar;
+	public float getQuantityOnlySugar() {
+		return quantityOnlySugar;
 	}
 
 	@Override
 	public float calculateCalories() {
-		return 0;
+		return quantity * 4;
 	}
 
 }

@@ -1,11 +1,10 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Potassium extends MineralSalts {
+public class Potassium extends MineralSalt {
 
-	@Override
-	public float calculateCalories() {
-		// TODO Auto-generated method stub
-		return 0;
+	public Potassium(float q) {
+		super(q);
+		// TODO Auto-generated constructor stub
 	}
 
 }
