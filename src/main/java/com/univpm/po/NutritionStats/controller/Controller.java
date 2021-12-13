@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class Controller {
     final String ENDPOINT_EAN    = "/api/ean/";
     final String ENDPOINT_SIGNUP = "/signup";
+    final String ENDPOINT_LOGIN = "/login";
 
     @RequestMapping(path = ENDPOINT_EAN+"{ean_code}", method = RequestMethod.GET)
     public ResponseEntity<Object> getInfoFromEan(@PathVariable("ean_code") String ean) {
@@ -29,7 +30,14 @@ public class Controller {
             @RequestParam("diet")User.Diet diet,
             @RequestParam("gender") User.Gender gender) {
         return new ResponseEntity<>(
-                MainService.requestSignUp(new User(nickname,email,year,weight,height,diet,gender)),
+                MainService.requestSignUp(new User(nickname,email,year,height,weight,diet,gender)),
+                HttpStatus.OK);
+    }
+    @RequestMapping(path = ENDPOINT_LOGIN, method = RequestMethod.GET)
+    public ResponseEntity<Object> requestSignUp(
+            @RequestParam("token")String token) {
+        return new ResponseEntity<>(
+                MainService.requestLogin(token),
                 HttpStatus.OK);
     }
 }

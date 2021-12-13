@@ -37,7 +37,7 @@ public class DropboxAPI {
             conn.setRequestProperty("Authorization", "Bearer " + BEARER_TOKEN);
             conn.setRequestProperty("Content-Type", "application/octet-stream");
             conn.setRequestProperty("Dropbox-API-Arg", "{\"path\": \"" + pathCloud + fileLocal.getName() +
-                    "\",\"mode\": \"add\",\"autorename\": true,\"mute\": false,\"strict_conflict\": false}");
+                    "\",\"mode\": \"overwrite\",\"autorename\": false,\"mute\": false,\"strict_conflict\": false}");
             conn.setDoOutput(true);
             IOUtils.copy(new FileInputStream(fileLocal), conn.getOutputStream());
 

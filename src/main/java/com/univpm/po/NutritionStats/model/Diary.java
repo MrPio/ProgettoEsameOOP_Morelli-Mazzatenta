@@ -10,8 +10,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Diary implements Serializable {
-    final static String DIR = "database/";
-    final static String DROPBOX_DIR="/database/";
+    public final static String DIR = "database/";
+    public final static String DROPBOX_DIR="/database/";
 
 	User user;
     ArrayList<Day>dayList;
@@ -19,6 +19,13 @@ public class Diary implements Serializable {
     public Diary(User user, ArrayList<Day> dayList) {
         this.user = user;
         this.dayList = dayList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+    public ArrayList<Day> getDayList() {
+        return dayList;
     }
 
     public void save() {

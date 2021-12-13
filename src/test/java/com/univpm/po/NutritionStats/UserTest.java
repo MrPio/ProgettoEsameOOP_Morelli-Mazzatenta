@@ -17,6 +17,6 @@ class UserTest {
 
     @Test
     void generateToken() {
-        System.out.println(user.generateToken());
+        assertEquals(user.generateToken(),"5658ffccee7f0ebfda2b226238b1eb6e");
     }
 }
