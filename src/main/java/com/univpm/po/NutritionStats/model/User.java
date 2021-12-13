@@ -8,7 +8,10 @@ import java.time.LocalDate;
 import java.util.HashMap;
 
 public class User implements Serializable {
-    public enum Diet{CLASSIC,PESCATARIAN,VEGETARIAN,VEGAN};
+
+	private static final long serialVersionUID = 1L;
+
+	public enum Diet{CLASSIC,PESCATARIAN,VEGETARIAN,VEGAN};
     public enum Gender{MALE,FEMALE};
 
     private String nickname;
@@ -17,7 +20,7 @@ public class User implements Serializable {
     private Gender gender;
     private int yearOfBirth;
     private HashMap<LocalDate, Integer> height = new HashMap<>();
-    private HashMap<LocalDate, Integer> weight = new HashMap<>();
+    private HashMap<LocalDate, Float> weight = new HashMap<>();
     //private boolean celiac;
 
     public User(String email) {
@@ -25,7 +28,7 @@ public class User implements Serializable {
     }
 
     public User(String nickname, String email, int yearOfBirth,
-                int height, int weight, Diet diet,Gender gender) {
+                int height, float weight, Diet diet,Gender gender) {
         this.nickname = nickname;
         this.email = email;
         this.yearOfBirth = yearOfBirth;
@@ -47,7 +50,7 @@ public class User implements Serializable {
     public HashMap<LocalDate, Integer> getHeight() {
         return height;
     }
-    public HashMap<LocalDate, Integer> getWeight() {
+    public HashMap<LocalDate, Float> getWeight() {
         return weight;
     }
     public Diet getDiet() {

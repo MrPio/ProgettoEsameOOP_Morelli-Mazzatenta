@@ -2,10 +2,10 @@ package com.univpm.po.NutritionStats.model;
 
 public class Water {
 	public enum portionType {
-		Glass(200),
-		Cup(350),
-		Bottle500ml(500),
-		Bottle1000ml(1000);
+		GLASS(200),
+		CUP(350),
+		BOTTLE_500(500),
+		BOTTLE_1000(1000);
 		public int value;
 
 		private portionType(int value) {
