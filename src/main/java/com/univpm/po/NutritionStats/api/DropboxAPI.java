@@ -129,7 +129,10 @@ public class DropboxAPI {
                 result.add(((JSONObject)jo).get("name").toString());
 
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            if(e.getMessage().contains("Server returned HTTP response code: 409"))
+                System.err.println("folder not found!");
+            else
+                e.printStackTrace();
         }
         return result;
     }

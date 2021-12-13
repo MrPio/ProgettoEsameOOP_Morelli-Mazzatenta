@@ -8,18 +8,17 @@ public class Water {
 		BOTTLE_1000(1000);
 		public int value;
 
-		private portionType(int value) {
+		portionType(int value) {
 			this.value = value;
 		}
 };
-	private int portionVolume;
-	
-	public Water(int portionVolume) {
-		this.portionVolume = portionVolume;
+	private portionType value;
+
+	public Water(portionType value) {
+		this.value = value;
 	}
 
-	public int getPortionVolume() {
-		return portionVolume;
+	public portionType getValue() {
+		return value;
 	}
-	
 }

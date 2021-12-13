@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.api;
 
+import com.univpm.po.NutritionStats.model.Food;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
 import org.json.simple.JSONObject;
@@ -53,5 +54,10 @@ public class ChompBarcodeSearchAPI {
         serializationResult.saveObject(result);
         DropboxAPI.uploadFile(new File(serializationResult.getFullPath()),DROPBOX_DIR);
         return result;
+    }
+
+    public static Food getFood(String eanCode) {
+        //TODO conversione json food
+        return new Food("",0);
     }
 }
