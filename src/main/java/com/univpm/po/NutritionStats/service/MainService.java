@@ -3,6 +3,8 @@ package com.univpm.po.NutritionStats.service;
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.DropboxAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
+import com.univpm.po.NutritionStats.enums.MealType;
+import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.*;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
@@ -61,7 +63,7 @@ public class MainService {
         return new JSONObject(response);
     }
 
-    public static JSONObject requestAddFood(String token, String dayId, Meal.MealType mealType, String foodName, String eanCode) {
+    public static JSONObject requestAddFood(String token, String dayId, MealType mealType, String foodName, String eanCode) {
         HashMap<String, Object> response = new HashMap<>();
         Food foodToAdd = null;
         if (!foodName.equals("") && eanCode.equals(""))
@@ -75,7 +77,7 @@ public class MainService {
 
         Diary requestedDiary = Diary.load(token);
         if (requestedDiary != null)
-            requestedDiary.addFood(dayId, mealType, foodToAdd, Measure.G);
+            requestedDiary.addFood(dayId, mealType, foodToAdd);
         else
             response.put("result", "user not found");
         return new JSONObject(response);

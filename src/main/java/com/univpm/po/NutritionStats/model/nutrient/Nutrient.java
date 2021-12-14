@@ -1,6 +1,6 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-import com.univpm.po.NutritionStats.model.Measure;
+import com.univpm.po.NutritionStats.enums.Measure;
 
 public abstract class Nutrient {
 	

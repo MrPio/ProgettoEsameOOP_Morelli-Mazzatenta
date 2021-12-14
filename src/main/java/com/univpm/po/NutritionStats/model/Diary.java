@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model;
 
 import com.univpm.po.NutritionStats.api.DropboxAPI;
+import com.univpm.po.NutritionStats.enums.MealType;
+import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
 import org.json.simple.JSONObject;
@@ -64,7 +66,7 @@ public class Diary implements Serializable {
         return null;
     }
 
-    public void addFood(String dayId, Meal.MealType mealType, Food food, Measure G) {
+    public void addFood(String dayId, MealType mealType, Food food) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
             requestedDay.addFood(mealType, food);
@@ -75,7 +77,7 @@ public class Diary implements Serializable {
         }
     }
     
-    public void addWater(String dayId, Meal.MealType mealType, Water water, Measure ML) {
+    public void addWater(String dayId, MealType mealType, Water water) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
             requestedDay.addWater(mealType, water);

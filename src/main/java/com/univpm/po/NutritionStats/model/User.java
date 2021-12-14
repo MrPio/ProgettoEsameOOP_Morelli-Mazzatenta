@@ -1,18 +1,15 @@
 package com.univpm.po.NutritionStats.model;
 
-import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-public class User implements Serializable {
+import com.univpm.po.NutritionStats.enums.Diet;
+import com.univpm.po.NutritionStats.enums.Gender;
 
-	private static final long serialVersionUID = 1L;
-
-	public enum Diet{CLASSIC,PESCATARIAN,VEGETARIAN,VEGAN};
-    public enum Gender{MALE,FEMALE};
+public class User {
 
     private String nickname;
     private String email;

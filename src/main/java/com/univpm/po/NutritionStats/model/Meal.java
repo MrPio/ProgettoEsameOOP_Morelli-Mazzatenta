@@ -2,20 +2,9 @@ package com.univpm.po.NutritionStats.model;
 
 import java.util.ArrayList;
 
+import com.univpm.po.NutritionStats.enums.MealType;
+
 public class Meal {
-	
-    public enum MealType {
-        BREAKFAST(0.20f),
-        LAUNCH(0.40f),
-        SNACK(0.10f),
-        DINNER(0.30f);
-
-        float dailyNeed;
-
-        MealType(float dailyNeed) {
-            this.dailyNeed = dailyNeed;
-        }
-    }
 
     private MealType mealType;
     private ArrayList<Food> foodList;

@@ -3,7 +3,8 @@ package com.univpm.po.NutritionStats.model;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
+
+import com.univpm.po.NutritionStats.enums.MealType;
 
 public class Day {
     private LocalDate date;
@@ -29,7 +30,7 @@ public class Day {
         return mealList;
     }
 
-    public void addFood(Meal.MealType mealType,Food food) {
+    public void addFood(MealType mealType,Food food) {
         for (Meal meal : mealList)
             if (meal.getMealType().equals(mealType)) {
                 meal.addFood(food);
@@ -40,7 +41,7 @@ public class Day {
         mealList.add(newMeal);
     }
     
-    public void addWater(Meal.MealType mealType,Water water) {
+    public void addWater(MealType mealType,Water water) {
         for (Meal meal : mealList)
             if (meal.getMealType().equals(mealType)) {
                 meal.addWater(water);
