@@ -25,19 +25,19 @@ public class Food {
         return portionWeight;
     }
 
-    public void addNutrient(Nutrient n) {
-        nutrientList.add(n);
+    public void addNutrient(Nutrient nutrient) {
+        nutrientList.add(nutrient);
     }
 
-    public void addNotNutrient(NotNutrient notN) {
-        notNutrientList.add(notN);
+    public void addNotNutrient(NotNutrient notNutrient) {
+        notNutrientList.add(notNutrient);
     }
 
-    public int calculateFoodCalories() {
+    public int calculateCalories() {
         float foodCalories = 0;
-        for (Nutrient n : nutrientList) {
-            if (n instanceof MacroNutrient)
-                foodCalories += ((MacroNutrient) n).calculateCalories();
+        for (Nutrient nutrient : nutrientList) {
+            if (nutrient instanceof MacroNutrient)
+                foodCalories += ((MacroNutrient) nutrient).calculateCalories();
         }
         return (int) foodCalories;
     }
@@ -62,4 +62,9 @@ public class Food {
                 return ((Lipid) nutrient).getQuantity();
         return 0.0f;
     }
+    
+    public void nutritionLabel () {
+    	 
+    }
+    
 }

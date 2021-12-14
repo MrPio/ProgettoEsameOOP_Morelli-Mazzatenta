@@ -11,7 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Diary implements Serializable {
-    public final static String DIR = "database/";
+	
+	private static final long serialVersionUID = 1L;
+	public final static String DIR = "database/";
     public final static String DROPBOX_DIR = "/database/";
 
     private User user;
@@ -55,17 +57,14 @@ public class Diary implements Serializable {
 
     public Day findDayById(String dayId) {
         for (Day day : dayList) {
-            String thisDayId =
-                    String.valueOf(day.getDate().getYear()) + "-" +
-                            String.valueOf(day.getDate().getMonthValue()) + "-" +
-                            String.valueOf(day.getDate().getDayOfYear());
+            String thisDayId = day.getDayId();
             if (dayId.equals(thisDayId))
                 return day;
         }
         return null;
     }
 
-    public void addFood(String dayId, Meal.MealType mealType, Food food) {
+    public void addFood(String dayId, Meal.MealType mealType, Food food, Measure G) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
             requestedDay.addFood(mealType, food);
@@ -75,4 +74,17 @@ public class Diary implements Serializable {
             dayList.add(dayToAdd);
         }
     }
+    
+    public void addWater(String dayId, Meal.MealType mealType, Water water, Measure ML) {
+        Day requestedDay = findDayById(dayId);
+        if (requestedDay != null)
+            requestedDay.addWater(mealType, water);
+        else {
+            Day dayToAdd = new Day(LocalDate.parse(dayId));
+            dayToAdd.addWater(mealType, water);
+            dayList.add(dayToAdd);
+        }
+    }
+    
+    
 }

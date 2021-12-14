@@ -1,11 +1,9 @@
 package com.univpm.po.NutritionStats.model;
 
-import com.univpm.po.NutritionStats.model.Food;
-import com.univpm.po.NutritionStats.model.Water;
-
 import java.util.ArrayList;
 
 public class Meal {
+	
     public enum MealType {
         BREAKFAST(0.20f),
         LAUNCH(0.40f),
@@ -55,35 +53,35 @@ public class Meal {
         waterList.add(water);
     }
 
-    public int calculateMealCalories() {
+    public int calculateCalories() {
         int calories = 0;
         for (Food food : foodList)
-            calories += food.calculateFoodCalories();
+            calories += food.calculateCalories();
         return calories;
     }
 
-    public int calculateMealWater() {
+    public int calculateWater() {
         int milliLiters = 0;
         for (Water water : waterList)
-            milliLiters += water.getValue().value;
+            milliLiters += water.getVolume();
         return milliLiters;
     }
 
-    public int calculateMealCarbohydrates() {
+    public int calculateCarbohydrates() {
         int carbohydrates = 0;
         for (Food food : foodList)
             carbohydrates += food.getCarbohydrates();
         return carbohydrates;
     }
 
-    public int calculateMealProteins() {
+    public int calculateProteins() {
         int proteins = 0;
         for (Food food : foodList)
             proteins += food.getProtein();
         return proteins;
     }
 
-    public int calculateMealLipids() {
+    public int calculateLipids() {
         int lipids = 0;
         for (Food food : foodList)
             lipids += food.getLipids();

@@ -49,11 +49,11 @@ public class MainService {
             Day requestedDay = requestedDiary.findDayById(dayId);
             if (requestedDay != null) {
                 response.put("result", "found");
-                response.put("calories", requestedDay.calculateDayCalories());
-                response.put("water", requestedDay.calculateDayWater());
-                response.put("carbohydrates", requestedDay.calculateDayCarbohydrates());
-                response.put("proteins", requestedDay.calculateDayProteins());
-                response.put("lipids", requestedDay.calculateDayLipids());
+                response.put("calories", requestedDay.calculateCalories());
+                response.put("water", requestedDay.calculateWater());
+                response.put("carbohydrates", requestedDay.calculateCarbohydrates());
+                response.put("proteins", requestedDay.calculateProteins());
+                response.put("lipids", requestedDay.calculateLipids());
             } else
                 response.put("result", "day not found");
         } else
@@ -75,7 +75,7 @@ public class MainService {
 
         Diary requestedDiary = Diary.load(token);
         if (requestedDiary != null)
-            requestedDiary.addFood(dayId, mealType, foodToAdd);
+            requestedDiary.addFood(dayId, mealType, foodToAdd, Measure.G);
         else
             response.put("result", "user not found");
         return new JSONObject(response);

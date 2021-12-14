@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.model;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,6 +8,9 @@ import java.util.Collection;
 public class Day {
     private LocalDate date;
     private ArrayList<Meal> mealList;
+    
+    
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
 
     public Day(LocalDate date) {
         this.date = date;
@@ -16,56 +20,70 @@ public class Day {
     public LocalDate getDate() {
         return date;
     }
+    
+    public String getDayId() {
+    	return formatter.format(date);
+	}
 
-    public ArrayList<Meal> getMealList() {
+	public ArrayList<Meal> getMealList() {
         return mealList;
     }
 
     public void addFood(Meal.MealType mealType,Food food) {
-        //if I already have a meal with the same type I add the food there
         for (Meal meal : mealList)
-            if (meal.getMealType() == mealType) {
-                meal.getFoodList().add(food);
+            if (meal.getMealType().equals(mealType)) {
+                meal.addFood(food);
                 return;
             }
-        //otherwise, I create a new meal
         Meal newMeal = new Meal(mealType);
-        newMeal.getFoodList().add(food);
+        newMeal.addFood(food);
         mealList.add(newMeal);
     }
-
-    public int calculateDayCalories() {
+    
+    public void addWater(Meal.MealType mealType,Water water) {
+        for (Meal meal : mealList)
+            if (meal.getMealType().equals(mealType)) {
+                meal.addWater(water);
+                return;
+            }
+        Meal newMeal = new Meal(mealType);
+        newMeal.addWater(water);
+        mealList.add(newMeal);
+    }
+    
+    
+    public int calculateCalories() {
         int calories = 0;
         for (Meal meal : mealList)
-            calories += meal.calculateMealCalories();
+            calories += meal.calculateCalories();
         return calories;
     }
 
-    public int calculateDayWater() {
+    public int calculateWater() {
         int milliLiters = 0;
         for (Meal meal : mealList)
-            milliLiters += meal.calculateMealWater();
+            milliLiters += meal.calculateWater();
         return milliLiters;
     }
 
-    public int calculateDayCarbohydrates() {
+    public int calculateCarbohydrates() {
         int carbohydrates = 0;
         for (Meal meal : mealList)
-            carbohydrates += meal.calculateMealCarbohydrates();
+            carbohydrates += meal.calculateCarbohydrates();
         return carbohydrates;
     }
 
-    public int calculateDayProteins() {
+    public int calculateProteins() {
         int proteins = 0;
         for (Meal meal : mealList)
-            proteins += meal.calculateMealProteins();
+            proteins += meal.calculateProteins();
         return proteins;
     }
 
-    public int calculateDayLipids() {
+    public int calculateLipids() {
         int lipids = 0;
         for (Meal meal : mealList)
-            lipids += meal.calculateMealLipids();
+            lipids += meal.calculateLipids();
         return lipids;
     }
 }

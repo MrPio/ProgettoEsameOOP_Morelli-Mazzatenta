@@ -1,9 +1,11 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
+import com.univpm.po.NutritionStats.model.Measure;
+
 public abstract class MicroNutrient extends Nutrient {
 	
-	public MicroNutrient (float q) {
-		super(q);
+	public MicroNutrient (float quantity) {
+		super(quantity,Measure.G);
 	}
 	
 }
