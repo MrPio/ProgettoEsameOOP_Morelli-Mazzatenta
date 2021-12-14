@@ -19,8 +19,8 @@ Type | Route | Params | Description
 ---- | ---- | ---- | ----  
 GET | `/api/ean/{ean_code}` |  | Return information about product by its ean code.
 GET | */api/name/{food_name}* |  | Return information about food by its name.
-POST | `/add/food` | token, day_id, meal_type, food_name, ean_code| Add consumed food to a specified meal.
-POST | */add/meal* | token, day_id| Add an entire meal (list of foods).
+POST | `/add/food/by_name` | token, day_id, meal_type, food_name, portion_weight, unit_of_measure | Add consumed food to a specified meal by its name.
+POST | `/add/food/by_ean` | token, day_id, meal_type, ean_code, portion_weight, unit_of_measure | Add consumed food to a specified meal by its ean code.
 GET | */diary* | token | Return all the data owned by the user.
 GET | `/diary/{day_id}` | token | Return the data of the user in specified day.
 POST | `/signup` | nickname, email, year, height, weight, diet, gender | Register new user.

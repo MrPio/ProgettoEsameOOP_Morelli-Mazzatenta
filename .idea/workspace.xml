@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="added /login route">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Meal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/EdamamNutritionAnalysisAPITest.java" afterDir="false" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="added /add/food route and implemented communication with EdamamAPI">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Breakfast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Dinner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Lunch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Snack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/DropboxAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/DropboxAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamFoodDatabaseAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamFoodDatabaseAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Day.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Water.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Water.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Breakfast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Dinner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Lunch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Meal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Snack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Meal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +29,8 @@
         <option value="Enum" />
         <option value="package-info" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -332,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639396795514</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added /add/food route and implemented communication with EdamamAPI">
+      <created>1639439720520</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1639439720520</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -359,7 +359,8 @@
     <MESSAGE value="Extended login with more stuff and enabled storing for new users and their data" />
     <MESSAGE value="folder fix" />
     <MESSAGE value="added /login route" />
-    <option name="LAST_COMMIT_MESSAGE" value="added /login route" />
+    <MESSAGE value="added /add/food route and implemented communication with EdamamAPI" />
+    <option name="LAST_COMMIT_MESSAGE" value="added /add/food route and implemented communication with EdamamAPI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
