@@ -14,10 +14,10 @@ public class Food {
     private ArrayList<Nutrient> nutrientList = new ArrayList<Nutrient>();
     private ArrayList<NotNutrient> notNutrientList = new ArrayList<NotNutrient>();
 
-    public Food(String name, int portionWeight, Measure G) {
+    public Food(String name, int portionWeight, Measure measure) {
         this.name = name;
         this.portionWeight = portionWeight;
-        this.measure = G;
+        this.measure = measure;
     }
 
     public String getName() {
