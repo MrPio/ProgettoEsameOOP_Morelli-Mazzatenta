@@ -1,6 +1,9 @@
 package com.univpm.po.NutritionStats.api;
 
+import com.univpm.po.NutritionStats.enums.Diet;
+import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.Food;
+import com.univpm.po.NutritionStats.model.nutrient.*;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
 import org.json.simple.JSONArray;
@@ -70,8 +73,71 @@ public class EdamamNutritionAnalysisAPI {
         return result;
     }
 
-    public static Food getFood(String foodName) {
-        //TODO conversione json food
-        return new Food("", 0);
+    public static Food getFood(String foodName, int portionWeight, Measure measureUnit) {
+        Food foodResult;
+        JSONObject foodInfo = getFoodInfo(foodName + " " + portionWeight + measureUnit.name());
+
+        //creazione food
+        JSONArray healthLabels = (JSONArray) foodInfo.get("healthLabels");
+        Diet diet = null;
+        boolean pescetarian = false, vegetarian = false, vegan = false;
+        for (Object label : healthLabels) {
+            switch (label.toString()) {
+                case "PESCATARIAN":
+                    pescetarian = true;
+                    break;
+                case "VEGETARIAN":
+                    vegetarian = true;
+                    break;
+                case "VEGAN":
+                    vegan = true;
+                    break;
+            }
+        }
+        if (vegan)
+            diet = Diet.VEGAN;
+        else if (vegetarian)
+            diet = Diet.VEGETARIAN;
+        else if (pescetarian)
+            diet = Diet.PESCATARIAN;
+        else
+            diet = Diet.CLASSIC;
+        int newWeight = (int)((double)foodInfo.get("totalWeight"));
+        foodResult = new Food(foodName, newWeight, Measure.GR,diet);
+
+        JSONObject foodNutrientsInfo = (JSONObject) foodInfo.get("totalNutrients");
+        //NUTRIENT
+        foodResult.addNutrient(new Carbohydrate(labelToValue(foodNutrientsInfo, "CHOCDF"), labelToValue(foodNutrientsInfo, "SUGAR")));
+        foodResult.addNutrient(new Protein(labelToValue(foodNutrientsInfo, "PROCNT")));
+        foodResult.addNutrient(new Lipid(labelToValue(foodNutrientsInfo, "FAT"), labelToValue(foodNutrientsInfo, "FASAT")));
+        foodResult.addNutrient(new VitaminA(labelToValue(foodNutrientsInfo, "VITA_RAE")));
+        foodResult.addNutrient(new VitaminC(labelToValue(foodNutrientsInfo, "VITC")));
+        foodResult.addNutrient(new Calcium(labelToValue(foodNutrientsInfo, "CA")));
+        foodResult.addNutrient(new Sodium(labelToValue(foodNutrientsInfo, "NA")));
+        foodResult.addNutrient(new Potassium(labelToValue(foodNutrientsInfo, "K")));
+        foodResult.addNutrient(new Iron(labelToValue(foodNutrientsInfo, "FE")));
+
+        //NON NUTRIENT
+        foodResult.addNotNutrient(new WaterFromFood(labelToValue(foodNutrientsInfo, "WATER")));
+        foodResult.addNotNutrient(new Fiber(labelToValue(foodNutrientsInfo, "FIBTG")));
+
+        return foodResult;
+    }
+
+    private static float labelToValue(JSONObject foodInfo, String label) {
+        JSONObject infoSector = (JSONObject) foodInfo.get(label);
+        float scaleFactor = 1.0f;
+        switch (infoSector.get("unit").toString()) {
+            case "g":
+                scaleFactor = 1.0f;
+                break;
+            case "mg":
+                scaleFactor = 0.001f;
+                break;
+            case "µg":
+                scaleFactor = 0.000001f;
+                break;
+        }
+        return (float) ((double) infoSector.get("quantity")) * scaleFactor;
     }
 }

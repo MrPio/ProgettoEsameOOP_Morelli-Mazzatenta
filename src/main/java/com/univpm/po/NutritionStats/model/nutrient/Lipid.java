@@ -5,7 +5,7 @@ public class Lipid extends MacroNutrient {
 	final static int percentageDailyLipid = 30;
 	private float quantity;
 	private float quantityOnlySatured;
-	
+	//TODO add quantity Only Satured to constructior
 	public Lipid(float quantity) {
 		super(quantity);
 	}

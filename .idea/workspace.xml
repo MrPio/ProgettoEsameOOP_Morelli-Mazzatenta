@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="added /add/food route and implemented communication with EdamamAPI">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Breakfast.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Dinner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Lunch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Snack.java" afterDir="false" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="readme">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/ChompBarcodeSearchAPITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Day.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/meal/Meal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/enums/Measure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/enums/Measure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Water.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Water.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/Lipid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/Lipid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/MacroNutrient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/MacroNutrient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/MicroNutrient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/MicroNutrient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/EdamamNutritionAnalysisAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/EdamamNutritionAnalysisAPITest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +31,8 @@
         <option value="Enum" />
         <option value="package-info" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -86,10 +88,20 @@
       <recent name="com.univpm.po.NutritionStats.junit" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EdamamNutritionAnalysisAPITest">
+  <component name="RunManager" selected="JUnit.ChompBarcodeSearchAPITest">
     <configuration name="NutritionStats" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.NutritionStatsApplication" />
       <module name="NutritionStats" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChompBarcodeSearchAPITest" type="JUnit" factoryName="JUnit">
+      <module name="NutritionStats" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.ChompBarcodeSearchAPITest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -178,6 +190,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EdamamNutritionAnalysisAPITest.getFood" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NutritionStats" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.EdamamNutritionAnalysisAPITest" />
+      <option name="METHOD_NAME" value="getFood" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="InputOutputImplTest" type="JUnit" factoryName="JUnit">
       <module name="NutritionStats" />
       <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
@@ -221,6 +249,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.NutritionStats" />
+      <item itemvalue="JUnit.ChompBarcodeSearchAPITest" />
       <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest" />
       <item itemvalue="JUnit.UserTest" />
       <item itemvalue="JUnit.DropboxAPITest" />
@@ -230,9 +259,11 @@
       <item itemvalue="JUnit.DropboxAPITest.downloadFilesInFolder" />
       <item itemvalue="JUnit.DropboxAPITest.uploadFile" />
       <item itemvalue="JUnit.DropboxAPITest.downloadFile" />
+      <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest.getFood" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest.getFood" />
         <item itemvalue="JUnit.DropboxAPITest.downloadFilesInFolder" />
         <item itemvalue="JUnit.DropboxAPITest.downloadFile" />
         <item itemvalue="JUnit.DropboxAPITest.uploadFile" />
@@ -332,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639439720520</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="readme">
+      <created>1639501197856</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1639501197856</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -360,7 +398,8 @@
     <MESSAGE value="folder fix" />
     <MESSAGE value="added /login route" />
     <MESSAGE value="added /add/food route and implemented communication with EdamamAPI" />
-    <option name="LAST_COMMIT_MESSAGE" value="added /add/food route and implemented communication with EdamamAPI" />
+    <MESSAGE value="readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -369,7 +408,20 @@
           <properties class="org.springframework.web.client.HttpClientErrorException$NotFound" package="org.springframework.web.client" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((Carbohydrate)foodResult.nutrientList.get(0)).quantity" custom="com.univpm.po.NutritionStats.model.nutrient.Carbohydrate" />
+        <watch expression="foodResult" />
+        <watch expression="foodResult" />
+        <watch expression="foodResult" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

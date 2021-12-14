@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.model;
 
+import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.model.nutrient.NotNutrient;
 import com.univpm.po.NutritionStats.model.nutrient.Nutrient;
 import com.univpm.po.NutritionStats.enums.Measure;
@@ -13,7 +14,7 @@ public class Food {
     private Measure measure;
     private ArrayList<Nutrient> nutrientList = new ArrayList<Nutrient>();
     private ArrayList<NotNutrient> notNutrientList = new ArrayList<NotNutrient>();
-
+//TODO add diet variable and in constructor
     public Food(String name, int portionWeight, Measure G) {
         this.name = name;
         this.portionWeight = portionWeight;

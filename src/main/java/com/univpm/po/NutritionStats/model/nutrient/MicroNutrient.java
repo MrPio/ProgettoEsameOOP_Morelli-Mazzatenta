@@ -5,7 +5,7 @@ import com.univpm.po.NutritionStats.enums.Measure;
 public abstract class MicroNutrient extends Nutrient {
 	
 	public MicroNutrient (float quantity) {
-		super(quantity,Measure.G);
+		super(quantity,Measure.GR);
 	}
 	
 }

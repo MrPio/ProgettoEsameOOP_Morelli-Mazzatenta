@@ -1,16 +1,15 @@
 package com.univpm.po.NutritionStats.service;
 
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
-import com.univpm.po.NutritionStats.api.DropboxAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.*;
-import com.univpm.po.NutritionStats.utility.InputOutputImpl;
-import com.univpm.po.NutritionStats.utility.SerializationImpl;
+import com.univpm.po.NutritionStats.model.nutrient.Nutrient;
 import org.json.simple.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -63,23 +62,57 @@ public class MainService {
         return new JSONObject(response);
     }
 
-    public static JSONObject requestAddFood(String token, String dayId, MealType mealType, String foodName, String eanCode) {
+    public static ResponseEntity<Object> requestAddFoodByName(String token, String dayId, MealType mealType, String foodName,
+                                              int portionWeight, Measure measureUnit) {
         HashMap<String, Object> response = new HashMap<>();
-        Food foodToAdd = null;
-        if (!foodName.equals("") && eanCode.equals(""))
-            foodToAdd = EdamamNutritionAnalysisAPI.getFood(foodName);
-        else if (foodName.equals("") && !eanCode.equals(""))
-            foodToAdd = ChompBarcodeSearchAPI.getFood(eanCode);
-        if (foodToAdd == null) {
-            response.put("result", "invalid params");
-            return new JSONObject(response);
-        }
-
+        HttpStatus httpStatus;
         Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null)
+        if (requestedDiary != null) {
+            Food foodToAdd=EdamamNutritionAnalysisAPI.getFood(foodName,portionWeight,measureUnit);
             requestedDiary.addFood(dayId, mealType, foodToAdd);
-        else
+            response.put("result","success");
+            httpStatus=HttpStatus.OK;
+        }
+        else {
             response.put("result", "user not found");
-        return new JSONObject(response);
+            httpStatus=HttpStatus.BAD_REQUEST;
+        }
+        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+    }
+
+    public static ResponseEntity<Object> requestAddFoodByEan(String token, String dayId, MealType mealType, String eanCode,
+                                             int portionWeight) {
+        HashMap<String, Object> response = new HashMap<>();
+        HttpStatus httpStatus;
+        Diary requestedDiary = Diary.load(token);
+        if (requestedDiary != null) {
+            Food foodToAdd=ChompBarcodeSearchAPI.getFood(eanCode,portionWeight);
+            requestedDiary.addFood(dayId, mealType, foodToAdd);
+            response.put("result","success");
+            httpStatus=HttpStatus.OK;
+        }
+        else {
+            response.put("result", "user not found");
+            httpStatus=HttpStatus.BAD_REQUEST;
+        }
+        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+    }
+
+    public static ResponseEntity<Object> requestAddWater(String token, String dayId, MealType mealType,
+                                                         int volume,Measure measureUnit) {
+        HashMap<String, Object> response = new HashMap<>();
+        HttpStatus httpStatus;
+        Diary requestedDiary = Diary.load(token);
+        if (requestedDiary != null) {
+            Water waterToAdd=new Water(volume);
+            requestedDiary.addWater(dayId,mealType,waterToAdd);
+            response.put("result","success");
+            httpStatus=HttpStatus.OK;
+        }
+        else {
+            response.put("result", "user not found");
+            httpStatus=HttpStatus.BAD_REQUEST;
+        }
+        return new ResponseEntity<>(new JSONObject(response), httpStatus);
     }
 }

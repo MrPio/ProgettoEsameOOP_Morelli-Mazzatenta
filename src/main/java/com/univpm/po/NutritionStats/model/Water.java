@@ -1,14 +1,15 @@
 package com.univpm.po.NutritionStats.model;
 
 public class Water {
+	//TODO aggiungere lista nutrienti, perché l'acqua contiene sali minerali
 
-	private float volume;
+	private int volume;
 
-	public Water(float value) {
+	public Water(int value) {
 		this.volume = value;
 	}
 
-	public float getVolume() {
+	public int getVolume() {
 		return volume;
 	}
 	

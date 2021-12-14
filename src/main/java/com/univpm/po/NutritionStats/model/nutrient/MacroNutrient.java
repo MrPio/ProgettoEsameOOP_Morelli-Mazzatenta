@@ -5,7 +5,7 @@ import com.univpm.po.NutritionStats.enums.Measure;
 public abstract class MacroNutrient extends Nutrient {
 	
 	public MacroNutrient (float quantity) {
-		super(quantity,Measure.G);
+		super(quantity,Measure.GR);
 	}
 	public abstract float calculateCalories();
 }
