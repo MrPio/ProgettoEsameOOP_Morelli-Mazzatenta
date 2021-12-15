@@ -3,6 +3,7 @@ package com.univpm.po.NutritionStats.model;
 import java.util.ArrayList;
 
 import com.univpm.po.NutritionStats.enums.MealType;
+import com.univpm.po.NutritionStats.model.nutrient.NotNutrient;
 
 public class Meal {
 
@@ -45,7 +46,7 @@ public class Meal {
     public int calculateCalories() {
         int calories = 0;
         for (Food food : foodList)
-            calories += food.calculateCalories();
+            calories += food.getCalories();
         return calories;
     }
 
@@ -53,6 +54,8 @@ public class Meal {
         int milliLiters = 0;
         for (Water water : waterList)
             milliLiters += water.getVolume();
+        for (Food food : foodList)
+        	milliLiters += food.getWaterFromFood();
         return milliLiters;
     }
 
@@ -63,8 +66,8 @@ public class Meal {
         return carbohydrates;
     }
 
-    public int calculateProteins() {
-        int proteins = 0;
+    public float calculateProteins() {
+    	float proteins = 0;
         for (Food food : foodList)
             proteins += food.getProtein();
         return proteins;
@@ -75,5 +78,51 @@ public class Meal {
         for (Food food : foodList)
             lipids += food.getLipids();
         return lipids;
+    }
+    
+    public float calculateVitaminA() {
+    	float vitaminA = 0;
+    	for (Food food : foodList)
+    		vitaminA += food.getVitaminA();
+    	return vitaminA;
+    }
+    
+    public float calculateVitaminC() {
+    	float vitaminC = 0;
+    	for (Food food : foodList)
+    		vitaminC += food.getVitaminA();
+    	return vitaminC;
+    }
+    
+    public float calculateSodium() {
+    	float sodium = 0;
+    	for (Food food : foodList)
+    		sodium += food.getSodium();
+    	for (Water water : waterList)
+    		sodium += water.getSodium();
+    	return sodium;
+    }
+    
+    public float calculateCalcium() {
+    	float calcium = 0;
+    	for (Food food : foodList)
+    		calcium += food.getCalcium();
+    	for (Water water : waterList)
+    		calcium += water.getCalcium();
+    	return calcium;
+    }
+    
+    public float calculatePotassium() {
+    	float potassium = 0;
+    	for (Food food : foodList)
+    		potassium += food.getPotassium();
+    	return potassium;
+    }
+    
+    public float calculateIron() {
+    	float iron = 0;
+    	for (Food food : foodList)
+    		iron += food.getIron();
+    	return iron;
     }
 }

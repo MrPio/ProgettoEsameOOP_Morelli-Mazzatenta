@@ -87,4 +87,46 @@ public class Day {
             lipids += meal.calculateLipids();
         return lipids;
     }
+    
+    public float calculateVitaminA() {
+        float vitaminA = 0;
+        for (Meal meal : mealList)
+        	vitaminA += meal.calculateVitaminA();
+        return vitaminA;
+    }
+    
+    public float calculateVitaminC() {
+        float vitaminC = 0;
+        for (Meal meal : mealList)
+        	vitaminC += meal.calculateVitaminC();
+        return vitaminC;
+    }
+    
+    public float calculateSodium() {
+        float sodium = 0;
+        for (Meal meal : mealList)
+        	sodium += meal.calculateSodium();
+        return sodium;
+    }
+    
+    public float calculateCalcium() {
+        float calcium = 0;
+        for (Meal meal : mealList)
+        	calcium += meal.calculateCalcium();
+        return calcium;
+    }
+    
+    public float calculatePotassium() {
+        float potassium = 0;
+        for (Meal meal : mealList)
+        	potassium += meal.calculatePotassium();
+        return potassium;
+    }
+    
+    public float calculateIron() {
+        float iron = 0;
+        for (Meal meal : mealList)
+        	iron += meal.calculateIron();
+        return iron;
+    }
 }

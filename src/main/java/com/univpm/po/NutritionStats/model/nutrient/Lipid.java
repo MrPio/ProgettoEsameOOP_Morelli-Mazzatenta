@@ -3,15 +3,11 @@ package com.univpm.po.NutritionStats.model.nutrient;
 public class Lipid extends MacroNutrient {
 
 	final static int percentageDailyLipid = 30;
-	private float quantity;
 	private float quantityOnlySatured;
-	//TODO add quantity Only Satured to constructior
-	public Lipid(float quantity) {
+
+	public Lipid(float quantity, float quantityOnlySatured) {
 		super(quantity);
-	}
-	
-	public float getQuantity() {
-		return quantity;
+		this.quantityOnlySatured = quantityOnlySatured;
 	}
 
 	public float getQuantityOnlySatured() {
