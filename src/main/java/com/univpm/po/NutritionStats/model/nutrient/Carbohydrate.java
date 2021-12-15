@@ -2,7 +2,8 @@ package com.univpm.po.NutritionStats.model.nutrient;
 
 public class Carbohydrate extends MacroNutrient {
 	
-	final static int percentageDailyCarbohydrate = 50;
+	final static int PERCENTAGE_DAILY_CARBOHYDRATES = 50;
+	public final static int CALORIES_PER_CARBOHYDRATE = 4;
 	private float quantityOnlySugar;
 	
 	public Carbohydrate(float quantity, float quantityOnlySugar) {
@@ -16,7 +17,7 @@ public class Carbohydrate extends MacroNutrient {
 
 	@Override
 	public float calculateCalories() {
-		return quantity * 4;
+		return quantity * CALORIES_PER_CARBOHYDRATE;
 	}
 
 }
