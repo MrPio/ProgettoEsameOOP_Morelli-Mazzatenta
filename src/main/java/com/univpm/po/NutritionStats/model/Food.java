@@ -6,9 +6,10 @@ import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.nutrient.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Food {
+public class Food implements Serializable {
     private String name;
     private int portionWeight;
     private Measure measure;

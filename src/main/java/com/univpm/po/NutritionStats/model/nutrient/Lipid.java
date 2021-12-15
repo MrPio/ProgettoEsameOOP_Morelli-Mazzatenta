@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Lipid extends MacroNutrient {
+import java.io.Serializable;
+
+public class Lipid extends MacroNutrient implements Serializable {
 
 	final static int PERCENTAGE_DAILY_LIPID = 30;
 	public final static int CALORIES_PER_LIPID = 9;

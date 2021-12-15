@@ -1,17 +1,16 @@
 package com.univpm.po.NutritionStats.model;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.univpm.po.NutritionStats.enums.MealType;
+import org.json.simple.JSONObject;
 
-public class Day {
+public class Day implements Serializable {
     private LocalDate date;
     private ArrayList<Meal> mealList;
-    
-    
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
 
     public Day(LocalDate date) {
         this.date = date;
@@ -23,7 +22,7 @@ public class Day {
     }
     
     public String getDayId() {
-    	return formatter.format(date);
+    	return Diary.formatter.format(date);
 	}
 
 	public ArrayList<Meal> getMealList() {
@@ -94,7 +93,7 @@ public class Day {
             fiber += meal.calculateFiber();
         return fiber;
     }
-    
+
     public float calculateVitaminA() {
         float vitaminA = 0;
         for (Meal meal : mealList)

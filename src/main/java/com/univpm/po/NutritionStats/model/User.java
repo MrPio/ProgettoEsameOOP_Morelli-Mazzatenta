@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.model;
 
+import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -8,8 +9,10 @@ import java.util.HashMap;
 
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Gender;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
-public class User {
+public class User implements Serializable {
 
     private String nickname;
     private String email;

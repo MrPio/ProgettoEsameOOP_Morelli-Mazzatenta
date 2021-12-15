@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.api;
 
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.Food;
@@ -9,15 +10,11 @@ import com.univpm.po.NutritionStats.utility.SerializationImpl;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 public class EdamamNutritionAnalysisAPI {
     final static String DIR = "api_response/edamam/nutrition/";
@@ -26,7 +23,7 @@ public class EdamamNutritionAnalysisAPI {
     final static String APP_ID = "a3c59b8d";
     final static String URL = "https://api.edamam.com/api/nutrition-data?app_id=" + APP_ID;
 
-    public static JSONObject getFoodInfo(String foodName) {
+    public static JSONObject getFoodInfo(String foodName) throws ApiFoodNotFoundException {
         foodName = foodName.replace(" ", "%20");
         //Check if I already have the information needed:
         //in local database
@@ -61,6 +58,8 @@ public class EdamamNutritionAnalysisAPI {
                     data.append(line);
             }
             result = (JSONObject) JSONValue.parseWithException(data.toString());
+            if((double)result.get("totalWeight")==0.0d)
+                throw new ApiFoodNotFoundException(foodName);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
             return null;
@@ -73,7 +72,7 @@ public class EdamamNutritionAnalysisAPI {
         return result;
     }
 
-    public static Food getFood(String foodName, int portionWeight, Measure measureUnit) {
+    public static Food getFood(String foodName, int portionWeight, Measure measureUnit) throws ApiFoodNotFoundException {
         Food foodResult;
         JSONObject foodInfo = getFoodInfo(foodName + " " + portionWeight + measureUnit.name());
 

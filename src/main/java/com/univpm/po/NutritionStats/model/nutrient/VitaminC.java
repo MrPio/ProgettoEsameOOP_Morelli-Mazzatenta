@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class VitaminC extends Vitamin {
+import java.io.Serializable;
+
+public class VitaminC extends Vitamin implements Serializable {
 
 	public VitaminC(float quantity) {
 		super(quantity);

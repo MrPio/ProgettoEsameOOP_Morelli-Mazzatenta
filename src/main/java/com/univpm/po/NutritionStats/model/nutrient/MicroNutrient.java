@@ -2,7 +2,9 @@ package com.univpm.po.NutritionStats.model.nutrient;
 
 import com.univpm.po.NutritionStats.enums.Measure;
 
-public abstract class MicroNutrient extends Nutrient {
+import java.io.Serializable;
+
+public abstract class MicroNutrient extends Nutrient implements Serializable {
 	
 	public MicroNutrient (float quantity) {
 		super(quantity,Measure.GR);

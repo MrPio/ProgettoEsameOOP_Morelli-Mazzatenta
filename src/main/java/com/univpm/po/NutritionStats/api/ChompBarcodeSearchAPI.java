@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.api;
 
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.Food;
@@ -10,6 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,47 +23,45 @@ public class ChompBarcodeSearchAPI {
     final static String API_KEY = "AzytZXSqpb3nMitJ";
     final static String URL = "https://chompthis.com/api/v2/food/branded/barcode.php?api_key=" + API_KEY;
 
-    public static JSONObject getEanInfo(String ean) {
+    public static JSONObject getEanInfo(long eanConde) throws ApiFoodNotFoundException {
         //Check if I already have the information needed:
         //in local database
-        InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, ean + ".dat");
+        InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, eanConde + ".dat");
         if (inputOutputEan.existFile()) {
-            SerializationImpl serializationResult = new SerializationImpl(DIR, ean + ".dat");
-            return (JSONObject) serializationResult.loadObject();
+            SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
+            serializationResult.loadObject();
         }
         //in remote database
-        if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(ean + ".dat")) {
-            DropboxAPI.downloadFile(DROPBOX_DIR + ean + ".dat", DIR + ean + ".dat");
-            SerializationImpl serializationResult = new SerializationImpl(DIR, ean + ".dat");
-            return (JSONObject) serializationResult.loadObject();
+        if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(eanConde + ".dat")) {
+            DropboxAPI.downloadFile(DROPBOX_DIR + eanConde + ".dat", DIR + eanConde + ".dat");
+            SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
+            serializationResult.loadObject();
         }
 
         JSONObject result = null;
+        HttpStatus httpStatus=null;
 
-        String url = ChompBarcodeSearchAPI.URL + "&code=" + ean;
+        String url = ChompBarcodeSearchAPI.URL + "&code=" + eanConde;
         RestTemplate rt = new RestTemplate();
         JSONParser parser = new JSONParser();
         try {
             result = (JSONObject) parser.parse(rt.getForObject(url, String.class));
+            httpStatus=HttpStatus.OK;
         } catch (HttpClientErrorException e) {
-            System.out.println(e.getStatusCode());
-            try {
-                result = (JSONObject) parser.parse("{\"result\":\"404 not found\"}");
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
+            throw new ApiFoodNotFoundException(eanConde);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         //store the result to avoid different future calls on this same request
-        SerializationImpl serializationResult = new SerializationImpl(DIR, ean + ".dat");
+        SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
         serializationResult.saveObject(result);
         DropboxAPI.uploadFile(new File(serializationResult.getFullPath()), DROPBOX_DIR);
         return result;
     }
 
-    public static Food getFood(String eanCode, int portionWeight) {
+    public static Food getFood(long eanCode, int portionWeight) throws ApiFoodNotFoundException {
         Food foodResult;
+
         JSONObject foodInfo = (JSONObject) ((JSONArray) getEanInfo(eanCode).get("items")).get(0);
 
         //creazione food

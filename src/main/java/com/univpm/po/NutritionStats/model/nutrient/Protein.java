@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Protein extends MacroNutrient {
+import java.io.Serializable;
+
+public class Protein extends MacroNutrient implements Serializable {
 
 	final static int PERCENTAGE_DAILY_PROTEIN = 20;
 	public final static int CALORIES_PER_PROTEIN = 4;

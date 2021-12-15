@@ -5,18 +5,21 @@ import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Diary implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	public final static String DIR = "database/";
+    private static final long serialVersionUID = 1L;
+    public final static String DIR = "database/";
     public final static String DROPBOX_DIR = "/database/";
+    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private User user;
     private ArrayList<Day> dayList;
@@ -71,12 +74,13 @@ public class Diary implements Serializable {
         if (requestedDay != null)
             requestedDay.addFood(mealType, food);
         else {
-            Day dayToAdd = new Day(LocalDate.parse(dayId));
+            Day dayToAdd = new Day(LocalDate.parse(dayId.replace("-", "/"), formatter));
             dayToAdd.addFood(mealType, food);
             dayList.add(dayToAdd);
         }
+        save();
     }
-    
+
     public void addWater(String dayId, MealType mealType, Water water) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
@@ -86,7 +90,12 @@ public class Diary implements Serializable {
             dayToAdd.addWater(mealType, water);
             dayList.add(dayToAdd);
         }
+        save();
     }
-    
-    
+
+    public JSONObject toJsonObject() {
+        JSONObject toJasonObject =new JSONObject();
+        toJasonObject.put("diary",this);
+        return toJasonObject;
+    }
 }

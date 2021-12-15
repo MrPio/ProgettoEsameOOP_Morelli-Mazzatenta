@@ -2,7 +2,9 @@ package com.univpm.po.NutritionStats.model.nutrient;
 
 import com.univpm.po.NutritionStats.enums.Measure;
 
-public abstract class Nutrient {
+import java.io.Serializable;
+
+public abstract class Nutrient implements Serializable {
 	
 	protected Measure measure;
 	protected float quantity;
@@ -15,4 +17,5 @@ public abstract class Nutrient {
 	public float getQuantity() {
 		return quantity;
 	}
+
 }

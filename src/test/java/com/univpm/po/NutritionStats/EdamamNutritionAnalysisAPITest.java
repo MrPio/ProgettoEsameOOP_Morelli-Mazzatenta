@@ -1,13 +1,12 @@
 package com.univpm.po.NutritionStats;
 
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.Food;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class EdamamNutritionAnalysisAPITest {
 
@@ -16,7 +15,7 @@ class EdamamNutritionAnalysisAPITest {
     }
 
     @Test
-    void getFoodInfo() {
+    void getFoodInfo() throws ApiFoodNotFoundException {
         JSONObject jO=EdamamNutritionAnalysisAPI.getFoodInfo("orange-100gr");
         System.out.println(jO.get("calories"));
         System.out.println(jO.get("healthLabels"));
@@ -25,7 +24,7 @@ class EdamamNutritionAnalysisAPITest {
     }
 
     @Test
-    void getFood() {
+    void getFood() throws ApiFoodNotFoundException {
         Food food=EdamamNutritionAnalysisAPI.getFood("orange",100, Measure.GR);
     }
 }

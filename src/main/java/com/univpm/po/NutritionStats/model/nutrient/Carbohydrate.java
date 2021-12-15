@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Carbohydrate extends MacroNutrient {
+import java.io.Serializable;
+
+public class Carbohydrate extends MacroNutrient implements Serializable {
 	
 	final static int PERCENTAGE_DAILY_CARBOHYDRATES = 50;
 	public final static int CALORIES_PER_CARBOHYDRATE = 4;

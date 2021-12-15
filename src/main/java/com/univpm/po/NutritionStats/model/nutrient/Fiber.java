@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public class Fiber extends NotNutrient {
+import java.io.Serializable;
+
+public class Fiber extends NotNutrient implements Serializable {
 	private float quantity;
 
 	public Fiber(float quantity) {

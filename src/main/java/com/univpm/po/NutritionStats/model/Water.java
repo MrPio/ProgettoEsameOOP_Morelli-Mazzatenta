@@ -1,26 +1,29 @@
 package com.univpm.po.NutritionStats.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.univpm.po.NutritionStats.model.nutrient.Calcium;
-import com.univpm.po.NutritionStats.model.nutrient.Nutrient;
-import com.univpm.po.NutritionStats.model.nutrient.Sodium;
+import com.univpm.po.NutritionStats.model.nutrient.*;
 
-public class Water {
+public class Water implements Serializable {
+	final float SODIUM_PER_100=4.0f;
+	final float CALCIUM_PER_100=3.0f;
+	final float POTASSIUM_PER_100=0.0f;
+	final float IRON_PER_100=0.0f;
 
 	private int volume;
 	private ArrayList<Nutrient> nutrientList = new ArrayList<Nutrient>();
 
-	public Water(int value) {
-		this.volume = value;
+	public Water(int volume) {
+		this.volume = volume;
+		this.nutrientList.add(new Sodium(SODIUM_PER_100*volume/100.0f));
+		this.nutrientList.add(new Calcium(CALCIUM_PER_100*volume/100.0f));
+		this.nutrientList.add(new Potassium(POTASSIUM_PER_100*volume/100.0f));
+		this.nutrientList.add(new Iron(IRON_PER_100*volume/100.0f));
 	}
 
 	public int getVolume() {
 		return volume;
-	}
-
-	public ArrayList<Nutrient> getNutrientList() {
-		return nutrientList;
 	}
     
     public float getSodium() {
@@ -36,6 +39,4 @@ public class Water {
     			return ((Calcium)nutrient).getQuantity();
     	return 0.0f;
     }
-    
-	
 }

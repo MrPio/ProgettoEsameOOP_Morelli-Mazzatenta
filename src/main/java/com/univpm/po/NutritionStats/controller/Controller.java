@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.controller;
 
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
 import com.univpm.po.NutritionStats.enums.Diet;
@@ -22,10 +23,12 @@ public class Controller {
     final String ENDPOINT_ADD_FOOD_BY_NAME = "/add/food/by_name";
     final String ENDPOINT_ADD_FOOD_BY_EAN = "/add/food/by_ean";
     final String ENDPOINT_ADD_WATER = "/add/water";
-    final String ENDPOINT_DIARY_INFO = "/diary/";
-    final String ENDPOINT_TODAY_INFO = "/diary/{day_id}";
+    final String ENDPOINT_DIARY_INFO = "/diary";
+    final String ENDPOINT_DAY_INFO = "/diary/{day_id}";
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
+
+    MainService mainService=new MainService();
 
     @RequestMapping(path = "/")
     public ResponseEntity<Object> Welcome() {
@@ -39,21 +42,27 @@ public class Controller {
     @RequestMapping(path = ENDPOINT_FOOD, method = RequestMethod.GET)
     public ResponseEntity<Object> getInfoFromFoodName(
             @PathVariable("food_name") String foodName) {
-        return new ResponseEntity<>(
-                EdamamNutritionAnalysisAPI.getFoodInfo(foodName),
-                HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(
+                    EdamamNutritionAnalysisAPI.getFoodInfo(foodName),
+                    HttpStatus.OK);
+        } catch (ApiFoodNotFoundException e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+        }
     }
 
 
     @RequestMapping(path = ENDPOINT_EAN, method = RequestMethod.GET)
     public ResponseEntity<Object> getInfoFromEan(
-            @PathVariable("ean_code") String eanCode) {
-        return new ResponseEntity<>(
-                ChompBarcodeSearchAPI.getEanInfo(eanCode),
-                HttpStatus.OK);
+            @PathVariable("ean_code") Long eanCode) {
+        try {
+            return new ResponseEntity<>(
+                    ChompBarcodeSearchAPI.getEanInfo(eanCode),
+                    HttpStatus.OK);
+        } catch (ApiFoodNotFoundException e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+        }
     }
-    //TODO substitute Service return type with ResponseEntity<Object>
-
 
     @RequestMapping(path = ENDPOINT_ADD_FOOD_BY_NAME, method = RequestMethod.POST)
     public ResponseEntity<Object> requestAddFoodByName(
@@ -63,7 +72,11 @@ public class Controller {
             @RequestParam(value = "food_name") String foodName,
             @RequestParam(value = "portion_weight") Integer portionWeight,
             @RequestParam(value = "unit_of_measure ", defaultValue = "GR") Measure measureUnit) {
-        return MainService.requestAddFoodByName(token, dayId, mealType, foodName, portionWeight, measureUnit);
+        try {
+            return mainService.requestAddFoodByName(token, dayId, mealType, foodName, portionWeight, measureUnit);
+        } catch (ApiFoodNotFoundException e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = ENDPOINT_ADD_FOOD_BY_EAN, method = RequestMethod.POST)
@@ -71,9 +84,13 @@ public class Controller {
             @RequestParam(value = "token") String token,
             @RequestParam(value = "day_id") String dayId,
             @RequestParam(value = "meal_type") MealType mealType,
-            @RequestParam(value = "ean_code") String eanCode,
+            @RequestParam(value = "ean_code") Long eanCode,
             @RequestParam(value = "portion_weight") Integer portionWeight) {
-        return MainService.requestAddFoodByEan(token, dayId, mealType, eanCode, portionWeight);
+        try {
+            return mainService.requestAddFoodByEan(token, dayId, mealType, eanCode, portionWeight);
+        } catch (ApiFoodNotFoundException e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = ENDPOINT_ADD_WATER, method = RequestMethod.POST)
@@ -83,16 +100,20 @@ public class Controller {
             @RequestParam(value = "meal_type") MealType mealType,
             @RequestParam(value = "portion_volume") Integer volume,
             @RequestParam(value = "measure ", defaultValue = "ML") Measure measure) {
-        return MainService.requestAddWater(token, dayId, mealType, volume, measure);
+        return mainService.requestAddWater(token, dayId, mealType, volume, measure);
     }
 
-    @RequestMapping(path = ENDPOINT_TODAY_INFO, method = RequestMethod.GET)
-    public ResponseEntity<Object> requestTodayInfo(
+    @RequestMapping(path = ENDPOINT_DIARY_INFO, method = RequestMethod.GET)
+    public ResponseEntity<Object> requestDiaryInfo(
+            @RequestParam(value = "token") String token) {
+        return mainService.requestDiaryValues(token);
+    }
+
+    @RequestMapping(path = ENDPOINT_DAY_INFO, method = RequestMethod.GET)
+    public ResponseEntity<Object> requestDayInfo(
             @PathVariable(value = "day_id") String dayId,
             @RequestParam(value = "token") String token) {
-        return new ResponseEntity<>(
-                MainService.requestTodayValues(token, dayId),
-                HttpStatus.OK);
+        return mainService.requestDayValues(token, dayId);
     }
 
     @RequestMapping(path = ENDPOINT_SIGNUP, method = RequestMethod.POST)
@@ -105,7 +126,7 @@ public class Controller {
             @RequestParam("diet") Diet diet,
             @RequestParam(value = "gender") Gender gender) {
         return new ResponseEntity<>(
-                MainService.requestSignUp(new User(nickname, email, year, height, weight, diet, gender)),
+                mainService.requestSignUp(new User(nickname, email, year, height, weight, diet, gender)),
                 HttpStatus.OK);
     }
 
@@ -113,7 +134,7 @@ public class Controller {
     public ResponseEntity<Object> requestLogin(
             @RequestParam(value = "token") String token) {
         return new ResponseEntity<>(
-                MainService.requestLogin(token),
+                mainService.requestLogin(token),
                 HttpStatus.OK);
     }
 

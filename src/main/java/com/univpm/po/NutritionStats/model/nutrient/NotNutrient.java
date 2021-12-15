@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public abstract class NotNutrient {
+import java.io.Serializable;
+
+public abstract class NotNutrient implements Serializable {
 	
 	private float quantity;
 	

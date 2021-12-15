@@ -1,6 +1,8 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-public abstract class Vitamin extends MicroNutrient{
+import java.io.Serializable;
+
+public abstract class Vitamin extends MicroNutrient implements Serializable {
 
 	public Vitamin(float quantity) {
 		super(quantity);

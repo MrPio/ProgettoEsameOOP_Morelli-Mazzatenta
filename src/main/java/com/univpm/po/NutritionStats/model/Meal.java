@@ -1,11 +1,12 @@
 package com.univpm.po.NutritionStats.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.model.nutrient.NotNutrient;
 
-public class Meal {
+public class Meal implements Serializable {
 
     private MealType mealType;
     private ArrayList<Food> foodList;
