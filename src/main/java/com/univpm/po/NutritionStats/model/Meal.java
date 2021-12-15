@@ -79,6 +79,13 @@ public class Meal {
             lipids += food.getLipids();
         return lipids;
     }
+   
+    public int calculateFiber() {
+        int fiber = 0;
+        for (Food food : foodList)
+            fiber += food.getFiber();
+        return fiber;
+    }
     
     public float calculateVitaminA() {
     	float vitaminA = 0;
@@ -125,4 +132,6 @@ public class Meal {
     		iron += food.getIron();
     	return iron;
     }
+    
+    
 }

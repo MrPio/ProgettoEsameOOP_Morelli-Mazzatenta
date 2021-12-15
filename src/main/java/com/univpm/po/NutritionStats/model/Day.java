@@ -88,6 +88,13 @@ public class Day {
         return lipids;
     }
     
+    public int calculateFiber() {
+        int fiber = 0;
+        for (Meal meal : mealList)
+            fiber += meal.calculateFiber();
+        return fiber;
+    }
+    
     public float calculateVitaminA() {
         float vitaminA = 0;
         for (Meal meal : mealList)
