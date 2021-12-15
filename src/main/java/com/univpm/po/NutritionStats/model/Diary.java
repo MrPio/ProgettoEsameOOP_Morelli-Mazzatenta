@@ -86,7 +86,7 @@ public class Diary implements Serializable {
         if (requestedDay != null)
             requestedDay.addWater(mealType, water);
         else {
-            Day dayToAdd = new Day(LocalDate.parse(dayId));
+            Day dayToAdd = new Day(LocalDate.parse(dayId.replace("-", "/"), formatter));
             dayToAdd.addWater(mealType, water);
             dayList.add(dayToAdd);
         }

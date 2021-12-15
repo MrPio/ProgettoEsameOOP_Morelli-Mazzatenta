@@ -7,6 +7,7 @@ import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Gender;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
 import com.univpm.po.NutritionStats.model.User;
 import com.univpm.po.NutritionStats.service.MainService;
 import org.json.simple.JSONObject;
@@ -28,7 +29,7 @@ public class Controller {
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
 
-    MainService mainService=new MainService();
+    MainService mainService = new MainService();
 
     @RequestMapping(path = "/")
     public ResponseEntity<Object> Welcome() {
@@ -47,7 +48,7 @@ public class Controller {
                     EdamamNutritionAnalysisAPI.getFoodInfo(foodName),
                     HttpStatus.OK);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -60,7 +61,7 @@ public class Controller {
                     ChompBarcodeSearchAPI.getEanInfo(eanCode),
                     HttpStatus.OK);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -75,7 +76,7 @@ public class Controller {
         try {
             return mainService.requestAddFoodByName(token, dayId, mealType, foodName, portionWeight, measureUnit);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -89,7 +90,7 @@ public class Controller {
         try {
             return mainService.requestAddFoodByEan(token, dayId, mealType, eanCode, portionWeight);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message",e.getMessage())),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -125,17 +126,17 @@ public class Controller {
             @RequestParam(value = "height") Integer height,
             @RequestParam("diet") Diet diet,
             @RequestParam(value = "gender") Gender gender) {
-        return new ResponseEntity<>(
-                mainService.requestSignUp(new User(nickname, email, year, height, weight, diet, gender)),
-                HttpStatus.OK);
+        try {
+            return mainService.requestSignUp(new User(nickname, email, year, height, weight, diet, gender));
+        } catch (UserAlreadyInDatabase e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = ENDPOINT_LOGIN, method = RequestMethod.GET)
     public ResponseEntity<Object> requestLogin(
             @RequestParam(value = "token") String token) {
-        return new ResponseEntity<>(
-                mainService.requestLogin(token),
-                HttpStatus.OK);
+        return mainService.requestLogin(token);
     }
 
 

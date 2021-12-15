@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import com.univpm.po.NutritionStats.model.nutrient.*;
 
 public class Water implements Serializable {
-	final float SODIUM_PER_100=4.0f;
-	final float CALCIUM_PER_100=3.0f;
-	final float POTASSIUM_PER_100=0.0f;
-	final float IRON_PER_100=0.0f;
+	final float SODIUM_PER_100=4.0f/1000f;
+	final float CALCIUM_PER_100=3.0f/1000f;
+	final float POTASSIUM_PER_100=0.0f/1000f;
+	final float IRON_PER_100=0.0f/1000f;
 
 	private int volume;
 	private ArrayList<Nutrient> nutrientList = new ArrayList<Nutrient>();
