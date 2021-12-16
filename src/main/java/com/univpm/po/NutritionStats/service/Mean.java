@@ -13,14 +13,14 @@ public class Mean extends Statistic {
 		super(diary);
 	}
 
-	public JSONObject NutrientMean (LocalDate startDate, LocalDate endDate) {
+	public JSONObject allNutrientMean (LocalDate startDate, LocalDate endDate) {
 		
 		JSONObject means = new JSONObject();
 		int count = 0;
 		float calories = 0, carbohydrates = 0, lipid = 0, protein = 0, water = 0, vitaminA = 0, vitaminC = 0, sodium = 0, calcium = 0, potassium = 0, iron = 0, fiber = 0;
 		
 		for (Day day : diary.getDayList()) {
-			if(day.getDate().isAfter(startDate) && day.getDate().isBefore(endDate)) {
+			if(isBetween(day, startDate, endDate)) {
 				calories += day.calculateCalories();
 				carbohydrates += day.calculateCarbohydrates();
 				lipid += day.calculateLipids();
@@ -38,8 +38,8 @@ public class Mean extends Statistic {
 		}
 		means.put("Calories",(Float)calories/count);
 		means.put("Carbohydrates",(Float)carbohydrates/count);
-		means.put("Lipid",(Float)lipid/count);
-		means.put("Protein",(Float)protein/count);
+		means.put("Lipids",(Float)lipid/count);
+		means.put("Proteins",(Float)protein/count);
 		means.put("Water",(Float)water/count);
 		means.put("vitaminA",(Float)vitaminA/count);
 		means.put("vitaminC",(Float)vitaminC/count);
@@ -47,8 +47,9 @@ public class Mean extends Statistic {
 		means.put("calcium",(Float)calcium/count);
 		means.put("potassium",(Float)potassium/count);
 		means.put("iron",(Float)iron/count);
-		means.put("fiber",(Float)fiber/count);				
+		means.put("fibers",(Float)fiber/count);				
 		return means;
 	}
+
 	
 }
