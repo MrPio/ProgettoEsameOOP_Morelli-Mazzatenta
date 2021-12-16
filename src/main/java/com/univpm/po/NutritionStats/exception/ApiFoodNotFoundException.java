@@ -5,9 +5,9 @@ import com.univpm.po.NutritionStats.enums.Api;
 public class ApiFoodNotFoundException extends Exception{
     final static String BASE_MESSAGE="sorry, but we couldn't find what you are looking for in api. More details here:\r\n";
 
-    Api api;
-    long eanCode;
-    String foodName;
+    private Api api;
+    private long eanCode;
+    private String foodName;
 
     public ApiFoodNotFoundException(long eanCode) {
         super(BASE_MESSAGE+"API: "+Api.CHOMP.name()+"\r\nINFO: "+Api.CHOMP.web);

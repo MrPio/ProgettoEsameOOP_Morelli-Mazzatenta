@@ -129,7 +129,7 @@ public class Controller {
         try {
             return mainService.requestSignUp(new User(nickname, email, year, height, weight, diet, gender));
         } catch (UserAlreadyInDatabase e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),"token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 

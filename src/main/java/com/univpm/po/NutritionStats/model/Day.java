@@ -52,43 +52,43 @@ public class Day implements Serializable {
     }
     
     
-    public int calculateCalories() {
-        int calories = 0;
+    public float calculateCalories() {
+        float calories = 0;
         for (Meal meal : mealList)
             calories += meal.calculateCalories();
         return calories;
     }
 
-    public int calculateWater() {
-        int milliLiters = 0;
+    public float calculateWater() {
+        float milliLiters = 0;
         for (Meal meal : mealList)
             milliLiters += meal.calculateWater();
         return milliLiters;
     }
 
-    public int calculateCarbohydrates() {
-        int carbohydrates = 0;
+    public float calculateCarbohydrates() {
+        float carbohydrates = 0;
         for (Meal meal : mealList)
             carbohydrates += meal.calculateCarbohydrates();
         return carbohydrates;
     }
 
-    public int calculateProteins() {
-        int proteins = 0;
+    public float calculateProteins() {
+        float proteins = 0;
         for (Meal meal : mealList)
             proteins += meal.calculateProteins();
         return proteins;
     }
 
-    public int calculateLipids() {
-        int lipids = 0;
+    public float calculateLipids() {
+        float lipids = 0;
         for (Meal meal : mealList)
             lipids += meal.calculateLipids();
         return lipids;
     }
     
-    public int calculateFiber() {
-        int fiber = 0;
+    public float calculateFiber() {
+        float fiber = 0;
         for (Meal meal : mealList)
             fiber += meal.calculateFiber();
         return fiber;

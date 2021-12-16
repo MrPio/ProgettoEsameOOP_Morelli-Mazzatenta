@@ -112,7 +112,7 @@ public class MainService {
         HashMap<String, String> response = new HashMap<>();
         //check if User is already in database
         if (Diary.load(user.generateToken()) != null)
-            throw new UserAlreadyInDatabase(user.getEmail());
+            throw new UserAlreadyInDatabase(user.getEmail(),user.generateToken());
 
         response.put("email", user.getEmail());
         response.put("token", user.generateToken());
