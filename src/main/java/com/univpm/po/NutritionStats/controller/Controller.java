@@ -94,14 +94,14 @@ public class Controller {
         }
     }
 
+    //TODO mettere waterlist in day!
     @RequestMapping(path = ENDPOINT_ADD_WATER, method = RequestMethod.POST)
     public ResponseEntity<Object> requestAddWater(
             @RequestParam(value = "token") String token,
             @RequestParam(value = "day_id") String dayId,
-            @RequestParam(value = "meal_type") MealType mealType,
             @RequestParam(value = "portion_volume") Integer volume,
             @RequestParam(value = "measure ", defaultValue = "ML") Measure measure) {
-        return mainService.requestAddWater(token, dayId, mealType, volume, measure);
+        return mainService.requestAddWater(token, dayId, MealType.SNACK, volume, measure);
     }
 
     @RequestMapping(path = ENDPOINT_DIARY_INFO, method = RequestMethod.GET)
