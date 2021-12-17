@@ -9,17 +9,17 @@ import com.univpm.po.NutritionStats.service.Mean;
 
 class MeanTest {
 
-	final String email="email@example.com";
-	
+	final String email = "email@example.com";
+
 	@Test
 	void testWithDebugger() {
-		
+
 		LocalDate begin = LocalDate.now();
 		LocalDate end = LocalDate.now();
-		
+
 		Diary diary = Diary.load("3959de8aeefabfa1385135fa8d03ee21");
-		Mean mean = new Mean(diary);
-		mean.allNutrientMean(begin,end);
+		Mean mean = new Mean(diary, null);
+		mean.allNutrientMean(begin, end);
 
 	}
 
