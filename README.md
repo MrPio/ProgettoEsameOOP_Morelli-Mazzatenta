@@ -24,7 +24,7 @@ POST | `/add/food/by_ean` | token, day_id, meal_type, ean_code, portion_weight |
 POST | `/add/water` | token, day_id, portion_volume, unit_of_measure | Add consumed water to a specified meal.
 GET | `/diary` | token | Return all the data (***metadata***) owned by the user.
 GET | `/diary/{day_id}` | token | Return the data of the user in specified day.
-POST | `/signup` | nickname, email, year, height, weight, diet, gender | Register new user.
+POST | `/signup` | nickname, email, birth, height, weight, diet, gender | Register new user.
 GET | `/login` | token | Login user, return user's info if in the database.
 GET | */stats* | | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
 GET | */filters* | | Filter metadata

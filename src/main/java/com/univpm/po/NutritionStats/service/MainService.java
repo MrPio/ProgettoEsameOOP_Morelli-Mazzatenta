@@ -132,7 +132,7 @@ public class MainService {
             response.put("result", "found");
             response.put("nickname", requestedUser.getNickname());
             response.put("email", requestedUser.getEmail());
-            response.put("year", requestedUser.getYearOfBirth());
+            response.put("birth", requestedUser.getYearOfBirth());
             response.put("weight", requestedUser.getWeight());
             response.put("height", requestedUser.getHeight());
             response.put("diet", requestedUser.getDiet());
@@ -153,6 +153,13 @@ public class MainService {
         response.put("carbohydrates", day.calculateCarbohydrates());
         response.put("proteins", day.calculateProteins());
         response.put("lipids", day.calculateLipids());
+        response.put("calcium", day.calculateCalcium());
+        response.put("fiber", day.calculateFiber());
+        response.put("iron", day.calculateIron());
+        response.put("potassium", day.calculatePotassium());
+        response.put("sodium", day.calculateSodium());
+        response.put("vitamin_a", day.calculateVitaminA());
+        response.put("vitamin_c", day.calculateVitaminC());
         return response;
     }
 }

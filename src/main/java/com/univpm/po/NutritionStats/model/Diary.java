@@ -19,7 +19,7 @@ public class Diary implements Serializable {
     private static final long serialVersionUID = 1L;
     public final static String DIR = "database/";
     public final static String DROPBOX_DIR = "/database/";
-    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private User user;
     private ArrayList<Day> dayList;

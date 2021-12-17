@@ -8,6 +8,8 @@ import com.univpm.po.NutritionStats.enums.Gender;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
+import com.univpm.po.NutritionStats.model.Day;
+import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.model.User;
 import com.univpm.po.NutritionStats.service.MainService;
 import org.json.simple.JSONObject;
@@ -15,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 @RestController
@@ -121,13 +124,13 @@ public class Controller {
     public ResponseEntity<Object> requestSignUp(
             @RequestParam(value = "nickname") String nickname,
             @RequestParam(value = "email") String email,
-            @RequestParam(value = "year") Integer year,
+            @RequestParam(value = "birth") String birth,
             @RequestParam(value = "weight") Integer weight,
             @RequestParam(value = "height") Integer height,
             @RequestParam("diet") Diet diet,
             @RequestParam(value = "gender") Gender gender) {
         try {
-            return mainService.requestSignUp(new User(nickname, email, year, height, weight, diet, gender));
+            return mainService.requestSignUp(new User(nickname, email, LocalDate.parse(birth, Diary.formatter), height, weight, diet, gender));
         } catch (UserAlreadyInDatabase e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),"token",e.getToken())), HttpStatus.BAD_REQUEST);
         }

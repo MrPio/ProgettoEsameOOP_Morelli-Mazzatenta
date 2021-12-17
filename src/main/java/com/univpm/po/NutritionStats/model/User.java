@@ -5,10 +5,12 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Gender;
+import org.apache.tomcat.jni.Local;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -18,7 +20,7 @@ public class User implements Serializable {
     private String email;
     private Diet diet;
     private Gender gender;
-    private int yearOfBirth;
+    private LocalDate birth;
     private HashMap<LocalDate, Integer> height = new HashMap<>();
     private HashMap<LocalDate, Float> weight = new HashMap<>();
     //private boolean celiac;
@@ -27,11 +29,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public User(String nickname, String email, int yearOfBirth,
+    public User(String nickname, String email, LocalDate birth,
                 int height, float weight, Diet diet,Gender gender) {
         this.nickname = nickname;
         this.email = email;
-        this.yearOfBirth = yearOfBirth;
+        this.birth = birth;
         this.height.put(LocalDate.now(),height);
         this.weight.put(LocalDate.now(),weight);
         this.diet=diet;
@@ -44,8 +46,8 @@ public class User implements Serializable {
     public String getEmail() {
         return email;
     }
-    public int getYearOfBirth() {
-        return yearOfBirth;
+    public LocalDate getYearOfBirth() {
+        return birth;
     }
     public HashMap<LocalDate, Integer> getHeight() {
         return height;
