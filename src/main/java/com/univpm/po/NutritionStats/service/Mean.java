@@ -9,18 +9,22 @@ import com.univpm.po.NutritionStats.model.Diary;
 
 public class Mean extends Statistic {
 
+	private JSONObject jMeans = new JSONObject();
+	
 	public Mean(Diary diary) {
 		super(diary);
 	}
 
+	public JSONObject getJMeans() {
+		return jMeans;
+	}
+
 	public JSONObject allNutrientMean (LocalDate startDate, LocalDate endDate) {
 		
-		JSONObject means = new JSONObject();
-		int count = 0;
 		float calories = 0, carbohydrates = 0, lipid = 0, protein = 0, water = 0, vitaminA = 0, vitaminC = 0, sodium = 0, calcium = 0, potassium = 0, iron = 0, fiber = 0;
 		
 		for (Day day : diary.getDayList()) {
-			if(isBetween(day, startDate, endDate)) {
+			if(dayIsBetween(day, startDate, endDate)) {
 				calories += day.calculateCalories();
 				carbohydrates += day.calculateCarbohydrates();
 				lipid += day.calculateLipids();
@@ -33,22 +37,21 @@ public class Mean extends Statistic {
 				potassium += day.calculatePotassium();
 				iron += day.calculateIron();
 				fiber += day.calculateFiber();
-				count++;
 			}
 		}
-		means.put("Calories",(Float)calories/count);
-		means.put("Carbohydrates",(Float)carbohydrates/count);
-		means.put("Lipids",(Float)lipid/count);
-		means.put("Proteins",(Float)protein/count);
-		means.put("Water",(Float)water/count);
-		means.put("vitaminA",(Float)vitaminA/count);
-		means.put("vitaminC",(Float)vitaminC/count);
-		means.put("sodium",(Float)sodium/count);
-		means.put("calcium",(Float)calcium/count);
-		means.put("potassium",(Float)potassium/count);
-		means.put("iron",(Float)iron/count);
-		means.put("fibers",(Float)fiber/count);				
-		return means;
+		jMeans.put("Calories",(Float)calories/diary.getSize());
+		jMeans.put("Carbohydrates",(Float)carbohydrates/diary.getSize());
+		jMeans.put("Lipids",(Float)lipid/diary.getSize());
+		jMeans.put("Proteins",(Float)protein/diary.getSize());
+		jMeans.put("Water",(Float)water/diary.getSize());
+		jMeans.put("vitaminA",(Float)vitaminA/diary.getSize());
+		jMeans.put("vitaminC",(Float)vitaminC/diary.getSize());
+		jMeans.put("sodium",(Float)sodium/diary.getSize());
+		jMeans.put("calcium",(Float)calcium/diary.getSize());
+		jMeans.put("potassium",(Float)potassium/diary.getSize());
+		jMeans.put("iron",(Float)iron/diary.getSize());
+		jMeans.put("fibers",(Float)fiber/diary.getSize());				
+		return jMeans;
 	}
 
 	

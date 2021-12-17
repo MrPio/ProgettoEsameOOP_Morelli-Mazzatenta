@@ -21,7 +21,7 @@ public class Percentage extends Statistic{
 		int totalCalories = 0;
 		
 		for (Day day : diary.getDayList()) {
-			if(isBetween(day,startDate,endDate)) {
+			if(dayIsBetween(day,startDate,endDate)) {
 				totalCalories += day.calculateCalories();
 				carbCalories += day.calculateCarbohydrates() * Carbohydrate.CALORIES_PER_CARBOHYDRATE;
 				lipidCalories += day.calculateLipids() * Protein.CALORIES_PER_PROTEIN;

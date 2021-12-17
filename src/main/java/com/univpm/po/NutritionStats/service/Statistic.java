@@ -13,7 +13,7 @@ public abstract class Statistic {
 		this.diary = diary;
 	}
 	
-	public boolean isBetween(Day day, LocalDate startDate, LocalDate endDate) {
+	public boolean dayIsBetween(Day day, LocalDate startDate, LocalDate endDate) {
 		if((day.getDate().isAfter(startDate) || day.getDate().isEqual(startDate)) 
 				&& (day.getDate().isBefore(endDate) || day.getDate().isEqual(endDate)))
 			return true;

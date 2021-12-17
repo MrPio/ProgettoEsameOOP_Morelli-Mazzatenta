@@ -21,7 +21,7 @@ public class User implements Serializable {
     private Diet diet;
     private Gender gender;
     private LocalDate birth;
-    private HashMap<LocalDate, Integer> height = new HashMap<>();
+    private int height;
     private HashMap<LocalDate, Float> weight = new HashMap<>();
     //private boolean celiac;
 
@@ -34,7 +34,7 @@ public class User implements Serializable {
         this.nickname = nickname;
         this.email = email;
         this.birth = birth;
-        this.height.put(LocalDate.now(),height);
+        this.height = height;
         this.weight.put(LocalDate.now(),weight);
         this.diet=diet;
         this.gender=gender;
@@ -49,7 +49,7 @@ public class User implements Serializable {
     public LocalDate getYearOfBirth() {
         return birth;
     }
-    public HashMap<LocalDate, Integer> getHeight() {
+    public int getHeight() {
         return height;
     }
     public HashMap<LocalDate, Float> getWeight() {

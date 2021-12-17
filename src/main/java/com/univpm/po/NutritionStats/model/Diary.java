@@ -36,6 +36,10 @@ public class Diary implements Serializable {
     public ArrayList<Day> getDayList() {
         return dayList;
     }
+    
+    public int getSize() {
+    	return dayList.size();
+    }
 
     public void save() {
         SerializationImpl s = new SerializationImpl(DIR, user.generateToken() + ".dat");
@@ -95,8 +99,8 @@ public class Diary implements Serializable {
     }
 
     public JSONObject toJsonObject() {
-        JSONObject toJasonObject =new JSONObject();
-        toJasonObject.put("diary",this);
-        return toJasonObject;
+        JSONObject toJsonObject =new JSONObject();
+        toJsonObject.put("diary",this);
+        return toJsonObject;
     }
 }
