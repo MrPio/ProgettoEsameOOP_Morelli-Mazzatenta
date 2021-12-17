@@ -19,7 +19,7 @@ class MeanTest {
 
 		Diary diary = Diary.load("3959de8aeefabfa1385135fa8d03ee21");
 		Mean mean = new Mean(diary, null);
-		mean.allNutrientMean(begin, end);
+		//mean.allNutrientMean(begin, end);
 
 	}
 

@@ -7,13 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Minor bugs fix">
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="User birth fix">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/model/FoodTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Meal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/Fiber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/Fiber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/WaterFromFood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/WaterFromFood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/Mean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/Mean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,15 +28,14 @@
       <list>
         <option value="package-info" />
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -65,7 +67,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -79,13 +81,13 @@
       <recent name="com.univpm.po.NutritionStats.junit" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.univpm.po.NutritionStats.api" />
       <recent name="com.univpm.po.NutritionStats.model" />
+      <recent name="com.univpm.po.NutritionStats.api" />
       <recent name="com.univpm.po.NutritionStats.utility" />
       <recent name="com.univpm.po.NutritionStats.junit" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NutritionStats">
+  <component name="RunManager" selected="JUnit.FoodTest.calculate">
     <configuration name="NutritionStats" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.NutritionStatsApplication" />
       <module name="NutritionStats" />
@@ -203,6 +205,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FoodTest.calculate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NutritionStats" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.model" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.model.FoodTest" />
+      <option name="METHOD_NAME" value="calculate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="InputOutputImplTest" type="JUnit" factoryName="JUnit">
       <module name="NutritionStats" />
       <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
@@ -257,9 +275,11 @@
       <item itemvalue="JUnit.DropboxAPITest.uploadFile" />
       <item itemvalue="JUnit.DropboxAPITest.downloadFile" />
       <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest.getFood" />
+      <item itemvalue="JUnit.FoodTest.calculate" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FoodTest.calculate" />
         <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest.getFood" />
         <item itemvalue="JUnit.DropboxAPITest.downloadFilesInFolder" />
         <item itemvalue="JUnit.DropboxAPITest.downloadFile" />
@@ -402,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639660964867</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="User birth fix">
+      <created>1639705517476</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1639705517476</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -436,7 +463,8 @@
     <MESSAGE value="Added metadata generation and fixed some minor bugs" />
     <MESSAGE value="Prevent user already signed up to sign up" />
     <MESSAGE value="Minor bugs fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor bugs fix" />
+    <MESSAGE value="User birth fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="User birth fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
