@@ -26,15 +26,15 @@ public class StandardDeviatiton extends Statistic{
 		mean.allNutrientMean(startDate, endDate);
 		
 		for (Day day : diary.getDayList()) {
-			calories = day.calculateCalories() - (float) mean.getJmeans().get("Calories");
+			calories = day.calculateCalories() - (float) mean.getJMeans().get("Calories");
 			sdcalories += Math.pow(calories,2);
-			carbohydrates = day.calculateCarbohydrates() - (float) mean.getJmeans().get("Carbohydrates");
+			carbohydrates = day.calculateCarbohydrates() - (float) mean.getJMeans().get("Carbohydrates");
 			sdcarbohydrates += Math.pow(carbohydrates,2);
-			lipid = day.calculateLipids() - (float) mean.getJmeans().get("Lipids");
+			lipid = day.calculateLipids() - (float) mean.getJMeans().get("Lipids");
 			sdlipid += Math.pow(lipid,2);
-			protein = day.calculateProteins() - (float) mean.getJmeans().get("Proteins");
+			protein = day.calculateProteins() - (float) mean.getJMeans().get("Proteins");
 			sdprotein += Math.pow(calories,2);
-			water = day.calculateWater() - (float) mean.getJmeans().get("Water");
+			water = day.calculateWater() - (float) mean.getJMeans().get("Water");
 			sdwater += Math.pow(water,2);
 		}
 		
