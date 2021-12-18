@@ -6,8 +6,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class FilterByDate extends Filter {
-	
-	private JSONObject filteredData = new JSONObject();
 
 	public FilterByDate(JSONObject diary) {
 		super(diary);
@@ -25,7 +23,6 @@ public class FilterByDate extends Filter {
 			}
 			
 		}
-		filteredData.put("dayList", filteredList);
-		return filteredData;
+		return (JSONObject) filteredData.put("dayList", filteredList);
 	}
 }
