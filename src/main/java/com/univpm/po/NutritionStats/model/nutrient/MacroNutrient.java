@@ -2,6 +2,7 @@ package com.univpm.po.NutritionStats.model.nutrient;
 
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.enums.NutrientName;
+import com.univpm.po.NutritionStats.model.Water;
 
 import java.io.Serializable;
 import java.util.HashMap;

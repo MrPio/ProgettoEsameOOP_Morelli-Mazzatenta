@@ -11,18 +11,15 @@ public class Meal implements Serializable {
 
     private MealType mealType;
     private ArrayList<Food> foodList;
-    private ArrayList<Water> waterList;
 
     public Meal(MealType mealType) {
         this.mealType = mealType;
         this.foodList = new ArrayList<>();
-        this.waterList = new ArrayList<>();
     }
 
     public Meal(MealType mealType, ArrayList<Food> foodList, ArrayList<Water> waterList) {
         this.mealType = mealType;
         this.foodList = foodList;
-        this.waterList = waterList;
     }
 
 
@@ -34,16 +31,8 @@ public class Meal implements Serializable {
         return foodList;
     }
 
-    public ArrayList<Water> getWaterList() {
-        return waterList;
-    }
-
     public void addFood(Food food) {
         foodList.add(food);
-    }
-
-    public void addWater(Water water) {
-        waterList.add(water);
     }
 
     public int calculateCalories() {
@@ -57,10 +46,6 @@ public class Meal implements Serializable {
         float value = 0;
         for (Food food : foodList)
             value += food.calculate(myClass);
-
-        if(myClass==Water.class)
-            for (Water water : waterList)
-                value += water.getVolume();
         return value;
     }
 }

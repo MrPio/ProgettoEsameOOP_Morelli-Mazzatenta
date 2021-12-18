@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Diary implements Serializable, DiaryInterface {
+public class Diary implements Serializable {
     private static final long serialVersionUID = 1L;
     public final static String DIR = "database/";
     public final static String DROPBOX_DIR = "/database/";
@@ -24,9 +24,13 @@ public class Diary implements Serializable, DiaryInterface {
     private User user;
     private ArrayList<Day> dayList;
 
-    public Diary(User user, ArrayList<Day> dayList) {
+    public Diary() {
+        this.dayList = new ArrayList<>();
+    }
+
+    public Diary(User user) {
         this.user = user;
-        this.dayList = dayList;
+        this.dayList = new ArrayList<>();
     }
 
     public User getUser() {
@@ -35,10 +39,6 @@ public class Diary implements Serializable, DiaryInterface {
 
     public ArrayList<Day> getDayList() {
         return dayList;
-    }
-
-    public int getSize() {
-        return dayList.size();
     }
 
     public static Diary load(String userToken) {
@@ -64,7 +64,6 @@ public class Diary implements Serializable, DiaryInterface {
         DropboxAPI.uploadFile(new File(s.getFullPath()), DROPBOX_DIR);
     }
 
-    @Override
     public Day findDayById(String dayId) {
         dayId = dayId.replace("-", "/");
         for (Day day : dayList) {
@@ -75,7 +74,6 @@ public class Diary implements Serializable, DiaryInterface {
         return null;
     }
 
-    @Override
     public void addFood(String dayId, MealType mealType, Food food) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
@@ -88,23 +86,22 @@ public class Diary implements Serializable, DiaryInterface {
         save();
     }
 
-    @Override
-    public void addWater(String dayId, MealType mealType, Water water) {
+    public void addWater(String dayId, Water water) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
-            requestedDay.addWater(mealType, water);
+            requestedDay.addWater(water);
         else {
             Day dayToAdd = new Day(LocalDate.parse(dayId.replace("-", "/"), formatter));
-            dayToAdd.addWater(mealType, water);
+            dayToAdd.addWater( water);
             dayList.add(dayToAdd);
         }
         save();
     }
 
-    @Override
     public JSONObject toJsonObject() {
         JSONObject toJsonObject = new JSONObject();
         toJsonObject.put("diary", this);
         return toJsonObject;
     }
+
 }

@@ -8,11 +8,13 @@ import com.univpm.po.NutritionStats.enums.Gender;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
+import com.univpm.po.NutritionStats.exception.UserNotFound;
 import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.model.User;
 import com.univpm.po.NutritionStats.service.MainService;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -98,13 +100,12 @@ public class Controller {
         }
     }
 
-    //TODO mettere waterlist in day!
     @RequestMapping(path = ENDPOINT_ADD_WATER, method = RequestMethod.POST)
     public ResponseEntity<Object> requestAddWater(
             @RequestParam(value = "token") String token,
             @RequestParam(value = "day_id") String dayId,
             @RequestParam(value = "portion_volume") Integer volume) {
-        return mainService.requestAddWater(token, dayId, MealType.SNACK, volume);
+        return mainService.requestAddWater(token, dayId, volume);
     }
 
     @RequestMapping(path = ENDPOINT_DIARY_INFO, method = RequestMethod.GET)
@@ -139,7 +140,12 @@ public class Controller {
     @RequestMapping(path = ENDPOINT_LOGIN, method = RequestMethod.GET)
     public ResponseEntity<Object> requestLogin(
             @RequestParam(value = "token") String token) {
-        return mainService.requestLogin(token);
+        try {
+            return mainService.requestLogin(token);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result","not found",
+                    "message", e.getMessage(),"token",e.getToken())), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = ENDPOINT_UPGRADE_WEIGHT, method = RequestMethod.PUT)

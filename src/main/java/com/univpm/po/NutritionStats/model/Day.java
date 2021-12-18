@@ -11,14 +11,20 @@ import org.json.simple.JSONObject;
 public class Day implements Serializable {
 	private LocalDate date;
 	private ArrayList<Meal> mealList;
+	private ArrayList<Water> waterList;
 
 	public Day(LocalDate date) {
 		this.date = date;
 		this.mealList = new ArrayList<>();
+		this.waterList = new ArrayList<>();
 	}
 
 	public LocalDate getDate() {
 		return date;
+	}
+
+	public ArrayList<Water> getWaterList() {
+		return waterList;
 	}
 
 	public String calculateDayId() {
@@ -40,15 +46,8 @@ public class Day implements Serializable {
 		mealList.add(newMeal);
 	}
 
-	public void addWater(MealType mealType, Water water) {
-		for (Meal meal : mealList)
-			if (meal.getMealType().equals(mealType)) {
-				meal.addWater(water);
-				return;
-			}
-		Meal newMeal = new Meal(mealType);
-		newMeal.addWater(water);
-		mealList.add(newMeal);
+	public void addWater(Water water) {
+		waterList.add(water);
 	}
 
 	public float calculateCalories() {
@@ -62,6 +61,9 @@ public class Day implements Serializable {
 		float value = 0;
 		for (Meal meal : mealList)
 			value += meal.calculate(myClass);
+		if(myClass==Water.class)
+			for (Water water : waterList)
+				value += water.getVolume();
 		return value;
 	}
 }

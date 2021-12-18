@@ -22,7 +22,7 @@ GET | `/api/ean/{ean_code}` |  | Return information about product by its ean cod
 POST | `/add/food/by_name` | token, day_id, meal_type, food_name, portion_weight, unit_of_measure | Add consumed food to a specified meal by its name.
 POST | `/add/food/by_ean` | token, day_id, meal_type, ean_code, portion_weight | Add consumed food to a specified meal by its name.
 POST | `/add/water` | token, day_id, portion_volume | Add consumed water to a specified meal.
-GET | `/diary` | token | Return all the data (***metadata***) owned by the user.
+GET | `/diary` | token | Return all the data (`metadata`) owned by the user.
 GET | `/diary/{day_id}` | token | Return the data of the user in specified day.
 POST | `/signup` | nickname, email, birth, height, weight, diet, gender | Register new user.
 GET | `/login` | token | Login user, return user's info if in the database.
