@@ -95,9 +95,9 @@ public class User implements Serializable {
 		LocalDate lastDate = weight.lastKey();
 		Period age = Period.between(birth, LocalDate.now());
 		if (gender == Gender.MALE)
-			return (int) ((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) + 5);
+			return (int) (((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) + 5) * 1.4);
 		else
-			return (int) ((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) + 5);
+			return (int) (((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) - 161) * 1.4);
 	}
 
 }
