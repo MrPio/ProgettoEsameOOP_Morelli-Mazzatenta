@@ -11,7 +11,7 @@ public class Lipid extends MacroNutrient implements Serializable {
 	private float quantityOnlySatured;
 
 	public Lipid(float quantity, float quantityOnlySatured) {
-		super(NutrientName.LIPID,quantity);
+		super(NutrientName.LIPID, quantity, CALORIES_PER_LIPID);
 		this.quantityOnlySatured = quantityOnlySatured;
 	}
 

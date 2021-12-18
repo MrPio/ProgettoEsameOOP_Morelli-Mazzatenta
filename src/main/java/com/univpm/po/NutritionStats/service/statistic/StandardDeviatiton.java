@@ -1,4 +1,4 @@
-package com.univpm.po.NutritionStats.service;
+package com.univpm.po.NutritionStats.service.statistic;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.univpm.po.NutritionStats.model.Water;
 import com.univpm.po.NutritionStats.model.nutrient.*;
+
 import org.json.simple.JSONObject;
 
 import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;

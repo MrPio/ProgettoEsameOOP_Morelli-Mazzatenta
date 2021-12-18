@@ -1,4 +1,4 @@
-package com.univpm.po.NutritionStats.service;
+package com.univpm.po.NutritionStats.service.statistic;
 
 import java.time.LocalDate;
 

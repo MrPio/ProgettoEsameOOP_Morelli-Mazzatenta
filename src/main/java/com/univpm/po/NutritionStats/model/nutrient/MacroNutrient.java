@@ -6,9 +6,17 @@ import com.univpm.po.NutritionStats.enums.NutrientName;
 import java.io.Serializable;
 
 public abstract class MacroNutrient extends Nutrient implements Serializable {
-	
-	public MacroNutrient (NutrientName name,float quantity) {
-		super(name,quantity,Measure.GR);
+
+	private int caloriesPerNutrient;
+
+	public MacroNutrient(NutrientName name, float quantity, int caloriesPerNutrient) {
+		super(name, quantity, Measure.GR);
+		this.caloriesPerNutrient = caloriesPerNutrient;
 	}
+
+	public int getCaloriesPerNutrient() {
+		return caloriesPerNutrient;
+	}
+
 	public abstract float calculateCalories();
 }

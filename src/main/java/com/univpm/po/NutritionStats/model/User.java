@@ -5,8 +5,10 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Gender;
@@ -22,8 +24,8 @@ public class User implements Serializable {
 	private Gender gender;
 	private LocalDate birth;
 	private int height;
-	private HashMap<LocalDate, Float> weight = new HashMap<>();
-	// private boolean celiac;
+	private TreeMap<LocalDate, Float> weight = new TreeMap<LocalDate, Float>();
+	private int dailyCaloricIntake;
 
 	public User(String email) {
 		this.email = email;
@@ -55,7 +57,7 @@ public class User implements Serializable {
 		return height;
 	}
 
-	public HashMap<LocalDate, Float> getWeight() {
+	public TreeMap<LocalDate, Float> getWeight() {
 		return weight;
 	}
 
@@ -65,6 +67,10 @@ public class User implements Serializable {
 
 	public Gender getGender() {
 		return gender;
+	}
+
+	public int getDailyCaloricIntake() {
+		return dailyCaloricIntake;
 	}
 
 	public String generateToken() {
@@ -83,4 +89,15 @@ public class User implements Serializable {
 		}
 		return null;
 	}
+
+	public int calculateCaloricIntake() {
+
+		LocalDate lastDate = weight.lastKey();
+		Period age = Period.between(birth, LocalDate.now());
+		if (gender == Gender.MALE)
+			return (int) ((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) + 5);
+		else
+			return (int) ((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) + 5);
+	}
+
 }

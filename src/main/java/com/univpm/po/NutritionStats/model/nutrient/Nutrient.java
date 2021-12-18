@@ -10,7 +10,7 @@ public abstract class Nutrient implements Serializable {
 	private Measure measure;
 	private float quantity;
 
-	public Nutrient(NutrientName name,float quantity, Measure measure) {
+	public Nutrient(NutrientName name, float quantity, Measure measure) {
 		this.name = name;
 		this.measure = measure;
 		this.quantity = quantity;
