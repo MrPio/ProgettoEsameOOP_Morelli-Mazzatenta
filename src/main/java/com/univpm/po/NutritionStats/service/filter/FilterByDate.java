@@ -1,7 +1,10 @@
 package com.univpm.po.NutritionStats.service.filter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
+import com.univpm.po.NutritionStats.model.Day;
+import com.univpm.po.NutritionStats.model.Diary;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -13,16 +16,14 @@ public class FilterByDate extends Filter {
 
 	public JSONObject filter(LocalDate startDate, LocalDate endDate) {
 
-		JSONArray diaryByDate = (JSONArray) diary.get("dayList");
-		JSONArray filteredList = new JSONArray();
+		ArrayList<Day> dayList = ((Diary) diary.get("diary")).getDayList();
+		ArrayList<Day> filteredList = new ArrayList<>();
 		
-		for (Object day : diaryByDate) {
-			LocalDate date = (LocalDate) ((JSONObject) day).get("date");
-			if (dateIsBetween(date, startDate, endDate)) {
+		for (Day day : dayList)
+			if (dateIsBetween(day.getDate(), startDate, endDate))
 				filteredList.add(day);
-			}
-			
-		}
-		return (JSONObject) filteredData.put("dayList", filteredList);
+
+		filteredData.put("dayList", filteredList);
+		return  filteredData;
 	}
 }
