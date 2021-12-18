@@ -10,18 +10,12 @@ import com.univpm.po.NutritionStats.model.User;
 public abstract class Statistic {
 
 	protected Diary diary;
-	protected User user;
 
 	public Statistic(Diary diary) {
 		this.diary = diary;
 	}
 
-	public Statistic(Diary diary, User user) {
-		this.diary = diary;
-		this.user = user;
-	}
-
-	public boolean dateIsBetween(LocalDate date, LocalDate startDate, LocalDate endDate) {
+	protected boolean dateIsBetween(LocalDate date, LocalDate startDate, LocalDate endDate) {
 		if ((date.isAfter(startDate) || date.isEqual(startDate))
 				&& (date.isBefore(endDate) || date.isEqual(endDate)))
 			return true;
@@ -30,7 +24,7 @@ public abstract class Statistic {
 
 	}
 	
-	public void throwDateException(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
+	protected void checkDateException(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
 		if (endDate.isBefore(startDate))
 			throw new EndDateBeforeStartDateException(startDate,endDate);
 	}

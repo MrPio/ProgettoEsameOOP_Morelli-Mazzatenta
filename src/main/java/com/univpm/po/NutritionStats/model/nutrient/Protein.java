@@ -1,5 +1,7 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
+import com.univpm.po.NutritionStats.enums.NutrientName;
+
 import java.io.Serializable;
 
 public class Protein extends MacroNutrient implements Serializable {
@@ -8,12 +10,12 @@ public class Protein extends MacroNutrient implements Serializable {
 	public final static int CALORIES_PER_PROTEIN = 4;
 	
 	public Protein(float quantity) {
-		super(quantity);
+		super(NutrientName.PROTEIN,quantity);
 	}
 
 	@Override
 	public float calculateCalories() {
-		return quantity * CALORIES_PER_PROTEIN;
+		return getQuantity() * CALORIES_PER_PROTEIN;
 	}
 
 }

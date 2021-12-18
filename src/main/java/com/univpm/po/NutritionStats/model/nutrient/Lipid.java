@@ -1,5 +1,7 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
+import com.univpm.po.NutritionStats.enums.NutrientName;
+
 import java.io.Serializable;
 
 public class Lipid extends MacroNutrient implements Serializable {
@@ -9,7 +11,7 @@ public class Lipid extends MacroNutrient implements Serializable {
 	private float quantityOnlySatured;
 
 	public Lipid(float quantity, float quantityOnlySatured) {
-		super(quantity);
+		super(NutrientName.LIPID,quantity);
 		this.quantityOnlySatured = quantityOnlySatured;
 	}
 
@@ -19,7 +21,7 @@ public class Lipid extends MacroNutrient implements Serializable {
 
 	@Override
 	public float calculateCalories() {
-		return quantity * CALORIES_PER_LIPID;
+		return getQuantity() * CALORIES_PER_LIPID;
 	}
 
 }

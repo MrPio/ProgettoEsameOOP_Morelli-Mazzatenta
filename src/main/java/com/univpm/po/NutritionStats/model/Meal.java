@@ -25,6 +25,7 @@ public class Meal implements Serializable {
         this.waterList = waterList;
     }
 
+
     public MealType getMealType() {
         return mealType;
     }
@@ -52,19 +53,11 @@ public class Meal implements Serializable {
         return calories;
     }
 
-    public int calculateWater() {
-        int milliLiters = 0;
-        for (Water water : waterList)
-            milliLiters += water.getVolume();
-        for (Food food : foodList)
-        	milliLiters += food.calculate(WaterFromFood.class);
-        return milliLiters;
-    }
-
     public <T> float calculate(Class<T> myClass){
-        int value = 0;
+        float value = 0;
         for (Food food : foodList)
             value += food.calculate(myClass);
+
         if(myClass==Water.class)
             for (Water water : waterList)
                 value += water.getVolume();

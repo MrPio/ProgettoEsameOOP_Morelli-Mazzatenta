@@ -102,9 +102,8 @@ public class Controller {
     public ResponseEntity<Object> requestAddWater(
             @RequestParam(value = "token") String token,
             @RequestParam(value = "day_id") String dayId,
-            @RequestParam(value = "portion_volume") Integer volume,
-            @RequestParam(value = "measure ", defaultValue = "ML") Measure measure) {
-        return mainService.requestAddWater(token, dayId, MealType.SNACK, volume, measure);
+            @RequestParam(value = "portion_volume") Integer volume) {
+        return mainService.requestAddWater(token, dayId, MealType.SNACK, volume);
     }
 
     @RequestMapping(path = ENDPOINT_DIARY_INFO, method = RequestMethod.GET)

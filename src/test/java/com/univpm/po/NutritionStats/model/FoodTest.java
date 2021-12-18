@@ -22,6 +22,7 @@ class FoodTest {
     @Test
     void calculate() throws InstantiationException, IllegalAccessException {
         //System.out.println(food.calculate(Lipid.class));
-        System.out.println(food.calculate(Fiber.class));
+        //System.out.println(food.calculate(Fiber.class));
+        System.out.println(Fiber.class.getSimpleName());
     }
 }

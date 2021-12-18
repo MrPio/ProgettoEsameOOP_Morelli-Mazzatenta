@@ -7,6 +7,7 @@ import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
 import com.univpm.po.NutritionStats.model.*;
+import com.univpm.po.NutritionStats.model.nutrient.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -14,8 +15,24 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class MainService {
+    private ArrayList<Class<?>> classList = new ArrayList<>() {{
+        add(Carbohydrate.class);
+        add(Lipid.class);
+        add(Protein.class);
+        add(Water.class);
+        add(VitaminA.class);
+        add(VitaminC.class);
+        add(Sodium.class);
+        add(Calcium.class);
+        add(Potassium.class);
+        add(Iron.class);
+        add(Fiber.class);
+    }};
+
 
     public ResponseEntity<Object> requestAddFoodByName(String token, String dayId, MealType mealType, String foodName,
                                                        int portionWeight, Measure measureUnit) throws ApiFoodNotFoundException {
@@ -51,8 +68,7 @@ public class MainService {
         return new ResponseEntity<>(new JSONObject(response), httpStatus);
     }
 
-    public ResponseEntity<Object> requestAddWater(String token, String dayId, MealType mealType,
-                                                  int volume, Measure measureUnit) {
+    public ResponseEntity<Object> requestAddWater(String token, String dayId, MealType mealType,int volume) {
         HashMap<String, Object> response = new HashMap<>();
         HttpStatus httpStatus;
         Diary requestedDiary = Diary.load(token);
@@ -73,12 +89,8 @@ public class MainService {
         HttpStatus httpStatus = null;
         Diary requestedDiary = Diary.load(token);
         if (requestedDiary != null) {
-            //JSONArray resultAllDay=new JSONArray();
             response = requestedDiary.toJsonObject();
             response.put("result", "user found");
-            /*for(Day day:requestedDiary.getDayList())
-                resultAllDay.add(new JSONObject(dayToJsonObject(day)));
-            response.put("day_list",resultAllDay);*/
             httpStatus = HttpStatus.OK;
         } else {
             response.put("result", "user not found");
@@ -147,9 +159,12 @@ public class MainService {
 
     private HashMap<String, Object> dayToJsonObject(Day day) {
         HashMap<String, Object> response = new HashMap<>();
-        response.put("day_id", day.getDayId());
+        response.put("day_id", day.calculateDayId());
         response.put("calories", day.calculateCalories());
-        response.put("water", day.calculateWater());
+        for (Class<?> c : classList)
+            response.put(c.getSimpleName().toLowerCase(),day.calculate(c));
+
+/*        response.put("water", day.calculateWater());
         response.put("carbohydrates", day.calculateCarbohydrates());
         response.put("proteins", day.calculateProteins());
         response.put("lipids", day.calculateLipids());
@@ -159,7 +174,7 @@ public class MainService {
         response.put("potassium", day.calculatePotassium());
         response.put("sodium", day.calculateSodium());
         response.put("vitamin_a", day.calculateVitaminA());
-        response.put("vitamin_c", day.calculateVitaminC());
+        response.put("vitamin_c", day.calculateVitaminC());*/
         return response;
     }
 }

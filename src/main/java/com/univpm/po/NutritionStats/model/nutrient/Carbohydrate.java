@@ -1,5 +1,7 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
+import com.univpm.po.NutritionStats.enums.NutrientName;
+
 import java.io.Serializable;
 
 public class Carbohydrate extends MacroNutrient implements Serializable {
@@ -9,7 +11,7 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 	private float quantityOnlySugar;
 	
 	public Carbohydrate(float quantity, float quantityOnlySugar) {
-		super(quantity);
+		super(NutrientName.CARBOHYDRATE,quantity);
 		this.quantityOnlySugar = quantityOnlySugar;
 	}
 
@@ -19,7 +21,7 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 
 	@Override
 	public float calculateCalories() {
-		return quantity * CALORIES_PER_CARBOHYDRATE;
+		return getQuantity() * CALORIES_PER_CARBOHYDRATE;
 	}
 
 }

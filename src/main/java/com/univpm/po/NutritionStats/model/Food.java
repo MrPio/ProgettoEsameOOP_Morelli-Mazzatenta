@@ -33,6 +33,18 @@ public class Food implements Serializable {
         return portionWeight;
     }
 
+    public Diet getDiet() {
+        return diet;
+    }
+
+    public ArrayList<Nutrient> getNutrientList() {
+        return nutrientList;
+    }
+
+    public ArrayList<NotNutrient> getNotNutrientList() {
+        return notNutrientList;
+    }
+
     public Measure getMeasure() {
         return measure;
     }

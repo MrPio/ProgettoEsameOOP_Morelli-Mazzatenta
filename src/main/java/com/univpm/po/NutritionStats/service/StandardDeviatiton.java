@@ -1,7 +1,11 @@
 package com.univpm.po.NutritionStats.service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.univpm.po.NutritionStats.model.Water;
+import com.univpm.po.NutritionStats.model.nutrient.*;
 import org.json.simple.JSONObject;
 
 import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
@@ -11,69 +15,71 @@ import com.univpm.po.NutritionStats.model.User;
 
 public class StandardDeviatiton extends Statistic {
 
-	public StandardDeviatiton(Diary diary, User user) {
-		super(diary, user);
-	}
+    private Map<Class<?>, Float> standardDeviationList = new HashMap<>() {{
+        put(Carbohydrate.class, 0f);
+        put(Lipid.class, 0f);
+        put(Protein.class, 0f);
+        put(Water.class, 0f);
+        put(VitaminA.class, 0f);
+        put(VitaminC.class, 0f);
+        put(Sodium.class, 0f);
+        put(Calcium.class, 0f);
+        put(Potassium.class, 0f);
+        put(Iron.class, 0f);
+        put(Fiber.class, 0f);
+    }};
+    float calories = 0;
+    float weight = 0;
 
-	public JSONObject calculateStandardDeviation(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
+    public StandardDeviatiton(Diary diary) {
+        super(diary);
+    }
 
-		throwDateException(startDate,endDate);
-		if (startDate.isEqual(endDate))
-			return null;
+    public JSONObject calculateStandardDeviation(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
+        checkDateException(startDate, endDate);
+        if (startDate.isEqual(endDate))
+            return new JSONObject(Map.of("result","error: cannot calculate standard deviation in one day"));
+        resetValues();
+        calories = 0f;
 
-		JSONObject jStandardDeviations = new JSONObject();
-		float calories = 0, carbohydrates = 0, lipid = 0, protein = 0, water = 0;
-		float sdcalories = 0, sdcarbohydrates = 0, sdlipid = 0, sdprotein = 0, sdwater = 0;
-		Mean mean = new Mean(diary, user);
+        JSONObject jStandardDeviations = new JSONObject();
+        Mean mean = new Mean(diary);
+        mean.allNutrientMean(startDate, endDate);
 
-		mean.allNutrientMean(startDate, endDate);
+        int count = 0;
+        for (Day day : diary.getDayList()) {
+            if (dateIsBetween(day.getDate(), startDate, endDate)) {
+                for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet()) {
+                    float value = day.calculate((Class<?>) entry.getKey()) - mean.getMeanList().get(entry.getKey());
+                    entry.setValue(entry.getValue()+(float) Math.pow(value, 2));
+                }
+                calories += (float) Math.pow(day.calculateCalories() - mean.getCalories(), 2);
+                ++count;
+            }
+        }
+        for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet())
+            entry.setValue((float)Math.sqrt(entry.getValue() / (count - 1)));
+        calories=(float)Math.sqrt(calories / (count - 1));
 
-		for (Day day : diary.getDayList()) {
-			if (dateIsBetween(day.getDate(), startDate, endDate)) {
-				calories = day.calculateCalories() - (float) mean.getJMeans().get("Calories");
-				sdcalories += Math.pow(calories, 2);
-				carbohydrates = day.calculateCarbohydrates() - (float) mean.getJMeans().get("Carbohydrates");
-				sdcarbohydrates += Math.pow(carbohydrates, 2);
-				lipid = day.calculateLipids() - (float) mean.getJMeans().get("Lipids");
-				sdlipid += Math.pow(lipid, 2);
-				protein = day.calculateProteins() - (float) mean.getJMeans().get("Proteins");
-				sdprotein += Math.pow(calories, 2);
-				water = day.calculateWater() - (float) mean.getJMeans().get("Water");
-				sdwater += Math.pow(water, 2);
-			}
-		}
+        jStandardDeviations.put("calorie", calories);
+        for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet())
+            jStandardDeviations.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
 
-		jStandardDeviations.put("Calories", Math.sqrt((sdcalories / (diary.getSize() - 1))));
-		jStandardDeviations.put("Carbohydrates", Math.sqrt((sdcarbohydrates / (diary.getSize() - 1))));
-		jStandardDeviations.put("Lipids", Math.sqrt((sdlipid / (diary.getSize() - 1))));
-		jStandardDeviations.put("Proteins", Math.sqrt((sdprotein / (diary.getSize() - 1))));
-		jStandardDeviations.put("Water", Math.sqrt((sdwater / (diary.getSize() - 1))));
+        count = 0;
+        for (LocalDate date : diary.getUser().getWeight().keySet()) {
+            if (dateIsBetween(date, startDate, endDate)) {
+                weight+= (float) Math.pow(diary.getUser().getWeight().get(date) - mean.getWeight(), 2);
+                ++count;
+            }
+        }
+        weight=(float)Math.sqrt(weight / (count - 1));
+        jStandardDeviations.put("weight", weight);
 
-		return jStandardDeviations;
+        return jStandardDeviations;
+    }
 
-	}
-
-	public JSONObject weightStandardDeviation(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
-
-		throwDateException(startDate,endDate);
-		if (startDate.isEqual(endDate))
-			return null;
-		
-		JSONObject jWeightStandardDeviation = new JSONObject();
-		Mean mean = new Mean(diary, user);
-		float weight = 0;
-		float sdweight = 0;
-		
-		mean.weightMean(startDate, endDate);
-
-		for (LocalDate date : user.getWeight().keySet()) {
-			if (dateIsBetween(date, startDate, endDate)) {
-				weight = user.getWeight().get(date) - (float) mean.getWeightMean().get("weight");
-				sdweight += Math.pow(weight, 2);
-			}
-		}
-		jWeightStandardDeviation.put("Weight", Math.sqrt((sdweight) / (user.getWeight().size() - 1)));
-		return jWeightStandardDeviation;
-	}
-
+    private void resetValues(){
+        for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet())
+            entry.setValue(0f);
+    }
 }

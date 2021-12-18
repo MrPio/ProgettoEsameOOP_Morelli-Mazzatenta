@@ -67,7 +67,7 @@ public class Diary implements Serializable {
     public Day findDayById(String dayId) {
         dayId = dayId.replace("-", "/");
         for (Day day : dayList) {
-            String thisDayId = day.getDayId();
+            String thisDayId = day.calculateDayId();
             if (dayId.equals(thisDayId))
                 return day;
         }

@@ -18,7 +18,7 @@ public class Percentage extends Statistic {
 
 	public JSONObject MacroNutrientPercentage(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
 		
-		throwDateException(startDate,endDate);
+		checkDateException(startDate,endDate);
 
 		JSONObject percentages = new JSONObject();
 		int carbCalories = 0, lipidCalories = 0, protCalories = 0;
@@ -27,9 +27,9 @@ public class Percentage extends Statistic {
 		for (Day day : diary.getDayList()) {
 			if (dateIsBetween(day.getDate(), startDate, endDate)) {
 				totalCalories += day.calculateCalories();
-				carbCalories += day.calculateCarbohydrates() * Carbohydrate.CALORIES_PER_CARBOHYDRATE;
-				lipidCalories += day.calculateLipids() * Protein.CALORIES_PER_PROTEIN;
-				protCalories += day.calculateProteins() * Lipid.CALORIES_PER_LIPID;
+				carbCalories += day.calculate(Carbohydrate.class) * Carbohydrate.CALORIES_PER_CARBOHYDRATE;
+				lipidCalories += day.calculate(Lipid.class) * Protein.CALORIES_PER_PROTEIN;
+				protCalories += day.calculate(Protein.class) * Lipid.CALORIES_PER_LIPID;
 			}
 		}
 		percentages.put("Carbohydrates", (carbCalories * 100) / totalCalories);

@@ -1,8 +1,12 @@
 package com.univpm.po.NutritionStats.service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
-import com.univpm.po.NutritionStats.model.nutrient.Protein;
+import com.univpm.po.NutritionStats.model.Water;
+import com.univpm.po.NutritionStats.model.nutrient.*;
 import org.json.simple.JSONObject;
 
 import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
@@ -13,69 +17,80 @@ import com.univpm.po.NutritionStats.model.User;
 public class Mean extends Statistic {
 
     private JSONObject jMeans = new JSONObject();
-    private JSONObject jWeightMean = new JSONObject();
 
-    public Mean(Diary diary, User user) {
-        super(diary, user);
+    private Map<Class<?>, Float> meanList = new HashMap<>() {{
+        put(Carbohydrate.class, 0f);
+        put(Lipid.class, 0f);
+        put(Protein.class, 0f);
+        put(Water.class, 0f);
+        put(VitaminA.class, 0f);
+        put(VitaminC.class, 0f);
+        put(Sodium.class, 0f);
+        put(Calcium.class, 0f);
+        put(Potassium.class, 0f);
+        put(Iron.class, 0f);
+        put(Fiber.class, 0f);
+    }};
+    private float calories = 0.0f;
+    private float weight = 0.0f;
+
+    public Mean(Diary diary) {
+        super(diary);
     }
 
     public JSONObject getJMeans() {
         return jMeans;
     }
 
-    public JSONObject getWeightMean() {
-        return jWeightMean;
+    public Map<Class<?>, Float> getMeanList() {
+        return meanList;
+    }
+
+    public float getCalories() {
+        return calories;
+    }
+
+    public float getWeight() {
+        return weight;
     }
 
     public JSONObject allNutrientMean(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
+        checkDateException(startDate, endDate);
+        resetValues();
+        calories = 0f;
 
-        throwDateException(startDate, endDate);
-
-        float calories = 0, carbohydrates = 0, lipid = 0, protein = 0, water = 0, vitaminA = 0, vitaminC = 0,
-                sodium = 0, calcium = 0, potassium = 0, iron = 0, fiber = 0;
-
+        int count = 0;
         for (Day day : diary.getDayList()) {
             if (dateIsBetween(day.getDate(), startDate, endDate)) {
+                for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
+                    entry.setValue(entry.getValue() + day.calculate((Class<?>) entry.getKey()));
                 calories += day.calculateCalories();
-                carbohydrates += day.calculateCarbohydrates();
-                lipid += day.calculateLipids();
-                protein += day.calculateProteins();
-                water += day.calculateWater();
-                vitaminA += day.calculateVitaminA();
-                vitaminC += day.calculateVitaminC();
-                sodium += day.calculateSodium();
-                calcium += day.calculateCalcium();
-                potassium += day.calculatePotassium();
-                iron += day.calculateIron();
-                fiber += day.calculateFiber();
+                ++count;
             }
         }
+        for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
+            entry.setValue(entry.getValue() / count);
+        calories /= count;
 
-        jMeans.put("Calories", (Float) calories / diary.getSize());
-        jMeans.put("Carbohydrates", (Float) carbohydrates / diary.getSize());
-        jMeans.put("Lipids", (Float) lipid / diary.getSize());
-        jMeans.put("Proteins", (Float) protein / diary.getSize());
-        jMeans.put("Water", (Float) water / diary.getSize());
-        jMeans.put("vitaminA", (Float) vitaminA / diary.getSize());
-        jMeans.put("vitaminC", (Float) vitaminC / diary.getSize());
-        jMeans.put("sodium", (Float) sodium / diary.getSize());
-        jMeans.put("calcium", (Float) calcium / diary.getSize());
-        jMeans.put("potassium", (Float) potassium / diary.getSize());
-        jMeans.put("iron", (Float) iron / diary.getSize());
-        jMeans.put("fibers", (Float) fiber / diary.getSize());
+        for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
+            jMeans.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+        jMeans.put("calorie", calories);
+
+        count = 0;
+        for (LocalDate date : diary.getUser().getWeight().keySet()) {
+            if (dateIsBetween(date, startDate, endDate)) {
+                weight += diary.getUser().getWeight().get(date);
+                ++count;
+            }
+        }
+        weight /= count;
+        jMeans.put("weight", weight);
+
         return jMeans;
     }
 
-    public JSONObject weightMean(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
-
-        throwDateException(startDate, endDate);
-        float weight = 0;
-
-        for (LocalDate date : user.getWeight().keySet())
-            if (dateIsBetween(date, startDate, endDate))
-                weight += user.getWeight().get(date);
-
-        jWeightMean.put("weight", weight);
-        return jWeightMean;
+    private void resetValues() {
+        for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
+            entry.setValue(0f);
     }
 }
