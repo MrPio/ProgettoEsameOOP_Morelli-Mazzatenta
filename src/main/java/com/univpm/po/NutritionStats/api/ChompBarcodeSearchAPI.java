@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.api;
 
+import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
@@ -16,6 +17,9 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChompBarcodeSearchAPI {
     final static String DIR = "api_response/chomp/";
@@ -39,14 +43,14 @@ public class ChompBarcodeSearchAPI {
         }
 
         JSONObject result = null;
-        HttpStatus httpStatus=null;
+        HttpStatus httpStatus = null;
 
         String url = ChompBarcodeSearchAPI.URL + "&code=" + eanConde;
         RestTemplate rt = new RestTemplate();
         JSONParser parser = new JSONParser();
         try {
             result = (JSONObject) parser.parse(rt.getForObject(url, String.class));
-            httpStatus=HttpStatus.OK;
+            httpStatus = HttpStatus.OK;
         } catch (HttpClientErrorException e) {
             throw new ApiFoodNotFoundException(eanConde);
         } catch (ParseException e) {
@@ -68,14 +72,14 @@ public class ChompBarcodeSearchAPI {
         JSONObject dietLabels = (JSONObject) (foodInfo.get("diet_labels"));
         Diet diet = null;
 
-        if (((JSONObject)dietLabels.get("vegan")).get("is_compatible")==null)
+        if (((JSONObject) dietLabels.get("vegan")).get("is_compatible") == null)
             diet = Diet.VEGAN;
-        else if ((boolean) ((JSONObject)dietLabels.get("vegan")).get("is_compatible"))
+        else if ((boolean) ((JSONObject) dietLabels.get("vegan")).get("is_compatible"))
             diet = Diet.VEGAN;
 
-        else if (((JSONObject)dietLabels.get("vegetarian")).get("is_compatible")==null)
+        else if (((JSONObject) dietLabels.get("vegetarian")).get("is_compatible") == null)
             diet = Diet.VEGETARIAN;
-        else if ((boolean)((JSONObject)dietLabels.get("vegetarian")).get("is_compatible"))
+        else if ((boolean) ((JSONObject) dietLabels.get("vegetarian")).get("is_compatible"))
             diet = Diet.VEGETARIAN;
 
         /*else if (pescetarian) TODO pescetarian
@@ -87,55 +91,24 @@ public class ChompBarcodeSearchAPI {
         foodResult = new Food(foodInfo.get("name").toString(), newWeight, Measure.GR, diet);
 
         JSONArray foodNutrientsInfo = (JSONArray) foodInfo.get("nutrients");
-        float[] nutritionValues=new float[20];
-        for (Object label : foodNutrientsInfo) {
-            float val=((Number)((JSONObject) label).get("per_100g")).floatValue()*portionWeight/100;
-            switch (((JSONObject) label).get("name").toString()) {
-                case "Carbohydrates":
-                    nutritionValues[0]=val;
-                    break;
-                case "Sugars":
-                    nutritionValues[1]=val;
-                    break;
-                case "Proteins":
-                    nutritionValues[2]=val;
-                    break;
-                case "Fat":
-                    nutritionValues[3]=val;
-                    break;
-                case "Saturated Fat":
-                    nutritionValues[4]=val;
-                    break;
-                case "Vitamin A":
-                    nutritionValues[5]=val;
-                    break;
-                case "Vitamin C":
-                    nutritionValues[6]=val;
-                    break;
-                case "Calcium":
-                    nutritionValues[7]=val;
-                    break;
-                case "Sodium":
-                    nutritionValues[8]=val;
-                    break;
-                case "Potassium":
-                    nutritionValues[9]=val;
-                    break;
-                case "Iron":
-                    nutritionValues[10]=val;
-                    break;
-                case "Water":
-                    nutritionValues[11]=val;
-                    break;
-                case "Fiber":
-                    nutritionValues[12]=val;
-                    break;
+        float[] nutritionValues = new float[20];
+        Map<AllNutrientNonNutrient, Float> nutritions = new HashMap<>() {
+            {
+                for (AllNutrientNonNutrient nutrient : AllNutrientNonNutrient.values())
+                    put(nutrient, 0.0f);
             }
+        };
+
+        for (Object label : foodNutrientsInfo) {
+            float value = ((Number) ((JSONObject) label).get("per_100g")).floatValue() * portionWeight / 100;
+            for (Map.Entry<AllNutrientNonNutrient, Float> entry : nutritions.entrySet())
+                if (((JSONObject) label).get("name").toString().equals(entry.getKey().getChompKeyWord()))
+                    nutritionValues[entry.getKey().ordinal()] = value;
         }
         //NUTRIENT
-        foodResult.addNutrient(new Carbohydrate(nutritionValues[0],nutritionValues[1]));
+        foodResult.addNutrient(new Carbohydrate(nutritionValues[0], nutritionValues[1]));
         foodResult.addNutrient(new Protein(nutritionValues[2]));
-        foodResult.addNutrient(new Lipid(nutritionValues[3],nutritionValues[4]));
+        foodResult.addNutrient(new Lipid(nutritionValues[3], nutritionValues[4]));
         foodResult.addNutrient(new VitaminA(nutritionValues[5]));
         foodResult.addNutrient(new VitaminC(nutritionValues[6]));
         foodResult.addNutrient(new Calcium(nutritionValues[7]));

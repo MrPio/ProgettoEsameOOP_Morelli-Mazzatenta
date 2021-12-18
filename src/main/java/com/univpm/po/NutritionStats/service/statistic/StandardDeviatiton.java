@@ -14,23 +14,6 @@ import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;
 
 public class StandardDeviatiton extends Statistic {
-
-	private Map<Class<?>, Float> standardDeviationList = new HashMap<>() {
-		{
-			put(Carbohydrate.class, 0f);
-			put(Lipid.class, 0f);
-			put(Protein.class, 0f);
-			put(Water.class, 0f);
-			put(VitaminA.class, 0f);
-			put(VitaminC.class, 0f);
-			put(Sodium.class, 0f);
-			put(Calcium.class, 0f);
-			put(Potassium.class, 0f);
-			put(Iron.class, 0f);
-			put(Fiber.class, 0f);
-		}
-	};
-	
 	JSONObject jStandardDeviations = new JSONObject();
 	float calories = 0;
 	float weight = 0;
@@ -45,9 +28,9 @@ public class StandardDeviatiton extends Statistic {
 
 	public JSONObject calculateStandardDeviation(LocalDate startDate, LocalDate endDate)
 			throws EndDateBeforeStartDateException {
-		checkDateException(startDate, endDate);
 		if (startDate.isEqual(endDate))
 			return new JSONObject(Map.of("result", "error: cannot calculate standard deviation in one day"));
+		checkDateException(startDate, endDate);
 		resetValues();
 		calories = 0f;
 
@@ -57,8 +40,8 @@ public class StandardDeviatiton extends Statistic {
 		int count = 0;
 		for (Day day : diary.getDayList()) {
 			if (dateIsBetween(day.getDate(), startDate, endDate)) {
-				for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet()) {
-					float value = day.calculate((Class<?>) entry.getKey()) - mean.getMeanList().get(entry.getKey());
+				for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
+					float value = day.calculate((Class<?>) entry.getKey()) - mean.getstatsValues().get(entry.getKey());
 					entry.setValue(entry.getValue() + (float) Math.pow(value, 2));
 				}
 				calories += (float) Math.pow(day.calculateCalories() - mean.getCalories(), 2);
@@ -66,7 +49,7 @@ public class StandardDeviatiton extends Statistic {
 			}
 		}
 		
-		for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet()) {
+		for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
 			entry.setValue((float) Math.sqrt(entry.getValue() / (count - 1)));
 			jStandardDeviations.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
 		}
@@ -85,10 +68,5 @@ public class StandardDeviatiton extends Statistic {
 		jStandardDeviations.put("weight", weight);
 
 		return jStandardDeviations;
-	}
-
-	private void resetValues() {
-		for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet())
-			entry.setValue(0f);
 	}
 }

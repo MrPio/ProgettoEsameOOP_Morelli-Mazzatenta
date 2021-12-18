@@ -1,12 +1,12 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-import com.univpm.po.NutritionStats.enums.NutrientName;
+import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 
 import java.io.Serializable;
 
 public abstract class MineralSalt extends MicroNutrient implements Serializable {
 	
-	public MineralSalt(NutrientName name, float quantity) {
+	public MineralSalt(AllNutrientNonNutrient name, float quantity) {
 		super(name,quantity);
 	}
 }

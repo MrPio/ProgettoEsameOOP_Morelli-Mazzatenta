@@ -19,7 +19,7 @@ public class Mean extends Statistic {
 
 	private JSONObject jMeans = new JSONObject();
 
-	private Map<Class<?>, Float> meanList = new HashMap<>() {
+/*	private Map<Class<?>, Float> statsValues = new HashMap<>() {
 		{
 			put(Carbohydrate.class, 0f);
 			put(Lipid.class, 0f);
@@ -33,7 +33,7 @@ public class Mean extends Statistic {
 			put(Iron.class, 0f);
 			put(Fiber.class, 0f);
 		}
-	};
+	};*/
 	private float calories = 0.0f;
 	private float weight = 0.0f;
 
@@ -43,10 +43,6 @@ public class Mean extends Statistic {
 
 	public JSONObject getJMeans() {
 		return jMeans;
-	}
-
-	public Map<Class<?>, Float> getMeanList() {
-		return meanList;
 	}
 
 	public float getCalories() {
@@ -65,14 +61,14 @@ public class Mean extends Statistic {
 		int count = 0;
 		for (Day day : diary.getDayList()) {
 			if (dateIsBetween(day.getDate(), startDate, endDate)) {
-				for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
+				for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet())
 					entry.setValue(entry.getValue() + day.calculate((Class<?>) entry.getKey()));
 				calories += day.calculateCalories();
 				++count;
 			}
 		}
 		
-		for (Map.Entry<Class<?>, Float> entry : meanList.entrySet()) {
+		for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
 			entry.setValue(entry.getValue() / count);
 			jMeans.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
 		}
@@ -91,10 +87,5 @@ public class Mean extends Statistic {
 		jMeans.put("weight", weight);
 
 		return jMeans;
-	}
-
-	private void resetValues() {
-		for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
-			entry.setValue(0f);
 	}
 }

@@ -14,9 +14,9 @@ import com.univpm.po.NutritionStats.model.nutrient.*;
 
 public class Percentage extends Statistic {
 
-	private JSONObject jPercentages = new JSONObject();
+    private JSONObject jPercentages = new JSONObject();
 
-	private Map<Class<?>, Float> percentageList = new HashMap<>() {
+	private Map<Class<?>, Float> statsValues = new HashMap<>() {
 		{
 			put(Carbohydrate.class, 0f);
 			put(Lipid.class, 0f);
@@ -24,34 +24,35 @@ public class Percentage extends Statistic {
 		}
 	};
 
-	public Percentage(Diary diary) {
-		super(diary);
-	}
+    public Percentage(Diary diary) {
+        super(diary);
+    }
 
-	public JSONObject getjPercentages() {
-		return jPercentages;
-	}
+    public JSONObject getjPercentages() {
+        return jPercentages;
+    }
 
-	public JSONObject macroNutrientPercentage(LocalDate startDate, LocalDate endDate)
-			throws EndDateBeforeStartDateException {
+    public JSONObject macroNutrientPercentage(LocalDate startDate, LocalDate endDate)
+            throws EndDateBeforeStartDateException {
 
-		checkDateException(startDate, endDate);
+        checkDateException(startDate, endDate);
+        resetValues();
 
-		float calories = 0;
+        float calories = 0;
 
-		for (Day day : diary.getDayList()) {
-			if (dateIsBetween(day.getDate(), startDate, endDate)) {
-				for (Map.Entry<Class<?>, Float> entry : percentageList.entrySet())
-					entry.setValue(entry.getValue() + day.calculate((Class<?>) entry.getKey()));
-				calories += day.calculateCalories();
-			}
-		}
+        for (Day day : diary.getDayList()) {
+            if (dateIsBetween(day.getDate(), startDate, endDate)) {
+                for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet())
+                    entry.setValue(entry.getValue() + day.calculate((Class<?>) entry.getKey()));
+                calories += day.calculateCalories();
+            }
+        }
 
-		for (Map.Entry<Class<?>, Float> entry : percentageList.entrySet()) {
-			entry.setValue((entry.getValue() * MacroNutrient.CALORIES_PER_GRAM.get(entry.getKey()) * 100f) / calories);
-			jPercentages.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
-		}
+        for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
+            entry.setValue((entry.getValue() * MacroNutrient.CALORIES_PER_GRAM.get(entry.getKey()) * 100f) / calories);
+            jPercentages.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+        }
 
-		return jPercentages;
-	}
+        return jPercentages;
+    }
 }

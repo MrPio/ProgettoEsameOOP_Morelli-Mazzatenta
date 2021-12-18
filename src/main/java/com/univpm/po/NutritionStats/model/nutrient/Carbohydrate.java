@@ -1,6 +1,6 @@
 package com.univpm.po.NutritionStats.model.nutrient;
 
-import com.univpm.po.NutritionStats.enums.NutrientName;
+import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 	private float quantityOnlySugar;
 
 	public Carbohydrate(float quantity, float quantityOnlySugar) {
-		super(NutrientName.CARBOHYDRATE, quantity);
+		super(AllNutrientNonNutrient.CARBOHYDRATE, quantity);
 		this.quantityOnlySugar = quantityOnlySugar;
 	}
 
