@@ -1,5 +1,6 @@
 package com.univpm.po.NutritionStats.service;
 
+import com.sun.jdi.Method;
 import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
@@ -13,6 +14,8 @@ import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.lang.reflect.InvocationTargetException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
@@ -68,7 +71,7 @@ public class MainService {
         return new ResponseEntity<>(new JSONObject(response), httpStatus);
     }
 
-    public ResponseEntity<Object> requestAddWater(String token, String dayId, MealType mealType,int volume) {
+    public ResponseEntity<Object> requestAddWater(String token, String dayId, MealType mealType, int volume) {
         HashMap<String, Object> response = new HashMap<>();
         HttpStatus httpStatus;
         Diary requestedDiary = Diary.load(token);
@@ -124,7 +127,7 @@ public class MainService {
         HashMap<String, String> response = new HashMap<>();
         //check if User is already in database
         if (Diary.load(user.generateToken()) != null)
-            throw new UserAlreadyInDatabase(user.getEmail(),user.generateToken());
+            throw new UserAlreadyInDatabase(user.getEmail(), user.generateToken());
 
         response.put("email", user.getEmail());
         response.put("token", user.generateToken());
@@ -157,12 +160,29 @@ public class MainService {
         return new ResponseEntity<>(new JSONObject(response), httpStatus);
     }
 
+    public ResponseEntity<Object> requestUpgradeWeight(String token, float weight) {
+        HashMap<String, Object> response = new HashMap<>();
+        HttpStatus httpStatus;
+        Diary requestedDiary = Diary.load(token);
+        if (requestedDiary != null) {
+            requestedDiary.getUser().getWeight().put(LocalDate.now(),weight);
+            requestedDiary.save();
+            response.put("result", "success");
+            httpStatus = HttpStatus.OK;
+        } else {
+            response.put("result", "user not found");
+            httpStatus = HttpStatus.BAD_REQUEST;
+        }
+        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+    }
+
+
     private HashMap<String, Object> dayToJsonObject(Day day) {
         HashMap<String, Object> response = new HashMap<>();
         response.put("day_id", day.calculateDayId());
         response.put("calories", day.calculateCalories());
         for (Class<?> c : classList)
-            response.put(c.getSimpleName().toLowerCase(),day.calculate(c));
+            response.put(c.getSimpleName().toLowerCase(), day.calculate(c));
 
 /*        response.put("water", day.calculateWater());
         response.put("carbohydrates", day.calculateCarbohydrates());

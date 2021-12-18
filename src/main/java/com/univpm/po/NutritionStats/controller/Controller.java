@@ -31,6 +31,7 @@ public class Controller {
     final String ENDPOINT_DAY_INFO = "/diary/{day_id}";
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
+    final String ENDPOINT_UPGRADE_WEIGHT ="/upgrade_weight";
 
     MainService mainService = new MainService();
 
@@ -141,5 +142,11 @@ public class Controller {
         return mainService.requestLogin(token);
     }
 
+    @RequestMapping(path = ENDPOINT_UPGRADE_WEIGHT, method = RequestMethod.PUT)
+    public ResponseEntity<Object> requestUpgradeWeight(
+            @RequestParam(value = "token") String token,
+            @RequestParam(value = "weight") Float weight) {
+        return mainService.requestUpgradeWeight(token,weight);
+    }
 
 }
