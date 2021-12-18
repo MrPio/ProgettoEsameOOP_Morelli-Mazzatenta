@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,6 +23,12 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MainService {
+
+    interface Interface {
+        public void myMethod(Object... component );
+    }
+
+
     private ArrayList<Class<?>> classList = new ArrayList<>() {{
         add(Carbohydrate.class);
         add(Lipid.class);
@@ -93,6 +100,9 @@ public class MainService {
         Diary requestedDiary = Diary.load(token);
         if (requestedDiary != null) {
             response = requestedDiary.toJsonObject();
+            Runnable toJsonObject = requestedDiary::toJsonObject;
+            //DiaryInterface di=Diary::addWater;
+            toJsonObject.run();
             response.put("result", "user found");
             httpStatus = HttpStatus.OK;
         } else {
@@ -184,7 +194,7 @@ public class MainService {
         for (Class<?> c : classList)
             response.put(c.getSimpleName().toLowerCase(), day.calculate(c));
 
-/*        response.put("water", day.calculateWater());
+/*      response.put("water", day.calculateWater());
         response.put("carbohydrates", day.calculateCarbohydrates());
         response.put("proteins", day.calculateProteins());
         response.put("lipids", day.calculateLipids());
@@ -196,5 +206,20 @@ public class MainService {
         response.put("vitamin_a", day.calculateVitaminA());
         response.put("vitamin_c", day.calculateVitaminC());*/
         return response;
+    }
+
+    private ResponseEntity<Object> workWithDiary(String token, Runnable func){
+        JSONObject response = new JSONObject();
+        HttpStatus httpStatus = null;
+        Diary requestedDiary = Diary.load(token);
+        if (requestedDiary != null) {
+            //response = func.run();
+            response.put("result", "user found");
+            httpStatus = HttpStatus.OK;
+        } else {
+            response.put("result", "user not found");
+            httpStatus = HttpStatus.BAD_REQUEST;
+        }
+        return new ResponseEntity<>(new JSONObject(response), httpStatus);
     }
 }

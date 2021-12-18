@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Diary implements Serializable {
+public class Diary implements Serializable, DiaryInterface {
     private static final long serialVersionUID = 1L;
     public final static String DIR = "database/";
     public final static String DROPBOX_DIR = "/database/";
@@ -41,29 +41,30 @@ public class Diary implements Serializable {
         return dayList.size();
     }
 
+    public static Diary load(String userToken) {
+        // Check if I already have the information needed:
+        // in local database
+        InputOutputImpl inputOutputEan = new InputOutputImpl(Diary.DIR, userToken + ".dat");
+        if (inputOutputEan.existFile()) {
+            SerializationImpl serializationResult = new SerializationImpl(Diary.DIR, userToken + ".dat");
+            return (Diary) serializationResult.loadObject();
+        }
+        // in remote database
+        if (DropboxAPI.getFilesInFolder(Diary.DROPBOX_DIR).contains(userToken + ".dat")) {
+            DropboxAPI.downloadFile(Diary.DROPBOX_DIR + userToken + ".dat", Diary.DIR + userToken + ".dat");
+            SerializationImpl serializationResult = new SerializationImpl(Diary.DIR, userToken + ".dat");
+            return (Diary) serializationResult.loadObject();
+        }
+        return null;
+    }
+
     public void save() {
         SerializationImpl s = new SerializationImpl(DIR, user.generateToken() + ".dat");
         s.saveObject(this);
         DropboxAPI.uploadFile(new File(s.getFullPath()), DROPBOX_DIR);
     }
 
-    public static Diary load(String userToken) {
-        // Check if I already have the information needed:
-        // in local database
-        InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, userToken + ".dat");
-        if (inputOutputEan.existFile()) {
-            SerializationImpl serializationResult = new SerializationImpl(DIR, userToken + ".dat");
-            return (Diary) serializationResult.loadObject();
-        }
-        // in remote database
-        if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(userToken + ".dat")) {
-            DropboxAPI.downloadFile(DROPBOX_DIR + userToken + ".dat", DIR + userToken + ".dat");
-            SerializationImpl serializationResult = new SerializationImpl(DIR, userToken + ".dat");
-            return (Diary) serializationResult.loadObject();
-        }
-        return null;
-    }
-
+    @Override
     public Day findDayById(String dayId) {
         dayId = dayId.replace("-", "/");
         for (Day day : dayList) {
@@ -74,6 +75,7 @@ public class Diary implements Serializable {
         return null;
     }
 
+    @Override
     public void addFood(String dayId, MealType mealType, Food food) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
@@ -86,6 +88,7 @@ public class Diary implements Serializable {
         save();
     }
 
+    @Override
     public void addWater(String dayId, MealType mealType, Water water) {
         Day requestedDay = findDayById(dayId);
         if (requestedDay != null)
@@ -98,6 +101,7 @@ public class Diary implements Serializable {
         save();
     }
 
+    @Override
     public JSONObject toJsonObject() {
         JSONObject toJsonObject = new JSONObject();
         toJsonObject.put("diary", this);
