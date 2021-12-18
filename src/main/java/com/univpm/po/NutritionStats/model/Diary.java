@@ -98,6 +98,11 @@ public class Diary implements Serializable {
         save();
     }
 
+    public void updateWeight(float newWeight,LocalDate date){
+        user.getWeight().put(date, newWeight);
+        save();
+    }
+
     public JSONObject toJsonObject() {
         JSONObject toJsonObject = new JSONObject();
         toJsonObject.put("diary", this);

@@ -1,20 +1,18 @@
 package com.univpm.po.NutritionStats.controller;
 
-import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Gender;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
 import com.univpm.po.NutritionStats.exception.UserNotFound;
-import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.model.User;
 import com.univpm.po.NutritionStats.service.MainService;
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +31,7 @@ public class Controller {
     final String ENDPOINT_DAY_INFO = "/diary/{day_id}";
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
-    final String ENDPOINT_UPGRADE_WEIGHT ="/upgrade_weight";
+    final String ENDPOINT_UPGRADE_WEIGHT = "/upgrade_weight";
 
     MainService mainService = new MainService();
 
@@ -78,11 +76,14 @@ public class Controller {
             @RequestParam(value = "meal_type") MealType mealType,
             @RequestParam(value = "food_name") String foodName,
             @RequestParam(value = "portion_weight") Integer portionWeight,
-            @RequestParam(value = "unit_of_measure ", defaultValue = "GR") Measure measureUnit) {
+            @RequestParam(value = "unit_of_measure ", defaultValue = "GR") Measure measureUnit) throws NoSuchMethodException {
         try {
             return mainService.requestAddFoodByName(token, dayId, mealType, foodName, portionWeight, measureUnit);
         } catch (ApiFoodNotFoundException e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -92,11 +93,14 @@ public class Controller {
             @RequestParam(value = "day_id") String dayId,
             @RequestParam(value = "meal_type") MealType mealType,
             @RequestParam(value = "ean_code") Long eanCode,
-            @RequestParam(value = "portion_weight") Integer portionWeight) {
+            @RequestParam(value = "portion_weight") Integer portionWeight) throws NoSuchMethodException {
         try {
             return mainService.requestAddFoodByEan(token, dayId, mealType, eanCode, portionWeight);
         } catch (ApiFoodNotFoundException e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -104,21 +108,36 @@ public class Controller {
     public ResponseEntity<Object> requestAddWater(
             @RequestParam(value = "token") String token,
             @RequestParam(value = "day_id") String dayId,
-            @RequestParam(value = "portion_volume") Integer volume) {
-        return mainService.requestAddWater(token, dayId, volume);
+            @RequestParam(value = "portion_volume") Integer volume) throws NoSuchMethodException {
+        try {
+            return mainService.requestAddWater(token, dayId, volume);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = ENDPOINT_DIARY_INFO, method = RequestMethod.GET)
     public ResponseEntity<Object> requestDiaryInfo(
-            @RequestParam(value = "token") String token) {
-        return mainService.requestDiaryValues(token);
+            @RequestParam(value = "token") String token) throws NoSuchMethodException {
+        try {
+            return mainService.requestDiaryValues(token);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = ENDPOINT_DAY_INFO, method = RequestMethod.GET)
     public ResponseEntity<Object> requestDayInfo(
             @PathVariable(value = "day_id") String dayId,
-            @RequestParam(value = "token") String token) {
-        return mainService.requestDayValues(token, dayId);
+            @RequestParam(value = "token") String token) throws NoSuchMethodException {
+        try {
+            return mainService.requestDayValues(token, dayId);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(path = ENDPOINT_SIGNUP, method = RequestMethod.POST)
@@ -133,26 +152,37 @@ public class Controller {
         try {
             return mainService.requestSignUp(new User(nickname, email, LocalDate.parse(birth, Diary.formatter), height, weight, diet, gender));
         } catch (UserAlreadyInDatabase e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),"token",e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
     @RequestMapping(path = ENDPOINT_LOGIN, method = RequestMethod.GET)
     public ResponseEntity<Object> requestLogin(
-            @RequestParam(value = "token") String token) {
+            @RequestParam(value = "token") String token) throws NoSuchMethodException {
         try {
             return mainService.requestLogin(token);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result","not found",
-                    "message", e.getMessage(),"token",e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
     @RequestMapping(path = ENDPOINT_UPGRADE_WEIGHT, method = RequestMethod.PUT)
     public ResponseEntity<Object> requestUpgradeWeight(
             @RequestParam(value = "token") String token,
-            @RequestParam(value = "weight") Float weight) {
-        return mainService.requestUpgradeWeight(token,weight);
+            @RequestParam(value = "weight") Float weight,
+            @RequestParam(value = "date", defaultValue = "null") String date) throws NoSuchMethodException {
+        try {
+            LocalDate dateFormatted;
+            if (date.equals("null"))
+                dateFormatted = LocalDate.now();
+            else
+                dateFormatted= LocalDate.parse(date, Diary.formatter);
+            return mainService.requestUpgradeWeight(token, weight, dateFormatted);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

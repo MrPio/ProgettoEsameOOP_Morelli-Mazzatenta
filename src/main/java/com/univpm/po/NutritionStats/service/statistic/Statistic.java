@@ -19,14 +19,11 @@ public abstract class Statistic {
 		if ((date.isAfter(startDate) || date.isEqual(startDate))
 				&& (date.isBefore(endDate) || date.isEqual(endDate)))
 			return true;
-
 		return false;
-
 	}
 	
 	protected void checkDateException(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
 		if (endDate.isBefore(startDate))
 			throw new EndDateBeforeStartDateException(startDate,endDate);
 	}
-
 }

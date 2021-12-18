@@ -7,19 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/UserNotFound.java" afterDir="false" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Move water list from Meal to Day">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamFoodDatabaseAPI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Day.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/DiaryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Meal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Meal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/MacroNutrient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/nutrient/MacroNutrient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -463,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639826804624</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Move water list from Meal to Day">
+      <created>1639845664673</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1639845664673</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -502,7 +502,8 @@
     <MESSAGE value="generic methods 2nd and several bugs fixed, cleared Json metadata and upgraded redundant code" />
     <MESSAGE value="Added requestUpgradeWeight" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Move water list from Meal to Day" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move water list from Meal to Day" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -528,6 +529,7 @@
       <configuration name="Application">
         <watch expression="dayList" language="JAVA" />
         <watch expression="((java.util.ArrayList)((Food)((ArrayList)((Meal)((ArrayList)((Day)((ArrayList)((Diary)((HashMap.Node)toJsonObject.entrySet().toArray()[0]).getValue()).dayList).get(0)).mealList).get(0)).foodList).get(0)).nutrientList).get(0)" custom="com.univpm.po.NutritionStats.model.Diary,com.univpm.po.NutritionStats.model.Food,java.util.HashMap.Node,com.univpm.po.NutritionStats.model.Day,com.univpm.po.NutritionStats.model.Meal,java.util.ArrayList" />
+        <watch expression="((HashMap.Node)user.entrySet().toArray()[0]).getValue()" custom="java.util.HashMap.Node" />
       </configuration>
     </watches-manager>
   </component>

@@ -1,37 +1,25 @@
 package com.univpm.po.NutritionStats.service;
 
-import com.sun.jdi.Method;
-import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
 import com.univpm.po.NutritionStats.exception.UserNotFound;
 import com.univpm.po.NutritionStats.model.*;
 import com.univpm.po.NutritionStats.model.nutrient.*;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class MainService {
-
-
-    @FunctionalInterface
-    public interface DiaryInterface {
-        void add(String dayId, MealType mealType, Object food);
-    }
-
-
     private final ArrayList<Class<?>> classList = new ArrayList<>() {{
         add(Carbohydrate.class);
         add(Lipid.class);
@@ -46,146 +34,55 @@ public class MainService {
         add(Fiber.class);
     }};
 
-
     public ResponseEntity<Object> requestAddFoodByName(String token, String dayId, MealType mealType, String foodName,
-                                                       int portionWeight, Measure measureUnit) throws ApiFoodNotFoundException {
-        JSONObject response = new JSONObject();
-        HttpStatus httpStatus = null;
-        Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            Food foodToAdd = EdamamNutritionAnalysisAPI.getFood(foodName, portionWeight, measureUnit);
-
-            requestedDiary.addFood(dayId, mealType, foodToAdd);
-            response.put("result", "user found");
-            httpStatus = HttpStatus.OK;
-        } else {
-            response.put("result", "user not found");
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+                                                       int portionWeight, Measure measureUnit)
+            throws ApiFoodNotFoundException, NoSuchMethodException, UserNotFound {
+            return (ResponseEntity<Object>)workOnDiary(token, Diary.class.getMethod("addFood", String.class, MealType.class, Food.class),
+                    dayId,mealType,EdamamNutritionAnalysisAPI.getFood(foodName,portionWeight,measureUnit));
     }
-
     public ResponseEntity<Object> requestAddFoodByEan(String token, String dayId, MealType mealType, long eanCode,
-                                                      int portionWeight) throws ApiFoodNotFoundException {
-        JSONObject response = new JSONObject();
-        HttpStatus httpStatus = null;
-        Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            Food foodToAdd = ChompBarcodeSearchAPI.getFood(eanCode, portionWeight);
-            requestedDiary.addFood(dayId, mealType, foodToAdd);
-            response.put("result", "user found");
-            httpStatus = HttpStatus.OK;
-        } else {
-            response.put("result", "user not found");
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+                                                      int portionWeight)
+            throws ApiFoodNotFoundException, NoSuchMethodException, UserNotFound {
+        return (ResponseEntity<Object>)workOnDiary(token, Diary.class.getMethod("addFood", String.class, MealType.class, Food.class),
+                dayId,mealType,ChompBarcodeSearchAPI.getFood(eanCode,portionWeight));
     }
+    public ResponseEntity<Object> requestAddWater(String token, String dayId, int volume)
+            throws NoSuchMethodException, UserNotFound {
+            return (ResponseEntity<Object>)workOnDiary(token, Diary.class.getMethod("addWater", String.class, Water.class),
+                    dayId,new Water(volume));
 
-    public ResponseEntity<Object> requestAddWater(String token, String dayId, int volume) {
-        JSONObject response = new JSONObject();
-        HttpStatus httpStatus = null;
-        Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            Water waterToAdd = new Water(volume);
-            requestedDiary.addWater(dayId, waterToAdd);
-            response.put("result", "user found");
-            httpStatus = HttpStatus.OK;
-        } else {
-            response.put("result", "user not found");
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
     }
-
-    public ResponseEntity<Object> requestDiaryValues(String token) {
-        JSONObject response = new JSONObject();
-        HttpStatus httpStatus = null;
-        Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            response = requestedDiary.toJsonObject();
-            response.put("result", "user found");
-            httpStatus = HttpStatus.OK;
-        } else {
-            response.put("result", "user not found");
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+    public ResponseEntity<Object> requestDiaryValues(String token) throws NoSuchMethodException, UserNotFound {
+        JSONObject response=(JSONObject) workOnDiary(token, Diary.class.getMethod("toJsonObject"));
+        return new ResponseEntity<>(new JSONObject(Map.of("user",response)),HttpStatus.OK);
     }
-
-    public ResponseEntity<Object> requestDayValues(String token, String dayId) {
-        HashMap<String, Object> response = new HashMap<>();
-        HttpStatus httpStatus = null;
-        Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            Day requestedDay = requestedDiary.findDayById(dayId);
-            if (requestedDay != null) {
-                response.put("result", "day found");
-                response = dayToJsonObject(requestedDay);
-                httpStatus = HttpStatus.OK;
-            } else {
-                response.put("result", "day not found");
-                httpStatus = HttpStatus.BAD_REQUEST;
-            }
-        } else {
-            response.put("result", "user not found");
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+    public ResponseEntity<Object> requestDayValues(String token, String dayId) throws NoSuchMethodException, UserNotFound {
+        Day requestedDay = (Day)workOnDiary(token,Diary.class.getMethod("findDayById", String.class),dayId);
+        if (requestedDay != null)
+            return new ResponseEntity<>(dayToJsonObject(requestedDay), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "nothing to show on this day...")), HttpStatus.OK);
     }
-
     public ResponseEntity<Object> requestSignUp(User user) throws UserAlreadyInDatabase {
         HashMap<String, String> response = new HashMap<>();
         //check if User is already in database
         if (Diary.load(user.generateToken()) != null)
             throw new UserAlreadyInDatabase(user.getEmail(), user.generateToken());
-
+        response.put("result", "user successfully registered! Please store you token to gain future access.");
         response.put("email", user.getEmail());
         response.put("token", user.generateToken());
-
         //store the new user in local and remote database
         Diary newDiary = new Diary(user);
         newDiary.save();
         return new ResponseEntity<>(new JSONObject(response), HttpStatus.OK);
     }
-
-    public ResponseEntity<Object> requestLogin(String token) throws UserNotFound {
-        HashMap<String, Object> response = new HashMap<>();
-        HttpStatus httpStatus = null;
-        Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            User requestedUser = requestedDiary.getUser();
-            response.put("result", "found");
-            response.put("nickname", requestedUser.getNickname());
-            response.put("email", requestedUser.getEmail());
-            response.put("birth", requestedUser.getYearOfBirth());
-            response.put("weight", requestedUser.getWeight());
-            response.put("height", requestedUser.getHeight());
-            response.put("diet", requestedUser.getDiet());
-            response.put("gender", requestedUser.getGender());
-            httpStatus = HttpStatus.OK;
-        } else {
-            throw new UserNotFound(token);
-        }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+    public ResponseEntity<Object> requestLogin(String token) throws UserNotFound, NoSuchMethodException {
+        User response=(User) workOnDiary(token, Diary.class.getMethod("getUser"));
+        return new ResponseEntity<>(new JSONObject(Map.of("user",response)),HttpStatus.OK);
     }
-
-    public ResponseEntity<Object> requestUpgradeWeight(String token, float weight) {
-        HashMap<String, Object> response = new HashMap<>();
-        HttpStatus httpStatus;
-        Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            requestedDiary.getUser().getWeight().put(LocalDate.now(), weight);
-            requestedDiary.save();
-            response.put("result", "success");
-            httpStatus = HttpStatus.OK;
-        } else {
-            response.put("result", "user not found");
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+    public ResponseEntity<Object> requestUpgradeWeight(String token, float weight, LocalDate date) throws NoSuchMethodException, UserNotFound {
+        return (ResponseEntity<Object>)workOnDiary(token,Diary.class.getMethod("updateWeight", float.class,LocalDate.class),weight,date);
     }
-
 
     private HashMap<String, Object> dayToJsonObject(Day day) {
         HashMap<String, Object> response = new HashMap<>();
@@ -194,5 +91,42 @@ public class MainService {
         for (Class<?> c : classList)
             response.put(c.getSimpleName().toLowerCase(), day.calculate(c));
         return response;
+    }
+    private Object workOnDiary(String token, Method method, Object ...param) throws UserNotFound {
+        Object obj = null;
+        LocalDate obj1 = (LocalDate) obj;
+
+        JSONObject response = new JSONObject();
+        HttpStatus httpStatus = null;
+        Diary requestedDiary = Diary.load(token);
+        if (requestedDiary != null) {
+            try {
+                if(method.getReturnType()==void.class) {
+                    if (method.getParameterCount() == 0)
+                        method.invoke(requestedDiary);
+                    if (method.getParameterCount() == 1)
+                        method.invoke(requestedDiary,param[0]);
+                    if (method.getParameterCount() == 2)
+                        method.invoke(requestedDiary, param[0], param[1]);
+                    if (method.getParameterCount() == 3)
+                        method.invoke(requestedDiary, param[0], param[1], param[2]);
+                }
+                else{
+                    if (method.getParameterCount() == 0)
+                        return method.invoke(requestedDiary);
+                    if (method.getParameterCount() == 1)
+                        return method.invoke(requestedDiary,param[0]);
+                }
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            response.put("result", "success!");
+            httpStatus = HttpStatus.OK;
+        } else {
+            response.put("result", "diary not found");
+            httpStatus = HttpStatus.BAD_REQUEST;
+            throw new UserNotFound(token);
+        }
+        return new ResponseEntity<>(new JSONObject(response), httpStatus);
     }
 }
