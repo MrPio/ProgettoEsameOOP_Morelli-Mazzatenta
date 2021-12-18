@@ -71,14 +71,15 @@ public class Mean extends Statistic {
 				++count;
 			}
 		}
-		for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
+		
+		for (Map.Entry<Class<?>, Float> entry : meanList.entrySet()) {
 			entry.setValue(entry.getValue() / count);
-		calories /= count;
-
-		for (Map.Entry<Class<?>, Float> entry : meanList.entrySet())
 			jMeans.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+		}
+		
+		calories /= count;
 		jMeans.put("calorie", calories);
-
+		
 		count = 0;
 		for (LocalDate date : diary.getUser().getWeight().keySet()) {
 			if (dateIsBetween(date, startDate, endDate)) {

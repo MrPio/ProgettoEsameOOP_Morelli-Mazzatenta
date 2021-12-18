@@ -48,20 +48,10 @@ public class Percentage extends Statistic {
 		}
 
 		for (Map.Entry<Class<?>, Float> entry : percentageList.entrySet()) {
-			if (Carbohydrate.class == (entry.getKey()))
-				entry.setValue(entry.getValue() * Carbohydrate.CALORIES_PER_CARBOHYDRATE);
-			else if (Lipid.class == (entry.getKey()))
-				entry.setValue(entry.getValue() * Lipid.CALORIES_PER_LIPID);
-			else
-				entry.setValue(entry.getValue() * Protein.CALORIES_PER_PROTEIN);
-		}
-
-		for (Map.Entry<Class<?>, Float> entry : percentageList.entrySet()) {
-			entry.setValue((entry.getValue() * 100) / calories);
-		}
-
-		for (Map.Entry<Class<?>, Float> entry : percentageList.entrySet())
+			entry.setValue((entry.getValue() * MacroNutrient.CALORIES_PER_GRAM.get(entry.getKey()) * 100f) / calories);
 			jPercentages.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+		}
+
 		return jPercentages;
 	}
 }

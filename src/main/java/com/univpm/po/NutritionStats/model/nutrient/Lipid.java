@@ -6,12 +6,10 @@ import java.io.Serializable;
 
 public class Lipid extends MacroNutrient implements Serializable {
 
-	final static int PERCENTAGE_DAILY_LIPID = 30;
-	public final static int CALORIES_PER_LIPID = 9;
 	private float quantityOnlySatured;
 
 	public Lipid(float quantity, float quantityOnlySatured) {
-		super(NutrientName.LIPID, quantity, CALORIES_PER_LIPID);
+		super(NutrientName.LIPID, quantity);
 		this.quantityOnlySatured = quantityOnlySatured;
 	}
 
@@ -21,7 +19,6 @@ public class Lipid extends MacroNutrient implements Serializable {
 
 	@Override
 	public float calculateCalories() {
-		return getQuantity() * CALORIES_PER_LIPID;
+		return getQuantity() * CALORIES_PER_GRAM.get(this.getClass());
 	}
-
 }

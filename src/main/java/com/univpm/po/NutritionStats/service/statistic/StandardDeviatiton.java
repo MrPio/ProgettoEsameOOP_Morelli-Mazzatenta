@@ -65,13 +65,14 @@ public class StandardDeviatiton extends Statistic {
 				++count;
 			}
 		}
-		for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet())
+		
+		for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet()) {
 			entry.setValue((float) Math.sqrt(entry.getValue() / (count - 1)));
-		calories = (float) Math.sqrt(calories / (count - 1));
-
-		jStandardDeviations.put("calorie", calories);
-		for (Map.Entry<Class<?>, Float> entry : standardDeviationList.entrySet())
 			jStandardDeviations.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+		}
+
+		calories = (float) Math.sqrt(calories / (count - 1));
+		jStandardDeviations.put("calorie", calories);
 
 		count = 0;
 		for (LocalDate date : diary.getUser().getWeight().keySet()) {

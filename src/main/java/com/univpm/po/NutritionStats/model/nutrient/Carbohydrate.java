@@ -6,12 +6,10 @@ import java.io.Serializable;
 
 public class Carbohydrate extends MacroNutrient implements Serializable {
 
-	final static int PERCENTAGE_DAILY_CARBOHYDRATES = 50;
-	public final static int CALORIES_PER_CARBOHYDRATE = 4;
 	private float quantityOnlySugar;
 
 	public Carbohydrate(float quantity, float quantityOnlySugar) {
-		super(NutrientName.CARBOHYDRATE, quantity, CALORIES_PER_CARBOHYDRATE);
+		super(NutrientName.CARBOHYDRATE, quantity);
 		this.quantityOnlySugar = quantityOnlySugar;
 	}
 
@@ -21,7 +19,7 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 
 	@Override
 	public float calculateCalories() {
-		return getQuantity() * CALORIES_PER_CARBOHYDRATE;
+		return getQuantity() * CALORIES_PER_GRAM.get(this.getClass());
 	}
 
 }
