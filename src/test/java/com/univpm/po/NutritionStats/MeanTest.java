@@ -6,6 +6,7 @@ import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.service.StandardDeviatiton;
 import org.junit.jupiter.api.Test;
 
+import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.service.Mean;
 
