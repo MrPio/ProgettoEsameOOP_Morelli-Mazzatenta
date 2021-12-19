@@ -33,13 +33,14 @@ public class ChompBarcodeSearchAPI {
         InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, eanConde + ".dat");
         if (inputOutputEan.existFile()) {
             SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
-            serializationResult.loadObject();
+            return (JSONObject) serializationResult.loadObject();
         }
         //in remote database
         if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(eanConde + ".dat")) {
             DropboxAPI.downloadFile(DROPBOX_DIR + eanConde + ".dat", DIR + eanConde + ".dat");
             SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
             serializationResult.loadObject();
+            return (JSONObject) serializationResult.loadObject();
         }
 
         JSONObject result = null;

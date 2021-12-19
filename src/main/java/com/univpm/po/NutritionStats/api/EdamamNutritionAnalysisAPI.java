@@ -124,6 +124,8 @@ public class EdamamNutritionAnalysisAPI {
     }
 
     private static float labelToValue(JSONObject foodInfo, String label) {
+        if(!foodInfo.containsKey(label))
+            return 0.0f;
         JSONObject infoSector = (JSONObject) foodInfo.get(label);
         float scaleFactor = 1.0f;
         switch (infoSector.get("unit").toString()) {
