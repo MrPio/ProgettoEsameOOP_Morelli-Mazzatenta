@@ -23,14 +23,14 @@ class FilterByMealTypeTest {
 
     @Test
     void test() throws ParseException {
-        //MealType typeOfMeal = MealType.BREAKFAST;
+        MealType typeOfMeal = MealType.BREAKFAST;
 
         Diary diary = Diary.load("dd46a756faad4727fb679320751f6dea");
 
 		assert diary != null;
 		FilterByMealType f = new FilterByMealType(diary.toJsonObject());
         System.out.print(diary.toJsonObject());
-        System.out.print(f.filter(MealType.LUNCH).toJSONString());
+        System.out.print(f.filter(typeOfMeal).toJSONString());
 
     }
 }
