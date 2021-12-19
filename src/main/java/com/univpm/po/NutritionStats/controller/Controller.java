@@ -46,10 +46,12 @@ public class Controller {
 
     @RequestMapping(path = ENDPOINT_FOOD, method = RequestMethod.GET)
     public ResponseEntity<Object> getInfoFromFoodName(
-            @PathVariable("food_name") String foodName) {
+            @PathVariable("food_name") String foodName,
+            @RequestParam(value = "portion_weight",defaultValue = "100") Integer weight,
+            @RequestParam(value = "unit_of_measure",defaultValue = "GR") Measure measure) {
         try {
             return new ResponseEntity<>(
-                    EdamamNutritionAnalysisAPI.getFoodInfo(foodName),
+                    EdamamNutritionAnalysisAPI.getFood(foodName, weight, measure),
                     HttpStatus.OK);
         } catch (ApiFoodNotFoundException e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
@@ -177,7 +179,7 @@ public class Controller {
             if (date.equals("null"))
                 dateFormatted = LocalDate.now();
             else
-                dateFormatted= LocalDate.parse(date, Diary.formatter);
+                dateFormatted = LocalDate.parse(date, Diary.formatter);
             return mainService.requestUpgradeWeight(token, weight, dateFormatted);
         } catch (UserNotFound e) {
             return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",

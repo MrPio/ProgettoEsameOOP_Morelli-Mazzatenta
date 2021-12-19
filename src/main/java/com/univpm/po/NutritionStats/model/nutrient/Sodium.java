@@ -7,6 +7,6 @@ import java.io.Serializable;
 public class Sodium extends MineralSalt implements Serializable {
 	
 	public Sodium(float quantity) {
-		super(AllNutrientNonNutrient.POTASSIUM,quantity);
+		super(AllNutrientNonNutrient.SODIUM,quantity);
 	}
 }

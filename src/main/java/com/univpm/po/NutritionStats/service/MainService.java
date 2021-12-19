@@ -47,7 +47,7 @@ public class MainService {
 
     public ResponseEntity<Object> requestDiaryValues(String token) throws NoSuchMethodException, UserNotFound {
         JSONObject response = (JSONObject) workOnDiary(token, Diary.class.getMethod("toJsonObject"));
-        return new ResponseEntity<>(new JSONObject(Map.of("user", response)), HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     public ResponseEntity<Object> requestDayValues(String token, String dayId) throws NoSuchMethodException, UserNotFound {
@@ -74,7 +74,7 @@ public class MainService {
 
     public ResponseEntity<Object> requestLogin(String token) throws UserNotFound, NoSuchMethodException {
         User response = (User) workOnDiary(token, Diary.class.getMethod("getUser"));
-        return new ResponseEntity<>(new JSONObject(Map.of("user", response)), HttpStatus.OK);
+        return new ResponseEntity<>(new JSONObject(Map.of("result","success!","user", response)), HttpStatus.OK);
     }
 
     public ResponseEntity<Object> requestUpgradeWeight(String token, float weight, LocalDate date) throws NoSuchMethodException, UserNotFound {
@@ -87,6 +87,7 @@ public class MainService {
         response.put("calories", day.calculateCalories());
         for (AllNutrientNonNutrient nutrient : allNutrientNonNutrients)
             response.put(nutrient.getReferenceClass().getSimpleName().toLowerCase(), day.calculate(nutrient.getReferenceClass()));
+        response.put("water", day.calculate(Water.class));
         return response;
     }
 
