@@ -27,7 +27,7 @@ class FilterTest {
 		JSONParser parser = new JSONParser();
 		FilterByDate f = new FilterByDate(diary.toJsonObject());
         System.out.print(diary.toJsonObject());
-        //System.out.print(f.filter(begin, end).toJSONString());
+        System.out.print(f.filter(begin, end).toJSONString());
 
     }
 
