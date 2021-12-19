@@ -77,7 +77,7 @@ public class MainService {
         return new ResponseEntity<>(new JSONObject(Map.of("result","success!","user", response)), HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> requestUpgradeWeight(String token, float weight, LocalDate date) throws NoSuchMethodException, UserNotFound {
+    public ResponseEntity<Object> requestUpdateWeight(String token, float weight, LocalDate date) throws NoSuchMethodException, UserNotFound {
         return (ResponseEntity<Object>) workOnDiary(token, Diary.class.getMethod("updateWeight", float.class, LocalDate.class), weight, date);
     }
 

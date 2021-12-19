@@ -31,7 +31,7 @@ public class Controller {
     final String ENDPOINT_DAY_INFO = "/diary/{day_id}";
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
-    final String ENDPOINT_UPGRADE_WEIGHT = "/upgrade_weight";
+    final String ENDPOINT_UPDATE_WEIGHT = "/update_weight";
 
     MainService mainService = new MainService();
 
@@ -169,8 +169,8 @@ public class Controller {
         }
     }
 
-    @RequestMapping(path = ENDPOINT_UPGRADE_WEIGHT, method = RequestMethod.PUT)
-    public ResponseEntity<Object> requestUpgradeWeight(
+    @RequestMapping(path = ENDPOINT_UPDATE_WEIGHT, method = RequestMethod.PUT)
+    public ResponseEntity<Object> requestUpdateWeight(
             @RequestParam(value = "token") String token,
             @RequestParam(value = "weight") Float weight,
             @RequestParam(value = "date", defaultValue = "null") String date) throws NoSuchMethodException {
@@ -180,7 +180,7 @@ public class Controller {
                 dateFormatted = LocalDate.now();
             else
                 dateFormatted = LocalDate.parse(date, Diary.formatter);
-            return mainService.requestUpgradeWeight(token, weight, dateFormatted);
+            return mainService.requestUpdateWeight(token, weight, dateFormatted);
         } catch (UserNotFound e) {
             return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
                     "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
