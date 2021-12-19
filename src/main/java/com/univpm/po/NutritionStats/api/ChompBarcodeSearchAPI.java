@@ -92,7 +92,7 @@ public class ChompBarcodeSearchAPI {
 
         JSONArray foodNutrientsInfo = (JSONArray) foodInfo.get("nutrients");
         float[] nutritionValues = new float[20];
-        Map<AllNutrientNonNutrient, Float> nutritions = new HashMap<>() {
+        Map<AllNutrientNonNutrient, Float> nutritions = new HashMap<AllNutrientNonNutrient, Float>() {
             {
                 for (AllNutrientNonNutrient nutrient : AllNutrientNonNutrient.values())
                     put(nutrient, 0.0f);
