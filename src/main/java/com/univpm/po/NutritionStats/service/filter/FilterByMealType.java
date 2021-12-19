@@ -1,9 +1,14 @@
 package com.univpm.po.NutritionStats.service.filter;
 
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.univpm.po.NutritionStats.enums.MealType;
+import com.univpm.po.NutritionStats.model.Day;
+import com.univpm.po.NutritionStats.model.Diary;
+import com.univpm.po.NutritionStats.model.Meal;
 
 public class FilterByMealType extends Filter {
 	
@@ -13,18 +18,19 @@ public class FilterByMealType extends Filter {
 	
 	public JSONObject filter(MealType mealType) {
 		
-		JSONArray diaryByDay = (JSONArray) diary.get("dayList");
+		ArrayList<Day> dayList = ((Diary) diary.get("diary")).getDayList();
 		JSONArray filteredList = new JSONArray();
 		
-		for (Object day : diaryByDay) {
-			JSONArray diaryByMealList = (JSONArray) ((JSONObject) day).get("mealList");
-			for (Object meals : diaryByMealList) {
-				MealType typeOfMeal = (MealType) ((JSONObject)meals).get("mealType");
-				if(typeOfMeal == mealType)
-					filteredList.add(meals);
+		for (Day day : dayList) {
+			ArrayList<Meal> mealList = day.getMealList();
+			for (Meal meal : mealList) {
+				MealType typeOfMeal = meal.getMealType();
+				if(mealType == typeOfMeal)
+					filteredList.add(meal);
 			}
 		}
-		return (JSONObject) filteredData.put("mealList", filteredList);
+		filteredData.put("mealList", filteredList);
+		return filteredData;
 	}
 
 }
