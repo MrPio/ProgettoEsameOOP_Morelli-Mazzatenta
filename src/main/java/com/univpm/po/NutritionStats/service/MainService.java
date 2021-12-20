@@ -96,10 +96,9 @@ public class MainService {
 
 	public ResponseEntity<Object> requestStats(String token, String type, LocalDate startDate, LocalDate endDate)
 			throws UserNotFound, EndDateBeforeStartDateException {
-		//JSONObject response = (JSONObject) workOnStatistic(token, type, startDate, endDate);
 		return (ResponseEntity<Object>) workOnStatistic(token, type, startDate, endDate);
 	}
-
+	
 	private HashMap<String, Object> dayToJsonObject(Day day) {
 		HashMap<String, Object> response = new HashMap<>();
 		response.put("day_id", day.calculateDayId());
@@ -140,21 +139,22 @@ public class MainService {
 	private Object workOnStatistic(String token, String method, LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException, UserNotFound {
 		JSONObject response = new JSONObject();
 		HttpStatus httpStatus = null;
-
-		if (Diary.load(token) != null) {
+		Diary requestedDiary = Diary.load(token);
+		
+		if (requestedDiary != null) {
 			switch (method) {
 			case ("percentage"):
-				Percentage percentage = new Percentage(Diary.load(token));
+				Percentage percentage = new Percentage(requestedDiary);
 			    response.putAll(percentage.macroNutrientPercentage(startDate, endDate));
 				httpStatus = HttpStatus.OK;
 				break;
 			case ("mean"):
-				Mean mean = new Mean(Diary.load(token));
+				Mean mean = new Mean(requestedDiary);
 				response.putAll(mean.calculateMean(startDate, endDate));
 				httpStatus = HttpStatus.OK;
 				break;
 			case ("standard deviation"):
-				StandardDeviatiton standardDeviation = new StandardDeviatiton(Diary.load(token));
+				StandardDeviatiton standardDeviation = new StandardDeviatiton(requestedDiary);
 				response.putAll(standardDeviation.calculateStandardDeviation(startDate, endDate));
 				httpStatus = HttpStatus.OK;
 				break;
