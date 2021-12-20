@@ -53,7 +53,7 @@ public class Mean extends Statistic {
 		return weight;
 	}
 
-	public JSONObject allNutrientMean(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
+	public JSONObject calculateMean(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
 		checkDateException(startDate, endDate);
 		resetValues();
 		calories = 0f;

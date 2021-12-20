@@ -7,6 +7,7 @@ import com.univpm.po.NutritionStats.enums.Gender;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
+import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
 import com.univpm.po.NutritionStats.exception.UserNotFound;
 import com.univpm.po.NutritionStats.model.Diary;
@@ -32,7 +33,9 @@ public class Controller {
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
     final String ENDPOINT_UPDATE_WEIGHT = "/update_weight";
-
+    final String ENDPOINT_STATS = "/stats";
+    final String ENDPOINT_FILTERS = "/filters";
+    
     MainService mainService = new MainService();
 
     @RequestMapping(path = "/")
@@ -186,5 +189,25 @@ public class Controller {
                     "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
-
+    
+    @RequestMapping(path = ENDPOINT_STATS, method = RequestMethod.GET)
+    public ResponseEntity<Object> requestStats(
+    		@RequestParam(value = "token") String token,
+            @RequestParam(value = "type") String type,
+            @RequestParam(value = "start_date") String startDate,
+            @RequestParam(value = "end_date") String endDate) throws NoSuchMethodException, EndDateBeforeStartDateException {
+    	try {
+    		LocalDate startDateFormatted = LocalDate.parse(startDate, Diary.formatter);
+    		LocalDate endDateFormatted = LocalDate.parse(endDate, Diary.formatter);
+    		return mainService.requestStats(token, type, startDateFormatted, endDateFormatted);
+    	} catch (UserNotFound e) {
+    		 return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                     "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+    	} catch (EndDateBeforeStartDateException e) {
+    		return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage())), HttpStatus.BAD_REQUEST);
+    	}
+    	 
+    }
+    
 }

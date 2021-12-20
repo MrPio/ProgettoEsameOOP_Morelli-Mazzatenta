@@ -35,7 +35,7 @@ public class StandardDeviatiton extends Statistic {
 		calories = 0f;
 
 		Mean mean = new Mean(diary);
-		mean.allNutrientMean(startDate, endDate);
+		mean.calculateMean(startDate, endDate);
 
 		int count = 0;
 		for (Day day : diary.getDayList()) {

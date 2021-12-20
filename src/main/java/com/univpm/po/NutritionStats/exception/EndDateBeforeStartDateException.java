@@ -9,7 +9,7 @@ public class EndDateBeforeStartDateException extends Exception {
 	private LocalDate endDate;
 	
 	public EndDateBeforeStartDateException(LocalDate startDate, LocalDate endDate) {
-		super(BASE_MESSAGE+"\r\n"+endDate+" is before "+startDate);
+		super(BASE_MESSAGE+" "+endDate+" is before "+startDate);
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
