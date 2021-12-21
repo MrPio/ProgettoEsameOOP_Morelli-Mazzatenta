@@ -2,10 +2,7 @@ package com.univpm.po.NutritionStats.controller;
 
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
-import com.univpm.po.NutritionStats.enums.Diet;
-import com.univpm.po.NutritionStats.enums.Gender;
-import com.univpm.po.NutritionStats.enums.MealType;
-import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.enums.*;
 import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
@@ -193,9 +190,9 @@ public class Controller {
     @RequestMapping(path = ENDPOINT_STATS, method = RequestMethod.GET)
     public ResponseEntity<Object> requestStats(
     		@RequestParam(value = "token") String token,
-            @RequestParam(value = "type") String type,
+            @RequestParam(value = "type") StatisticType[] type,
             @RequestParam(value = "start_date") String startDate,
-            @RequestParam(value = "end_date") String endDate) throws NoSuchMethodException, EndDateBeforeStartDateException {
+            @RequestParam(value = "end_date") String endDate) throws NoSuchMethodException {
     	try {
     		LocalDate startDateFormatted = LocalDate.parse(startDate, Diary.formatter);
     		LocalDate endDateFormatted = LocalDate.parse(endDate, Diary.formatter);

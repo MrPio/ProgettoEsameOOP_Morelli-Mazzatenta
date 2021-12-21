@@ -9,6 +9,7 @@ import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.model.User;
+import org.json.simple.JSONObject;
 
 public abstract class Statistic {
     protected Map<Class<?>, Float> statsValues = new HashMap<>() {
@@ -17,16 +18,18 @@ public abstract class Statistic {
                 put(nutrient.getReferenceClass(), 0.0f);
         }
     };
-
     protected Diary diary;
 
     public Statistic(Diary diary) {
         this.diary = diary;
     }
 
-    public Map<Class<?>, Float> getstatsValues() {
+    protected Map<Class<?>, Float> getStatsValues() {
         return statsValues;
     }
+
+    public abstract  JSONObject calculateStatistic(LocalDate startDate, LocalDate endDate)
+            throws EndDateBeforeStartDateException;
 
     protected void resetValues() {
         for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet())

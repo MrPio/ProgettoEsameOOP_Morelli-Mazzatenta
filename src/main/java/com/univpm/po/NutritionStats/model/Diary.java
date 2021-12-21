@@ -3,6 +3,9 @@ package com.univpm.po.NutritionStats.model;
 import com.univpm.po.NutritionStats.api.DropboxAPI;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.enums.StatisticType;
+import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
+import com.univpm.po.NutritionStats.service.statistic.Statistic;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
 import org.json.simple.JSONArray;
@@ -10,6 +13,7 @@ import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -92,15 +96,31 @@ public class Diary implements Serializable {
             requestedDay.addWater(water);
         else {
             Day dayToAdd = new Day(LocalDate.parse(dayId.replace("-", "/"), formatter));
-            dayToAdd.addWater( water);
+            dayToAdd.addWater(water);
             dayList.add(dayToAdd);
         }
         save();
     }
 
-    public void updateWeight(float newWeight,LocalDate date){
+    public void updateWeight(float newWeight, LocalDate date) {
         user.getWeight().put(date, newWeight);
         save();
+    }
+
+    public JSONObject doStatistic(LocalDate startDate, LocalDate endDate, StatisticType... statisticType) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, EndDateBeforeStartDateException {
+        JSONObject response=new JSONObject();
+        if (statisticType.length == 0) {
+            response.put("result","ERROR: no statistic requested");
+            return response;
+        }
+        response.put("result","success");
+        for(var stat:statisticType) {
+            Statistic statistic=stat.getReferenceClass().getDeclaredConstructor(Diary.class)
+                    .newInstance(this);
+            statistic.calculateStatistic(startDate,endDate);
+            response.put(stat, statistic);
+        }
+        return response;
     }
 
     public JSONObject toJsonObject() {

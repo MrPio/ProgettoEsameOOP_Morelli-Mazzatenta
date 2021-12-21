@@ -7,11 +7,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="small fix">
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="rename variable">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/enums/StatisticType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/UserNotFound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/UserNotFound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviatiton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviatiton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterByFoodTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterByMealTypeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,8 +288,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserTest.test" />
         <item itemvalue="JUnit.FilterTest.test" />
+        <item itemvalue="JUnit.UserTest.test" />
         <item itemvalue="JUnit.MeanTest.testWithDebugger" />
         <item itemvalue="JUnit.FoodTest.calculate" />
         <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest.getFood" />
@@ -511,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639913210522</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="rename variable">
+      <created>1639922724480</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1639922724480</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,7 +549,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Store chomp api calls on local file to avoid multiple calls on the same ean" />
     <MESSAGE value="Added support to upload/download files in dropbox cloud" />
     <MESSAGE value="Added support to remote database (Dropbox)" />
     <MESSAGE value="Added /signup route and md5 hashing algorithm to generate user's token" />
@@ -556,7 +573,8 @@
     <MESSAGE value="Small fixes" />
     <MESSAGE value="JDK 11" />
     <MESSAGE value="small fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="small fix" />
+    <MESSAGE value="rename variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename variable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -565,6 +583,21 @@
           <properties class="org.springframework.web.client.HttpClientErrorException$NotFound" package="org.springframework.web.client" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByDate.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>

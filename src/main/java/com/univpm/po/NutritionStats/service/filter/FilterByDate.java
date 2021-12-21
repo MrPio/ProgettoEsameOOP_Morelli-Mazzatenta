@@ -15,7 +15,6 @@ public class FilterByDate extends Filter {
 	}
 
 	public JSONObject filter(LocalDate startDate, LocalDate endDate) {
-
 		ArrayList<Day> dayList = ((Diary) diary.get("diary")).getDayList();
 		ArrayList<Day> filteredList = new ArrayList<>();
 		
