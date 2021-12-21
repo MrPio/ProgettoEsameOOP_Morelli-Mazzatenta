@@ -14,7 +14,7 @@ import com.univpm.po.NutritionStats.model.nutrient.*;
 
 public class Percentage extends Statistic {
 
-    private JSONObject jPercentages = new JSONObject();
+    private JSONObject PercentagesValues = new JSONObject();
 
 	private Map<Class<?>, Float> statsValues = new HashMap<>() {
 		{
@@ -28,11 +28,11 @@ public class Percentage extends Statistic {
         super(diary);
     }
 
-    public JSONObject getjPercentages() {
-        return jPercentages;
+    public JSONObject getPercentagesValues() {
+        return PercentagesValues;
     }
 
-    public JSONObject macroNutrientPercentage(LocalDate startDate, LocalDate endDate)
+    public JSONObject calculateStatistic(LocalDate startDate, LocalDate endDate)
             throws EndDateBeforeStartDateException {
 
         checkDateException(startDate, endDate);
@@ -50,9 +50,9 @@ public class Percentage extends Statistic {
 
         for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
             entry.setValue((entry.getValue() * MacroNutrient.CALORIES_PER_GRAM.get(entry.getKey()) * 100f) / calories);
-            jPercentages.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+            PercentagesValues.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
         }
 
-        return jPercentages;
+        return PercentagesValues;
     }
 }

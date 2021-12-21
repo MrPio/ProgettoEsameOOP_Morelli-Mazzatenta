@@ -17,23 +17,8 @@ import com.univpm.po.NutritionStats.model.User;
 
 public class Mean extends Statistic {
 
-	private JSONObject jMeans = new JSONObject();
+	private JSONObject MeansValues = new JSONObject();
 
-/*	private Map<Class<?>, Float> statsValues = new HashMap<>() {
-		{
-			put(Carbohydrate.class, 0f);
-			put(Lipid.class, 0f);
-			put(Protein.class, 0f);
-			put(Water.class, 0f);
-			put(VitaminA.class, 0f);
-			put(VitaminC.class, 0f);
-			put(Sodium.class, 0f);
-			put(Calcium.class, 0f);
-			put(Potassium.class, 0f);
-			put(Iron.class, 0f);
-			put(Fiber.class, 0f);
-		}
-	};*/
 	private float calories = 0.0f;
 	private float weight = 0.0f;
 
@@ -41,19 +26,20 @@ public class Mean extends Statistic {
 		super(diary);
 	}
 
-	public JSONObject getJMeans() {
-		return jMeans;
+	public JSONObject getMeansValues() {
+		return MeansValues;
 	}
 
-	public float getCalories() {
+	public float calculateCalories() {
 		return calories;
 	}
 
-	public float getWeight() {
+	public float calculateWeight() {
 		return weight;
 	}
 
-	public JSONObject calculateMean(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
+	public JSONObject calculateStatistic(LocalDate startDate, LocalDate endDate)
+			throws EndDateBeforeStartDateException {
 		checkDateException(startDate, endDate);
 		resetValues();
 		calories = 0f;
@@ -70,11 +56,11 @@ public class Mean extends Statistic {
 		
 		for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
 			entry.setValue(entry.getValue() / count);
-			jMeans.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+			MeansValues.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
 		}
 		
 		calories /= count;
-		jMeans.put("calorie", calories);
+		MeansValues.put("calorie", calories);
 		
 		count = 0;
 		for (LocalDate date : diary.getUser().getWeight().keySet()) {
@@ -84,8 +70,8 @@ public class Mean extends Statistic {
 			}
 		}
 		weight /= count;
-		jMeans.put("weight", weight);
+		MeansValues.put("weight", weight);
 
-		return jMeans;
+		return MeansValues;
 	}
 }

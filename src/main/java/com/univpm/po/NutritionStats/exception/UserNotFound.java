@@ -6,7 +6,7 @@ public class UserNotFound extends Exception {
     private String token;
 
     public UserNotFound(String token) {
-        super(BASE_MESSAGE+"\r\nTOKEN: "+token);
+        super(BASE_MESSAGE+" TOKEN: "+token);
         this.token=token;
     }
 

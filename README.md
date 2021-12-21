@@ -26,8 +26,9 @@ GET | `/diary` | token | Return all the data (`metadata`) owned by the user.
 GET | `/diary/{day_id}` | token | Return the data of the user in specified day.
 POST | `/signup` | nickname, email, birth, height, weight, diet, gender | Register new user.
 GET | `/login` | token | Login user, return user's info if in the database.
+DELETE | `/reset` | token | Deletes all data owned by the user.
 PUT | `/update_weight` | token, weight | Update the value of user's weight.
-GET | */stats* | | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
+GET | `/stats` | | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
 GET | */filters* | | Filter metadata
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 ## Application UML ☀:
