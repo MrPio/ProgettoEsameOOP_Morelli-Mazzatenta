@@ -195,7 +195,7 @@ public class Controller {
     		@RequestParam(value = "token") String token,
             @RequestParam(value = "type") String type,
             @RequestParam(value = "start_date") String startDate,
-            @RequestParam(value = "end_date") String endDate) throws NoSuchMethodException, EndDateBeforeStartDateException {
+            @RequestParam(value = "end_date") String endDate) {
     	try {
     		LocalDate startDateFormatted = LocalDate.parse(startDate, Diary.formatter);
     		LocalDate endDateFormatted = LocalDate.parse(endDate, Diary.formatter);
@@ -209,5 +209,10 @@ public class Controller {
     	}
     	 
     }
-    
+    @RequestMapping(path = ENDPOINT_FILTERS, method = RequestMethod.GET)
+    public ResponseEntity<Object> requestFilter (@RequestBody JSONObject filters) {
+    	
+		return null;
+    	
+    }
 }

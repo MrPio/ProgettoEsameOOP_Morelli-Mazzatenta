@@ -13,30 +13,23 @@ import com.univpm.po.NutritionStats.model.Meal;
 
 public class FilterByFood extends Filter {
 
-	public FilterByFood(JSONObject diary) {
+	private String foodName;
+	
+	public FilterByFood(Diary diary, String foodName) {
 		super(diary);
+		this.foodName = foodName;
 	}
 
-	public JSONObject filter(String foodName) {
+	@Override
+	public void filter() {
 		
-		ArrayList<Day> dayList = ((Diary) diary.get("diary")).getDayList(); 
-		JSONArray filteredList = new JSONArray();
+		for (Day day : diary.getDayList()) 
+			for (Meal meal : day.getMealList()) 
+				for (Food food : meal.getFoodList()) 
+					if (!(food.getName().equals(foodName))) 
+						meal.getFoodList().remove(food);
+				
+			
 		
-		for (Day day : dayList) {
-			ArrayList<Meal> mealList = day.getMealList();
-			for (Meal meal : mealList) {
-				ArrayList<Food> foodList = meal.getFoodList();
-				for (Food food : foodList) {
-					if (food.getName().equals(foodName)) {
-						filteredList.add(day.getDate());
-						filteredList.add(meal.getMealType());
-						filteredList.add(food);
-					}
-				}
-			}
-		}
-		
-		filteredData.put("foodList", filteredList);
-		return filteredData;
 	}
 }

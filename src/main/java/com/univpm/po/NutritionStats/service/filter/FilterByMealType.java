@@ -13,28 +13,21 @@ import com.univpm.po.NutritionStats.model.Meal;
 
 public class FilterByMealType extends Filter {
 	
-	public FilterByMealType(JSONObject diary) {
+	private MealType mealType;
+	
+	public FilterByMealType(Diary diary, MealType mealType) {
 		super(diary);
+		this.mealType = mealType;
 	}
 	
-	public JSONObject filter(MealType mealType) {
+	@Override
+	public void filter() {
 		
-		ArrayList<Day> dayList = ((Diary) diary.get("diary")).getDayList();
-		JSONArray filteredList = new JSONArray();
-		
-		for (Day day : dayList) {
-			ArrayList<Meal> mealList = day.getMealList();
-			for (Meal meal : mealList) {
-				MealType typeOfMeal = meal.getMealType();
-				if(mealType == typeOfMeal) {
-					filteredList.add(day.getDate());
-					filteredList.add(meal);
-				}
-				
-			}
-		}
-		filteredData.put("mealList", filteredList);
-		return filteredData;
+		for (Day day : diary.getDayList()) 
+			for (Meal meal : day.getMealList()) 
+				if(!(mealType == meal.getMealType())) 
+					day.getMealList().remove(meal);
+	
 	}
 
 }

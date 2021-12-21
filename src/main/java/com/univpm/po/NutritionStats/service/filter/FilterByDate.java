@@ -10,20 +10,20 @@ import org.json.simple.JSONObject;
 
 public class FilterByDate extends Filter {
 
-	public FilterByDate(JSONObject diary) {
+	private LocalDate startDate;
+	private LocalDate endDate;
+	
+	public FilterByDate(Diary diary, LocalDate startDate, LocalDate endDate) {
 		super(diary);
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 
-	public JSONObject filter(LocalDate startDate, LocalDate endDate) {
+	@Override
+	public void filter() {
 
-		ArrayList<Day> dayList = ((Diary) diary.get("diary")).getDayList();
-		ArrayList<Day> filteredList = new ArrayList<>();
-		
-		for (Day day : dayList)
-			if (dateIsBetween(day.getDate(), startDate, endDate))
-				filteredList.add(day);
-
-		filteredData.put("dayList", filteredList);
-		return  filteredData;
+		for (Day day : diary.getDayList())
+			if (!(dateIsBetween(day.getDate(), startDate, endDate)))
+				diary.getDayList().remove(day);
 	}
 }
