@@ -7,18 +7,6 @@ import org.json.simple.JSONObject;
 import com.univpm.po.NutritionStats.model.Diary;
 
 public abstract class Filter {
-	
-	protected Diary diary;
-	
-	protected JSONObject filteredData = new JSONObject();
-	
-	public Filter(Diary diary) {
-		this.diary = diary;
-	}
-	
-	public Diary getDiary() {
-		return diary;
-	}
 
 	protected boolean dateIsBetween(LocalDate date, LocalDate startDate, LocalDate endDate) {
 		if ((date.isAfter(startDate) || date.isEqual(startDate))
@@ -28,6 +16,6 @@ public abstract class Filter {
 		return false;
 	}
 	
-	public abstract void filter ();
+	public abstract void filter (Diary diary);
 	
 }

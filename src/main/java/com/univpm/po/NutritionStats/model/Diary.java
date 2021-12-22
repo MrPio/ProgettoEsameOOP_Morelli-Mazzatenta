@@ -5,6 +5,8 @@ import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.enums.StatisticType;
 import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
+import com.univpm.po.NutritionStats.service.FilterManager;
+import com.univpm.po.NutritionStats.service.filter.Filter;
 import com.univpm.po.NutritionStats.service.statistic.Statistic;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
@@ -18,6 +20,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 public class Diary implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -68,6 +73,15 @@ public class Diary implements Serializable {
         DropboxAPI.uploadFile(new File(s.getFullPath()), DROPBOX_DIR);
     }
 
+    public void reset() {
+        Map.Entry lastEntry = user.getWeight().lastEntry();
+        user.setWeight(new TreeMap<>() {{
+            putAll(Map.ofEntries(lastEntry));
+        }});
+        dayList = new ArrayList<>();
+        save();
+    }
+
     public Day findDayById(String dayId) {
         dayId = dayId.replace("-", "/");
         for (Day day : dayList) {
@@ -107,20 +121,28 @@ public class Diary implements Serializable {
         save();
     }
 
-    public JSONObject doStatistic(LocalDate startDate, LocalDate endDate, StatisticType... statisticType) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, EndDateBeforeStartDateException {
-        JSONObject response=new JSONObject();
+    public JSONObject doStatistic(LocalDate startDate, LocalDate endDate, StatisticType... statisticType)
+            throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, EndDateBeforeStartDateException {
+        JSONObject response = new JSONObject();
         if (statisticType.length == 0) {
-            response.put("result","ERROR: no statistic requested");
+            response.put("result", "ERROR: no statistics requested");
             return response;
         }
-        response.put("result","success");
-        for(var stat:statisticType) {
-            Statistic statistic=stat.getReferenceClass().getDeclaredConstructor(Diary.class)
+
+        response.put("result", "success");
+        for (var stat : statisticType) {
+            Statistic statistic = stat.getReferenceClass().getDeclaredConstructor(Diary.class)
                     .newInstance(this);
-            statistic.calculateStatistic(startDate,endDate);
+            statistic.calculateStatistic(startDate, endDate);
             response.put(stat, statistic);
         }
         return response;
+    }
+
+    public Diary doFilter(Filter... filters){
+        for (var filter : filters)
+            filter.filter(this);
+        return this;
     }
 
     public JSONObject toJsonObject() {

@@ -2,17 +2,16 @@ package com.univpm.po.NutritionStats.controller;
 
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
-import com.univpm.po.NutritionStats.enums.Diet;
-import com.univpm.po.NutritionStats.enums.Gender;
-import com.univpm.po.NutritionStats.enums.MealType;
-import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.enums.*;
 import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
 import com.univpm.po.NutritionStats.exception.UserNotFound;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.model.User;
+import com.univpm.po.NutritionStats.service.FilterManager;
 import com.univpm.po.NutritionStats.service.MainService;
+import com.univpm.po.NutritionStats.service.filter.Filter;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +31,10 @@ public class Controller {
     final String ENDPOINT_DAY_INFO = "/diary/{day_id}";
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
+    final String ENDPOINT_RESET="/reset";
     final String ENDPOINT_UPDATE_WEIGHT = "/update_weight";
     final String ENDPOINT_STATS = "/stats";
-    final String ENDPOINT_FILTERS = "/filters";
+        final String ENDPOINT_FILTERS = "/filters";
     
     MainService mainService = new MainService();
 
@@ -172,6 +172,17 @@ public class Controller {
         }
     }
 
+    @RequestMapping(path = ENDPOINT_RESET, method = RequestMethod.DELETE)
+    public ResponseEntity<Object> requestReset(
+            @RequestParam(value = "token") String token) throws NoSuchMethodException {
+        try {
+            return mainService.requestReset(token);
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @RequestMapping(path = ENDPOINT_UPDATE_WEIGHT, method = RequestMethod.PUT)
     public ResponseEntity<Object> requestUpdateWeight(
             @RequestParam(value = "token") String token,
@@ -193,26 +204,34 @@ public class Controller {
     @RequestMapping(path = ENDPOINT_STATS, method = RequestMethod.GET)
     public ResponseEntity<Object> requestStats(
     		@RequestParam(value = "token") String token,
-            @RequestParam(value = "type") String type,
+            @RequestParam(value = "type") StatisticType[] type,
             @RequestParam(value = "start_date") String startDate,
-            @RequestParam(value = "end_date") String endDate) {
+            @RequestParam(value = "end_date") String endDate) throws NoSuchMethodException {
     	try {
     		LocalDate startDateFormatted = LocalDate.parse(startDate, Diary.formatter);
     		LocalDate endDateFormatted = LocalDate.parse(endDate, Diary.formatter);
     		return mainService.requestStats(token, type, startDateFormatted, endDateFormatted);
     	} catch (UserNotFound e) {
-    		 return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+    		 return new ResponseEntity<>(new JSONObject(Map.of(
                      "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
     	} catch (EndDateBeforeStartDateException e) {
-    		return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
+    		return new ResponseEntity<>(new JSONObject(Map.of(
                     "message", e.getMessage())), HttpStatus.BAD_REQUEST);
     	}
-    	 
+
     }
     @RequestMapping(path = ENDPOINT_FILTERS, method = RequestMethod.GET)
-    public ResponseEntity<Object> requestFilter (@RequestBody JSONObject filters) {
-    	
-		return null;
-    	
+    public ResponseEntity<Object> requestFilter (
+            @RequestParam String token,
+            @RequestBody FilterManager filterManager) throws NoSuchMethodException {
+        try {
+            return mainService.requestFilters(token, filterManager.getFiltersList().toArray(new Filter[0]));
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of(
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+        } catch (EndDateBeforeStartDateException e) {
+            return new ResponseEntity<>(new JSONObject(Map.of(
+                    "message", e.getMessage())), HttpStatus.BAD_REQUEST);
+        }
     }
 }

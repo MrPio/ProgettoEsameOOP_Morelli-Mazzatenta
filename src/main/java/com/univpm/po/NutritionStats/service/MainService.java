@@ -11,22 +11,14 @@ import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
 import com.univpm.po.NutritionStats.exception.UserNotFound;
 import com.univpm.po.NutritionStats.model.*;
-import com.univpm.po.NutritionStats.model.nutrient.*;
-import com.univpm.po.NutritionStats.service.filter.FilterByDate;
-import com.univpm.po.NutritionStats.service.statistic.Mean;
-import com.univpm.po.NutritionStats.service.statistic.Percentage;
-import com.univpm.po.NutritionStats.service.statistic.StandardDeviatiton;
-import com.univpm.po.NutritionStats.service.statistic.Statistic;
-
+import com.univpm.po.NutritionStats.service.filter.Filter;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -89,6 +81,10 @@ public class MainService {
         return new ResponseEntity<>(new JSONObject(Map.of("result", "success!", "user", response)), HttpStatus.OK);
     }
 
+    public ResponseEntity<Object> requestReset(String token) throws NoSuchMethodException, UserNotFound {
+        return (ResponseEntity<Object>) workOnDiary(token, Diary.class.getMethod("reset"));
+    }
+
     public ResponseEntity<Object> requestUpdateWeight(String token, float weight, LocalDate date)
             throws NoSuchMethodException, UserNotFound {
         return (ResponseEntity<Object>) workOnDiary(token,
@@ -98,9 +94,17 @@ public class MainService {
     public ResponseEntity<Object> requestStats(String token, StatisticType[] type, LocalDate startDate, LocalDate endDate)
             throws UserNotFound, EndDateBeforeStartDateException, NoSuchMethodException {
         JSONObject response = (JSONObject) workOnDiary(token, Diary.class.getMethod("doStatistic",
-                LocalDate.class, LocalDate.class, StatisticType[].class),startDate,endDate,type);
-        return new ResponseEntity<>(response,HttpStatus.OK) ;
+                LocalDate.class, LocalDate.class, StatisticType[].class), startDate, endDate, type);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    public ResponseEntity<Object> requestFilters(String token, Filter... filterManager)
+            throws UserNotFound, EndDateBeforeStartDateException, NoSuchMethodException {
+        Diary diary = (Diary) workOnDiary(token, Diary.class.getMethod("doFilter", Filter[].class), (Object) filterManager);
+        return new ResponseEntity<>(new JSONObject(Map.of("result", "success!", "diary", diary)), HttpStatus.OK);
+
+    }
+
 
     private HashMap<String, Object> dayToJsonObject(Day day) {
         HashMap<String, Object> response = new HashMap<>();
@@ -115,10 +119,9 @@ public class MainService {
 
     private Object workOnDiary(String token, Method method, Object... param) throws UserNotFound {
         Object obj = null;
-        LocalDate obj1 = (LocalDate) obj;
 
         JSONObject response = new JSONObject();
-        HttpStatus httpStatus = null;
+        HttpStatus httpStatus;
         Diary requestedDiary = Diary.load(token);
         if (requestedDiary != null) {
             try {
@@ -133,7 +136,6 @@ public class MainService {
             httpStatus = HttpStatus.OK;
         } else {
             response.put("result", "diary not found");
-            httpStatus = HttpStatus.BAD_REQUEST;
             throw new UserNotFound(token);
         }
         return new ResponseEntity<>(new JSONObject(response), httpStatus);

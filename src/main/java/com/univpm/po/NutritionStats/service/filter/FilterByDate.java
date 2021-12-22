@@ -10,20 +10,20 @@ import org.json.simple.JSONObject;
 
 public class FilterByDate extends Filter {
 
-	private LocalDate startDate;
-	private LocalDate endDate;
-	
-	public FilterByDate(Diary diary, LocalDate startDate, LocalDate endDate) {
-		super(diary);
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
+    private LocalDate startDate;
+    private LocalDate endDate;
 
-	@Override
-	public void filter() {
+    public FilterByDate(LocalDate startDate, LocalDate endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
-		for (Day day : diary.getDayList())
-			if (!(dateIsBetween(day.getDate(), startDate, endDate)))
-				diary.getDayList().remove(day);
-	}
+    @Override
+    public void filter(Diary diary) {
+        diary.getDayList().removeIf(day -> !(dateIsBetween(day.getDate(), startDate, endDate)));
+
+        /*for (Day day : diary.getDayList())
+            if (!(dateIsBetween(day.getDate(), startDate, endDate)))
+                diary.getDayList().remove(day);*/
+    }
 }

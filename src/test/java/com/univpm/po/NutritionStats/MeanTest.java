@@ -22,9 +22,9 @@ class MeanTest {
 		Mean mean = new Mean(diary);
 		StandardDeviatiton sd=new StandardDeviatiton(diary);
 		Percentage percentage=new Percentage(diary);
-		System.out.println(mean.calculateStatistic(begin, end));
+/*		System.out.println(mean.calculateStatistic(begin, end));
 		System.out.println(sd.calculateStatistic(begin, end));
-		System.out.println(percentage.calculateStatistic(begin, end));
+		System.out.println(percentage.calculateStatistic(begin, end));*/
 	}
 
 }

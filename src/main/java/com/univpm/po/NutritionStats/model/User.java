@@ -61,6 +61,10 @@ public class User implements Serializable {
 		return weight;
 	}
 
+	public void setWeight(TreeMap<LocalDate, Float> weight) {
+		this.weight = weight;
+	}
+
 	public Diet getDiet() {
 		return diet;
 	}

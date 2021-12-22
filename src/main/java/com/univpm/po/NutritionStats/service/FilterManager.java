@@ -1,64 +1,44 @@
 package com.univpm.po.NutritionStats.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.univpm.po.NutritionStats.enums.FilterType;
 import com.univpm.po.NutritionStats.enums.MealType;
+import com.univpm.po.NutritionStats.model.Diary;
+import com.univpm.po.NutritionStats.service.filter.Filter;
+import com.univpm.po.NutritionStats.service.filter.FilterByDate;
+import com.univpm.po.NutritionStats.service.filter.FilterByFood;
+import com.univpm.po.NutritionStats.service.filter.FilterByMealType;
 
 
 public class FilterManager {
-	
-	ArrayList<FilterType> filteredList = new ArrayList<FilterType>();
-	private String startDate;
-	private String endDate;
-	private MealType mealType;
-	private String foodName;
 
-	public FilterManager(
-			@JsonProperty("startDate") String startDate, 
-			@JsonProperty("endDate") String endDate,
-			@JsonProperty("mealType") MealType mealType,
-			@JsonProperty("food") String foodName
-			) {
-		
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.mealType = mealType;
-		this.foodName = foodName;
-		
-		if (startDate != null && endDate != null) {
-			filteredList.add(FilterType.FILTER_BY_DATE);
-		}
-		
-		if (mealType != null) {
-			filteredList.add(FilterType.FILTER_BY_MEAL_TYPE);
-		}
-		if (foodName != null) {
-			filteredList.add(FilterType.FILTER_BY_FOOD);
-		}
-	}
+    ArrayList<Filter> filtersList = new ArrayList<>();
 
-	public ArrayList<FilterType> getFilteredList() {
-		return filteredList;
-	}
+    public FilterManager(
+            @JsonProperty("start_date") String startDate,
+            @JsonProperty("end_date") String endDate,
+            @JsonProperty("meal_type") MealType mealType,
+            @JsonProperty("food_name") String foodName
+    ) {
 
-	public String getStartDate() {
-		return startDate;
-	}
+        if (startDate != null && endDate != null) {
+            LocalDate start = LocalDate.parse(startDate, Diary.formatter);
+            LocalDate end = LocalDate.parse(endDate, Diary.formatter);
+            filtersList.add(new FilterByDate(start, end));
+        }
 
-	public String getEndDate() {
-		return endDate;
-	}
+        if (mealType != null) {
+            filtersList.add(new FilterByMealType(mealType));
+        }
+        if (foodName != null) {
+            filtersList.add(new FilterByFood(foodName));
+        }
+    }
 
-	public MealType getMealType() {
-		return mealType;
-	}
-
-	public String getFoodName() {
-		return foodName;
-	}
-	
-	
-	
+    public ArrayList<Filter> getFiltersList() {
+        return filtersList;
+    }
 }

@@ -17,7 +17,7 @@ import com.univpm.po.NutritionStats.model.User;
 
 public class Mean extends Statistic {
 
-	private JSONObject MeansValues = new JSONObject();
+	private JSONObject meansValues = new JSONObject();
 
 	private float calories = 0.0f;
 	private float weight = 0.0f;
@@ -27,7 +27,7 @@ public class Mean extends Statistic {
 	}
 
 	public JSONObject getMeansValues() {
-		return MeansValues;
+		return meansValues;
 	}
 
 	public float calculateCalories() {
@@ -38,7 +38,7 @@ public class Mean extends Statistic {
 		return weight;
 	}
 
-	public JSONObject calculateStatistic(LocalDate startDate, LocalDate endDate)
+	public void calculateStatistic(LocalDate startDate, LocalDate endDate)
 			throws EndDateBeforeStartDateException {
 		checkDateException(startDate, endDate);
 		resetValues();
@@ -56,11 +56,11 @@ public class Mean extends Statistic {
 		
 		for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
 			entry.setValue(entry.getValue() / count);
-			MeansValues.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
+			meansValues.put(entry.getKey().getSimpleName().toLowerCase(), entry.getValue());
 		}
 		
 		calories /= count;
-		MeansValues.put("calorie", calories);
+		meansValues.put("calorie", calories);
 		
 		count = 0;
 		for (LocalDate date : diary.getUser().getWeight().keySet()) {
@@ -70,8 +70,6 @@ public class Mean extends Statistic {
 			}
 		}
 		weight /= count;
-		MeansValues.put("weight", weight);
-
-		return MeansValues;
+		meansValues.put("weight", weight);
 	}
 }

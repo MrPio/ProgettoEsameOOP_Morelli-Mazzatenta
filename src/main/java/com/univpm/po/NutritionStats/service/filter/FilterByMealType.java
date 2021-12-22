@@ -12,22 +12,20 @@ import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.model.Meal;
 
 public class FilterByMealType extends Filter {
-	
-	private MealType mealType;
-	
-	public FilterByMealType(Diary diary, MealType mealType) {
-		super(diary);
-		this.mealType = mealType;
-	}
-	
-	@Override
-	public void filter() {
-		
-		for (Day day : diary.getDayList()) 
-			for (Meal meal : day.getMealList()) 
-				if(!(mealType == meal.getMealType())) 
-					day.getMealList().remove(meal);
-	
-	}
 
+    private MealType mealType;
+
+    public FilterByMealType(MealType mealType) {
+        this.mealType = mealType;
+    }
+
+    @Override
+    public void filter(Diary diary) {
+        for (Day day : diary.getDayList())
+            day.getMealList().removeIf(meal -> !(mealType == meal.getMealType()));
+
+/*        for (Meal meal : day.getMealList())
+                if (!(mealType == meal.getMealType()))
+                    day.getMealList().remove(meal);*/
+    }
 }

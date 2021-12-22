@@ -23,9 +23,9 @@ class FilterTest {
 
 		assert diary != null;
 
-		FilterByDate f = new FilterByDate(diary.toJsonObject());
+		/*FilterByDate f = new FilterByDate(diary.toJsonObject());
         System.out.println(diary.toJsonObject().toJSONString());
-        System.out.println(f.filter(begin, end));
+        System.out.println(f.filter(begin, end));*/
 
     }
 

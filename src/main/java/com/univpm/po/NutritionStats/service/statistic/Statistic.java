@@ -28,7 +28,7 @@ public abstract class Statistic {
         return statsValues;
     }
 
-    public abstract  JSONObject calculateStatistic(LocalDate startDate, LocalDate endDate)
+    public abstract  void calculateStatistic(LocalDate startDate, LocalDate endDate)
             throws EndDateBeforeStartDateException;
 
     protected void resetValues() {

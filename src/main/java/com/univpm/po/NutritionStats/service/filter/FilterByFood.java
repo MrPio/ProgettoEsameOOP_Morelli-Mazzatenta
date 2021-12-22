@@ -13,23 +13,20 @@ import com.univpm.po.NutritionStats.model.Meal;
 
 public class FilterByFood extends Filter {
 
-	private String foodName;
-	
-	public FilterByFood(Diary diary, String foodName) {
-		super(diary);
-		this.foodName = foodName;
-	}
+    private String foodName;
 
-	@Override
-	public void filter() {
-		
-		for (Day day : diary.getDayList()) 
-			for (Meal meal : day.getMealList()) 
-				for (Food food : meal.getFoodList()) 
-					if (!(food.getName().equals(foodName))) 
-						meal.getFoodList().remove(food);
-				
-			
-		
-	}
+    public FilterByFood(String foodName) {
+        this.foodName = foodName;
+    }
+
+    @Override
+    public void filter(Diary diary) {
+        for (Day day : diary.getDayList())
+            for (Meal meal : day.getMealList())
+                meal.getFoodList().removeIf(food -> !(food.getName().equals(foodName)));
+
+            /*    for (Food food : meal.getFoodList())
+                    if (!(food.getName().equals(foodName)))
+                        meal.getFoodList().remove(food);*/
+    }
 }
