@@ -25,7 +25,6 @@ public class User implements Serializable {
 	private LocalDate birth;
 	private int height;
 	private TreeMap<LocalDate, Float> weight = new TreeMap<LocalDate, Float>();
-	private int dailyCaloricIntake;
 
 	public User(String email) {
 		this.email = email;
@@ -74,7 +73,12 @@ public class User implements Serializable {
 	}
 
 	public int getDailyCaloricIntake() {
-		return dailyCaloricIntake;
+		LocalDate lastDate = weight.lastKey();
+		Period age = Period.between(birth, LocalDate.now());
+		if (gender == Gender.MALE)
+			return (int) (((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) + 5) * 1.4);
+		else
+			return (int) (((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) - 161) * 1.4);
 	}
 
 	public String generateToken() {
@@ -92,16 +96,6 @@ public class User implements Serializable {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	public int calculateCaloricIntake() {
-
-		LocalDate lastDate = weight.lastKey();
-		Period age = Period.between(birth, LocalDate.now());
-		if (gender == Gender.MALE)
-			return (int) (((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) + 5) * 1.4);
-		else
-			return (int) (((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) - 161) * 1.4);
 	}
 
 }

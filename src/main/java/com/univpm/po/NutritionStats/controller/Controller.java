@@ -31,11 +31,11 @@ public class Controller {
     final String ENDPOINT_DAY_INFO = "/diary/{day_id}";
     final String ENDPOINT_SIGNUP = "/signup";
     final String ENDPOINT_LOGIN = "/login";
-    final String ENDPOINT_RESET="/reset";
+    final String ENDPOINT_RESET = "/reset";
     final String ENDPOINT_UPDATE_WEIGHT = "/update_weight";
     final String ENDPOINT_STATS = "/stats";
-        final String ENDPOINT_FILTERS = "/filters";
-    
+    final String ENDPOINT_FILTERS = "/filters";
+
     MainService mainService = new MainService();
 
     @RequestMapping(path = "/")
@@ -50,8 +50,8 @@ public class Controller {
     @RequestMapping(path = ENDPOINT_FOOD, method = RequestMethod.GET)
     public ResponseEntity<Object> getInfoFromFoodName(
             @PathVariable("food_name") String foodName,
-            @RequestParam(value = "portion_weight",defaultValue = "100") Integer weight,
-            @RequestParam(value = "unit_of_measure",defaultValue = "GR") Measure measure) {
+            @RequestParam(value = "portion_weight", defaultValue = "100") Integer weight,
+            @RequestParam(value = "unit_of_measure", defaultValue = "GR") Measure measure) {
         try {
             return new ResponseEntity<>(
                     EdamamNutritionAnalysisAPI.getFood(foodName, weight, measure),
@@ -137,6 +137,7 @@ public class Controller {
     public ResponseEntity<Object> requestDayInfo(
             @PathVariable(value = "day_id") String dayId,
             @RequestParam(value = "token") String token) throws NoSuchMethodException {
+        System.err.println(ENDPOINT_DAY_INFO);
         try {
             return mainService.requestDayValues(token, dayId);
         } catch (UserNotFound e) {
@@ -163,7 +164,9 @@ public class Controller {
 
     @RequestMapping(path = ENDPOINT_LOGIN, method = RequestMethod.GET)
     public ResponseEntity<Object> requestLogin(
-            @RequestParam(value = "token") String token) throws NoSuchMethodException {
+            @RequestParam(value = "token") String token) throws NoSuchMethodException
+    {
+        System.err.println(ENDPOINT_LOGIN);
         try {
             return mainService.requestLogin(token);
         } catch (UserNotFound e) {
@@ -200,32 +203,30 @@ public class Controller {
                     "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
-    
+
     @RequestMapping(path = ENDPOINT_STATS, method = RequestMethod.GET)
     public ResponseEntity<Object> requestStats(
-    		@RequestParam(value = "token") String token,
-            @RequestParam(value = "type") StatisticType[] type,
-            @RequestParam(value = "start_date") String startDate,
-            @RequestParam(value = "end_date") String endDate) throws NoSuchMethodException {
-    	try {
-    		LocalDate startDateFormatted = LocalDate.parse(startDate, Diary.formatter);
-    		LocalDate endDateFormatted = LocalDate.parse(endDate, Diary.formatter);
-    		return mainService.requestStats(token, type, startDateFormatted, endDateFormatted);
-    	} catch (UserNotFound e) {
-    		 return new ResponseEntity<>(new JSONObject(Map.of(
-                     "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
-    	} catch (EndDateBeforeStartDateException e) {
-    		return new ResponseEntity<>(new JSONObject(Map.of(
-                    "message", e.getMessage())), HttpStatus.BAD_REQUEST);
-    	}
-
-    }
-    @RequestMapping(path = ENDPOINT_FILTERS, method = RequestMethod.GET)
-    public ResponseEntity<Object> requestFilter (
-            @RequestParam String token,
+            @RequestParam(value = "token") String token,
+            @RequestParam(value = "type") StatisticType[] types,
             @RequestBody FilterManager filterManager) throws NoSuchMethodException {
         try {
-            return mainService.requestFilters(token, filterManager.getFiltersList().toArray(new Filter[0]));
+            return mainService.requestStats(token, types,filterManager.getFiltersList());
+        } catch (UserNotFound e) {
+            return new ResponseEntity<>(new JSONObject(Map.of(
+                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+        } catch (EndDateBeforeStartDateException e) {
+            return new ResponseEntity<>(new JSONObject(Map.of(
+                    "message", e.getMessage())), HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @RequestMapping(path = ENDPOINT_FILTERS, method = RequestMethod.GET)
+    public ResponseEntity<Object> requestFilter(
+            @RequestParam(value = "token") String token,
+            @RequestBody FilterManager filterManager) throws NoSuchMethodException {
+        try {
+            return mainService.requestFilters(token, filterManager.getFiltersList());
         } catch (UserNotFound e) {
             return new ResponseEntity<>(new JSONObject(Map.of(
                     "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);

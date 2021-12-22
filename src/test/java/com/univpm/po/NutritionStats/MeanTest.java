@@ -19,9 +19,9 @@ class MeanTest {
 		mean.calculateStatistic(diary);
 		sd.calculateStatistic(diary);
 		percentage.calculateStatistic(diary);
-		System.out.println(mean.getMeansValues());
-		System.out.println(sd.getstandardDeviationsValues());
-		System.out.println(percentage.getpercentagesValues());
+		System.out.println(mean.getStatsValues());
+		System.out.println(sd.getStatsValues());
+		System.out.println(percentage.getStatsValues());
 	}
 
 }

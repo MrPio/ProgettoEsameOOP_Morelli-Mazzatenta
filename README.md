@@ -19,26 +19,26 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 ## Application Route 🌎:
 Type | Route | Params | Body | Description
 ---- | ---- | ---- | ---- | ----  
-🔵**POST** | `/signup` | **`nickname`, `email`, `birth`, `height`, `weight`, `diet`, `gender`** | -| Register new user.
-🔵**POST** | `/add/food/by_name` | **`token`, `day_id`, `meal_type`, `food_name`, `portion_weight`, `unit_of_measure`** |- | Add consumed food to a specified meal by its name.
-🔵**POST** | `/add/food/by_ean` | **`token`, `day_id`, `meal_type`, `ean_code`, `portion_weight`** |- | Add consumed food to a specified meal by its name.
-🔵**POST** | `/add/water` | **`token`, `day_id`, `portion_volume`** |- | Add consumed water to a specified meal.
-🔴**DELETE** | `/reset` | **`token`** |- | Deletes all data owned by the user.``
-🟡**PUT** | `/update_weight` | **`token`, `weight`** |- | Update the value of user's weight.
-🟢**GET** | `/api/name/{food_name}` | **`portion_weight`, `unit_of_measure`** | -| Return information about food by its name.
+🔵**POST** | `/signup` | `nickname`, `email`, `birth`, `height`, `weight`, `diet`, `gender` | -| Register new user.
+🔵**POST** | `/add/food/by_name` | `token`, `day_id`, `meal_type`, `food_name`, `portion_weight`, `unit_of_measure` |- | Add consumed food to a specified meal by its name.
+🔵**POST** | `/add/food/by_ean` | `token`, `day_id`, `meal_type`, `ean_code`, `portion_weight` |- | Add consumed food to a specified meal by its name.
+🔵**POST** | `/add/water` | `token`, `day_id`, `portion_volume` |- | Add consumed water to a specified meal.
+🔴**DELETE** | `/reset` | `token` |- | Deletes all data owned by the user.``
+🟡**PUT** | `/update_weight` | `token`, `weight` |- | Update the value of user's weight.
+🟢**GET** | `/api/name/{food_name}` | `portion_weight`, `unit_of_measure` | -| Return information about food by its name.
 🟢**GET** | `/api/ean/{ean_code}` | - |- | Return information about product by its ean code.
-🟢**GET** | `/login` | **`token`**|-  | Login user, return user's info if in the database.
-🟢**GET** | `/diary` | **`token`** |- | Return all the data (`metadata`) owned by the user.
-🟢**GET** | `/diary/{day_id}` | **`token`** | -| Return the data of the user in specified day.
-🟢**GET** | `/stats` | **`token`** |- | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
-🟢**GET** | `/filters` | **`start_date`, `end_date`, `meal_type`, `food_name`, `element_name` ** |- | Filter metadata by what you need.
+🟢**GET** | `/login` | `token`|-  | Login user, return user's info if in the database.
+🟢**GET** | `/diary` | `token` |- | Return all the data (`metadata`) owned by the user.
+🟢**GET** | `/diary/{day_id}` | `token` | -| Return the data of the user in specified day.
+🟢**GET** | `/stats` | `token` | `start_date`, `end_date`, `meal_type`, `food_name`, `element_name` | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
+🟢**GET** | `/filters` | - | `start_date`, `end_date`, `meal_type`, `food_name`, `element_name` | Filter metadata by what you need.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 ## Application UML ☀:
 ### •🔰 Model:
 ![Model UML](graphics/NutritionStats-UML.jpg)
 
-# Tools 
-- Software:
+## Tools 
+- ###### Software:
 
   [Eclipse](https://www.eclipse.org/) - java IDE
 
@@ -50,7 +50,7 @@ Type | Route | Params | Body | Description
 
   [Maven](https://maven.apache.org/) - Software project management and comprehension tool based on the concept of project object model (POM).
 
-- External REST API:
+- ###### External REST API:
 
   [Edamam](https://developer.edamam.com/) - First food and nutrition database API.
 

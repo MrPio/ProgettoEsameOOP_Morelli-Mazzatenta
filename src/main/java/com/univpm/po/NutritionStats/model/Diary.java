@@ -2,26 +2,20 @@ package com.univpm.po.NutritionStats.model;
 
 import com.univpm.po.NutritionStats.api.DropboxAPI;
 import com.univpm.po.NutritionStats.enums.MealType;
-import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.enums.StatisticType;
-import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
-import com.univpm.po.NutritionStats.service.FilterManager;
 import com.univpm.po.NutritionStats.service.filter.Filter;
 import com.univpm.po.NutritionStats.service.statistic.Statistic;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
 import com.univpm.po.NutritionStats.utility.SerializationImpl;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.NavigableMap;
 import java.util.TreeMap;
 
 public class Diary implements Serializable {
@@ -121,28 +115,29 @@ public class Diary implements Serializable {
         save();
     }
 
-    public JSONObject doStatistic(LocalDate startDate, LocalDate endDate, StatisticType... statisticType)
-            throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, EndDateBeforeStartDateException {
+    public JSONObject doStatistic(ArrayList<Filter> filters, StatisticType... statisticType)
+            throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        doFilter(filters);
         JSONObject response = new JSONObject();
-        if (statisticType.length == 0) {
-            response.put("result", "ERROR: no statistics requested");
-            return response;
-        }
 
         response.put("result", "success");
         for (var stat : statisticType) {
-            Statistic statistic = stat.getReferenceClass().getDeclaredConstructor(Diary.class)
-                    .newInstance(this);
-            statistic.calculateStatistic(startDate, endDate);
+            Statistic statistic = stat.getReferenceClass().getDeclaredConstructor().newInstance();
+            statistic.calculateStatistic(this);
             response.put(stat, statistic);
         }
         return response;
     }
 
-    public Diary doFilter(Filter... filters){
+    public Diary doFilter(ArrayList<Filter> filters){
         for (var filter : filters)
             filter.filter(this);
+        removeEmptyDays();
         return this;
+    }
+
+    private void removeEmptyDays(){
+        dayList.removeIf(day->day.getMealList().size()==0 && day.getWaterList().size()==0);
     }
 
     public JSONObject toJsonObject() {

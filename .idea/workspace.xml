@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Upgraded \stats route">
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="new filter concept">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterWater.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/service/filter/FilterByNutrientNotNutrientTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
@@ -16,14 +18,11 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/FilterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/FilterManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByFood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByFood.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByMealType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByMealType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByNutrientNotNutrient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByNutrientNotNutrient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviatiton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviatiton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,10 +34,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,6 +77,9 @@
     <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.univpm.po.NutritionStats.service.filter" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\valer\Documents\GitHub\ProgettoEsameOOP_Morelli-Mazzatenta\graphics" />
     </key>
@@ -92,6 +94,7 @@
       <recent name="com.univpm.po.NutritionStats.junit" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.univpm.po.NutritionStats.service.filter" />
       <recent name="com.univpm.po.NutritionStats.model" />
       <recent name="com.univpm.po.NutritionStats.api" />
       <recent name="com.univpm.po.NutritionStats.utility" />
@@ -152,17 +155,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EdamamNutritionAnalysisAPITest.getFood" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FilterByNutrientNotNutrientTest.filter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="NutritionStats" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.univpm.po.NutritionStats.*" />
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.service.filter.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
-      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.EdamamNutritionAnalysisAPITest" />
-      <option name="METHOD_NAME" value="getFood" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.service.filter" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.service.filter.FilterByNutrientNotNutrientTest" />
+      <option name="METHOD_NAME" value="filter" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -282,19 +285,19 @@
       <item itemvalue="JUnit.InputOutputImplTest" />
       <item itemvalue="JUnit.SerializationImplTest" />
       <item itemvalue="JUnit.UserTest" />
-      <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest.getFood" />
       <item itemvalue="JUnit.FilterTest.test" />
       <item itemvalue="JUnit.FoodTest.calculate" />
       <item itemvalue="JUnit.MeanTest.testWithDebugger" />
       <item itemvalue="JUnit.UserTest.test" />
+      <item itemvalue="JUnit.FilterByNutrientNotNutrientTest.filter" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FilterByNutrientNotNutrientTest.filter" />
         <item itemvalue="JUnit.FilterTest.test" />
         <item itemvalue="JUnit.UserTest.test" />
         <item itemvalue="JUnit.MeanTest.testWithDebugger" />
         <item itemvalue="JUnit.FoodTest.calculate" />
-        <item itemvalue="JUnit.EdamamNutritionAnalysisAPITest.getFood" />
       </list>
     </recent_temporary>
   </component>
@@ -538,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640105555102</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="new filter concept">
+      <created>1640166062838</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1640166062838</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -558,7 +568,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Added support to remote database (Dropbox)" />
     <MESSAGE value="Added /signup route and md5 hashing algorithm to generate user's token" />
     <MESSAGE value="Extended login with more stuff and enabled storing for new users and their data" />
     <MESSAGE value="folder fix" />
@@ -583,7 +592,8 @@
     <MESSAGE value="small fix" />
     <MESSAGE value="rename variable" />
     <MESSAGE value="Upgraded \stats route" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgraded \stats route" />
+    <MESSAGE value="new filter concept" />
+    <option name="LAST_COMMIT_MESSAGE" value="new filter concept" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -593,9 +603,9 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/service/filter/FilterByNutrientNotNutrientTest.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -4,15 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.univpm.po.NutritionStats.enums.FilterType;
+import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.model.Diary;
-import com.univpm.po.NutritionStats.service.filter.Filter;
-import com.univpm.po.NutritionStats.service.filter.FilterByDate;
-import com.univpm.po.NutritionStats.service.filter.FilterByFood;
-import com.univpm.po.NutritionStats.service.filter.FilterByMealType;
-import com.univpm.po.NutritionStats.service.filter.FilterByNutrientNotNutrient;
+import com.univpm.po.NutritionStats.service.filter.*;
 
 
 public class FilterManager {
@@ -24,7 +20,8 @@ public class FilterManager {
             @JsonProperty("end_date") String endDate,
             @JsonProperty("meal_type") MealType mealType,
             @JsonProperty("food_name") String foodName,
-            @JsonProperty("element_name") String elementName
+            @JsonProperty("water") Boolean water,
+            @JsonProperty("nutrient_name") AllNutrientNonNutrient[] nutrient_name
     ) throws EndDateBeforeStartDateException {
 
         if (startDate != null && endDate != null) {
@@ -37,17 +34,14 @@ public class FilterManager {
             filtersList.add(new FilterByDate(start, end));   
         }
 
-        if (mealType != null) {
+        if (mealType != null)
             filtersList.add(new FilterByMealType(mealType));
-        }
-        if (foodName != null) {
+        if (foodName != null)
             filtersList.add(new FilterByFood(foodName));
-        }
-        
-        if (elementName != null) {
-            filtersList.add(new FilterByNutrientNotNutrient(elementName));
-        }
-        
+        if(!water)
+            filtersList.add(new FilterWater());
+        if (nutrient_name != null)
+            filtersList.add(new FilterByNutrientNotNutrient(nutrient_name));
     }
 
     public ArrayList<Filter> getFiltersList() {

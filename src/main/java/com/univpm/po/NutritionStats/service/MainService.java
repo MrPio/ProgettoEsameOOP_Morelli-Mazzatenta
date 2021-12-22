@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,16 +92,16 @@ public class MainService {
                 Diary.class.getMethod("updateWeight", float.class, LocalDate.class), weight, date);
     }
 
-    public ResponseEntity<Object> requestStats(String token, StatisticType[] type, LocalDate startDate, LocalDate endDate)
+    public ResponseEntity<Object> requestStats(String token, StatisticType[] types, ArrayList<Filter> filters)
             throws UserNotFound, EndDateBeforeStartDateException, NoSuchMethodException {
         JSONObject response = (JSONObject) workOnDiary(token, Diary.class.getMethod("doStatistic",
-                LocalDate.class, LocalDate.class, StatisticType[].class), startDate, endDate, type);
+                ArrayList.class, StatisticType[].class),  filters, types);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> requestFilters(String token, Filter... filterManager)
+    public ResponseEntity<Object> requestFilters(String token, ArrayList<Filter> filters)
             throws UserNotFound, EndDateBeforeStartDateException, NoSuchMethodException {
-        Diary diary = (Diary) workOnDiary(token, Diary.class.getMethod("doFilter", Filter[].class), (Object) filterManager);
+        Diary diary = (Diary) workOnDiary(token, Diary.class.getMethod("doFilter", ArrayList.class), filters);
         return new ResponseEntity<>(new JSONObject(Map.of("result", "success!", "diary", diary)), HttpStatus.OK);
 
     }
