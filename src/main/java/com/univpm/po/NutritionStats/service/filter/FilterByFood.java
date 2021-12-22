@@ -1,10 +1,5 @@
 package com.univpm.po.NutritionStats.service.filter;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;

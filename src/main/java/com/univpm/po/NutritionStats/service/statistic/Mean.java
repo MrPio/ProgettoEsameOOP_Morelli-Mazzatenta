@@ -22,10 +22,6 @@ public class Mean extends Statistic {
 	private float calories = 0.0f;
 	private float weight = 0.0f;
 
-	public Mean(Diary diary) {
-		super(diary);
-	}
-
 	public JSONObject getMeansValues() {
 		return meansValues;
 	}
@@ -38,21 +34,17 @@ public class Mean extends Statistic {
 		return weight;
 	}
 
-	public void calculateStatistic(LocalDate startDate, LocalDate endDate)
-			throws EndDateBeforeStartDateException {
-		checkDateException(startDate, endDate);
+	public void calculateStatistic(Diary diary) {
 		resetValues();
 		calories = 0f;
 
 		int count = 0;
 		for (Day day : diary.getDayList()) {
-			if (dateIsBetween(day.getDate(), startDate, endDate)) {
 				for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet())
 					entry.setValue(entry.getValue() + day.calculate((Class<?>) entry.getKey()));
 				calories += day.calculateCalories();
 				++count;
 			}
-		}
 		
 		for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
 			entry.setValue(entry.getValue() / count);
@@ -64,12 +56,11 @@ public class Mean extends Statistic {
 		
 		count = 0;
 		for (LocalDate date : diary.getUser().getWeight().keySet()) {
-			if (dateIsBetween(date, startDate, endDate)) {
 				weight += diary.getUser().getWeight().get(date);
 				++count;
-			}
 		}
 		weight /= count;
 		meansValues.put("weight", weight);
 	}
+
 }

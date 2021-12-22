@@ -18,33 +18,15 @@ public abstract class Statistic {
                 put(nutrient.getReferenceClass(), 0.0f);
         }
     };
-    protected Diary diary;
-
-    public Statistic(Diary diary) {
-        this.diary = diary;
-    }
 
     protected Map<Class<?>, Float> getStatsValues() {
         return statsValues;
     }
 
-    public abstract  void calculateStatistic(LocalDate startDate, LocalDate endDate)
-            throws EndDateBeforeStartDateException;
+    public abstract  void calculateStatistic(Diary diary);
 
     protected void resetValues() {
         for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet())
             entry.setValue(0f);
-    }
-
-    protected boolean dateIsBetween(LocalDate date, LocalDate startDate, LocalDate endDate) {
-        if ((date.isAfter(startDate) || date.isEqual(startDate))
-                && (date.isBefore(endDate) || date.isEqual(endDate)))
-            return true;
-        return false;
-    }
-
-    protected void checkDateException(LocalDate startDate, LocalDate endDate) throws EndDateBeforeStartDateException {
-        if (endDate.isBefore(startDate))
-            throw new EndDateBeforeStartDateException(startDate, endDate);
     }
 }

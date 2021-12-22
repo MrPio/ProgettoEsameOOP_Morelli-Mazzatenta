@@ -2,8 +2,6 @@ package com.univpm.po.NutritionStats.service.filter;
 
 import java.time.LocalDate;
 
-import org.json.simple.JSONObject;
-
 import com.univpm.po.NutritionStats.model.Diary;
 
 public abstract class Filter {

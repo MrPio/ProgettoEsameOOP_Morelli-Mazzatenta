@@ -18,30 +18,20 @@ public class StandardDeviatiton extends Statistic {
     float calories = 0;
     float weight = 0;
 
-    public StandardDeviatiton(Diary diary) {
-        super(diary);
-    }
-
     public JSONObject getstandardDeviationsValues() {
         return standardDeviationsValues;
     }
 
-    public void calculateStatistic(LocalDate startDate, LocalDate endDate)
-            throws EndDateBeforeStartDateException {
-        if (startDate.isEqual(endDate)) {
-            standardDeviationsValues.put("result", "error: cannot calculate standard deviation in one day");
-            return;
-        }
-        checkDateException(startDate, endDate);
+    public void calculateStatistic(Diary diary) {
+      
         resetValues();
         calories = 0f;
 
-        Mean mean = new Mean(diary);
-        mean.calculateStatistic(startDate, endDate);
+        Mean mean = new Mean();
+        mean.calculateStatistic(diary);
 
         int count = 0;
         for (Day day : diary.getDayList()) {
-            if (dateIsBetween(day.getDate(), startDate, endDate)) {
                 for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
                     float value = day.calculate((Class<?>) entry.getKey()) - mean.getStatsValues().get(entry.getKey());
                     entry.setValue(entry.getValue() + (float) Math.pow(value, 2));
@@ -49,7 +39,6 @@ public class StandardDeviatiton extends Statistic {
                 calories += (float) Math.pow(day.calculateCalories() - mean.calculateCalories(), 2);
                 ++count;
             }
-        }
 
         for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
             entry.setValue((float) Math.sqrt(entry.getValue() / (count - 1)));
@@ -61,10 +50,8 @@ public class StandardDeviatiton extends Statistic {
 
         count = 0;
         for (LocalDate date : diary.getUser().getWeight().keySet()) {
-            if (dateIsBetween(date, startDate, endDate)) {
                 weight += (float) Math.pow(diary.getUser().getWeight().get(date) - mean.calculateWeight(), 2);
                 ++count;
-            }
         }
         weight = (float) Math.sqrt(weight / (count - 1));
         standardDeviationsValues.put("weight", weight);

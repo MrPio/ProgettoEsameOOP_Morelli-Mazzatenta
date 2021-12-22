@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.univpm.po.NutritionStats.enums.FilterType;
 import com.univpm.po.NutritionStats.enums.MealType;
+import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.service.filter.Filter;
 import com.univpm.po.NutritionStats.service.filter.FilterByDate;
@@ -22,12 +23,16 @@ public class FilterManager {
             @JsonProperty("end_date") String endDate,
             @JsonProperty("meal_type") MealType mealType,
             @JsonProperty("food_name") String foodName
-    ) {
+    ) throws EndDateBeforeStartDateException {
 
         if (startDate != null && endDate != null) {
             LocalDate start = LocalDate.parse(startDate, Diary.formatter);
             LocalDate end = LocalDate.parse(endDate, Diary.formatter);
-            filtersList.add(new FilterByDate(start, end));
+            
+            if (end.isBefore(start))
+            	throw new EndDateBeforeStartDateException(start, end);
+            	
+            filtersList.add(new FilterByDate(start, end));   
         }
 
         if (mealType != null) {
@@ -41,4 +46,5 @@ public class FilterManager {
     public ArrayList<Filter> getFiltersList() {
         return filtersList;
     }
+	
 }

@@ -24,28 +24,20 @@ public class Percentage extends Statistic {
 		}
 	};
 
-    public Percentage(Diary diary) {
-        super(diary);
-    }
-
     public JSONObject getpercentagesValues() {
         return percentagesValues;
     }
 
-    public void calculateStatistic(LocalDate startDate, LocalDate endDate)
-            throws EndDateBeforeStartDateException {
+    public void calculateStatistic(Diary diary) {
 
-        checkDateException(startDate, endDate);
         resetValues();
 
         float calories = 0;
 
         for (Day day : diary.getDayList()) {
-            if (dateIsBetween(day.getDate(), startDate, endDate)) {
                 for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet())
                     entry.setValue(entry.getValue() + day.calculate((Class<?>) entry.getKey()));
                 calories += day.calculateCalories();
-            }
         }
 
         for (Map.Entry<Class<?>, Float> entry : statsValues.entrySet()) {
