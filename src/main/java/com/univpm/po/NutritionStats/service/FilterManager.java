@@ -12,6 +12,7 @@ import com.univpm.po.NutritionStats.service.filter.Filter;
 import com.univpm.po.NutritionStats.service.filter.FilterByDate;
 import com.univpm.po.NutritionStats.service.filter.FilterByFood;
 import com.univpm.po.NutritionStats.service.filter.FilterByMealType;
+import com.univpm.po.NutritionStats.service.filter.FilterByNutrientNotNutrient;
 
 
 public class FilterManager {
@@ -22,7 +23,8 @@ public class FilterManager {
             @JsonProperty("start_date") String startDate,
             @JsonProperty("end_date") String endDate,
             @JsonProperty("meal_type") MealType mealType,
-            @JsonProperty("food_name") String foodName
+            @JsonProperty("food_name") String foodName,
+            @JsonProperty("element_name") String elementName
     ) throws EndDateBeforeStartDateException {
 
         if (startDate != null && endDate != null) {
@@ -41,6 +43,11 @@ public class FilterManager {
         if (foodName != null) {
             filtersList.add(new FilterByFood(foodName));
         }
+        
+        if (elementName != null) {
+            filtersList.add(new FilterByNutrientNotNutrient(elementName));
+        }
+        
     }
 
     public ArrayList<Filter> getFiltersList() {
