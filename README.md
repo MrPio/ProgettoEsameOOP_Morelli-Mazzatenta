@@ -1,6 +1,8 @@
 # NutritionStats
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
+# Description of the Project
+
 ### *Remote Access*
 
 >Remote access to this rest API: (***still not deployed***):
@@ -29,8 +31,25 @@ Type | Route | Params | Body | Description
 🟢**GET** | `/diary` | **`token`** |- | Return all the data (`metadata`) owned by the user.
 🟢**GET** | `/diary/{day_id}` | **`token`** | -| Return the data of the user in specified day.
 🟢**GET** | `/stats` | **`token`** |- | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
-🟢**GET** | `/filters` | **`token`** |- | Filter metadata
+🟢**GET** | `/filters` | **`start_date`, `end_date`, `meal_type`, `food_name`, `element_name` ** |- | Filter metadata by what you need.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 ## Application UML ☀:
 ### •🔰 Model:
 ![Model UML](graphics/NutritionStats-UML.jpg)
+
+# Tools 
+- Software:
+[Eclipse](https://www.eclipse.org/) - java IDE
+
+[InteelliJ IDEA](https://www.jetbrains.com/idea/) - java IDE
+
+[SpringBoot](https://spring.io/projects/spring-boot) - open source Java-based framework used to create a micro Service.
+
+[PostMan](https://www.postman.com) - API platform for building and using APIs.
+
+[Maven](https://maven.apache.org/) - Software project management and comprehension tool based on the concept of project object model (POM).
+
+- External REST API:
+[Edamam](https://developer.edamam.com/) - First food and nutrition database API.
+
+[Chomp](https://chompthis.com/api/) - Second food and nutrition database API.
