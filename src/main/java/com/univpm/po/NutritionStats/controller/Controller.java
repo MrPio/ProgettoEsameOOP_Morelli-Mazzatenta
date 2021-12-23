@@ -164,8 +164,7 @@ public class Controller {
 
     @RequestMapping(path = ENDPOINT_LOGIN, method = RequestMethod.GET)
     public ResponseEntity<Object> requestLogin(
-            @RequestParam(value = "token") String token) throws NoSuchMethodException
-    {
+            @RequestParam(value = "token") String token) throws NoSuchMethodException {
         System.err.println(ENDPOINT_LOGIN);
         try {
             return mainService.requestLogin(token);
@@ -210,7 +209,7 @@ public class Controller {
             @RequestParam(value = "type") StatisticType[] types,
             @RequestBody FilterManager filterManager) throws NoSuchMethodException {
         try {
-            return mainService.requestStats(token, types,filterManager.getFiltersList());
+            return mainService.requestStats(token, types, filterManager.getFiltersList());
         } catch (UserNotFound e) {
             return new ResponseEntity<>(new JSONObject(Map.of(
                     "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);

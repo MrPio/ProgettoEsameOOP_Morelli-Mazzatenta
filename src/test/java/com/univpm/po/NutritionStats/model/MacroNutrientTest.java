@@ -1,4 +1,4 @@
-package com.univpm.po.NutritionStats;
+package com.univpm.po.NutritionStats.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 

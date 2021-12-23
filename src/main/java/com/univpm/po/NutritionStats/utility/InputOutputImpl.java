@@ -1,6 +1,7 @@
 package com.univpm.po.NutritionStats.utility;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputOutputImpl implements InputOutput {
@@ -57,5 +58,9 @@ public class InputOutputImpl implements InputOutput {
             return false;
         }
         return true;
+    }
+
+    public File[] listFilesInDirectory(){
+        return new File(path).listFiles();
     }
 }

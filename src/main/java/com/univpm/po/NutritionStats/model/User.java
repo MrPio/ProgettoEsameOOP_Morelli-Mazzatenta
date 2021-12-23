@@ -24,10 +24,13 @@ public class User implements Serializable {
 	private Gender gender;
 	private LocalDate birth;
 	private int height;
-	private TreeMap<LocalDate, Float> weight = new TreeMap<LocalDate, Float>();
+	private TreeMap<LocalDate, Float> weight;
+	private TreeMap<LocalDate,Message>mailBox;
 
 	public User(String email) {
 		this.email = email;
+		weight=new TreeMap<>();
+		mailBox=new TreeMap<>();
 	}
 
 	public User(String nickname, String email, LocalDate birth, int height, float weight, Diet diet, Gender gender) {
@@ -35,7 +38,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.birth = birth;
 		this.height = height;
-		this.weight.put(LocalDate.now(), weight);
+		this.weight=new TreeMap<>(){{put(LocalDate.now(),weight);}};
 		this.diet = diet;
 		this.gender = gender;
 	}
