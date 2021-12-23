@@ -34,8 +34,10 @@ Type | Route | Params | Body | Description
 🟢**GET** | `/filters` | - | `start_date`, `end_date`, `meal_type`, `food_name`, `element_name` | Filter metadata by what you need.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 ## Application UML ☀:
-### •🔰 Model:
-![Model UML](graphics/NutritionStats-UML.jpg)
+### •🔰 Packages UML:
+
+### •🔰 model UML:
+![model UML](graphics/model.jpg)
 
 ## Tools 
 - ###### Software:
