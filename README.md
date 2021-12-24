@@ -39,6 +39,9 @@ Type | Route | Params | Body | Description
 ### •🔰 model UML:
 ![model UML](graphics/model.jpg)
 
+### •🔰 nutrient UML:
+![nutrient UML](graphics/nutrient.jpg)
+
 ## Tools 
 - ###### Software:
 
