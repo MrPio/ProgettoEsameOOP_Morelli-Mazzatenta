@@ -5,7 +5,7 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 ### *Remote Access*
 
->Remote access to this rest API: (***still not deployed***):
+>Remote access to this rest API: (***now deployed***):
 >
 > *https://nutritionstatsoop.herokuapp.com/*
 
