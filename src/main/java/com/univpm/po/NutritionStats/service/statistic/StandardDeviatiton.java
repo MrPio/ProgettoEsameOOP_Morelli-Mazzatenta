@@ -12,6 +12,14 @@ public class StandardDeviatiton extends Statistic {
     float calories = 0;
     float weight = 0;
 
+    public float getCalories() {
+        return calories;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
     public void calculateStatistic(Diary diary) {
         resetValues();
         calories = 0f;
