@@ -38,7 +38,7 @@ public class FilterManager {
             filtersList.add(new FilterByMealType(mealType));
         if (foodName != null)
             filtersList.add(new FilterByFood(foodName));
-        if(!water)
+        if(water!=null && !water)
             filtersList.add(new FilterWater());
         if (nutrient_name != null)
             filtersList.add(new FilterByNutrientNotNutrient(nutrient_name));

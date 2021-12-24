@@ -16,7 +16,7 @@ class EdamamNutritionAnalysisAPITest {
 
     @Test
     void getFoodInfo() throws ApiFoodNotFoundException {
-        JSONObject jO=EdamamNutritionAnalysisAPI.getFoodInfo("orange-100gr");
+        JSONObject jO=EdamamNutritionAnalysisAPI.getFoodInfo("orange 100GR");
         System.out.println(jO.get("calories"));
         System.out.println(jO.get("healthLabels"));
         System.out.println(jO.get("totalWeight"));

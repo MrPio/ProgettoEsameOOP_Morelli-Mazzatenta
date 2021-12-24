@@ -21,15 +21,15 @@ public class Schedule {
     final String CRON_SNACK = "0 45 17 * * *";
     final String CRON_DINNER = "0 00 21 * * *";
 
-    InputOutputImpl localDatabase = new InputOutputImpl(Diary.DIR, "");
+/*    InputOutputImpl localDatabase = new InputOutputImpl(Diary.DIR, "");
     HashMap<String, Diary> localDataBase = new HashMap<>() {
         {
             for (File file : localDatabase.listFilesInDirectory())
                 put(file.getName(), (Diary) new SerializationImpl(file.getParent()+"/", file.getName()).loadObject());
         }
-    };
+    };*/
 
-    @Scheduled(cron = CRON_BREAKFAST)
+/*    @Scheduled(cron = CRON_BREAKFAST)
     public void BreakfastReminder() {
         System.out.println(Arrays.toString(localDatabase.listFilesInDirectory()));
     }
@@ -47,5 +47,5 @@ public class Schedule {
     @Scheduled(cron = CRON_DINNER)
     public void DinnertReminder() {
 
-    }
+    }*/
 }

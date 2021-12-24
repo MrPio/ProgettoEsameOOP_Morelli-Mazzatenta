@@ -1,6 +1,7 @@
 package com.univpm.po.NutritionStats.model;
 
 import com.univpm.po.NutritionStats.api.DropboxAPI;
+import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.StatisticType;
 import com.univpm.po.NutritionStats.service.filter.Filter;
@@ -15,6 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -26,6 +28,8 @@ public class Diary implements Serializable {
 
     private User user;
     private ArrayList<Day> dayList;
+    private Map<AllNutrientNonNutrient, Float> sumValues = new HashMap<>() {
+    };
 
     public Diary() {
         this.dayList = new ArrayList<>();
@@ -42,6 +46,28 @@ public class Diary implements Serializable {
 
     public ArrayList<Day> getDayList() {
         return dayList;
+    }
+
+    public Map<AllNutrientNonNutrient, Float> getSumValues() {
+        sumValues = new HashMap<>() {
+        };
+        for (var nutrient : AllNutrientNonNutrient.values()) {
+            float sum = 0.0f;
+            for (var day : dayList)
+                sum += day.calculate(nutrient.getReferenceClass());
+            if (sum > 0.0000001f &&
+                    nutrient != AllNutrientNonNutrient.SUGAR &&
+                    nutrient != AllNutrientNonNutrient.SATURATED)
+                sumValues.put(nutrient, sum);
+        }
+        return sumValues;
+    }
+
+    public float getTotalCalories() {
+        float calories = 0;
+        for (var day : dayList)
+            calories += day.getTotalCalories();
+        return calories;
     }
 
     public static Diary load(String userToken) {
@@ -129,15 +155,15 @@ public class Diary implements Serializable {
         return response;
     }
 
-    public Diary doFilter(ArrayList<Filter> filters){
+    public Diary doFilter(ArrayList<Filter> filters) {
         for (var filter : filters)
             filter.filter(this);
         removeEmptyDays();
         return this;
     }
 
-    private void removeEmptyDays(){
-        dayList.removeIf(day->day.getMealList().size()==0 && day.getWaterList().size()==0);
+    private void removeEmptyDays() {
+        dayList.removeIf(day -> day.getMealList().size() == 0 && day.getWaterList().size() == 0);
     }
 
     public JSONObject toJsonObject() {

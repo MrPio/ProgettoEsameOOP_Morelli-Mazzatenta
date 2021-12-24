@@ -28,4 +28,7 @@ public abstract class Nutrient implements Serializable {
 		return quantity;
 	}
 
+	public void setQuantity(float quantity) {
+		this.quantity = quantity;
+	}
 }

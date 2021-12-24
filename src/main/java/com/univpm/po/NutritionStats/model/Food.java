@@ -57,13 +57,27 @@ public class Food implements Serializable {
         notNutrientList.add(notNutrient);
     }
 
-    public int getCalories() {
+    public int getTotalCalories() {
         float foodCalories = 0;
         for (Nutrient nutrient : nutrientList) {
             if (nutrient instanceof MacroNutrient)
                 foodCalories += ((MacroNutrient) nutrient).calculateCalories();
         }
         return (int) foodCalories;
+    }
+
+    public void newPortionWeight(int newPortionWeight){
+        float scale=(float)newPortionWeight/portionWeight;
+        portionWeight=newPortionWeight;
+        for(var nutrient:nutrientList) {
+            nutrient.setQuantity(nutrient.getQuantity() * scale);
+            if(nutrient instanceof Carbohydrate)
+                ((Carbohydrate)nutrient).setQuantityOnlySugar(((Carbohydrate)nutrient).getQuantityOnlySugar()*scale);
+            else if(nutrient instanceof Lipid)
+                ((Lipid)nutrient).setQuantityOnlySaturated(((Lipid)nutrient).getQuantityOnlySaturated()*scale);
+        }
+        for(var notNutrient:notNutrientList)
+            notNutrient.setQuantity(notNutrient.getQuantity()*scale);
     }
 
     public <T> float calculate(Class<T> myClass) {

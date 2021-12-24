@@ -203,7 +203,7 @@ public class Controller {
         }
     }
 
-    @RequestMapping(path = ENDPOINT_STATS, method = RequestMethod.GET)
+    @RequestMapping(path = ENDPOINT_STATS, method = RequestMethod.POST)
     public ResponseEntity<Object> requestStats(
             @RequestParam(value = "token") String token,
             @RequestParam(value = "type") StatisticType[] types,
@@ -220,7 +220,7 @@ public class Controller {
 
     }
 
-    @RequestMapping(path = ENDPOINT_FILTERS, method = RequestMethod.GET)
+    @RequestMapping(path = ENDPOINT_FILTERS, method = RequestMethod.POST)
     public ResponseEntity<Object> requestFilter(
             @RequestParam(value = "token") String token,
             @RequestBody FilterManager filterManager) throws NoSuchMethodException {

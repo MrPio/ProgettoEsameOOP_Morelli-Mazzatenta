@@ -6,15 +6,19 @@ import java.io.Serializable;
 
 public class Lipid extends MacroNutrient implements Serializable {
 
-	private float quantityOnlySatured;
+	private float quantityOnlySaturated;
 
-	public Lipid(float quantity, float quantityOnlySatured) {
+	public Lipid(float quantity, float quantityOnlySaturated) {
 		super(AllNutrientNonNutrient.LIPID, quantity);
-		this.quantityOnlySatured = quantityOnlySatured;
+		this.quantityOnlySaturated = quantityOnlySaturated;
 	}
 
-	public float getQuantityOnlySatured() {
-		return quantityOnlySatured;
+	public float getQuantityOnlySaturated() {
+		return quantityOnlySaturated;
+	}
+
+	public void setQuantityOnlySaturated(float quantityOnlySaturated) {
+		this.quantityOnlySaturated = quantityOnlySaturated;
 	}
 
 	@Override

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.univpm.po.NutritionStats.enums.MealType;
-import com.univpm.po.NutritionStats.model.nutrient.NotNutrient;
-import com.univpm.po.NutritionStats.model.nutrient.WaterFromFood;
 
 public class Meal implements Serializable {
 
@@ -35,10 +33,10 @@ public class Meal implements Serializable {
         foodList.add(food);
     }
 
-    public int calculateCalories() {
+    public int getTotalCalories() {
         int calories = 0;
         for (Food food : foodList)
-            calories += food.getCalories();
+            calories += food.getTotalCalories();
         return calories;
     }
 

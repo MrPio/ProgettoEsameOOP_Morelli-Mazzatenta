@@ -7,7 +7,7 @@ public enum AllNutrientNonNutrient {
     SUGAR(Carbohydrate.class, "Sugars", "SUGAR"),
     PROTEIN(Protein.class, "Proteins", "PROCNT"),
     LIPID(Lipid.class, "Fat", "FAT"),
-    SATURED(Lipid.class, "Saturated Fat", "FASAT"),
+    SATURATED(Lipid.class, "Saturated Fat", "FASAT"),
     VITAMIN_A(VitaminA.class, "Vitamin A", "VITA_RAE"),
     VITAMIN_C(VitaminC.class, "Vitamin C", "VITC"),
     SODIUM(Sodium.class, "Sodium", "NA"),

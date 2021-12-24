@@ -22,12 +22,11 @@ public class Mean extends Statistic {
 	public void calculateStatistic(Diary diary) {
 		resetValues();
 		calories = 0f;
-
 		int count = 0;
 		for (Day day : diary.getDayList()) {
 				for (Map.Entry<AllNutrientNonNutrient, Float> entry : statsValues.entrySet())
 					entry.setValue(entry.getValue() + day.calculate(entry.getKey().getReferenceClass()));
-				calories += day.calculateCalories();
+				calories += day.getTotalCalories();
 				++count;
 			}
 		

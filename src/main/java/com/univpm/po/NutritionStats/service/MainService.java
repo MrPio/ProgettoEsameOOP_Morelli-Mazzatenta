@@ -110,7 +110,7 @@ public class MainService {
     private HashMap<String, Object> dayToJsonObject(Day day) {
         HashMap<String, Object> response = new HashMap<>();
         response.put("day_id", day.calculateDayId());
-        response.put("calories", day.calculateCalories());
+        response.put("calories", day.getTotalCalories());
         for (AllNutrientNonNutrient nutrient : allNutrientNonNutrients)
             response.put(nutrient.getReferenceClass().getSimpleName().toLowerCase(),
                     day.calculate(nutrient.getReferenceClass()));

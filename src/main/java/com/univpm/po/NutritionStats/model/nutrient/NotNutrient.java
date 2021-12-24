@@ -24,4 +24,8 @@ public abstract class NotNutrient implements Serializable {
     public float getQuantity() {
         return quantity;
     }
+
+    public void setQuantity(float quantity) {
+        this.quantity = quantity;
+    }
 }

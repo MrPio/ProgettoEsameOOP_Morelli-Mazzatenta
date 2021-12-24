@@ -17,6 +17,10 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 		return quantityOnlySugar;
 	}
 
+	public void setQuantityOnlySugar(float quantityOnlySugar) {
+		this.quantityOnlySugar = quantityOnlySugar;
+	}
+
 	@Override
 	public float calculateCalories() {
 		return getQuantity() * CALORIES_PER_GRAM.get(this.getClass());

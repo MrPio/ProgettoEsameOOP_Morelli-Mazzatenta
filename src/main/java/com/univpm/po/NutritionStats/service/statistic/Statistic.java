@@ -10,7 +10,8 @@ public abstract class Statistic {
     protected Map<AllNutrientNonNutrient, Float> statsValues = new HashMap<>() {
         {
             for (AllNutrientNonNutrient nutrient : AllNutrientNonNutrient.values())
-                put(nutrient, 0.0f);
+                if (nutrient != AllNutrientNonNutrient.SUGAR && nutrient != AllNutrientNonNutrient.SATURATED)
+                    put(nutrient, 0.0f);
         }
     };
 

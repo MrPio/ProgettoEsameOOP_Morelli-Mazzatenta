@@ -25,22 +25,7 @@ public class EdamamNutritionAnalysisAPI {
 
     public static JSONObject getFoodInfo(String foodName) throws ApiFoodNotFoundException {
         foodName = foodName.replace(" ", "%20");
-        //Check if I already have the information needed:
-        //in local database
-        InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, foodName + ".dat");
-        if (inputOutputEan.existFile()) {
-            SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
-            return (JSONObject) serializationResult.loadObject();
-        }
-        //in remote database
-        if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(foodName + ".dat")) {
-            DropboxAPI.downloadFile(DROPBOX_DIR + foodName + ".dat", DIR + foodName + ".dat");
-            SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
-            return (JSONObject) serializationResult.loadObject();
-        }
-
         JSONObject result = null;
-
         HttpURLConnection conn = null;
         try {
             //send request
@@ -58,22 +43,38 @@ public class EdamamNutritionAnalysisAPI {
                     data.append(line);
             }
             result = (JSONObject) JSONValue.parseWithException(data.toString());
-            if((double)result.get("totalWeight")==0.0d)
+            if ((double) result.get("totalWeight") == 0.0d)
                 throw new ApiFoodNotFoundException(foodName);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
             return null;
         }
 
-        //store the result to avoid different future calls on this same request
-        SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
-        serializationResult.saveObject(result);
-        DropboxAPI.uploadFile(new File(serializationResult.getFullPath()), DROPBOX_DIR);
         return result;
     }
 
     public static Food getFood(String foodName, int portionWeight, Measure measureUnit) throws ApiFoodNotFoundException {
+
+        //Check if I already have the information needed:
+        //in local database
+        InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, foodName + ".dat");
+        if (inputOutputEan.existFile()) {
+            SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
+            Food result=(Food) serializationResult.loadObject();
+            result.newPortionWeight(portionWeight);
+            return result;
+        }
+        //in remote database
+        if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(foodName + ".dat")) {
+            DropboxAPI.downloadFile(DROPBOX_DIR + foodName + ".dat", DIR + foodName + ".dat");
+            SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
+            Food result=(Food) serializationResult.loadObject();
+            result.newPortionWeight(portionWeight);
+            return result;
+        }
+
         Food foodResult;
+
         JSONObject foodInfo = getFoodInfo(foodName + " " + portionWeight + measureUnit.name());
 
         //creazione food
@@ -101,8 +102,8 @@ public class EdamamNutritionAnalysisAPI {
             diet = Diet.PESCATARIAN;
         else
             diet = Diet.CLASSIC;
-        int newWeight = (int)((double)foodInfo.get("totalWeight"));
-        foodResult = new Food(foodName, newWeight, Measure.GR,diet);
+        int newWeight = (int) ((double) foodInfo.get("totalWeight"));
+        foodResult = new Food(foodName, newWeight, Measure.GR, diet);
 
         JSONObject foodNutrientsInfo = (JSONObject) foodInfo.get("totalNutrients");
         //NUTRIENT
@@ -120,11 +121,16 @@ public class EdamamNutritionAnalysisAPI {
         foodResult.addNotNutrient(new WaterFromFood(labelToValue(foodNutrientsInfo, "WATER")));
         foodResult.addNotNutrient(new Fiber(labelToValue(foodNutrientsInfo, "FIBTG")));
 
+        //store the result to avoid different future calls on this same request
+        SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
+        serializationResult.saveObject(foodResult);
+        DropboxAPI.uploadFile(new File(serializationResult.getFullPath()), DROPBOX_DIR);
+
         return foodResult;
     }
 
     private static float labelToValue(JSONObject foodInfo, String label) {
-        if(!foodInfo.containsKey(label))
+        if (!foodInfo.containsKey(label))
             return 0.0f;
         JSONObject infoSector = (JSONObject) foodInfo.get(label);
         float scaleFactor = 1.0f;

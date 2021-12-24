@@ -1,16 +1,10 @@
 package com.univpm.po.NutritionStats.service.statistic;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.Map;
 
 import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
-import com.univpm.po.NutritionStats.model.Water;
-import com.univpm.po.NutritionStats.model.nutrient.*;
 
-import org.json.simple.JSONObject;
-
-import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
 import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;
 
@@ -31,7 +25,7 @@ public class StandardDeviatiton extends Statistic {
                     float value = day.calculate(entry.getKey().getReferenceClass()) - mean.getStatsValues().get(entry.getKey());
                     entry.setValue(entry.getValue() + (float) Math.pow(value, 2));
                 }
-                calories += (float) Math.pow(day.calculateCalories() - mean.getCalories(), 2);
+                calories += (float) Math.pow(day.getTotalCalories() - mean.getCalories(), 2);
                 ++count;
             }
 

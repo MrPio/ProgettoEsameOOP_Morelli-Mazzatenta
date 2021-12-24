@@ -30,7 +30,7 @@ public class Percentage extends Statistic {
         for (Day day : diary.getDayList()) {
                 for (Map.Entry<AllNutrientNonNutrient, Float> entry : statsValues.entrySet())
                     entry.setValue(entry.getValue() + day.calculate(entry.getKey().getReferenceClass()));
-                calories += day.calculateCalories();
+                calories += day.getTotalCalories();
         }
 
         for (Map.Entry<AllNutrientNonNutrient, Float> entry : statsValues.entrySet())
