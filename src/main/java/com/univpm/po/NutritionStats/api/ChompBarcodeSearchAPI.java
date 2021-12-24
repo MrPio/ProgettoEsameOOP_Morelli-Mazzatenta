@@ -4,6 +4,7 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.exception.ChompLimitOvercameException;
 import com.univpm.po.NutritionStats.model.Food;
 import com.univpm.po.NutritionStats.model.nutrient.*;
 import com.univpm.po.NutritionStats.utility.InputOutputImpl;
@@ -27,7 +28,7 @@ public class ChompBarcodeSearchAPI {
     final static String API_KEY = "AzytZXSqpb3nMitJ";
     final static String URL = "https://chompthis.com/api/v2/food/branded/barcode.php?api_key=" + API_KEY;
 
-    public static JSONObject getEanInfo(long eanConde) throws ApiFoodNotFoundException {
+    public static JSONObject getEanInfo(long eanConde) throws ApiFoodNotFoundException, ChompLimitOvercameException {
         //Check if I already have the information needed:
         //in local database
         InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, eanConde + ".dat");
@@ -42,6 +43,16 @@ public class ChompBarcodeSearchAPI {
             serializationResult.loadObject();
             return (JSONObject) serializationResult.loadObject();
         }
+
+        //check if I overcame the limit
+        DropboxAPI.downloadFile(DROPBOX_DIR+"limit.txt",DIR+"limit.txt");
+        InputOutputImpl io=new InputOutputImpl(DIR,"limit.txt");
+        String content=io.readFile();
+        int count=Integer.parseInt(content.split(":")[0]);
+        int limit=Integer.parseInt(content.split(":")[1]);
+        if(count>=limit)throw new ChompLimitOvercameException(limit);
+        io.writeFile(++count +":"+ limit);
+        DropboxAPI.uploadFile(new File(io.getFullPath()),DROPBOX_DIR);
 
         JSONObject result = null;
         HttpStatus httpStatus = null;
@@ -64,7 +75,7 @@ public class ChompBarcodeSearchAPI {
         return result;
     }
 
-    public static Food getFood(long eanCode, int portionWeight) throws ApiFoodNotFoundException {
+    public static Food getFood(long eanCode, int portionWeight) throws ApiFoodNotFoundException, ChompLimitOvercameException {
         Food foodResult;
 
         JSONObject foodInfo = (JSONObject) ((JSONArray) getEanInfo(eanCode).get("items")).get(0);

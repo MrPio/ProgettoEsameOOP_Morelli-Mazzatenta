@@ -6,10 +6,7 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.enums.StatisticType;
-import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
-import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
-import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
-import com.univpm.po.NutritionStats.exception.UserNotFound;
+import com.univpm.po.NutritionStats.exception.*;
 import com.univpm.po.NutritionStats.model.*;
 import com.univpm.po.NutritionStats.service.filter.Filter;
 import org.json.simple.JSONObject;
@@ -35,7 +32,7 @@ public class MainService {
     }
 
     public ResponseEntity<Object> requestAddFoodByEan(String token, String dayId, MealType mealType, long eanCode,
-                                                      int portionWeight) throws ApiFoodNotFoundException, NoSuchMethodException, UserNotFound {
+                                                      int portionWeight) throws ApiFoodNotFoundException, NoSuchMethodException, UserNotFound, ChompLimitOvercameException {
         return (ResponseEntity<Object>) workOnDiary(token,
                 Diary.class.getMethod("addFood", String.class, MealType.class, Food.class), dayId, mealType,
                 ChompBarcodeSearchAPI.getFood(eanCode, portionWeight));

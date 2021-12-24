@@ -9,7 +9,7 @@ public class UserAlreadyInDatabase extends Exception{
     private String token;
 
     public UserAlreadyInDatabase(String email, String token) {
-        super(BASE_MESSAGE+"\r\nEMAIL: "+email);
+        super(BASE_MESSAGE);
         this.email=email;
         this.token=token;
     }

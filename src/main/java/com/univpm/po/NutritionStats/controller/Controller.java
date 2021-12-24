@@ -3,10 +3,7 @@ package com.univpm.po.NutritionStats.controller;
 import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
 import com.univpm.po.NutritionStats.enums.*;
-import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
-import com.univpm.po.NutritionStats.exception.EndDateBeforeStartDateException;
-import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
-import com.univpm.po.NutritionStats.exception.UserNotFound;
+import com.univpm.po.NutritionStats.exception.*;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.model.User;
 import com.univpm.po.NutritionStats.service.FilterManager;
@@ -57,7 +54,7 @@ public class Controller {
                     EdamamNutritionAnalysisAPI.getFood(foodName, weight, measure),
                     HttpStatus.OK);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),"api",e.getApi())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -70,7 +67,11 @@ public class Controller {
                     ChompBarcodeSearchAPI.getEanInfo(eanCode),
                     HttpStatus.OK);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),"api",e.getApi())), HttpStatus.BAD_REQUEST);
+        }
+        catch (ChompLimitOvercameException e){
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "api",e.getApi(),"limit",e.getLimit())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -85,10 +86,10 @@ public class Controller {
         try {
             return mainService.requestAddFoodByName(token, dayId, mealType, foodName, portionWeight, measureUnit);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),"api",e.getApi())), HttpStatus.BAD_REQUEST);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -102,10 +103,14 @@ public class Controller {
         try {
             return mainService.requestAddFoodByEan(token, dayId, mealType, eanCode, portionWeight);
         } catch (ApiFoodNotFoundException e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),"api",e.getApi())), HttpStatus.BAD_REQUEST);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
+        }
+        catch (ChompLimitOvercameException e){
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "api",e.getApi(),"limit",e.getLimit())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -117,8 +122,8 @@ public class Controller {
         try {
             return mainService.requestAddWater(token, dayId, volume);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -128,8 +133,8 @@ public class Controller {
         try {
             return mainService.requestDiaryValues(token);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -141,8 +146,8 @@ public class Controller {
         try {
             return mainService.requestDayValues(token, dayId);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -158,7 +163,8 @@ public class Controller {
         try {
             return mainService.requestSignUp(new User(nickname, email, LocalDate.parse(birth, Diary.formatter), height, weight, diet, gender));
         } catch (UserAlreadyInDatabase e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "email",e.getEmail(),"token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -169,8 +175,8 @@ public class Controller {
         try {
             return mainService.requestLogin(token);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -180,8 +186,8 @@ public class Controller {
         try {
             return mainService.requestReset(token);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -198,8 +204,8 @@ public class Controller {
                 dateFormatted = LocalDate.parse(date, Diary.formatter);
             return mainService.requestUpdateWeight(token, weight, dateFormatted);
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of("result", "not found",
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -211,8 +217,8 @@ public class Controller {
         try {
             return mainService.requestStats(token, types, filterManager.getFiltersList());
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of(
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         } catch (EndDateBeforeStartDateException e) {
             return new ResponseEntity<>(new JSONObject(Map.of(
                     "message", e.getMessage())), HttpStatus.BAD_REQUEST);
@@ -227,8 +233,8 @@ public class Controller {
         try {
             return mainService.requestFilters(token, filterManager.getFiltersList());
         } catch (UserNotFound e) {
-            return new ResponseEntity<>(new JSONObject(Map.of(
-                    "message", e.getMessage(), "token", e.getToken())), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
+                    "token",e.getToken())), HttpStatus.BAD_REQUEST);
         } catch (EndDateBeforeStartDateException e) {
             return new ResponseEntity<>(new JSONObject(Map.of(
                     "message", e.getMessage())), HttpStatus.BAD_REQUEST);
