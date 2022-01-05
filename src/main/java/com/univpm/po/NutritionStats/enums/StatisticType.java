@@ -6,17 +6,17 @@ import com.univpm.po.NutritionStats.service.statistic.StandardDeviatiton;
 import com.univpm.po.NutritionStats.service.statistic.Statistic;
 
 public enum StatisticType {
-    PERCENTAGE(Percentage.class),
-    MEAN(Mean.class),
-    STANDARD_DEVIATION(StandardDeviatiton.class);
+	PERCENTAGE(Percentage.class), 
+	MEAN(Mean.class), 
+	STANDARD_DEVIATION(StandardDeviatiton.class);
 
-    Class<? extends Statistic> referenceClass;
+	Class<? extends Statistic> referenceClass;
 
-    StatisticType(Class<? extends Statistic> referenceClass) {
-        this.referenceClass = referenceClass;
-    }
+	StatisticType(Class<? extends Statistic> referenceClass) {
+		this.referenceClass = referenceClass;
+	}
 
-    public Class<? extends Statistic> getReferenceClass() {
-        return referenceClass;
-    }
+	public Class<? extends Statistic> getReferenceClass() {
+		return referenceClass;
+	}
 }
