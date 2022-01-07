@@ -43,10 +43,13 @@ Type | Route | Params | Body | Description
 ![nutrient UML](graphics/nutrient.jpg)
 
 ### •🔰 exception UML:
-![nutrient UML](graphics/exception.jpg)
+![exception UML](graphics/exception.jpg)
 
 ### •🔰 enum UML:
-![nutrient UML](graphics/enum.jpg)
+![enum UML](graphics/enum.jpg)
+
+### •🔰 filter UML:
+![filter UML](graphics/filter.jpg)
 
 ## Tools 
 - ###### Software:
