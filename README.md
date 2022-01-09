@@ -51,6 +51,9 @@ Type | Route | Params | Body | Description
 ### •🔰 filter UML:
 ![filter UML](graphics/filter.jpg)
 
+### •🔰 statistic UML:
+![statistic UML](graphics/statistic.jpg)
+
 ## Tools 
 - ###### Software:
 
