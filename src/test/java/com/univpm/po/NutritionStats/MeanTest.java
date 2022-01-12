@@ -7,11 +7,13 @@ import com.univpm.po.NutritionStats.service.statistic.StandardDeviatiton;
 import org.junit.jupiter.api.Test;
 
 class MeanTest {
-	final String email = "email@example.com";
 
+	/**
+	 * Try to load and calculate statistics on a sample diary.
+	 * @see com.univpm.po.NutritionStats.model.Diary
+	 */
 	@Test
-	void testWithDebugger() {
-
+	void calculateStatistics() {
 		Diary diary = Diary.load("3959de8aeefabfa1385135fa8d03ee21");
 		Mean mean = new Mean();
 		StandardDeviatiton sd = new StandardDeviatiton();

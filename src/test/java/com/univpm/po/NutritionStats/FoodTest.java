@@ -1,7 +1,9 @@
-package com.univpm.po.NutritionStats.model;
+package com.univpm.po.NutritionStats;
 
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
+import com.univpm.po.NutritionStats.model.Food;
 import com.univpm.po.NutritionStats.model.nutrient.Fiber;
 import com.univpm.po.NutritionStats.model.nutrient.Lipid;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,10 +21,13 @@ class FoodTest {
         food.addNotNutrient(new Fiber(123f));
     }
 
+    /**
+     * Try to instantiate a {@code Food} object with some info and display them.
+     * @see     com.univpm.po.NutritionStats.model.Food
+     */
     @Test
-    void calculate() throws InstantiationException, IllegalAccessException {
-        //System.out.println(food.calculate(Lipid.class));
-        //System.out.println(food.calculate(Fiber.class));
-        System.out.println(Fiber.class.getSimpleName());
+    void calculate() {
+        System.out.println(food.calculate(Lipid.class));
+        System.out.println(food.calculate(Fiber.class));
     }
 }

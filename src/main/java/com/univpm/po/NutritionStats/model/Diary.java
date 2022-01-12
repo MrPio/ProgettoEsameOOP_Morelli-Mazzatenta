@@ -6,8 +6,8 @@ import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.StatisticType;
 import com.univpm.po.NutritionStats.service.filter.Filter;
 import com.univpm.po.NutritionStats.service.statistic.Statistic;
-import com.univpm.po.NutritionStats.utility.InputOutputImpl;
-import com.univpm.po.NutritionStats.utility.SerializationImpl;
+import com.univpm.po.NutritionStats.utility.InputOutput;
+import com.univpm.po.NutritionStats.utility.Serialization;
 import org.json.simple.JSONObject;
 
 import java.io.File;
@@ -73,22 +73,22 @@ public class Diary implements Serializable {
     public static Diary load(String userToken) {
         // Check if I already have the information needed:
         // in local database
-        InputOutputImpl inputOutputEan = new InputOutputImpl(Diary.DIR, userToken + ".dat");
+        InputOutput inputOutputEan = new InputOutput(Diary.DIR, userToken + ".dat");
         if (inputOutputEan.existFile()) {
-            SerializationImpl serializationResult = new SerializationImpl(Diary.DIR, userToken + ".dat");
+            Serialization serializationResult = new Serialization(Diary.DIR, userToken + ".dat");
             return (Diary) serializationResult.loadObject();
         }
         // in remote database
         if (DropboxAPI.getFilesInFolder(Diary.DROPBOX_DIR).contains(userToken + ".dat")) {
             DropboxAPI.downloadFile(Diary.DROPBOX_DIR + userToken + ".dat", Diary.DIR + userToken + ".dat");
-            SerializationImpl serializationResult = new SerializationImpl(Diary.DIR, userToken + ".dat");
+            Serialization serializationResult = new Serialization(Diary.DIR, userToken + ".dat");
             return (Diary) serializationResult.loadObject();
         }
         return null;
     }
 
     public void save() {
-        SerializationImpl s = new SerializationImpl(DIR, user.generateToken() + ".dat");
+        Serialization s = new Serialization(DIR, user.generateToken() + ".dat");
         s.saveObject(this);
         DropboxAPI.uploadFile(new File(s.getFullPath()), DROPBOX_DIR);
     }

@@ -7,8 +7,8 @@ import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.exception.ChompLimitOvercameException;
 import com.univpm.po.NutritionStats.model.Food;
 import com.univpm.po.NutritionStats.model.nutrient.*;
-import com.univpm.po.NutritionStats.utility.InputOutputImpl;
-import com.univpm.po.NutritionStats.utility.SerializationImpl;
+import com.univpm.po.NutritionStats.utility.InputOutput;
+import com.univpm.po.NutritionStats.utility.Serialization;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,7 +18,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,22 +30,22 @@ public class ChompBarcodeSearchAPI {
     public static JSONObject getEanInfo(long eanConde) throws ApiFoodNotFoundException, ChompLimitOvercameException {
         //Check if I already have the information needed:
         //in local database
-        InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, eanConde + ".dat");
+        InputOutput inputOutputEan = new InputOutput(DIR, eanConde + ".dat");
         if (inputOutputEan.existFile()) {
-            SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
+            Serialization serializationResult = new Serialization(DIR, eanConde + ".dat");
             return (JSONObject) serializationResult.loadObject();
         }
         //in remote database
         if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(eanConde + ".dat")) {
             DropboxAPI.downloadFile(DROPBOX_DIR + eanConde + ".dat", DIR + eanConde + ".dat");
-            SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
+            Serialization serializationResult = new Serialization(DIR, eanConde + ".dat");
             serializationResult.loadObject();
             return (JSONObject) serializationResult.loadObject();
         }
 
         //check if I overcame the limit
         DropboxAPI.downloadFile(DROPBOX_DIR+"limit.txt",DIR+"limit.txt");
-        InputOutputImpl io=new InputOutputImpl(DIR,"limit.txt");
+        InputOutput io=new InputOutput(DIR,"limit.txt");
         String content=io.readFile();
         int count=Integer.parseInt(content.split(":")[0]);
         int limit=Integer.parseInt(content.split(":")[1]);
@@ -69,7 +68,7 @@ public class ChompBarcodeSearchAPI {
             e.printStackTrace();
         }
         //store the result to avoid different future calls on this same request
-        SerializationImpl serializationResult = new SerializationImpl(DIR, eanConde + ".dat");
+        Serialization serializationResult = new Serialization(DIR, eanConde + ".dat");
         serializationResult.saveObject(result);
         DropboxAPI.uploadFile(new File(serializationResult.getFullPath()), DROPBOX_DIR);
         return result;

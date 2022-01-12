@@ -3,7 +3,7 @@ package com.univpm.po.NutritionStats.exception;
 import com.univpm.po.NutritionStats.enums.Api;
 
 public class ApiFoodNotFoundException extends Exception {
-	final static String BASE_MESSAGE = "Sorry, but we couldn't find what you are looking for in api. More details here:";
+	final static String BASE_MESSAGE = "Sorry, but we couldn't find what you are looking for in api.";
 	private Api api;
 	private long eanCode;
 	private String foodName;

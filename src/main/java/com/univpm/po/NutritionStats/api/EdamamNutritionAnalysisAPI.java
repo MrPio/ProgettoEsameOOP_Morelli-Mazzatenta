@@ -5,8 +5,8 @@ import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
 import com.univpm.po.NutritionStats.model.Food;
 import com.univpm.po.NutritionStats.model.nutrient.*;
-import com.univpm.po.NutritionStats.utility.InputOutputImpl;
-import com.univpm.po.NutritionStats.utility.SerializationImpl;
+import com.univpm.po.NutritionStats.utility.InputOutput;
+import com.univpm.po.NutritionStats.utility.Serialization;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -57,9 +57,9 @@ public class EdamamNutritionAnalysisAPI {
 
         //Check if I already have the information needed:
         //in local database
-        InputOutputImpl inputOutputEan = new InputOutputImpl(DIR, foodName + ".dat");
+        InputOutput inputOutputEan = new InputOutput(DIR, foodName + ".dat");
         if (inputOutputEan.existFile()) {
-            SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
+            Serialization serializationResult = new Serialization(DIR, foodName + ".dat");
             Food result=(Food) serializationResult.loadObject();
             result.newPortionWeight(portionWeight);
             return result;
@@ -67,7 +67,7 @@ public class EdamamNutritionAnalysisAPI {
         //in remote database
         if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(foodName + ".dat")) {
             DropboxAPI.downloadFile(DROPBOX_DIR + foodName + ".dat", DIR + foodName + ".dat");
-            SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
+            Serialization serializationResult = new Serialization(DIR, foodName + ".dat");
             Food result=(Food) serializationResult.loadObject();
             result.newPortionWeight(portionWeight);
             return result;
@@ -122,7 +122,7 @@ public class EdamamNutritionAnalysisAPI {
         foodResult.addNotNutrient(new Fiber(labelToValue(foodNutrientsInfo, "FIBTG")));
 
         //store the result to avoid different future calls on this same request
-        SerializationImpl serializationResult = new SerializationImpl(DIR, foodName + ".dat");
+        Serialization serializationResult = new Serialization(DIR, foodName + ".dat");
         serializationResult.saveObject(foodResult);
         DropboxAPI.uploadFile(new File(serializationResult.getFullPath()), DROPBOX_DIR);
 

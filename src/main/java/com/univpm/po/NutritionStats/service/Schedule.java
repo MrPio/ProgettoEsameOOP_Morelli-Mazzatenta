@@ -1,17 +1,7 @@
 package com.univpm.po.NutritionStats.service;
 
-import com.univpm.po.NutritionStats.enums.MealType;
-import com.univpm.po.NutritionStats.model.Diary;
-import com.univpm.po.NutritionStats.utility.InputOutputImpl;
-import com.univpm.po.NutritionStats.utility.SerializationImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.HashMap;
 
 @Configuration
 @EnableScheduling
