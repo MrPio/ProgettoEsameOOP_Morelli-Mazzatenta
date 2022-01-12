@@ -2,6 +2,10 @@
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 # Description of the Project
+NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given 
+period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of 
+his lipid intake or the _percentage_ of proteins above macronutrients. This rest api works using Edamam's free database,
+which provides nutritional values on a given food name, and stores in a model (description below).
 
 ### *Remote Access*
 
@@ -25,7 +29,7 @@ Type | Route | Params | Body | Description
 🔵**POST** | `/add/water` | `token`, `day_id`, `portion_volume` |- | Add consumed water to a specified meal.
 🔵**POST** | `/stats` | `token` | `start_date`, `end_date`, `meal_type`, `food_name`, `nutrient_name[]` | Get all the stats for the current user, you can filter the response by days range and by witch stats you need.
 🔵**POST** | `/filters` | - | `start_date`, `end_date`, `meal_type`, `food_name`, `nutrient_name[]` | Filter metadata by what you need.
-🔴**DELETE** | `/reset` | `token` |- | Deletes all data owned by the user.``
+🔴**DELETE** | `/reset` | `token` |- | Deletes all data owned by the user.
 🟡**PUT** | `/update_weight` | `token`, `weight` |- | Update the value of user's weight.
 🟢**GET** | `/api/name/{food_name}` | `portion_weight`, `unit_of_measure` | -| Return information about food by its name.
 🟢**GET** | `/api/ean/{ean_code}` | - |- | Return information about product by its ean code.

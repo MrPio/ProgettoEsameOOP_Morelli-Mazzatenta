@@ -10,8 +10,12 @@ import java.util.Arrays;
 class DropboxAPITest {
     final String desktopPath = System.getProperty("user.home") + "/Desktop/";
 
+    /**
+     *
+     */
     @Test
     void uploadFile() {
+
         assert DropboxAPI.uploadFile(
                 new File(desktopPath + "file.jpg"),
                 "\\test\\").toString().contains("file.jpg");
@@ -28,6 +32,7 @@ class DropboxAPITest {
     void getFilesInFolder() {
         ArrayList<String> files = DropboxAPI.getFilesInFolder("/test");
         System.out.print(Arrays.toString(files.toArray()));
+
         assert files.size() > 0;
     }
 
