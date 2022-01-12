@@ -39,6 +39,21 @@ Type | Route | Params | Body | Description
 ### •🔰 model UML:
 ![model UML](graphics/model.jpg)
 
+### •🔰 nutrient UML:
+![nutrient UML](graphics/nutrient.jpg)
+
+### •🔰 exception UML:
+![exception UML](graphics/exception.jpg)
+
+### •🔰 enum UML:
+![enum UML](graphics/enum.jpg)
+
+### •🔰 filter UML:
+![filter UML](graphics/filter.jpg)
+
+### •🔰 statistic UML:
+![statistic UML](graphics/statistic.jpg)
+
 ## Tools 
 - ###### Software:
 
@@ -51,6 +66,8 @@ Type | Route | Params | Body | Description
   [PostMan](https://www.postman.com) - API platform for building and using APIs.
 
   [Maven](https://maven.apache.org/) - Software project management and comprehension tool based on the concept of project object model (POM).
+  
+  [Draw.io](https://app.diagrams.net/) - Diagram software used for UML
 
 - ###### External REST API:
 
