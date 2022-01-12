@@ -1,0 +1,11 @@
+com.univpm.po.NutritionStats
+com.univpm.po.NutritionStats.api
+com.univpm.po.NutritionStats.controller
+com.univpm.po.NutritionStats.enums
+com.univpm.po.NutritionStats.exception
+com.univpm.po.NutritionStats.model
+com.univpm.po.NutritionStats.model.nutrient
+com.univpm.po.NutritionStats.service
+com.univpm.po.NutritionStats.service.filter
+com.univpm.po.NutritionStats.service.statistic
+com.univpm.po.NutritionStats.utility

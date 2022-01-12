@@ -117,11 +117,18 @@ public class Diary implements Serializable {
         if (requestedDay != null)
             requestedDay.addFood(mealType, food);
         else {
-            Day dayToAdd = new Day(LocalDate.parse(dayId.replace("-", "/"), formatter));
+            Day dayToAdd = new Day(stringToLocalDate(dayId));
             dayToAdd.addFood(mealType, food);
             dayList.add(dayToAdd);
         }
         save();
+    }
+
+    public static LocalDate stringToLocalDate(String date){
+        String[] values=date.replace("-", "/").split("/");
+        String formatted=String.format("%02d",Integer.parseInt(values[0]))+"/"
+                +Integer.parseInt(values[1]) +"/"+ Integer.parseInt(values[2]);
+        return LocalDate.parse(formatted, formatter);
     }
 
     public void addWater(String dayId, Water water) {

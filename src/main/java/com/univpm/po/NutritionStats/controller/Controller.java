@@ -161,7 +161,7 @@ public class Controller {
             @RequestParam("diet") Diet diet,
             @RequestParam(value = "gender") Gender gender) {
         try {
-            return mainService.requestSignUp(new User(nickname, email, LocalDate.parse(birth, Diary.formatter), height, weight, diet, gender));
+            return mainService.requestSignUp(new User(nickname, email, Diary.stringToLocalDate(birth), height, weight, diet, gender));
         } catch (UserAlreadyInDatabase e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
                     "email",e.getEmail(),"token",e.getToken())), HttpStatus.BAD_REQUEST);
@@ -201,7 +201,7 @@ public class Controller {
             if (date.equals("null"))
                 dateFormatted = LocalDate.now();
             else
-                dateFormatted = LocalDate.parse(date, Diary.formatter);
+                dateFormatted = Diary.stringToLocalDate(date);
             return mainService.requestUpdateWeight(token, weight, dateFormatted);
         } catch (UserNotFound e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),

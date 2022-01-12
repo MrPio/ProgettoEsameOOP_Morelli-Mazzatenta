@@ -25,8 +25,8 @@ public class FilterManager {
     ) throws EndDateBeforeStartDateException {
 
         if (startDate != null && endDate != null) {
-            LocalDate start = LocalDate.parse(startDate, Diary.formatter);
-            LocalDate end = LocalDate.parse(endDate, Diary.formatter);
+            LocalDate start = Diary.stringToLocalDate(startDate);
+            LocalDate end = Diary.stringToLocalDate(endDate);
             
             if (end.isBefore(start))
             	throw new EndDateBeforeStartDateException(start, end);
