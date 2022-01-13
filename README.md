@@ -41,7 +41,7 @@ Type | Route | Params | Body | Description
 ### •🔰 Packages UML:
 
 ### •🔰 model UML:
-![model UML](graphics/model.jpg)
+![model UML](graphics/model1.jpg)
 
 ### •🔰 nutrient UML:
 ![nutrient UML](graphics/nutrient.jpg)
