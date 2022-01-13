@@ -23,10 +23,17 @@ public class Lipid extends MacroNutrient implements Serializable {
 		this.quantityOnlySaturated = quantityOnlySaturated;
 	}
 
+	/**
+	 * @return the quantity of only satured lipids 
+	 */
 	public float getQuantityOnlySaturated() {
 		return quantityOnlySaturated;
 	}
 
+	/**
+     * set the only satured quantity passed by the param
+	 * @param quantityOnlySaturated
+	 */
 	public void setQuantityOnlySaturated(float quantityOnlySaturated) {
 		this.quantityOnlySaturated = quantityOnlySaturated;
 	}

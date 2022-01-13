@@ -27,18 +27,31 @@ public abstract class Nutrient implements Serializable {
 		this.quantity = quantity;
 	}
 
+	/**
+	 * @return the name of a nutrient
+	 */
 	public AllNutrientNonNutrient getName() {
 		return name;
 	}
 
+	/**
+	 * @return the unity of measure of a nutrient
+	 */
 	public Measure getMeasure() {
 		return measure;
 	}
 
+    /**
+     * @return quantity of a nutrient 
+     */
 	public float getQuantity() {
 		return quantity;
 	}
 
+    /**
+     * set the quantity passed by the param
+     * @param quantity
+     */
 	public void setQuantity(float quantity) {
 		this.quantity = quantity;
 	}
