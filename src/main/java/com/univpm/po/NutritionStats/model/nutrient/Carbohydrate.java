@@ -4,10 +4,20 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 
 import java.io.Serializable;
 
+/**
+ * Represent a carbohydrate which is a macronutrient 
+ * @author Davide
+ *
+ */
 public class Carbohydrate extends MacroNutrient implements Serializable {
 
 	private float quantityOnlySugar;
 
+	/**
+	 * Class constructor
+	 * @param quantity
+	 * @param quantityOnlySugar
+	 */
 	public Carbohydrate(float quantity, float quantityOnlySugar) {
 		super(AllNutrientNonNutrient.CARBOHYDRATE, quantity);
 		this.quantityOnlySugar = quantityOnlySugar;
@@ -21,6 +31,9 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 		this.quantityOnlySugar = quantityOnlySugar;
 	}
 
+	/**
+	 * Calculate the calories of a carbohydrate
+	 */
 	@Override
 	public float calculateCalories() {
 		return getQuantity() * CALORIES_PER_GRAM.get(this.getClass());

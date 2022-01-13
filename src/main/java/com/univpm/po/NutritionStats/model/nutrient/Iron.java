@@ -4,8 +4,17 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 
 import java.io.Serializable;
 
+/**
+ * Represent a specified mineral salt, the iron
+ * @author Davide
+ *
+ */
 public class Iron extends MineralSalt implements Serializable {
 
+	/**
+	 * Class constructor
+	 * @param quantity
+	 */
 	public Iron(float quantity) {
 		super(AllNutrientNonNutrient.IRON,quantity);
 	}

@@ -10,6 +10,11 @@ import org.json.simple.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Represents a generic food
+ * @author Davide
+ *
+ */
 public class Food implements Serializable {
     private String name;
     private int portionWeight;
@@ -18,6 +23,13 @@ public class Food implements Serializable {
     private ArrayList<Nutrient> nutrientList = new ArrayList<Nutrient>();
     private ArrayList<NotNutrient> notNutrientList = new ArrayList<NotNutrient>();
 
+    /**
+     * Class constructor
+     * @param name
+     * @param portionWeight
+     * @param measure
+     * @param diet
+     */
     public Food(String name, int portionWeight, Measure measure, Diet diet) {
         this.name = name;
         this.portionWeight = portionWeight;
@@ -49,14 +61,26 @@ public class Food implements Serializable {
         return measure;
     }
 
+    /**
+     * add a nutrient to the list of nutrient 
+     * @param nutrient
+     */
     public void addNutrient(Nutrient nutrient) {
         nutrientList.add(nutrient);
     }
 
+    /**
+     * add a not nutrient to the list of not nutrient 
+     * @param notNutrient
+     */
     public void addNotNutrient(NotNutrient notNutrient) {
         notNutrientList.add(notNutrient);
     }
 
+    /**
+     * Calculate the total calories from macronutrient in the list of nutrient
+     * @return total calories of all the macronutrient 
+     */
     public int getTotalCalories() {
         float foodCalories = 0;
         for (Nutrient nutrient : nutrientList) {
@@ -80,6 +104,15 @@ public class Food implements Serializable {
             notNutrient.setQuantity(notNutrient.getQuantity()*scale);
     }
 
+    /**
+     * Calculate the quantity of nutrient and not nutrient dependind on the class you give as a parameter.
+     * If the Nutrient class is the same or a superclass of the param, the method returns the quantity of a nutrient.
+     * If the NotNutrient class is the same or a superclass of the param, the method returns the quantity of a not nutrient.
+     * Else it returns 0
+     * @param <T>
+     * @param myClass
+     * @return quantity of a nutrient or not nutrient
+     */
     public <T> float calculate(Class<T> myClass) {
         if (Nutrient.class.isAssignableFrom(myClass)) {
             for (Nutrient nutrient : nutrientList)

@@ -5,11 +5,22 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 
 import java.io.Serializable;
 
+/**
+ * Represents a generic nutrient.
+ * @author Davide
+ * 
+ */
 public abstract class Nutrient implements Serializable {
 	private AllNutrientNonNutrient name;
 	private Measure measure;
 	private float quantity;
 
+	/**
+	 * Class constructor
+	 * @param name
+	 * @param quantity
+	 * @param measure
+	 */
 	public Nutrient(AllNutrientNonNutrient name, float quantity, Measure measure) {
 		this.name = name;
 		this.measure = measure;
