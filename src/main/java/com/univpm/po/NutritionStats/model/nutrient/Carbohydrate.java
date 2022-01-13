@@ -23,10 +23,17 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 		this.quantityOnlySugar = quantityOnlySugar;
 	}
 
+	/**
+	 * @return the quantity of only sugar carbohydrates 
+	 */
 	public float getQuantityOnlySugar() {
 		return quantityOnlySugar;
 	}
 
+	/**
+     * set the only sugar quantity passed by the param
+	 * @param quantityOnlySugar
+	 */
 	public void setQuantityOnlySugar(float quantityOnlySugar) {
 		this.quantityOnlySugar = quantityOnlySugar;
 	}

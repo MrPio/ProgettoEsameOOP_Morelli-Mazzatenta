@@ -16,6 +16,13 @@ import org.apache.tomcat.jni.Local;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * Represents the program user with his features like nickname and email needed
+ * to register and personal informations useful for the purposes of the program.
+ * 
+ * @author Davide
+ *
+ */
 public class User implements Serializable {
 
 	private String nickname;
@@ -25,56 +32,108 @@ public class User implements Serializable {
 	private LocalDate birth;
 	private int height;
 	private TreeMap<LocalDate, Float> weight;
-	private TreeMap<LocalDate,Message>mailBox;
+	private TreeMap<LocalDate, Message> mailBox;
 
+	/**
+	 * Class first constructor
+	 * 
+	 * @param email
+	 */
 	public User(String email) {
 		this.email = email;
-		weight=new TreeMap<>();
-		mailBox=new TreeMap<>();
+		weight = new TreeMap<>();
+		mailBox = new TreeMap<>();
 	}
 
+	/**
+	 * Class second constructor
+	 * 
+	 * @param nickname
+	 * @param email
+	 * @param birth
+	 * @param height
+	 * @param weight
+	 * @param diet
+	 * @param gender
+	 */
 	public User(String nickname, String email, LocalDate birth, int height, float weight, Diet diet, Gender gender) {
 		this.nickname = nickname;
 		this.email = email;
 		this.birth = birth;
 		this.height = height;
-		this.weight=new TreeMap<>(){{put(LocalDate.now(),weight);}};
+		this.weight = new TreeMap<>() {
+			{
+				put(LocalDate.now(), weight);
+			}
+		};
 		this.diet = diet;
 		this.gender = gender;
 	}
 
+	/**
+	 * @return the user's nickname
+	 */
 	public String getNickname() {
 		return nickname;
 	}
 
+	/**
+	 * @return the user's email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * @return the user's date of birth
+	 */
 	public LocalDate getYearOfBirth() {
 		return birth;
 	}
 
+	/**
+	 * @return the user's height
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 * @return the user's weight and date associated with it
+	 */
 	public TreeMap<LocalDate, Float> getWeight() {
 		return weight;
 	}
 
+	/**
+	 * set the user's weight and date associated
+	 * 
+	 * @param weight
+	 */
 	public void setWeight(TreeMap<LocalDate, Float> weight) {
 		this.weight = weight;
 	}
 
+	/**
+	 * @return the user's type of diet
+	 */
 	public Diet getDiet() {
 		return diet;
 	}
 
+	/**
+	 * @return the user's gender
+	 */
 	public Gender getGender() {
 		return gender;
 	}
 
+	/**
+	 * Calculate the daily caloric intake of the user based on his personal
+	 * informations like age, gender, height and weight
+	 * 
+	 * @return the user's daily caloric intake
+	 */
 	public int getDailyCaloricIntake() {
 		LocalDate lastDate = weight.lastKey();
 		Period age = Period.between(birth, LocalDate.now());
@@ -84,6 +143,12 @@ public class User implements Serializable {
 			return (int) (((10 * weight.get(lastDate)) + (6.25 * height) - (5 * age.getYears()) - 161) * 1.4);
 	}
 
+	/**
+	 * Generate user's token that uniquely identifies him. 
+	 * It uses the cryptographic hash function called MD5
+	 * 
+	 * @return the user's token
+	 */
 	public String generateToken() {
 		byte[] bytesOfMessage = new byte[0];
 		try {

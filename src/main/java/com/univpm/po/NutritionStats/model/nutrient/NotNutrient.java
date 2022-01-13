@@ -26,14 +26,24 @@ public abstract class NotNutrient implements Serializable {
         this.quantity = quantity;
     }
 
+    /**
+     * @return name of a not nutrient 
+     */
     public AllNutrientNonNutrient getName() {
         return name;
     }
 
+    /**
+     * @return quantity of a not nutrient 
+     */
     public float getQuantity() {
         return quantity;
     }
 
+    /**
+     * set the quantity passed by the param
+     * @param quantity
+     */
     public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
