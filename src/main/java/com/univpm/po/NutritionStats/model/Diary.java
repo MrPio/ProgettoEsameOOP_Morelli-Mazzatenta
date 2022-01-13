@@ -1,6 +1,7 @@
 package com.univpm.po.NutritionStats.model;
 
 import com.univpm.po.NutritionStats.api.DropboxAPI;
+import com.univpm.po.NutritionStats.controller.Controller;
 import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import com.univpm.po.NutritionStats.enums.MealType;
 import com.univpm.po.NutritionStats.enums.StatisticType;
@@ -101,7 +102,6 @@ public class Diary implements Serializable {
         dayList = new ArrayList<>();
         save();
     }
-
     public Day findDayById(String dayId) {
         dayId = dayId.replace("-", "/");
         for (Day day : dayList) {

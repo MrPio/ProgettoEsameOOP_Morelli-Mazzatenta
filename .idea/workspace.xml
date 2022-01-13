@@ -4,34 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="base description">
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Tests reorganized and filled with javadoc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_response/chomp/limit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/api_response/chomp/limit.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/InputOutputImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/InputOutputImpl.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/SerializationImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/SerializationImpl.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/ApiFoodNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/ApiFoodNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/filter/FilterByDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutputImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Serialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Serialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/SerializationImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/ChompBarcodeSearchAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/ChompBarcodeSearchAPITest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/DropboxAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/DropboxAPITest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/EdamamNutritionAnalysisAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/EdamamNutritionAnalysisAPITest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/FilterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/InputOutputImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/InputOutputTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MeanTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/NutritionStatsApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/SerializationImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/SerializationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/debug/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/SpawnRandomDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/model/FoodTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/model/FoodTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/model/MacroNutrientTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/model/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/model/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/service/filter/FilterByNutrientNotNutrientTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +40,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../../Program Files/Java/jdk-17/lib/src.zip!/java.base/java/util/ArrayList.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="JavaAutoRunManager">
     <enabled-run-configurations>
       <run-configuration type="JUnit" name="SerializationImplTest" />
@@ -89,6 +69,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -627,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642007738716</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Tests reorganized and filled with javadoc">
+      <created>1642012664841</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1642012664841</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -647,7 +635,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Minor bugs fix" />
     <MESSAGE value="User birth fix" />
     <MESSAGE value="generic methods" />
     <MESSAGE value="generic methods 2nd and several bugs fixed, cleared Json metadata and upgraded redundant code" />
@@ -672,7 +659,8 @@
     <MESSAGE value="exception appearance in json fixed" />
     <MESSAGE value="created JavaDoc" />
     <MESSAGE value="base description" />
-    <option name="LAST_COMMIT_MESSAGE" value="base description" />
+    <MESSAGE value="Tests reorganized and filled with javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests reorganized and filled with javadoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -12,6 +12,7 @@ which provides nutritional values on a given food name, and stores in a model (d
 >Remote access to this rest API: (***now deployed***):
 >
 > *https://nutritionstatsoop.herokuapp.com/*
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ### *Android application (client)*
 
