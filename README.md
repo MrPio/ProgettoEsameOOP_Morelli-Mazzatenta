@@ -74,6 +74,7 @@ Type | Route | Params | Body | Description
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 ## Application UML ☀:
 ### •🔰 Packages UML:
+![model UML](graphics/UML%20Packages.drawio.jpg)
 
 ### •🔰 model UML:
 ![model UML](graphics/model1.jpg)
@@ -113,3 +114,5 @@ Type | Route | Params | Body | Description
   [Edamam](https://developer.edamam.com/) - First food and nutrition database API.
 
   [Chomp](https://chompthis.com/api/) - Second food and nutrition database API.
+  
+  [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
