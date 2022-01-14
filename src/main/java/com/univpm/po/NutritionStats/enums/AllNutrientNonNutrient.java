@@ -15,7 +15,8 @@ public enum AllNutrientNonNutrient {
 	POTASSIUM(Potassium.class, "Potassium", "K"),
 	IRON(Iron.class, "Iron", "FE"),
 
-	FIBER(Fiber.class, "Fiber", "FIBTG"), WATER_FROM_FOOD(WaterFromFood.class, "Water", "WATER");
+	FIBER(Fiber.class, "Fiber", "FIBTG"),
+	WATER_FROM_FOOD(WaterFromFood.class, "Water", "WATER");
 
 	private Class<?> referenceClass;
 	private String chompKeyWord;

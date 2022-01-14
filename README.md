@@ -1,11 +1,45 @@
 # NutritionStats
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
-# Description of the Project
+## Description of the Project
 NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given 
 period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of 
 his lipid intake or the _percentage_ of proteins above macronutrients. This rest api works using Edamam's free database,
 which provides nutritional values on a given food name, and stores in a model (description below).
+
+In order to calculate useful statistics some good data are needed, so the client should register his consumptions.
+This can be done by adding `Food` by its name or by its ean code to one of the following meals of each day:
+- `Breakfast`
+- `Lunch`
+- `Snack`
+- `Dinner`
+
+The food names or the ean codes provide new instances of `Food` filled with the values of the following nutrition filtered in the response
+of Edamam/Chomp api:
+- `Carbohydrate`
+- `Protein`
+- `Lipid`
+- `Vitamin A`
+- `Vitamin C`
+- `Sodium`
+- `Calcium`
+- `Potassium`
+- `Iron`
+- `Fiber`
+- `Water`
+
+The client can also add the quantity of water drunk daily or update the value of his weight using the dedicated endpoints.
+In the end all the data can be filtered and used to calculate the following statistics:
+- `Mean`
+- `Variance`
+- `Percentage`
+
+Filter the data means to specify a range of days or a meal type on which calculate the statistics. In fact the client
+can filter his data:
+- `By date`
+- `By meal type`
+- `By food name`
+- `By nutrient`
 
 ### *Remote Access*
 
