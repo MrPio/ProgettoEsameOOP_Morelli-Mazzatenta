@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="thorough mathematical treatise for statistic. Fixed filter on weight list.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/utility/MathematicsTest.java" afterDir="false" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Mathematics.java fixed and tested">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Mathematics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Mathematics.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +108,7 @@
       <recent name="com.univpm.po.NutritionStats.junit" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MathematicsTest.calculateSampleMean">
+  <component name="RunManager" selected="Application.NutritionStats">
     <configuration name="NutritionStats" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.NutritionStatsApplication" />
       <module name="NutritionStats" />
@@ -643,7 +645,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642178198187</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Mathematics.java fixed and tested">
+      <created>1642197959906</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1642197959906</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -663,7 +672,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="test" />
     <MESSAGE value="Move water list from Meal to Day" />
     <MESSAGE value="Rebuild MainService" />
     <MESSAGE value="Merged Nutrient and NonNutrient into AllNutrientNonNutrient" />
@@ -688,7 +696,8 @@
     <MESSAGE value="Upgraded README.md project description" />
     <MESSAGE value="thorough mathematical treatise for statistic." />
     <MESSAGE value="thorough mathematical treatise for statistic. Fixed filter on weight list." />
-    <option name="LAST_COMMIT_MESSAGE" value="thorough mathematical treatise for statistic. Fixed filter on weight list." />
+    <MESSAGE value="Mathematics.java fixed and tested" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mathematics.java fixed and tested" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

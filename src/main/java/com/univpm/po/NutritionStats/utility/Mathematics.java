@@ -17,6 +17,18 @@ public class Mathematics {
     }
 
     /**
+     * <p><strong>∑xi = x1+x2+...+xn</strong>
+     *
+     * @return
+     */
+    public float calculateSum(boolean... useSampleY) {
+        var sample = useSampleY.length == 1 && useSampleY[0] ? sampleY : sampleX;
+        float sum = 0;
+        for (var el : sample)
+            sum += el;
+        return sum;
+    }
+    /**
      * <p><strong>E[X] = ∑xi /n</strong>
      *
      * @return
