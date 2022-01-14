@@ -21,11 +21,12 @@ public class Mathematics {
      *
      * @return
      */
-    public float calculateSampleMean() {
+    public float calculateSampleMean(boolean... useSampleY) {
+        var sample = useSampleY.length == 1 && useSampleY[0] ? sampleY : sampleX;
         float sum = 0;
-        for (var el : sampleX)
+        for (var el : sample)
             sum += el;
-        return sum / sampleX.size();
+        return sum / sample.size();
     }
 
     /**
@@ -36,9 +37,18 @@ public class Mathematics {
     public float calculateSampleVariance(boolean... useSampleY) {
         var sample = useSampleY.length == 1 && useSampleY[0] ? sampleY : sampleX;
         float sum = 0;
-        for (var el : sampleX)
-            sum += Math.pow(el - calculateSampleMean(), 2);
-        return sum / (sampleX.size() - 1);
+        for (var el : sample)
+            sum += Math.pow(el - calculateSampleMean(sample.equals(sampleY)), 2);
+        return sum / (sample.size() - 1);
+    }
+
+    /**
+     * <p><strong>Dev(X) = √(Var(X))</strong>
+     *
+     * @return
+     */
+    public float calculateSampleStandardDeviation(boolean... useSampleY) {
+        return (float)Math.sqrt(calculateSampleVariance(useSampleY));
     }
 
     /**
@@ -54,7 +64,7 @@ public class Mathematics {
             sumX += sampleX.get(i);
             sumY += sampleY.get(i);
         }
-        return sumXY / (size - 1) + sumX * sumY / (size * (size - 1));
+        return sumXY / (size - 1) - sumX * sumY / (size * (size - 1));
     }
 
     /**

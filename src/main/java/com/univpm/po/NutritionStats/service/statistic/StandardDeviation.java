@@ -24,7 +24,7 @@ public class StandardDeviation extends Statistic {
         resetValues();
         calories = 0f;
 
-        Mean mean = new Mean();
+        /*Mean mean = new Mean();
         mean.calculateStatistic(diary);
 
         int count = 0;
@@ -47,6 +47,6 @@ public class StandardDeviation extends Statistic {
             weight += (float) Math.pow(diary.getUser().getWeight().get(date) - mean.getWeight(), 2);
             ++count;
         }
-        weight = (float) Math.sqrt(weight / (count - 1));
+        weight = (float) Math.sqrt(weight / (count - 1));*/
     }
 }
