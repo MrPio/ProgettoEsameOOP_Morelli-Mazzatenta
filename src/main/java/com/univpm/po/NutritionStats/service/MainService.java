@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+@SuppressWarnings (value="unchecked")
 public class MainService {
     AllNutrientNonNutrient[] allNutrientNonNutrients = AllNutrientNonNutrient.values();
 
@@ -116,8 +116,6 @@ public class MainService {
     }
 
     private Object workOnDiary(String token, Method method, Object... param) throws UserNotFound {
-        Object obj = null;
-
         JSONObject response = new JSONObject();
         HttpStatus httpStatus;
         Diary requestedDiary = Diary.load(token);

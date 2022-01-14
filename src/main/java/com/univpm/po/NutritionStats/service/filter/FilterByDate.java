@@ -21,5 +21,6 @@ public class FilterByDate extends Filter {
     @Override
     public void filter(Diary diary) {
         diary.getDayList().removeIf(day -> !(dateIsBetween(day.getDate(), startDate, endDate)));
+        diary.getUser().getWeight().entrySet().removeIf(entry -> !(dateIsBetween(entry.getKey(),startDate,endDate)));
     }
 }
