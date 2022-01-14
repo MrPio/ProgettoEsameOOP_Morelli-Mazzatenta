@@ -97,22 +97,22 @@ Type | Route | Params | Body | Description
 ## Tools 
 - ###### Software:
 
-  [Eclipse](https://www.eclipse.org/) - java IDE
+  - [Eclipse](https://www.eclipse.org/) - java IDE
 
-  [InteelliJ IDEA](https://www.jetbrains.com/idea/) - java IDE
+  - [InteelliJ IDEA](https://www.jetbrains.com/idea/) - java IDE
 
-  [SpringBoot](https://spring.io/projects/spring-boot) - open source Java-based framework used to create a micro Service.
+  - [SpringBoot](https://spring.io/projects/spring-boot) - open source Java-based framework used to create a micro Service.
 
-  [PostMan](https://www.postman.com) - API platform for building and using APIs.
+  - [PostMan](https://www.postman.com) - API platform for building and using APIs.
 
-  [Maven](https://maven.apache.org/) - Software project management and comprehension tool based on the concept of project object model (POM).
+  - [Maven](https://maven.apache.org/) - Software project management and comprehension tool based on the concept of project object model (POM).
   
-  [Draw.io](https://app.diagrams.net/) - Diagram software used for UML
+  - [Draw.io](https://app.diagrams.net/) - Diagram software used for UML
 
 - ###### External REST API:
 
-  [Edamam](https://developer.edamam.com/) - First food and nutrition database API.
+  - [Edamam](https://developer.edamam.com/) - First food and nutrition database API.
 
-  [Chomp](https://chompthis.com/api/) - Second food and nutrition database API.
+  - [Chomp](https://chompthis.com/api/) - Second food and nutrition database API.
   
-  [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
+  - [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
