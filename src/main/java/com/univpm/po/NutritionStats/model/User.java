@@ -12,6 +12,8 @@ import java.util.TreeMap;
 
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Gender;
+import com.univpm.po.NutritionStats.utility.InputOutput;
+import com.univpm.po.NutritionStats.utility.Serialization;
 import org.apache.tomcat.jni.Local;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -32,7 +34,7 @@ public class User implements Serializable {
 	private LocalDate birth;
 	private int height;
 	private TreeMap<LocalDate, Float> weight;
-	private TreeMap<LocalDate, Message> mailBox;
+	private Mailbox mailBox;
 
 	/**
 	 * Class first constructor that instantiates an user with only his email and
@@ -43,7 +45,7 @@ public class User implements Serializable {
 	public User(String email) {
 		this.email = email;
 		weight = new TreeMap<>();
-		mailBox = new TreeMap<>();
+		mailBox = new Mailbox();
 	}
 
 	/**
@@ -71,6 +73,7 @@ public class User implements Serializable {
 		};
 		this.diet = diet;
 		this.gender = gender;
+		this.mailBox=new Mailbox();
 	}
 
 	/**
