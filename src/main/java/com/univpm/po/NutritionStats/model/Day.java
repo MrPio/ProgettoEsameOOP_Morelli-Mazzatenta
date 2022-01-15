@@ -16,11 +16,10 @@ import com.univpm.po.NutritionStats.enums.MealType;
  *
  */
 public class Day implements Serializable {
-	private LocalDate date;
-	private ArrayList<Meal> mealList;
-	private ArrayList<Water> waterList;
-	private Map<AllNutrientNonNutrient, Float> sumValues = new HashMap<>() {
-	};
+	private final LocalDate date;
+	private final ArrayList<Meal> mealList;
+	private final ArrayList<Water> waterList;
+	private final Map<AllNutrientNonNutrient, Float> sumValues = new HashMap<>() {};
 
 	/**
 	 * Class constructor

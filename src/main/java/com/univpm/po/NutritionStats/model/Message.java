@@ -4,20 +4,20 @@ import java.io.Serializable;
 import java.time.LocalTime;
 
 public class Message implements Serializable {
-    private String message;
-    private LocalTime time;
+    private final String message;
+    private final LocalTime time;
     private boolean read;
 
     public Message(String message) {
         this.message = message;
         this.time = LocalTime.now();
-        read=false;
+        read = false;
     }
 
     public Message(String message, LocalTime time) {
         this.message = message;
         this.time = time;
-        read=false;
+        read = false;
     }
 
     public String getMessage() {
@@ -27,7 +27,8 @@ public class Message implements Serializable {
     public LocalTime getTime() {
         return time;
     }
-    public void read(){
-        read=true;
+
+    public void markAsRead() {
+        read = true;
     }
 }

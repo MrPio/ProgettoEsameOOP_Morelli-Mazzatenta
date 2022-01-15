@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class InputOutput {
+public class InputOutput{
     private String path = "";
-    private String fileName;
+    private final String fileName;
 
     public InputOutput(String fileName) {
         this.fileName = fileName;

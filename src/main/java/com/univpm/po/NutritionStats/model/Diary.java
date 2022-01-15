@@ -33,8 +33,6 @@ public class Diary implements Serializable {
 
     private User user;
     private ArrayList<Day> dayList;
-    private Map<AllNutrientNonNutrient, Float> sumValues = new HashMap<>() {
-    };
 
     /**
      * Class first constructor
@@ -75,7 +73,7 @@ public class Diary implements Serializable {
      * @return the total quantity of nutrients or not nutrients of a user
      */
     public Map<AllNutrientNonNutrient, Float> getSumValues() {
-        sumValues = new HashMap<>() {
+        Map<AllNutrientNonNutrient, Float> sumValues = new HashMap<>() {
         };
         for (var nutrient : AllNutrientNonNutrient.values()) {
             float sum = 0.0f;
