@@ -1,5 +1,6 @@
-package com.univpm.po.NutritionStats.utility;
+package com.univpm.po.NutritionStats;
 
+import com.univpm.po.NutritionStats.utility.Mathematics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
