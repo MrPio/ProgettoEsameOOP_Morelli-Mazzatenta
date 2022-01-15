@@ -14,12 +14,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * <p>This is the {@code RestController}, it associates each supported request
+ * <p>This is the {@code RestController}, the <strong>FIRST</strong> step of any client
+ * request. It associates each supported request
  * with the correspondent {@code Service} method. It is the <i>bridge</i> between the
  * guest and this restful api. <strong>Here is where the checked exception thrown by
  * {@code Service} are handled </strong> with {@code try{}/catch{}}. All the
@@ -50,9 +52,9 @@ import java.util.Map;
  * ore some <i><strong>Statistics</strong></i>.
  *
  * <p>
- *     @author Morelli Valerio
  *
- * @see com.univpm.po.NutritionStats.service.MainService
+ * @author Morelli Valerio
+ * @see com.univpm.po.NutritionStats.service.MainService MainService
  */
 @RestController
 public class Controller {
@@ -480,6 +482,8 @@ public class Controller {
             @RequestParam(value = "type") StatisticType[] types,
             @RequestBody FilterManager filterManager) throws NoSuchMethodException {
         try {
+            if (filterManager.getException().getClass() == EndDateBeforeStartDateException.class)
+                throw (EndDateBeforeStartDateException) filterManager.getException();
             return mainService.requestStats(token, types, filterManager.getFiltersList());
         } catch (UserNotFound e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),
@@ -488,7 +492,6 @@ public class Controller {
             return new ResponseEntity<>(new JSONObject(Map.of(
                     "message", e.getMessage())), HttpStatus.BAD_REQUEST);
         }
-
     }
 
     /**
@@ -519,6 +522,8 @@ public class Controller {
             @RequestParam(value = "token") String token,
             @RequestBody FilterManager filterManager) throws NoSuchMethodException {
         try {
+            if (filterManager.getException().getClass() == EndDateBeforeStartDateException.class)
+                throw (EndDateBeforeStartDateException) filterManager.getException();
             return mainService.requestFilters(token, filterManager.getFiltersList());
         } catch (UserNotFound e) {
             return new ResponseEntity<>(new JSONObject(Map.of("message", e.getMessage(),

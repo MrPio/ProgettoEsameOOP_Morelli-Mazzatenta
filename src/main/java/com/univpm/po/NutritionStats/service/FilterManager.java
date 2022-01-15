@@ -13,7 +13,8 @@ import com.univpm.po.NutritionStats.service.filter.*;
 
 public class FilterManager {
 
-    ArrayList<Filter> filtersList = new ArrayList<>();
+    private final ArrayList<Filter> filtersList = new ArrayList<>();
+    private Exception exception = null;
 
     public FilterManager(
             @JsonProperty("start_date") String startDate,
@@ -21,24 +22,25 @@ public class FilterManager {
             @JsonProperty("meal_type") MealType mealType,
             @JsonProperty("food_name") String foodName,
             @JsonProperty("water") Boolean water,
-            @JsonProperty("nutrient_name") AllNutrientNonNutrient[] nutrient_name
-    ) throws EndDateBeforeStartDateException {
+            @JsonProperty("nutrient_name") AllNutrientNonNutrient[] nutrient_name) {
 
         if (startDate != null && endDate != null) {
             LocalDate start = Diary.stringToLocalDate(startDate);
             LocalDate end = Diary.stringToLocalDate(endDate);
-            
-            if (end.isBefore(start))
-            	throw new EndDateBeforeStartDateException(start, end);
-            	
-            filtersList.add(new FilterByDate(start, end));   
+
+            if (end.isBefore(start)) {
+                exception = new EndDateBeforeStartDateException(start, end);
+                return;
+            }
+
+            filtersList.add(new FilterByDate(start, end));
         }
 
         if (mealType != null)
             filtersList.add(new FilterByMealType(mealType));
         if (foodName != null)
             filtersList.add(new FilterByFood(foodName));
-        if(water!=null && !water)
+        if (water != null && !water)
             filtersList.add(new FilterWater());
         if (nutrient_name != null)
             filtersList.add(new FilterByNutrientNotNutrient(nutrient_name));
@@ -47,5 +49,8 @@ public class FilterManager {
     public ArrayList<Filter> getFiltersList() {
         return filtersList;
     }
-	
+
+    public Exception getException() {
+        return exception;
+    }
 }

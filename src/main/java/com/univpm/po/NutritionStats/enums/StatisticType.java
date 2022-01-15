@@ -1,14 +1,12 @@
 package com.univpm.po.NutritionStats.enums;
 
-import com.univpm.po.NutritionStats.service.statistic.Mean;
-import com.univpm.po.NutritionStats.service.statistic.Percentage;
-import com.univpm.po.NutritionStats.service.statistic.StandardDeviation;
-import com.univpm.po.NutritionStats.service.statistic.Statistic;
+import com.univpm.po.NutritionStats.service.statistic.*;
 
 public enum StatisticType {
 	PERCENTAGE(Percentage.class), 
 	MEAN(Mean.class), 
-	STANDARD_DEVIATION(StandardDeviation.class);
+	STANDARD_DEVIATION(StandardDeviation.class),
+	CORRELATION(Correlation.class);
 
 	Class<? extends Statistic> referenceClass;
 
