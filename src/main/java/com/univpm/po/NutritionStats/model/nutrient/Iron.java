@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Represent a specified mineral salt, the iron
+ * 
  * @author Davide
  *
  */
@@ -13,10 +14,11 @@ public class Iron extends MineralSalt implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param quantity
+	 * 
+	 * @param quantity of iron
 	 */
 	public Iron(float quantity) {
-		super(AllNutrientNonNutrient.IRON,quantity);
+		super(AllNutrientNonNutrient.IRON, quantity);
 	}
 
 }

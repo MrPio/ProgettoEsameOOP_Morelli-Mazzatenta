@@ -5,7 +5,8 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import java.io.Serializable;
 
 /**
- * Represent a carbohydrate which is a macronutrient 
+ * Represent a carbohydrate which is a macronutrient
+ * 
  * @author Davide
  *
  */
@@ -15,8 +16,9 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param quantity
-	 * @param quantityOnlySugar
+	 * 
+	 * @param quantity 			of carbohydrates
+	 * @param quantityOnlySugar of these carbohydrates
 	 */
 	public Carbohydrate(float quantity, float quantityOnlySugar) {
 		super(AllNutrientNonNutrient.CARBOHYDRATE, quantity);
@@ -24,15 +26,16 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 	}
 
 	/**
-	 * @return the quantity of only sugar carbohydrates 
+	 * @return the quantity of only sugar carbohydrates
 	 */
 	public float getQuantityOnlySugar() {
 		return quantityOnlySugar;
 	}
 
 	/**
-     * set the only sugar quantity passed by the param
-	 * @param quantityOnlySugar
+	 * set the only sugar quantity passed by the param
+	 * 
+	 * @param quantityOnlySugar to set
 	 */
 	public void setQuantityOnlySugar(float quantityOnlySugar) {
 		this.quantityOnlySugar = quantityOnlySugar;

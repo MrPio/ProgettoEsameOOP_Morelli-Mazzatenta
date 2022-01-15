@@ -5,7 +5,8 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import java.io.Serializable;
 
 /**
- * Represent a lipid which is a macronutrient 
+ * Represent a lipid which is a macronutrient
+ * 
  * @author Davide
  *
  */
@@ -15,8 +16,9 @@ public class Lipid extends MacroNutrient implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param quantity
-	 * @param quantityOnlySaturated
+	 * 
+	 * @param quantity 				of lipids
+	 * @param quantityOnlySaturated of these lipids 
 	 */
 	public Lipid(float quantity, float quantityOnlySaturated) {
 		super(AllNutrientNonNutrient.LIPID, quantity);
@@ -24,15 +26,16 @@ public class Lipid extends MacroNutrient implements Serializable {
 	}
 
 	/**
-	 * @return the quantity of only satured lipids 
+	 * @return the quantity of only satured lipids
 	 */
 	public float getQuantityOnlySaturated() {
 		return quantityOnlySaturated;
 	}
 
 	/**
-     * set the only satured quantity passed by the param
-	 * @param quantityOnlySaturated
+	 * set the only satured quantity passed by the param
+	 * 
+	 * @param quantityOnlySaturated to set 
 	 */
 	public void setQuantityOnlySaturated(float quantityOnlySaturated) {
 		this.quantityOnlySaturated = quantityOnlySaturated;

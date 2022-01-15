@@ -6,7 +6,9 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import java.io.Serializable;
 
 /**
- * Represents a generic nutrient.
+ * Represents a generic nutrient which is one among macronutrients and
+ * micronutrients.
+ * 
  * @author Davide
  * 
  */
@@ -17,9 +19,10 @@ public abstract class Nutrient implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param name
-	 * @param quantity
-	 * @param measure
+	 * 
+	 * @param name     of a nutrient
+	 * @param quantity of a nutrient
+	 * @param measure  the unity of measure of a nutrient
 	 */
 	public Nutrient(AllNutrientNonNutrient name, float quantity, Measure measure) {
 		this.name = name;
@@ -41,17 +44,18 @@ public abstract class Nutrient implements Serializable {
 		return measure;
 	}
 
-    /**
-     * @return quantity of a nutrient 
-     */
+	/**
+	 * @return quantity of a nutrient
+	 */
 	public float getQuantity() {
 		return quantity;
 	}
 
-    /**
-     * set the quantity passed by the param
-     * @param quantity
-     */
+	/**
+	 * set the quantity passed by the parameter
+	 * 
+	 * @param quantity to set 
+	 */
 	public void setQuantity(float quantity) {
 		this.quantity = quantity;
 	}

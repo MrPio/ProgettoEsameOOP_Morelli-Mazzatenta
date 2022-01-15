@@ -23,9 +23,10 @@ public class Day implements Serializable {
 	};
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a day with a date, a new meal list a new
+	 * water list
 	 * 
-	 * @param date
+	 * @param date of the day
 	 */
 	public Day(LocalDate date) {
 		this.date = date;
@@ -55,14 +56,14 @@ public class Day implements Serializable {
 	}
 
 	/**
-	 * @return the day meals
+	 * @return the meals in a day
 	 */
 	public ArrayList<Meal> getMealList() {
 		return mealList;
 	}
 
 	/**
-	 * Puts in a map nutrients or not nutrients with their quantity in a day
+	 * Puts in a map the total quantity of nutrients or not nutrients in a day.
 	 * 
 	 * @return the daily quantity of nutrients or not nutrients
 	 */
@@ -75,11 +76,11 @@ public class Day implements Serializable {
 	}
 
 	/**
-	 * Adds food to a specific meal in a day and if there isn't that type of meal it
-	 * creates one and adds the food.
+	 * Adds food to a specific meal in a day and if there isn't that type of meal in
+	 * the meal list it creates one and adds the food.
 	 * 
-	 * @param mealType
-	 * @param food
+	 * @param mealType of the meal: breakfast, lunch, snack or dinner
+	 * @param food     to add in that meal
 	 */
 	public void addFood(MealType mealType, Food food) {
 		for (Meal meal : mealList)
@@ -95,14 +96,15 @@ public class Day implements Serializable {
 	/**
 	 * Adds water to the water list
 	 * 
-	 * @param water
+	 * @param water to add
 	 */
 	public void addWater(Water water) {
 		waterList.add(water);
 	}
 
 	/**
-	 * Calculates the total calories of a day through meals
+	 * Calculates the total calories of a day through meals, that is based on the
+	 * method in Meal class that calculate total calories of a meal through foods.
 	 * 
 	 * @return the day total calories
 	 */
@@ -114,12 +116,15 @@ public class Day implements Serializable {
 	}
 
 	/**
-	 * Calculate the quantity of nutrient and not nutrient or the volume of water in
-	 * a day. It's based on the calculate method in Meal Class
+	 * Calculate the quantity of nutrients and not nutrients or the volume of water in
+	 * a day. It's based on the method in Meal Class that calculates the quantity of
+	 * nutrients and not nutrients in a meal and on the the method in Water Class
+	 * that get the volume of water.
 	 * 
-	 * @param <T>
-	 * @param myClass
-	 * @return
+	 * @param <T>     means that the method will be dealing with generic type
+	 * @param myClass is a class object of a specific class type <T>. It can be a
+	 *                String, an Integer or a Object
+	 * @return nutrient and not nutrient or water quantity in a day
 	 */
 	public <T> float calculate(Class<T> myClass) {
 		float value = 0;

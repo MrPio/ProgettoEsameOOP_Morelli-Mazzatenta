@@ -3,31 +3,61 @@ package com.univpm.po.NutritionStats.model;
 import java.io.Serializable;
 import java.time.LocalTime;
 
+/**
+ * Represents a message with a text, the time it has appeared and and whether it
+ * has been read or not.
+ * 
+ * @author Davide
+ *
+ */
 public class Message implements Serializable {
-    private String message;
-    private LocalTime time;
-    private boolean read;
+	private String message;
+	private LocalTime time;
+	private boolean read;
 
-    public Message(String message) {
-        this.message = message;
-        this.time = LocalTime.now();
-        read=false;
-    }
+	/**
+	 * Class first constructor that instantiates a message with a text, time(now) and
+	 * which has not been read.
+	 * 
+	 * @param message the text of the message
+	 */
+	public Message(String message) {
+		this.message = message;
+		this.time = LocalTime.now();
+		read = false;
+	}
 
-    public Message(String message, LocalTime time) {
-        this.message = message;
-        this.time = time;
-        read=false;
-    }
+	/**
+	 * Class second constructor that instantiates a message with a text, a time and
+	 * which has not been read.
+	 * 
+	 * @param message the text of the message
+	 * @param time    of the message
+	 */
+	public Message(String message, LocalTime time) {
+		this.message = message;
+		this.time = time;
+		read = false;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	/**
+	 * @return the text of the message
+	 */
+	public String getMessage() {
+		return message;
+	}
 
-    public LocalTime getTime() {
-        return time;
-    }
-    public void read(){
-        read=true;
-    }
+	/**
+	 * @return the time of the message
+	 */
+	public LocalTime getTime() {
+		return time;
+	}
+
+	/**
+	 * The message is read
+	 */
+	public void read() {
+		read = true;
+	}
 }

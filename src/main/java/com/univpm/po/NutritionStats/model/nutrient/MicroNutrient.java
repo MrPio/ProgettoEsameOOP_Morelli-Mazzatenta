@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 /**
  * Represents a generic micronutrient
+ * 
  * @author Davide
  *
  */
@@ -14,10 +15,11 @@ public abstract class MicroNutrient extends Nutrient implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param name
-	 * @param quantity
+	 * 
+	 * @param name     of a micronutrient that can be a vitamin or a mineral salt
+	 * @param quantity of a micronutrient
 	 */
-    public MicroNutrient(AllNutrientNonNutrient name, float quantity) {
-        super(name, quantity, Measure.GR);
-    }
+	public MicroNutrient(AllNutrientNonNutrient name, float quantity) {
+		super(name, quantity, Measure.GR);
+	}
 }

@@ -7,6 +7,7 @@ import com.univpm.po.NutritionStats.enums.MealType;
 
 /**
  * Represents a meal in a day which can be breakfast, lunch, snack or dinner
+ * with its food list.
  * 
  * @author Davide
  *
@@ -17,9 +18,9 @@ public class Meal implements Serializable {
 	private ArrayList<Food> foodList;
 
 	/**
-	 * Class first constructor
+	 * Class first constructor that instantiates a meal with a type and a food list
 	 * 
-	 * @param mealType
+	 * @param mealType of the meal: breakfast, lunch, snack or dinner
 	 */
 	public Meal(MealType mealType) {
 		this.mealType = mealType;
@@ -27,11 +28,12 @@ public class Meal implements Serializable {
 	}
 
 	/**
-	 * Class second constructor
+	 * Class second constructor that instantiates a meal, a food list and a water
+	 * list
 	 * 
-	 * @param mealType
-	 * @param foodList
-	 * @param waterList
+	 * @param mealType  of the meal: breakfast, lunch, snack or dinner
+	 * @param foodList  of the meal that contains one or more foods
+	 * @param waterList of the meal that contains water
 	 */
 	public Meal(MealType mealType, ArrayList<Food> foodList, ArrayList<Water> waterList) {
 		this.mealType = mealType;
@@ -53,7 +55,7 @@ public class Meal implements Serializable {
 	}
 
 	/**
-	 * Add food to a meal
+	 * Add food to the food list
 	 * 
 	 * @param food to add
 	 */
@@ -62,7 +64,9 @@ public class Meal implements Serializable {
 	}
 
 	/**
-	 * Calculate the total calories of a meal through foods
+	 * Calculate total calories of a meal through foods. A food is made of nutrients
+	 * and not nutrients. Total calories are calculated with nutrients, specifically
+	 * with macronutrients that are carbohydrates, proteins or lipids.
 	 * 
 	 * @return meal total calories
 	 */
@@ -75,11 +79,13 @@ public class Meal implements Serializable {
 
 	/**
 	 * Calculate the quantity of nutrient and not nutrient in a meal. It's based on
-	 * the calculate method in Food Class
+	 * the method in Food Class that calculates the quantity of nutrients and not
+	 * nutrients in a food.
 	 * 
-	 * @param <T>
-	 * @param myClass
-	 * @return nutrient or not nutrient quantity
+	 * @param <T>     means that the method will be dealing with generic type
+	 * @param myClass is a class object of a specific class type <T>. It can be a
+	 *                String, an Integer or a Object
+	 * @return nutrient or not nutrient quantity in a meal
 	 */
 	public <T> float calculate(Class<T> myClass) {
 		float value = 0;

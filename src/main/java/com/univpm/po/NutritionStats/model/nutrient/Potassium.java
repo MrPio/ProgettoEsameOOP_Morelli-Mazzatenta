@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Represent a specified mineral salt, the potassium
+ * 
  * @author Davide
  *
  */
@@ -13,9 +14,10 @@ public class Potassium extends MineralSalt implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param quantity
+	 * 
+	 * @param quantity of potassium
 	 */
 	public Potassium(float quantity) {
-		super(AllNutrientNonNutrient.POTASSIUM,quantity);
+		super(AllNutrientNonNutrient.POTASSIUM, quantity);
 	}
 }

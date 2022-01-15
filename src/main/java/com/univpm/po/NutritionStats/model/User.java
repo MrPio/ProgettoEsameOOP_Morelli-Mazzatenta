@@ -35,7 +35,8 @@ public class User implements Serializable {
 	private TreeMap<LocalDate, Message> mailBox;
 
 	/**
-	 * Class first constructor
+	 * Class first constructor that instantiates an user with only his email and
+	 * empty maps of weights and mails.
 	 * 
 	 * @param email
 	 */
@@ -46,7 +47,9 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * Class second constructor
+	 * Class second constructor that instantiates an user with nickname, email,
+	 * birth date, height, weight, the type of diet he wants to follow and the
+	 * gender
 	 * 
 	 * @param nickname
 	 * @param email
@@ -108,7 +111,7 @@ public class User implements Serializable {
 	/**
 	 * set the user's weight and date associated
 	 * 
-	 * @param weight
+	 * @param weight to set 
 	 */
 	public void setWeight(TreeMap<LocalDate, Float> weight) {
 		this.weight = weight;
@@ -144,8 +147,8 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * Generate user's token that uniquely identifies him. 
-	 * It uses the cryptographic hash function called MD5
+	 * Generate user's token that uniquely identifies him. It uses the cryptographic
+	 * hash function called MD5
 	 * 
 	 * @return the user's token
 	 */
