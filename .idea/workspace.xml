@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Statistic.java and its underclasses now use Mathematics.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Correlation.java" afterDir="false" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Correlation.java and 2 bug fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/enums/StatisticType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/enums/StatisticType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/FilterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/FilterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/ApiFoodNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/ApiFoodNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/ChompLimitOvercameException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/ChompLimitOvercameException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/EndDateBeforeStartDateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/EndDateBeforeStartDateException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/UserAlreadyInDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/UserAlreadyInDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/UserNotFound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/exception/UserNotFound.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/utility/MathematicsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/MathematicsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,12 +179,12 @@
       <module name="NutritionStats" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.univpm.po.NutritionStats.utility.*" />
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.utility" />
-      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.utility.MathematicsTest" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.MathematicsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -192,12 +194,12 @@
       <module name="NutritionStats" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.univpm.po.NutritionStats.utility.*" />
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.utility" />
-      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.utility.MathematicsTest" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.MathematicsTest" />
       <option name="METHOD_NAME" value="calculateCorrelation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -208,12 +210,12 @@
       <module name="NutritionStats" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.univpm.po.NutritionStats.utility.*" />
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.utility" />
-      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.utility.MathematicsTest" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.MathematicsTest" />
       <option name="METHOD_NAME" value="calculateCovariance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -224,12 +226,12 @@
       <module name="NutritionStats" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.univpm.po.NutritionStats.utility.*" />
+          <option name="PATTERN" value="com.univpm.po.NutritionStats.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats.utility" />
-      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.utility.MathematicsTest" />
+      <option name="PACKAGE_NAME" value="com.univpm.po.NutritionStats" />
+      <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.MathematicsTest" />
       <option name="METHOD_NAME" value="calculateSampleMean" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -316,13 +318,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638956800806</updated>
-    </task>
-    <task id="LOCAL-00001" summary="readme changed">
-      <created>1639159307536</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1639159307536</updated>
     </task>
     <task id="LOCAL-00002" summary="readme changed">
       <created>1639163673605</created>
@@ -660,7 +655,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642201238012</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Correlation.java and 2 bug fixed">
+      <created>1642259163363</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1642259163363</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -680,7 +682,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Rebuild MainService" />
     <MESSAGE value="Merged Nutrient and NonNutrient into AllNutrientNonNutrient" />
     <MESSAGE value="Fixed and tested filterByDate" />
     <MESSAGE value="Small fixes" />
@@ -705,7 +706,8 @@
     <MESSAGE value="thorough mathematical treatise for statistic. Fixed filter on weight list." />
     <MESSAGE value="Mathematics.java fixed and tested" />
     <MESSAGE value="Statistic.java and its underclasses now use Mathematics.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Statistic.java and its underclasses now use Mathematics.java" />
+    <MESSAGE value="Correlation.java and 2 bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correlation.java and 2 bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -276,35 +276,41 @@ public class MainService {
     }
 
     /**
-     * This is the center of the class where all the methods redirect to. With the usage of generics repetitive code
-     * is avoided.
+     * <strong>This is the core of the class where all the methods redirect to.</strong>
+     * <p>With the usage of generics repetitive code
+     * is avoided. A distinction between
+     * <p>• <strong>void</strong> and
+     * <p>• <strong>non void</strong>
+     * <p>methods is necessary in order to know if the caller needs something in response or not.
+     * In this last case, an instance of {@link ResponseEntity} containing potential exception that
+     * may occur, or just a message of success otherwise, alongside with a related instance of
+     * {@link HttpStatus}, is returned.
      *
-     * @param token   the token used to identify the {@link User user}.
+     * <p>Both the parameter of the to-be-called method and its response (if not void) are handled thanks
+     * to the <strong>Late Binding</strong> with which, whatever instance of any class can be assigned to
+     * an instance of {@link Object}. Now, in the first case, the casting is done by the method which tries
+     * to cast provided objects in instances of expected classes; while in the second case it's up to the
+     * caller method to do the casting.
+     *
+     * @param token  the token used to identify the {@link User user}.
      * @param method an instance of {@link Method} referring to the method to invoke.
-     * @param param (varargs) an {@link java.lang.reflect.Array Array} of {@link Object objects} which representd
-     * @return
+     * @param param  (varargs) an {@link java.lang.reflect.Array Array} of {@link Object objects} which represent
      * @throws UserNotFound when the token doesn't belong to any registered {@link User user}.
+     * @return an instance of {@link ResponseEntity} if the to-be-called method returns void, the response of
+     * the method otherwise.
      */
     private Object workOnDiary(String token, Method method, Object... param)
             throws UserNotFound {
-        JSONObject response = new JSONObject();
-        HttpStatus httpStatus;
         Diary requestedDiary = Diary.load(token);
-        if (requestedDiary != null) {
-            try {
-                if (method.getReturnType() == void.class)
-                    method.invoke(requestedDiary, param);
-                else
-                    return method.invoke(requestedDiary, param);
-            } catch (IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-            response.put("result", "success!");
-            httpStatus = HttpStatus.OK;
-        } else {
-            response.put("result", "diary not found");
+        if (requestedDiary == null)
             throw new UserNotFound(token);
+        try {
+            if (method.getReturnType() == void.class)
+                method.invoke(requestedDiary, param);
+            else
+                return method.invoke(requestedDiary, param);
+        } catch (IllegalAccessException | InvocationTargetException ignored) {
         }
-        return new ResponseEntity<>(new JSONObject(response), httpStatus);
+        return new ResponseEntity<>(new JSONObject(Map.of("result", "success!")), HttpStatus.OK);
     }
 }
