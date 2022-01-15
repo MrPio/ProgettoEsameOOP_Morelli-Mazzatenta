@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Represent a protein which is a macronutrient
+ * 
  * @author Davide
  *
  */
@@ -13,7 +14,8 @@ public class Protein extends MacroNutrient implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param quantity
+	 * 
+	 * @param quantity of protein
 	 */
 	public Protein(float quantity) {
 		super(AllNutrientNonNutrient.PROTEIN, quantity);

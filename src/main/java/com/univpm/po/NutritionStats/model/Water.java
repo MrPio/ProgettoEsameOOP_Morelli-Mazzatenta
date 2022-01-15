@@ -21,7 +21,9 @@ public class Water implements Serializable {
 	private ArrayList<Nutrient> nutrientList = new ArrayList<Nutrient>();
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates water with a volume and add to the
+	 * nutrient list the default values of micronutrients in water that are sodium
+	 * and potassium
 	 * 
 	 * @param volume
 	 */
@@ -29,8 +31,6 @@ public class Water implements Serializable {
 		this.volume = volume;
 		this.nutrientList.add(new Sodium(SODIUM_PER_100 * volume / 100.0f));
 		this.nutrientList.add(new Calcium(CALCIUM_PER_100 * volume / 100.0f));
-		this.nutrientList.add(new Potassium(POTASSIUM_PER_100 * volume / 100.0f));
-		this.nutrientList.add(new Iron(IRON_PER_100 * volume / 100.0f));
 	}
 
 	/**

@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Represent a specified vitamin, the vitaminC
+ * 
  * @author Davide
  *
  */
@@ -13,10 +14,11 @@ public class VitaminC extends Vitamin implements Serializable {
 
 	/**
 	 * Class constructor
-	 * @param quantity
+	 * 
+	 * @param quantity of vitamin C
 	 */
 	public VitaminC(float quantity) {
-		super(AllNutrientNonNutrient.VITAMIN_C,quantity);
+		super(AllNutrientNonNutrient.VITAMIN_C, quantity);
 	}
 
 }

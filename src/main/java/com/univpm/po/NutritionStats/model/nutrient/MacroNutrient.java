@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents a generic macronutrient 
+ * Represents a generic macronutrient
+ * 
  * @author Davide
  *
  */
@@ -21,19 +22,22 @@ public abstract class MacroNutrient extends Nutrient implements Serializable {
 			put(Protein.class, 4);
 		}
 	};
-	
+
 	/**
 	 * Class constructor
-	 * @param name
-	 * @param quantity
+	 * 
+	 * @param name 		of a macronutrient which is one among carbohydrate, lipid or protein
+	 * @param quantity  of a macronutrient 
 	 */
 	public MacroNutrient(AllNutrientNonNutrient name, float quantity) {
 		super(name, quantity, Measure.GR);
 	}
 
 	/**
-	 * Abstract method that calculate the calories dependind on which macronutrient is it 
-	 * @return
+	 * Abstract method that calculate the calories dependindg on which macronutrient
+	 * is it
+	 * 
+	 * @return total calories of a macronutrient
 	 */
 	public abstract float calculateCalories();
 

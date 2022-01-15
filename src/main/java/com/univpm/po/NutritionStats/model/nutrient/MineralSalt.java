@@ -6,17 +6,19 @@ import java.io.Serializable;
 
 /**
  * Represents a mineral salt which is a micronutrient
+ * 
  * @author Davide
  *
  */
 public abstract class MineralSalt extends MicroNutrient implements Serializable {
-	
+
 	/**
-	 * Class constructor 
-	 * @param name
-	 * @param quantity
+	 * Class constructor
+	 * 
+	 * @param name     of the mineral
+	 * @param quantity of the mineral
 	 */
 	public MineralSalt(AllNutrientNonNutrient name, float quantity) {
-		super(name,quantity);
+		super(name, quantity);
 	}
 }
