@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Introduced Mailbox, messages and schedule">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
-    </list>
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="small bug in Controller.java fixed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +101,7 @@
       <recent name="com.univpm.po.NutritionStats.api" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NutritionStats">
+  <component name="RunManager" selected="JUnit.EdamamNutritionAnalysisAPITest">
     <configuration name="NutritionStats" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.univpm.po.NutritionStats.NutritionStatsApplication" />
       <module name="NutritionStats" />
@@ -311,13 +308,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638956800806</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Added support to upload/download files in dropbox cloud">
-      <created>1639267099251</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1639267099251</updated>
     </task>
     <task id="LOCAL-00006" summary="Added support to remote database (Dropbox)">
       <created>1639268479872</created>
@@ -655,7 +645,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642270456729</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="small bug in Controller.java fixed">
+      <created>1642358958185</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1642358958185</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -675,7 +672,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Small fixes" />
     <MESSAGE value="JDK 11" />
     <MESSAGE value="small fix" />
     <MESSAGE value="rename variable" />
@@ -700,7 +696,8 @@
     <MESSAGE value="Correlation.java and 2 bug fixed" />
     <MESSAGE value="Exceptions javadoc" />
     <MESSAGE value="Introduced Mailbox, messages and schedule" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced Mailbox, messages and schedule" />
+    <MESSAGE value="small bug in Controller.java fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="small bug in Controller.java fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
