@@ -8,11 +8,12 @@ import java.io.Serializable;
 /**
  * Represents the water coming from a food.
  * 
- * @author Davide 
+ * @author Davide
  */
 public class WaterFromFood extends NotNutrient implements Serializable {
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates water from food with with quantity, "label"
+	 * and unity of measure which is milliliters.
 	 * 
 	 * @param quantity of water
 	 */

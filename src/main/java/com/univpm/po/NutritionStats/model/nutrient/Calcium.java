@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Calcium extends MineralSalt implements Serializable {
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates calcium with his quantity and a "label"
 	 * 
 	 * @param quantity of calcium
 	 */

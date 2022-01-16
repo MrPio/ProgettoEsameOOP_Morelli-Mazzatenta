@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Iron extends MineralSalt implements Serializable {
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates iron with quantity and "label" 
 	 * 
 	 * @param quantity of iron
 	 */

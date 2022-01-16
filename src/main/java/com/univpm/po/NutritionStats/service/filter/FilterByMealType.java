@@ -23,9 +23,5 @@ public class FilterByMealType extends Filter {
     public void filter(Diary diary) {
         for (Day day : diary.getDayList())
             day.getMealList().removeIf(meal -> !(mealType == meal.getMealType()));
-
-/*        for (Meal meal : day.getMealList())
-                if (!(mealType == meal.getMealType()))
-                    day.getMealList().remove(meal);*/
     }
 }

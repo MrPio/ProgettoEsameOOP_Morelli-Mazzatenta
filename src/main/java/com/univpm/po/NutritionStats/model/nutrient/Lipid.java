@@ -15,10 +15,11 @@ public class Lipid extends MacroNutrient implements Serializable {
 	private float quantityOnlySaturated;
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a lipid with quantity, only satured
+	 * quantity and "label"
 	 * 
-	 * @param quantity 				of lipids
-	 * @param quantityOnlySaturated of these lipids 
+	 * @param quantity              of lipids
+	 * @param quantityOnlySaturated of these lipids
 	 */
 	public Lipid(float quantity, float quantityOnlySaturated) {
 		super(AllNutrientNonNutrient.LIPID, quantity);
@@ -33,16 +34,17 @@ public class Lipid extends MacroNutrient implements Serializable {
 	}
 
 	/**
-	 * set the only satured quantity passed by the param
+	 * set the only satured quantity passed by the parameter
 	 * 
-	 * @param quantityOnlySaturated to set 
+	 * @param quantityOnlySaturated to set
 	 */
 	public void setQuantityOnlySaturated(float quantityOnlySaturated) {
 		this.quantityOnlySaturated = quantityOnlySaturated;
 	}
 
 	/**
-	 * Calculate the calories of a lipid
+	 * Calculate the calories of a lipid through the quantity and calories
+	 * per gram
 	 */
 	@Override
 	public float calculateCalories() {

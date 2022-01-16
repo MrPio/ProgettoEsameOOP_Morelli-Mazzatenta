@@ -18,7 +18,8 @@ public abstract class Nutrient implements Serializable {
 	private float quantity;
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a nutrient with quantity, "label" and unity
+	 * of measure.
 	 * 
 	 * @param name     of a nutrient
 	 * @param quantity of a nutrient
@@ -54,7 +55,7 @@ public abstract class Nutrient implements Serializable {
 	/**
 	 * set the quantity passed by the parameter
 	 * 
-	 * @param quantity to set 
+	 * @param quantity to set
 	 */
 	public void setQuantity(float quantity) {
 		this.quantity = quantity;

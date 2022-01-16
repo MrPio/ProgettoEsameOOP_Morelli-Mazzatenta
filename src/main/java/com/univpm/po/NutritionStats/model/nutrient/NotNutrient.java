@@ -7,8 +7,10 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import java.io.Serializable;
 
 /**
- * Represents a generic not nutrient which is one between fiber or 
- * water from food
+ * Represents a generic not nutrient which is one between fiber or water from
+ * food. It has no calories. Fiber isn't considered a nutrient because it's not
+ * absorbed by the human body. Water from food, instead, is absorbed but isn't
+ * considered a nutrient, it only has micronutrients.
  * 
  * @author Davide
  */
@@ -18,7 +20,8 @@ public abstract class NotNutrient implements Serializable {
 	private float quantity;
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a not nutrient with quantity, "label" and
+	 * unity of measure.
 	 * 
 	 * @param name     of a not nutrient
 	 * @param measure  the unity of measure of a not nutrient

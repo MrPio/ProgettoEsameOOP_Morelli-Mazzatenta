@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Potassium extends MineralSalt implements Serializable {
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates potassium with quantity and "label".
 	 * 
 	 * @param quantity of potassium
 	 */

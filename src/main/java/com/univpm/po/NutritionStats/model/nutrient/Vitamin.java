@@ -5,7 +5,8 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import java.io.Serializable;
 
 /**
- * Represents a vitamin which is a micronutrient
+ * Represents a generic vitamin which is a micronutrient and can be one between
+ * vitamin A and vitamin C.
  * 
  * @author Davide
  *
@@ -13,9 +14,9 @@ import java.io.Serializable;
 public abstract class Vitamin extends MicroNutrient implements Serializable {
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a vitamin with quantity and "label".
 	 * 
-	 * @param name	   of the vitamin which is one between vitaminA and vitaminC
+	 * @param name     of the vitamin which is one between vitaminA and vitaminC
 	 * @param quantity of vitamin
 	 */
 	public Vitamin(AllNutrientNonNutrient name, float quantity) {
