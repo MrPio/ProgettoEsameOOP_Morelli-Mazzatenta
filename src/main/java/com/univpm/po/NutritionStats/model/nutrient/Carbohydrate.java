@@ -15,9 +15,10 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 	private float quantityOnlySugar;
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a carbohydrate with quantity, only sugar
+	 * quantity and a "label".
 	 * 
-	 * @param quantity 			of carbohydrates
+	 * @param quantity          of carbohydrates
 	 * @param quantityOnlySugar of these carbohydrates
 	 */
 	public Carbohydrate(float quantity, float quantityOnlySugar) {
@@ -33,7 +34,7 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 	}
 
 	/**
-	 * set the only sugar quantity passed by the param
+	 * set the only sugar quantity passed by the parameter
 	 * 
 	 * @param quantityOnlySugar to set
 	 */
@@ -42,7 +43,8 @@ public class Carbohydrate extends MacroNutrient implements Serializable {
 	}
 
 	/**
-	 * Calculate the calories of a carbohydrate
+	 * Calculate the calories of a carbohydrate through the quantity and calories
+	 * per gram
 	 */
 	@Override
 	public float calculateCalories() {

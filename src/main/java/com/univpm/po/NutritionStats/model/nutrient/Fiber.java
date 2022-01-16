@@ -12,7 +12,8 @@ import java.io.Serializable;
  */
 public class Fiber extends NotNutrient implements Serializable {
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a fiber with quantity, "label" and unity of
+	 * measure that is grams
 	 * 
 	 * @param quantity of fiber
 	 */

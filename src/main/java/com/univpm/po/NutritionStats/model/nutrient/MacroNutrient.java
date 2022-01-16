@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents a generic macronutrient
+ * Represents a generic macronutrient which is the part of nutrients with
+ * calories. It can be a carbohydrate, a lipid or a protein.
  * 
  * @author Davide
  *
@@ -24,10 +25,12 @@ public abstract class MacroNutrient extends Nutrient implements Serializable {
 	};
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a macronutrient with quantity and "label"
+	 * and unity of measure which is grams.
 	 * 
-	 * @param name 		of a macronutrient which is one among carbohydrate, lipid or protein
-	 * @param quantity  of a macronutrient 
+	 * @param name     of a macronutrient which is one among carbohydrate, lipid or
+	 *                 protein
+	 * @param quantity of a macronutrient expressed in grams
 	 */
 	public MacroNutrient(AllNutrientNonNutrient name, float quantity) {
 		super(name, quantity, Measure.GR);

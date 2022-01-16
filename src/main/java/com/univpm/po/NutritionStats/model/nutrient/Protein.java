@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Protein extends MacroNutrient implements Serializable {
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a protein with quantity and "label".
 	 * 
 	 * @param quantity of protein
 	 */
@@ -22,7 +22,8 @@ public class Protein extends MacroNutrient implements Serializable {
 	}
 
 	/**
-	 * Calculate the calories of a protein
+	 * Calculate the calories of a protein through the quantity and calories
+	 * per gram
 	 */
 	@Override
 	public float calculateCalories() {

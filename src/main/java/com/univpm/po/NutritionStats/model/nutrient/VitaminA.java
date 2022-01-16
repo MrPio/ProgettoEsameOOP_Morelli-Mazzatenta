@@ -5,7 +5,7 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import java.io.Serializable;
 
 /**
- * Represent a specified vitamin, the vitaminA
+ * Represent a specified vitamin, the vitamin A.
  * 
  * @author Davide
  *
@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class VitaminA extends Vitamin implements Serializable {
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates vitamin A with quantity and "label".
 	 * 
 	 * @param quantity of vitaminA
 	 */

@@ -5,7 +5,8 @@ import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
 import java.io.Serializable;
 
 /**
- * Represents a mineral salt which is a micronutrient
+ * Represents a generic mineral salt which is a micronutrient and can be one
+ * among calcium, potassium, sodium and iron.
  * 
  * @author Davide
  *
@@ -13,7 +14,7 @@ import java.io.Serializable;
 public abstract class MineralSalt extends MicroNutrient implements Serializable {
 
 	/**
-	 * Class constructor
+	 * Class constructor that instantiates a mineral salt with quantity and "label".
 	 * 
 	 * @param name     of the mineral
 	 * @param quantity of the mineral
