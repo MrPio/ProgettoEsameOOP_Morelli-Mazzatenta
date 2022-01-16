@@ -76,22 +76,22 @@ Type | Route | Params | Body | Description
 ### •🔰 Packages UML:
 ![model UML](graphics/UML%20Packages.drawio.jpg)
 
-### •🔰 model UML:
+### •🟪 Model:
 ![model UML](graphics/model1.jpg)
 
-### •🔰 nutrient UML:
+### •🟦 Nutrients:
 ![nutrient UML](graphics/nutrient.jpg)
 
-### •🔰 exception UML:
+### •🟩 Exceptions:
 ![exception UML](graphics/exception.jpg)
 
-### •🔰 enum UML:
+### •🟨 Enums:
 ![enum UML](graphics/enum.jpg)
 
-### •🔰 filter UML:
+### •🟧 Filters:
 ![filter UML](graphics/filter.jpg)
 
-### •🔰 statistic UML:
+### •🟥 Statistics:
 ![statistic UML](graphics/statistic.jpg)
 
 ## Tools 

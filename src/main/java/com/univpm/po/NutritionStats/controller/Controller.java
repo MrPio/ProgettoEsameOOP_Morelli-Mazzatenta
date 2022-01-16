@@ -311,7 +311,6 @@ public class Controller {
     public ResponseEntity<Object> requestDayInfo(
             @PathVariable(value = "day_id") String dayId,
             @RequestParam(value = "token") String token) throws NoSuchMethodException {
-        System.err.println(ENDPOINT_DAY_INFO);
         try {
             return mainService.requestDayValues(token, dayId);
         } catch (UserNotFound e) {
@@ -381,7 +380,6 @@ public class Controller {
     @RequestMapping(path = ENDPOINT_LOGIN, method = RequestMethod.GET)
     public ResponseEntity<Object> requestLogin(
             @RequestParam(value = "token") String token) throws NoSuchMethodException {
-        System.err.println(ENDPOINT_LOGIN);
         try {
             return mainService.requestLogin(token);
         } catch (UserNotFound e) {
@@ -482,7 +480,7 @@ public class Controller {
             @RequestParam(value = "type") StatisticType[] types,
             @RequestBody FilterManager filterManager) throws NoSuchMethodException {
         try {
-            if (filterManager.getException().getClass() == EndDateBeforeStartDateException.class)
+            if (filterManager.getException() != null && filterManager.getException().getClass() == EndDateBeforeStartDateException.class)
                 throw (EndDateBeforeStartDateException) filterManager.getException();
             return mainService.requestStats(token, types, filterManager.getFiltersList());
         } catch (UserNotFound e) {
@@ -522,7 +520,7 @@ public class Controller {
             @RequestParam(value = "token") String token,
             @RequestBody FilterManager filterManager) throws NoSuchMethodException {
         try {
-            if (filterManager.getException().getClass() == EndDateBeforeStartDateException.class)
+            if (filterManager.getException() != null && filterManager.getException().getClass() == EndDateBeforeStartDateException.class)
                 throw (EndDateBeforeStartDateException) filterManager.getException();
             return mainService.requestFilters(token, filterManager.getFiltersList());
         } catch (UserNotFound e) {
