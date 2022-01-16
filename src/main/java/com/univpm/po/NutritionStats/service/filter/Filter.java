@@ -30,7 +30,7 @@ public abstract class Filter {
 	}
 
 	/**
-	 * Filter diary given as a parameter depending on which filter it it
+	 * Filter diary given as a parameter depending on which filter is it
 	 * 
 	 * @param diary to filter
 	 */
