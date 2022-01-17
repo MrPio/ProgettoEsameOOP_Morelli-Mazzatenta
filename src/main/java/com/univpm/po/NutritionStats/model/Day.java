@@ -12,7 +12,7 @@ import com.univpm.po.NutritionStats.enums.MealType;
 /**
  * Represents a day with date, meals and water
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Day implements Serializable {

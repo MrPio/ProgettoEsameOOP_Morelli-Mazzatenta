@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Represents a generic nutrient which is one among macronutrients and
  * micronutrients.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  * 
  */
 public abstract class Nutrient implements Serializable {

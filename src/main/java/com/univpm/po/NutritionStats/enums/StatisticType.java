@@ -6,7 +6,7 @@ import com.univpm.po.NutritionStats.service.statistic.*;
  * Represents a type of statistic with the respective class. Statistics are:
  * percentage, mean, standard deviation and correlation.
  * 
- * @author Davide
+ * @author Valerio Morelli
  *
  */
 public enum StatisticType {

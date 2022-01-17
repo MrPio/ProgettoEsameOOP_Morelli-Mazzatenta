@@ -12,7 +12,7 @@ import java.util.Map;
  * Represents a generic macronutrient which is the part of nutrients with
  * calories. It can be a carbohydrate, a lipid or a protein.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public abstract class MacroNutrient extends Nutrient implements Serializable {

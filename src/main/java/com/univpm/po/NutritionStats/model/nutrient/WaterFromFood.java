@@ -8,7 +8,8 @@ import java.io.Serializable;
 /**
  * Represents the water coming from a food.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
+ * 
  */
 public class WaterFromFood extends NotNutrient implements Serializable {
 	/**

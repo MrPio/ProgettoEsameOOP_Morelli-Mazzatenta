@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a carbohydrate which is a macronutrient
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Carbohydrate extends MacroNutrient implements Serializable {

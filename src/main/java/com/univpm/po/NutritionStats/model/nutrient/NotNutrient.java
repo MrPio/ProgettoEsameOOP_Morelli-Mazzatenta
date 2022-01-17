@@ -12,7 +12,8 @@ import java.io.Serializable;
  * absorbed by the human body. Water from food, instead, is absorbed but isn't
  * considered a nutrient, it only has micronutrients.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
+ * 
  */
 public abstract class NotNutrient implements Serializable {
 	private AllNutrientNonNutrient name;

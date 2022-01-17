@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Represents a generic mineral salt which is a micronutrient and can be one
  * among calcium, potassium, sodium and iron.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public abstract class MineralSalt extends MicroNutrient implements Serializable {

@@ -9,7 +9,7 @@ import com.univpm.po.NutritionStats.enums.MealType;
  * Represents a meal in a day which can be breakfast, lunch, snack or dinner
  * with its food list.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Meal implements Serializable {

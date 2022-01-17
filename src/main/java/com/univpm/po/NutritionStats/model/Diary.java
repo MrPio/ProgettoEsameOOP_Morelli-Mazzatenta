@@ -24,7 +24,8 @@ import java.util.TreeMap;
  * Represents the user's diary with all the information about him and his
  * eating.
  *
- * @author Davide
+ * @author Davide Mazzatenta
+ * 
  */
 public class Diary implements Serializable {
 	private static final long serialVersionUID = 1L;

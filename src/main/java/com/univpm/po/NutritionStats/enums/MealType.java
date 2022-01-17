@@ -4,7 +4,7 @@ package com.univpm.po.NutritionStats.enums;
  * Represents a meal type, which is breakfast, lunch, snack or dinner with their
  * percentage of daily caloric intake and a message.
  * 
- * @author Davide
+ * @author Valerio Morelli
  *
  */
 public enum MealType {

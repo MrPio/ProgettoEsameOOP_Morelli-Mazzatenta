@@ -6,7 +6,7 @@ import com.univpm.po.NutritionStats.model.nutrient.*;
  * Represents a "label" of every nutrient and not nutrient with the respective
  * class and chomp and edamam API names as a string.
  * 
- * @author Davide
+ * @author Valerio Morelli
  *
  */
 public enum AllNutrientNonNutrient {

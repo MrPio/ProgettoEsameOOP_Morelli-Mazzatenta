@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a specified vitamin, the vitamin A.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class VitaminA extends Vitamin implements Serializable {

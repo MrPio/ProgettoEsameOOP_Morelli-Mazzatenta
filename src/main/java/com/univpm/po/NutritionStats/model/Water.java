@@ -8,7 +8,7 @@ import com.univpm.po.NutritionStats.model.nutrient.*;
 /**
  * Represents water drunk which is different from the water of a food
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Water implements Serializable {

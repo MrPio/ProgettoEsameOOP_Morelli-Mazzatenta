@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Represents the fibers of a food.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  */
 public class Fiber extends NotNutrient implements Serializable {
 	/**

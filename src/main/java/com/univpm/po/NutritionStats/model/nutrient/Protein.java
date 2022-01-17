@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a protein which is a macronutrient
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Protein extends MacroNutrient implements Serializable {

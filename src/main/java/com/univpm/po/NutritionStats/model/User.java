@@ -22,7 +22,7 @@ import org.json.simple.JSONObject;
  * Represents the program user with his features like nickname and email needed
  * to register and personal informations useful for the purposes of the program.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class User implements Serializable {

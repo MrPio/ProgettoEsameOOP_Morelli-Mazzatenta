@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Represents a generic vitamin which is a micronutrient and can be one between
  * vitamin A and vitamin C.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public abstract class Vitamin extends MicroNutrient implements Serializable {

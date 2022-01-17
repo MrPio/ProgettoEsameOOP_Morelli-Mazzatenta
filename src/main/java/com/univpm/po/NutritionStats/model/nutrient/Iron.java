@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a specified mineral salt, the iron
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Iron extends MineralSalt implements Serializable {

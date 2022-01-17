@@ -9,7 +9,7 @@ import com.univpm.po.NutritionStats.service.filter.FilterByMealType;
  * Represents a type of filter with the respective class. Filters are by date,
  * by meal type and by food.
  * 
- * @author Davide
+ * @author Valerio Morelli
  *
  */
 public enum FilterType {

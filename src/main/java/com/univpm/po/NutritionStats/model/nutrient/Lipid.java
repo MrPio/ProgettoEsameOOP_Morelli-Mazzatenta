@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a lipid which is a macronutrient
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Lipid extends MacroNutrient implements Serializable {

@@ -3,7 +3,7 @@ package com.univpm.po.NutritionStats.enums;
 /**
  * Represents chomp and edamam API web URL as a string.
  * 
- * @author Davide
+ * @author Valerio Morelli
  *
  */
 public enum Api {

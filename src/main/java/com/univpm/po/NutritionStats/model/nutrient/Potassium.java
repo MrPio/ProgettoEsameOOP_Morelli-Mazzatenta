@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a specified mineral salt, the potassium
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Potassium extends MineralSalt implements Serializable {

@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a specified mineral salt, the calcium
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Calcium extends MineralSalt implements Serializable {

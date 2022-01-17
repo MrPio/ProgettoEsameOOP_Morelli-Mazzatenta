@@ -7,7 +7,7 @@ import java.time.LocalTime;
  * Represents a message with a text, the time it has appeared and and whether it
  * has been read or not.
  *
- * @author Davide
+ * @author Valerio Morelli
  *
  */
 public class Message implements Serializable {

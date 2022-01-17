@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Represent a specified vitamin, the vitamin C.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class VitaminC extends Vitamin implements Serializable {

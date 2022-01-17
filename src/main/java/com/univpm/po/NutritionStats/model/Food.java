@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Represents a generic food with a name, a portion weight, a unity of measure,
  * the type of diet it belongs to, a nutrient list and a not nutrient list
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public class Food implements Serializable {

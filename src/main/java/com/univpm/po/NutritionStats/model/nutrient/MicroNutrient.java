@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Represents a generic micronutrient which is the part of nutrients with no
  * calories. It can be a vitamin or a mineral salt.
  * 
- * @author Davide
+ * @author Davide Mazzatenta
  *
  */
 public abstract class MicroNutrient extends Nutrient implements Serializable {
