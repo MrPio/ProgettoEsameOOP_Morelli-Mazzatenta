@@ -79,19 +79,19 @@ Type | Route | Params | Body | Description
 ### •🟪 Model:
 ![model UML](graphics/model.jpg)
 
-### •🟦 Nutrients:
+### •🟦 Nutrient:
 ![nutrient UML](graphics/nutrient.jpg)
 
 ### •🟩 Exceptions:
 ![exception UML](graphics/exception.jpg)
 
-### •🟨 Enums:
+### •🟨 Enum:
 ![enum UML](graphics/enum.jpg)
 
-### •🟧 Filters:
+### •🟧 Filter:
 ![filter UML](graphics/filter.jpg)
 
-### •🟥 Statistics:
+### •🟥 Statistic:
 ![statistic UML](graphics/statistic.jpg)
 
 ## Tools 
