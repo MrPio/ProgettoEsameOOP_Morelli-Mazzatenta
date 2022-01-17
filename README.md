@@ -73,25 +73,25 @@ Type | Route | Params | Body | Description
 🟢**GET** | [`/diary/{day_id}`](https://nutritionstatsoop.herokuapp.com/diary/23-12-2021?token=3959de8aeefabfa1385135fa8d03ee21) | `token` | -| Return the data of the user in specified day.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 ## Application UML ☀:
-### •🔰 Packages UML:
+### •🔰 PACKAGES:
 ![model UML](graphics/UML%20Packages.drawio.jpg)
 
-### •🟪 Model:
+### •🟪 MODEL:
 ![model UML](graphics/model.jpg)
 
-### •🟦 Nutrient:
+### •🟦 NUTRIENT:
 ![nutrient UML](graphics/nutrient.jpg)
 
-### •🟩 Exceptions:
+### •🟩 EXCEPTION:
 ![exception UML](graphics/exception.jpg)
 
-### •🟨 Enum:
+### •🟨 ENUM:
 ![enum UML](graphics/enum.jpg)
 
-### •🟧 Filter:
+### •🟧 FILTER:
 ![filter UML](graphics/filter.jpg)
 
-### •🟥 Statistic:
+### •🟥 STATISTIC:
 ![statistic UML](graphics/statistic.jpg)
 
 ## Tools 
