@@ -77,7 +77,7 @@ Type | Route | Params | Body | Description
 ![model UML](graphics/UML%20Packages.drawio.jpg)
 
 ### •🟪 Model:
-![model UML](graphics/model1.jpg)
+![model UML](graphics/model.jpg)
 
 ### •🟦 Nutrients:
 ![nutrient UML](graphics/nutrient.jpg)
