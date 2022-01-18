@@ -1,4 +1,5 @@
-<img alt="Logo" height="400" src="graphics/NutritionStatsLogo.jpg" width="400"/>
+<img alt="Logo" height="320" src="graphics/NutritionStatsLogo.jpg" width="320"/>
+
 # NutritionStats
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
@@ -120,3 +121,7 @@ Type | Route | Params | Body | Description
 
 
 ###  Authors:
+Name | Email | Github profile |
+--|--|--|
+Morelli Valerio|valeriomorelli50@gmail.com|[GitHub](https://github.com/MrPio)
+Mazzatenta Davide|s1099404@studenti.univpm.it|[GitHub](https://github.com/Paccise)
