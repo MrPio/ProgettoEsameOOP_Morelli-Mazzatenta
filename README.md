@@ -120,7 +120,7 @@ Type | Route | Params | Body | Description
   - [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
 
 
-###  Authors:
+##  Authors:
 Name | Email | Github profile |
 --|--|--|
 Morelli Valerio|valeriomorelli50@gmail.com|[GitHub](https://github.com/MrPio)
