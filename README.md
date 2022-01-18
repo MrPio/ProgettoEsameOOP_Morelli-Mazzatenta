@@ -124,4 +124,4 @@ Type | Route | Params | Body | Description
 Name | Email | Github profile |
 --|--|--|
 Morelli Valerio|valeriomorelli50@gmail.com|[GitHub](https://github.com/MrPio)
-Mazzatenta Davide|s1099404@studenti.univpm.it|[GitHub](https://github.com/Paccise)
+Mazzatenta Davide|-|[GitHub](https://github.com/Paccise)
