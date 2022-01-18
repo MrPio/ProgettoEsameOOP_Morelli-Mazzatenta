@@ -1,5 +1,8 @@
-<img alt="Logo" height="200" src="graphics/NutritionStatsLogo.jpg" width="200"/>
 
+<div align="center">
+<img alt="Logo" height="200" src="graphics/NutritionStatsLogo.jpg" width="200" />
+ <div align="left">
+   
 # **NutritionStats**
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
