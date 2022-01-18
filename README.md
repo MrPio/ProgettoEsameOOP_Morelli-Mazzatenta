@@ -1,3 +1,4 @@
+<img alt="Logo" height="400" src="graphics/NutritionStatsLogo.jpg" width="400"/>
 # NutritionStats
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
@@ -116,3 +117,6 @@ Type | Route | Params | Body | Description
   - [Chomp](https://chompthis.com/api/) - Second food and nutrition database API.
   
   - [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
+
+
+###  Authors:

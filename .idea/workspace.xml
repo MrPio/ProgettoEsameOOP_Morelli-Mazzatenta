@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="small bug in Controller.java fixed" />
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="small bug in EdamamNutritionAnalysisAPITest.java">
+      <change afterPath="$PROJECT_DIR$/graphics/NutritionStatsLogo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -308,13 +312,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638956800806</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added support to remote database (Dropbox)">
-      <created>1639268479872</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1639268479872</updated>
     </task>
     <task id="LOCAL-00007" summary="Added /signup route and md5 hashing algorithm to generate user's token">
       <created>1639318095292</created>
@@ -652,7 +649,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642358958185</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="small bug in EdamamNutritionAnalysisAPITest.java">
+      <created>1642359324929</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1642359324929</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -672,7 +676,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="JDK 11" />
     <MESSAGE value="small fix" />
     <MESSAGE value="rename variable" />
     <MESSAGE value="Upgraded \stats route" />
@@ -697,7 +700,8 @@
     <MESSAGE value="Exceptions javadoc" />
     <MESSAGE value="Introduced Mailbox, messages and schedule" />
     <MESSAGE value="small bug in Controller.java fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="small bug in Controller.java fixed" />
+    <MESSAGE value="small bug in EdamamNutritionAnalysisAPITest.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="small bug in EdamamNutritionAnalysisAPITest.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
