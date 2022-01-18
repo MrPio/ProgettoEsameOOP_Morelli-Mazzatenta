@@ -3,7 +3,31 @@
 # NutritionStats
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
-## Description of the Project
+
+***
+
+## 📘 **Index** 📘
+
+* [Introduzione](#intro)
+* [Il Progetto](#project)
+  * [Installazione](#install)
+  * [Rotte](#rotte)
+    * [Rotte di base](#primarie)
+    * [Filtri](#filters)
+    * [Statistiche sui followers](#stats)
+  * [Specifiche](#info)
+  * [Test](#test)
+  * [Eccezioni](#ecc)
+* [Documentazione e altre note utili](#documentation)
+  * [Tipi di dati restituiti](#data)
+* [Struttura del progetto](#structure)
+* [FrameWork e Software](#software)
+* [Autori](#authors)
+
+***
+
+<a name="description"></a>
+## 📋 Description of the Project 📋
 NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given 
 period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of 
 his lipid intake or the _percentage_ of proteins above macronutrients. This rest api works using Edamam's free database,
@@ -43,6 +67,7 @@ can filter his data:
 - `By food name`
 - `By nutrient`
 
+## 💻 Access💻
 ### *Remote Access*
 
 >Remote access to this rest API: (***now deployed***):
@@ -57,7 +82,8 @@ can filter his data:
 > *https://github.com/MrPio/NutritionStats_client*
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-## Application Route 🌎:
+<a name="endpoints"></a>
+## 🌎 Application endpoints 🌎:
 Type | Route | Params | Body | Description
 ---- | ---- | ---- | ---- | ----  
 🟡**POST** | `/signup` | `nickname`, `email`, `birth`, `height`, `weight`, `diet`, `gender` | -| Register new user.
@@ -73,8 +99,9 @@ Type | Route | Params | Body | Description
 🟢**GET** | [`/login`](https://nutritionstatsoop.herokuapp.com/login?token=3959de8aeefabfa1385135fa8d03ee21) | `token`|-  | Login user, return user's info if in the database.
 🟢**GET** | [`/diary`](https://nutritionstatsoop.herokuapp.com/diary?token=3959de8aeefabfa1385135fa8d03ee21) | `token` |- | Return all the data (`metadata`) owned by the user.
 🟢**GET** | [`/diary/{day_id}`](https://nutritionstatsoop.herokuapp.com/diary/23-12-2021?token=3959de8aeefabfa1385135fa8d03ee21) | `token` | -| Return the data of the user in specified day.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-## Application UML ☀:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+<a name="uml"></a>                                                     
+## ☀ Application UML ☀:
 ### •🔰 PACKAGES:
 ![model UML](graphics/UML%20Packages.drawio.jpg)
 
@@ -96,7 +123,8 @@ Type | Route | Params | Body | Description
 ### •🟥 STATISTIC:
 ![statistic UML](graphics/statistic.jpg)
 
-## Tools 
+<a name="tools"></a>
+## 🛠️ Tools 🛠️
 - ###### Software:
 
   - [Eclipse](https://www.eclipse.org/) - java IDE
@@ -120,8 +148,9 @@ Type | Route | Params | Body | Description
   - [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
 
 
-##  Authors:
+<a name="authors"></a>
+## 👥 Authors 👥
 Name | Email | Github profile |
 --|--|--|
 Morelli Valerio|valeriomorelli50@gmail.com|[GitHub](https://github.com/MrPio)
-Mazzatenta Davide|-|[GitHub](https://github.com/Paccise)
+Mazzatenta Davide|mazzada2001@gmail.com|[GitHub](https://github.com/Paccise)
