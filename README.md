@@ -17,7 +17,6 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 ***
 
-
 <a name="access"></a>
 ## 💻 Access💻
 ### *Remote Access*
@@ -34,6 +33,7 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 > *https://github.com/MrPio/NutritionStats_client*
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+***
 
 <a name="description"></a>
 ## 📋 Description of the Project 📋
@@ -76,6 +76,8 @@ can filter his data:
 - `By food name`
 - `By nutrient`
 
+***
+
 <a name="endpoints"></a>
 ## 🌎 Application endpoints 🌎:
 Type | Route | Params | Body | Description
@@ -93,7 +95,9 @@ Type | Route | Params | Body | Description
 🟢**GET** | [`/login`](https://nutritionstatsoop.herokuapp.com/login?token=3959de8aeefabfa1385135fa8d03ee21) | `token`|-  | Login user, return user's info if in the database.
 🟢**GET** | [`/diary`](https://nutritionstatsoop.herokuapp.com/diary?token=3959de8aeefabfa1385135fa8d03ee21) | `token` |- | Return all the data (`metadata`) owned by the user.
 🟢**GET** | [`/diary/{day_id}`](https://nutritionstatsoop.herokuapp.com/diary/23-12-2021?token=3959de8aeefabfa1385135fa8d03ee21) | `token` | -| Return the data of the user in specified day.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
+***
+
 <a name="uml"></a>                                                     
 ## ☀ Application UML ☀:
 ### •🔰 PACKAGES:
@@ -116,6 +120,8 @@ Type | Route | Params | Body | Description
 
 ### •🟥 STATISTIC:
 ![statistic UML](graphics/statistic.jpg)
+
+***
 
 <a name="tools"></a>
 ## 🛠️ Used tools 🛠️
@@ -141,6 +147,7 @@ Type | Route | Params | Body | Description
   
   - [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
 
+***
 
 <a name="authors"></a>
 ## 👥 Authors 👥
