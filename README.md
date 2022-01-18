@@ -6,23 +6,14 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 ***
 
-## 📘 **Index** 📘
+## 📘 Index 📘
 
-* [Introduzione](#intro)
-* [Il Progetto](#project)
-  * [Installazione](#install)
-  * [Rotte](#rotte)
-    * [Rotte di base](#primarie)
-    * [Filtri](#filters)
-    * [Statistiche sui followers](#stats)
-  * [Specifiche](#info)
-  * [Test](#test)
-  * [Eccezioni](#ecc)
-* [Documentazione e altre note utili](#documentation)
-  * [Tipi di dati restituiti](#data)
-* [Struttura del progetto](#structure)
-* [FrameWork e Software](#software)
-* [Autori](#authors)
+* [Description](#description)
+* [Access](#access)
+  * [Endpoints](#endpoints)
+* [Uml](#uml)
+* [Used tools](#tools)
+* [Authors](#authors)
 
 ***
 
@@ -67,6 +58,7 @@ can filter his data:
 - `By food name`
 - `By nutrient`
 
+<a name="access"></a>
 ## 💻 Access💻
 ### *Remote Access*
 
@@ -124,7 +116,7 @@ Type | Route | Params | Body | Description
 ![statistic UML](graphics/statistic.jpg)
 
 <a name="tools"></a>
-## 🛠️ Tools 🛠️
+## 🛠️ Used tools 🛠️
 - ###### Software:
 
   - [Eclipse](https://www.eclipse.org/) - java IDE
