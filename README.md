@@ -8,14 +8,32 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 ## 📘 Index 📘
 
-* [Description](#description)
 * [Access](#access)
-  * [Endpoints](#endpoints)
+* [Description](#description)
+* [Endpoints](#endpoints)
 * [Uml](#uml)
 * [Used tools](#tools)
 * [Authors](#authors)
 
 ***
+
+
+<a name="access"></a>
+## 💻 Access💻
+### *Remote Access*
+
+>Remote access to this rest API: (***now deployed***):
+>
+> *https://nutritionstatsoop.herokuapp.com/*
+----------------------------------------------------------------------------------------------------------------------------------------
+
+### *Android application (client)*
+
+>You can find here the client frontend made for this API (***Android application***):
+>
+> *https://github.com/MrPio/NutritionStats_client*
+----------------------------------------------------------------------------------------------------------------------------------------
+
 
 <a name="description"></a>
 ## 📋 Description of the Project 📋
@@ -57,22 +75,6 @@ can filter his data:
 - `By meal type`
 - `By food name`
 - `By nutrient`
-
-<a name="access"></a>
-## 💻 Access💻
-### *Remote Access*
-
->Remote access to this rest API: (***now deployed***):
->
-> *https://nutritionstatsoop.herokuapp.com/*
-----------------------------------------------------------------------------------------------------------------------------------------
-
-### *Android application (client)*
-
->You can find here the client frontend made for this API (***Android application***):
->
-> *https://github.com/MrPio/NutritionStats_client*
-----------------------------------------------------------------------------------------------------------------------------------------
 
 <a name="endpoints"></a>
 ## 🌎 Application endpoints 🌎:
