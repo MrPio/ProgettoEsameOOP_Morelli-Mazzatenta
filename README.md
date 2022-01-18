@@ -124,7 +124,7 @@ Type | Route | Params | Body | Description
 ### •🟥 STATISTIC:
 <img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
 
-### •🟪 UTILITY:
+### •⬜ UTILITY:
 <img alt="UTILITY" height="280" src="graphics/utility.jpg"/>
 
 ### •🟫 API:
