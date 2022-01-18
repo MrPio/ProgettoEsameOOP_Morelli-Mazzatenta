@@ -1,8 +1,45 @@
-<img alt="Logo" height="400" src="graphics/NutritionStatsLogo.jpg" width="400"/>
-# NutritionStats
+
+<div align="center">
+<img alt="Logo" height="200" src="graphics/NutritionStatsLogo.jpg" width="200" />
+ <div align="left">
+   
+# **NutritionStats**
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
-## Description of the Project
+
+***
+
+## 📘 Index 📘
+
+* [Access](#access)
+* [Description](#description)
+* [Endpoints](#endpoints)
+* [Uml](#uml)
+* [Used tools](#tools)
+* [Authors](#authors)
+
+***
+
+<a name="access"></a>
+## 💻 Access💻
+### *Remote Access*
+
+>Remote access to this rest API: (***now deployed***):
+>
+> *https://nutritionstatsoop.herokuapp.com/*
+----------------------------------------------------------------------------------------------------------------------------------------
+
+### *Android application (client)*
+
+>You can find here the client frontend made for this API (***Android application***):
+>
+> *https://github.com/MrPio/NutritionStats_client*
+----------------------------------------------------------------------------------------------------------------------------------------
+
+***
+
+<a name="description"></a>
+## 📋 Description of the Project 📋
 NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given 
 period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of 
 his lipid intake or the _percentage_ of proteins above macronutrients. This rest api works using Edamam's free database,
@@ -42,21 +79,10 @@ can filter his data:
 - `By food name`
 - `By nutrient`
 
-### *Remote Access*
+***
 
->Remote access to this rest API: (***now deployed***):
->
-> *https://nutritionstatsoop.herokuapp.com/*
-----------------------------------------------------------------------------------------------------------------------------------------
-
-### *Android application (client)*
-
->You can find here the client frontend made for this API (***Android application***):
->
-> *https://github.com/MrPio/NutritionStats_client*
-----------------------------------------------------------------------------------------------------------------------------------------
-
-## Application Route 🌎:
+<a name="endpoints"></a>
+## 🌎 Application endpoints 🌎:
 Type | Route | Params | Body | Description
 ---- | ---- | ---- | ---- | ----  
 🟡**POST** | `/signup` | `nickname`, `email`, `birth`, `height`, `weight`, `diet`, `gender` | -| Register new user.
@@ -72,30 +98,36 @@ Type | Route | Params | Body | Description
 🟢**GET** | [`/login`](https://nutritionstatsoop.herokuapp.com/login?token=3959de8aeefabfa1385135fa8d03ee21) | `token`|-  | Login user, return user's info if in the database.
 🟢**GET** | [`/diary`](https://nutritionstatsoop.herokuapp.com/diary?token=3959de8aeefabfa1385135fa8d03ee21) | `token` |- | Return all the data (`metadata`) owned by the user.
 🟢**GET** | [`/diary/{day_id}`](https://nutritionstatsoop.herokuapp.com/diary/23-12-2021?token=3959de8aeefabfa1385135fa8d03ee21) | `token` | -| Return the data of the user in specified day.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-## Application UML ☀:
+
+***
+
+<a name="uml"></a>                                                     
+## ☀ Application UML ☀:
 ### •🔰 PACKAGES:
-![model UML](graphics/UML%20Packages.drawio.jpg)
+<img alt="PACKAGES" height="400" src="graphics/UML%20Packages.drawio.jpg"/>
 
 ### •🟪 MODEL:
-![model UML](graphics/model.jpg)
+<img alt="MODEL" height="280" src="graphics/model.jpg"/>
 
 ### •🟦 NUTRIENT:
-![nutrient UML](graphics/nutrient.jpg)
+<img alt="NUTRIENT" height="280" src="graphics/nutrient.jpg"/>
 
 ### •🟩 EXCEPTION:
-![exception UML](graphics/exception.jpg)
+<img alt="EXCEPTION" height="280" src="graphics/exception.jpg"/>
 
 ### •🟨 ENUM:
-![enum UML](graphics/enum.jpg)
+<img alt="ENUM" height="280" src="graphics/enum.jpg"/>
 
 ### •🟧 FILTER:
-![filter UML](graphics/filter.jpg)
+<img alt="FILTER" height="280" src="graphics/filter.jpg"/>
 
 ### •🟥 STATISTIC:
-![statistic UML](graphics/statistic.jpg)
+<img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
 
-## Tools 
+***
+
+<a name="tools"></a>
+## 🛠️ Used tools 🛠️
 - ###### Software:
 
   - [Eclipse](https://www.eclipse.org/) - java IDE
@@ -118,5 +150,11 @@ Type | Route | Params | Body | Description
   
   - [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
 
+***
 
-###  Authors:
+<a name="authors"></a>
+## 👥 Authors 👥
+Name | Email | Github profile |
+--|--|--|
+Morelli Valerio|valeriomorelli50@gmail.com|[GitHub](https://github.com/MrPio)
+Mazzatenta Davide|mazzada2001@gmail.com|[GitHub](https://github.com/Paccise)
