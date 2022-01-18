@@ -101,25 +101,25 @@ Type | Route | Params | Body | Description
 <a name="uml"></a>                                                     
 ## ☀ Application UML ☀:
 ### •🔰 PACKAGES:
-![model UML](graphics/UML%20Packages.drawio.jpg)
+<img alt="PACKAGES" height="400" src="graphics/UML%20Packages.drawio.jpg"/>
 
 ### •🟪 MODEL:
-![model UML](graphics/model.jpg)
+<img alt="MODEL" height="280" src="graphics/model.jpg"/>
 
 ### •🟦 NUTRIENT:
-![nutrient UML](graphics/nutrient.jpg)
+<img alt="NUTRIENT" height="280" src="graphics/nutrient.jpg"/>
 
 ### •🟩 EXCEPTION:
-![exception UML](graphics/exception.jpg)
+<img alt="EXCEPTION" height="280" src="graphics/exception.jpg"/>
 
 ### •🟨 ENUM:
-![enum UML](graphics/enum.jpg)
+<img alt="ENUM" height="280" src="graphics/enum.jpg"/>
 
 ### •🟧 FILTER:
-![filter UML](graphics/filter.jpg)
+<img alt="FILTER" height="280" src="graphics/filter.jpg"/>
 
 ### •🟥 STATISTIC:
-![statistic UML](graphics/statistic.jpg)
+<img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
 
 ***
 
