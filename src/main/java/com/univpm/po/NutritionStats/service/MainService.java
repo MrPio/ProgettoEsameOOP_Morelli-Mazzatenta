@@ -309,7 +309,8 @@ public class MainService {
                 method.invoke(requestedDiary, param);
             else
                 return method.invoke(requestedDiary, param);
-        } catch (IllegalAccessException | InvocationTargetException ignored) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            return new ResponseEntity<>(new JSONObject(Map.of("result", e)), HttpStatus.OK);
         }
         return new ResponseEntity<>(new JSONObject(Map.of("result", "success!")), HttpStatus.OK);
     }
