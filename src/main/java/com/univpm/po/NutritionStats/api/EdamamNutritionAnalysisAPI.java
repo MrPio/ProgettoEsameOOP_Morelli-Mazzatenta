@@ -3,6 +3,7 @@ package com.univpm.po.NutritionStats.api;
 import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.exception.ChompLimitOvercameException;
 import com.univpm.po.NutritionStats.model.Food;
 import com.univpm.po.NutritionStats.model.nutrient.*;
 import com.univpm.po.NutritionStats.utility.InputOutput;
@@ -16,6 +17,13 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * {@code EdamamNutritionAnalysisAPI} class can handle communication with Edamam Nutrition api. Its main purpose is the
+ * conversion from the JSONObject given by Edamam Nutrition api to an instance of {@link Food} containing only the
+ * information needed by this application.
+ *
+ * @author Valerio Morelli
+ */
 public class EdamamNutritionAnalysisAPI {
     final static String DIR = "api_response/edamam/nutrition/";
     final static String DROPBOX_DIR = "/api_response/edamam/nutrition/";
@@ -23,18 +31,23 @@ public class EdamamNutritionAnalysisAPI {
     final static String APP_ID = "a3c59b8d";
     final static String URL = "https://api.edamam.com/api/nutrition-data?app_id=" + APP_ID;
 
+    /**
+     * <strong>This method is used to store the response of Edamam api inside an instance of {@link JSONObject}.</strong>
+     *
+     * @param foodName the requested food name.
+     * @throws ApiFoodNotFoundException when the provided food name cannot be found by Chomp api.
+     * @return an instance of {@link JSONObject} containing the response of Edamam api.
+     */
     public static JSONObject getFoodInfo(String foodName) throws ApiFoodNotFoundException {
         foodName = foodName.replace(" ", "%20");
         JSONObject result = null;
         HttpURLConnection conn = null;
         try {
-            //send request
             conn = (HttpURLConnection) new URL(
                     EdamamNutritionAnalysisAPI.URL + "&app_key=" + APP_KEY + "&ingr=" + foodName).openConnection();
             conn.setRequestMethod("GET");
             conn.setDoOutput(true);
 
-            //read json response
             StringBuilder data = new StringBuilder();
             String line = "";
             try (InputStream in = conn.getInputStream();) {
@@ -53,10 +66,22 @@ public class EdamamNutritionAnalysisAPI {
         return result;
     }
 
+    /**
+     *<Strong>This method is used to get an instance of {@link Food} containing all the needed information about requested food name.</Strong>
+     * <p>
+     *     <b>NOTE</b>: <i>if a previous request with the same ean-code was made, this method avoids to make the same request;
+     *     as a matter of fact it first looks for a serialized instance of {@link Food} (with the same name) locally and
+     *     {@link DropboxAPI#getFilesInFolder(String) remotely} , then, if the search was a success, it loads that file inside
+     *     an instance of {@link Food}, and returns it, without even connect with Edamam api.</i>
+     * </p>
+     * @param foodName the requested food name.
+     * @param portionWeight the weight of the portion.
+     * @param measureUnit a value of {@link Measure} that indicates the unity of measure with which the value of the portion weight is expressed.
+     * @throws ApiFoodNotFoundException when the provided ean-code cannot be found by Chomp api.
+     * @return an instance of {@link Food} containing all the information filtered from the response of Edamam api.
+     */
     public static Food getFood(String foodName, int portionWeight, Measure measureUnit) throws ApiFoodNotFoundException {
 
-        //Check if I already have the information needed:
-        //in local database
         InputOutput inputOutputEan = new InputOutput(DIR, foodName + ".dat");
         if (inputOutputEan.existFile()) {
             Serialization serializationResult = new Serialization(DIR, foodName + ".dat");
@@ -64,7 +89,6 @@ public class EdamamNutritionAnalysisAPI {
             result.newPortionWeight(portionWeight);
             return result;
         }
-        //in remote database
         if (DropboxAPI.getFilesInFolder(DROPBOX_DIR).contains(foodName + ".dat")) {
             DropboxAPI.downloadFile(DROPBOX_DIR + foodName + ".dat", DIR + foodName + ".dat");
             Serialization serializationResult = new Serialization(DIR, foodName + ".dat");
@@ -129,6 +153,12 @@ public class EdamamNutritionAnalysisAPI {
         return foodResult;
     }
 
+    /**
+     * <strong>This method converts float values expressed in <i>g, mg, µg</i> in a float value expressed in <i>g</i></strong>
+     * @param foodInfo the {@link JSONObject} containing all the information about a food name.
+     * @param label the <b>key</b> value to search inside the {@link JSONObject}.
+     * @return the float value expressed in <i>g</i>
+     */
     private static float labelToValue(JSONObject foodInfo, String label) {
         if (!foodInfo.containsKey(label))
             return 0.0f;
