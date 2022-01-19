@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="readmeLogo">
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="readme returned data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,13 +311,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638956800806</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Extended login with more stuff and enabled storing for new users and their data">
-      <created>1639333638588</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1639333638588</updated>
     </task>
     <task id="LOCAL-00009" summary="Extended login with more stuff and enabled storing for new users and their data">
       <created>1639333719596</created>
@@ -655,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642520723291</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="readme returned data">
+      <created>1642595546724</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1642595546725</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -675,7 +675,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="rename variable" />
     <MESSAGE value="Upgraded \stats route" />
     <MESSAGE value="new filter concept" />
     <MESSAGE value="fixed FilterByNutrientNotNutrient.java, added FilterWater.java," />
@@ -700,7 +699,8 @@
     <MESSAGE value="small bug in Controller.java fixed" />
     <MESSAGE value="small bug in EdamamNutritionAnalysisAPITest.java" />
     <MESSAGE value="readmeLogo" />
-    <option name="LAST_COMMIT_MESSAGE" value="readmeLogo" />
+    <MESSAGE value="readme returned data" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme returned data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
