@@ -320,6 +320,7 @@ you can see an example of response.
 <a name="uml_service"></a>
 ### •🟥 Service:
 <img alt="API" height="280" src="graphics/service.jpg"/>    
+  
 ***
 
 <a name="tools"></a>
