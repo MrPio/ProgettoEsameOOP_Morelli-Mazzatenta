@@ -217,6 +217,7 @@ will be returned formatted with JSON standard, as you can see in the example bel
         "totalCalories": 503.0
     }
 }
+  
 ```
 
 Of course, as explained, all this metadata can be filtered using the `/filters` endpoint.
@@ -224,6 +225,7 @@ Of course, as explained, all this metadata can be filtered using the `/filters` 
 ###Statistics example:
 Then you can call the endpoint `/stats` to calculate the statistics on your filtered metadata, here
 you can see an example of response.
+  
 ```
 {
     "result": "success",
