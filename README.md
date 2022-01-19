@@ -133,8 +133,12 @@ Type | Route | Params | Body | Description
 <a name="data"></a>
 ## ⚙️ Returned data ⚙️: <div align="right"> [📘](#index)
 <a name="metadata_example"></a>
-###Metadata example:
-Calling the endpoint `/diary` or `/diary/{day_id}` you can retrieve all the metadata owned by your account. These data
+In order to test the beaviour of all the endpoints, we used Postman, where we created a collection of all the routes.
+  <img alt="Postman collection" height="420" src="graphics/postmanCollection_2x.jpg"/>
+  
+Here follow two examples of these requests:
+  ###Metadata example:
+ Calling the endpoint `/diary` or `/diary/{day_id}` you can retrieve all the metadata owned by your account. These data
 will be returned formatted with JSON standard, as you can see in the example below.
 
 ```
