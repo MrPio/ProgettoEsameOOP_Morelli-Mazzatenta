@@ -6,9 +6,10 @@
 # **NutritionStats**
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 #### Note:
-###### • The code is fully covered with a plentiful documentation (JavaDoc).
-- [Controller](/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java)
-- [Service](/src/main/java/com/univpm/po/NutritionStats/service/MainService.java)
+> The code is fully covered with a plentiful documentation (JavaDoc): (**now online**)
+>
+> *https://clever-mccarthy-a6b47e.netlify.app/*
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ***
   
@@ -48,7 +49,7 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 <a name="remote_access"></a>
 ### *Remote Access*
 
->Remote access to this rest API: (***now deployed***):
+>Remote access to this rest API (***now deployed***):
 >
 > *https://nutritionstatsoop.herokuapp.com/*
 ----------------------------------------------------------------------------------------------------------------------------------------
