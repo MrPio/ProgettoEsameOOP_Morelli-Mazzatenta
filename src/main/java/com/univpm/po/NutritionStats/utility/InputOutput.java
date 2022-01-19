@@ -8,7 +8,6 @@ import com.univpm.po.NutritionStats.model.Mailbox;
 import com.univpm.po.NutritionStats.model.User;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,6 +18,7 @@ import java.util.Scanner;
  * <p>•<b>Check</b> if a file exists,
  * <p>•<b>List</b> all the files inside a directory.
  * <p>This class is instantiated almost everywhere inside the project.
+ *
  * @see Diary#save()
  * @see Diary#load(String)
  * @see ChompBarcodeSearchAPI#getEanInfo(long)

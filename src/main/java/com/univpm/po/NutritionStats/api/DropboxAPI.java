@@ -23,6 +23,7 @@ import java.util.ArrayList;
  *
  * <p>Information like the list of registered {@link User users}, the {@link Mailbox mailboxes} of the {@link User users},
  * or the responses of the apis are all stored and backup on dropbox cloud storage.
+ *
  * @author Valerio Morelli
  */
 public class DropboxAPI {
@@ -80,6 +81,7 @@ public class DropboxAPI {
 
     /**
      * <strong>Method used to download a file on a provided path located on dropbox cloud storage </strong>
+     *
      * @param pathCloud the directory where the file to download is located on cloud.
      * @param pathLocal the directory where to download the file.
      * @return a boolean value which notify if everything went fine.
@@ -110,12 +112,13 @@ public class DropboxAPI {
 
     /**
      * <strong>Method used to list the files inside a provided directory on cloud storage </strong>
+     *
      * @param folderPath the directory on cloud to check
      * @return a boolean value which notify if everything went fine.
      * @see <a href="https://www.dropbox.com/developers/documentation/http/documentation#files-list_folder">Dropbox HTTP documentation</a>
      */
-    public static ArrayList<String> getFilesInFolder(String folderPath){
-        ArrayList<String> result=new ArrayList<>();
+    public static ArrayList<String> getFilesInFolder(String folderPath) {
+        ArrayList<String> result = new ArrayList<>();
         folderPath = folderPath.replace('\\', '/');
         HttpURLConnection conn = null;
         try {
@@ -127,9 +130,9 @@ public class DropboxAPI {
             conn.setDoOutput(true);
 
             //send json request
-            String jsonBody="{\r\n\"path\":\""+folderPath+"\"\r\n}";
-            try(OutputStream os= conn.getOutputStream()){
-                byte[] input=jsonBody.getBytes(StandardCharsets.UTF_8);
+            String jsonBody = "{\r\n\"path\":\"" + folderPath + "\"\r\n}";
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = jsonBody.getBytes(StandardCharsets.UTF_8);
                 os.write(input);
             }
 
@@ -145,11 +148,11 @@ public class DropboxAPI {
 
             //get list of files from response
             JSONArray fileList = (JSONArray) response.get("entries");
-            for(Object jo : fileList)
-                result.add(((JSONObject)jo).get("name").toString());
+            for (Object jo : fileList)
+                result.add(((JSONObject) jo).get("name").toString());
 
         } catch (IOException | ParseException e) {
-            if(e.getMessage().contains("Server returned HTTP response code: 409"))
+            if (e.getMessage().contains("Server returned HTTP response code: 409"))
                 System.err.println("folder not found!");
             else
                 e.printStackTrace();

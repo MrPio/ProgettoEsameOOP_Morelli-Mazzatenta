@@ -7,6 +7,7 @@ import com.univpm.po.NutritionStats.enums.Api;
  * <p>•<strong>Edamam</strong> or
  * <p>•<strong>Chomp</strong> api
  * <p>provides no result.
+ *
  * @author Valerio Morelli
  */
 public class ApiFoodNotFoundException extends Exception {
@@ -17,6 +18,7 @@ public class ApiFoodNotFoundException extends Exception {
 
     /**
      * The constructor for the exception occurred while looking for an ean code on Chomp api.
+     *
      * @param eanCode the eanCode requested by the client which provided no result.
      */
     public ApiFoodNotFoundException(long eanCode) {
@@ -27,6 +29,7 @@ public class ApiFoodNotFoundException extends Exception {
 
     /**
      * The constructor for the exception occurred while looking for a food name on Edamam api.
+     *
      * @param foodName the food name requested by the client which provided no result.
      */
     public ApiFoodNotFoundException(String foodName) {

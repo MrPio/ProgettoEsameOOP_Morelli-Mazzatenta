@@ -1,12 +1,5 @@
 package com.univpm.po.NutritionStats.service.statistic;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Map;
-
-import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
-
-import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;
 import com.univpm.po.NutritionStats.utility.Mathematics;
 
@@ -24,6 +17,7 @@ public class StandardDeviation extends Statistic {
 
     /**
      * <b>Calculate the sample standard deviation based on the sample extracted on the provided filtered diary</b>
+     *
      * @param diary the instance of {@link Diary} on which the statistic will be calculated.
      * @see Mathematics#calculateSampleStandardDeviation(boolean...)
      * @see Statistic#extractAllNutrientNonNutrientSamples(Diary)

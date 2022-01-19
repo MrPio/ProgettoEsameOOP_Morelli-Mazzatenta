@@ -6,18 +6,17 @@ import java.io.Serializable;
 
 /**
  * Represent a specified mineral salt, the calcium
- * 
- * @author Davide Mazzatenta
  *
+ * @author Davide Mazzatenta
  */
 public class Calcium extends MineralSalt implements Serializable {
 
-	/**
-	 * Class constructor that instantiates calcium with his quantity and a "label"
-	 * 
-	 * @param quantity of calcium
-	 */
-	public Calcium(float quantity) {
-		super(AllNutrientNonNutrient.CALCIUM, quantity);
-	}
+    /**
+     * Class constructor that instantiates calcium with his quantity and a "label"
+     *
+     * @param quantity of calcium
+     */
+    public Calcium(float quantity) {
+        super(AllNutrientNonNutrient.CALCIUM, quantity);
+    }
 }

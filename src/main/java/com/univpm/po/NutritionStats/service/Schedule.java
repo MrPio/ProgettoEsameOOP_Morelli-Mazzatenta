@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 /**
@@ -119,8 +118,9 @@ public class Schedule implements Serializable {
     /**
      * <b>This method posts a provided message on the mailboxes of all users inside the database
      * which follow a provided condition</b>
+     *
      * @param message the instance of {@link Message} to post.
-     * @param filter the condition under which the users are being chosen.
+     * @param filter  the condition under which the users are being chosen.
      */
     private void postMessageIf(Message message, Predicate<Diary> filter) {
         ArrayList<Diary> diaries = new ArrayList<>();

@@ -6,19 +6,18 @@ import java.io.Serializable;
 
 /**
  * Represent a specified mineral salt, the iron
- * 
- * @author Davide Mazzatenta
  *
+ * @author Davide Mazzatenta
  */
 public class Iron extends MineralSalt implements Serializable {
 
-	/**
-	 * Class constructor that instantiates iron with quantity and "label" 
-	 * 
-	 * @param quantity of iron
-	 */
-	public Iron(float quantity) {
-		super(AllNutrientNonNutrient.IRON, quantity);
-	}
+    /**
+     * Class constructor that instantiates iron with quantity and "label"
+     *
+     * @param quantity of iron
+     */
+    public Iron(float quantity) {
+        super(AllNutrientNonNutrient.IRON, quantity);
+    }
 
 }

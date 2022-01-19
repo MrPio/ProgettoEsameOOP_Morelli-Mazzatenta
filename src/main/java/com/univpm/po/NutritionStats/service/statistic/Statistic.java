@@ -1,11 +1,8 @@
 package com.univpm.po.NutritionStats.service.statistic;
 
 import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
-import com.univpm.po.NutritionStats.model.Day;
 import com.univpm.po.NutritionStats.model.Diary;
-import com.univpm.po.NutritionStats.utility.Mathematics;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +16,7 @@ import java.util.Map;
  * <p> •<b>Sample standard deviation</b> about all nutrition type,
  * <p> •<b>Percentage values</b> about caloric intake,
  * <p> •<b>Correlation</b> between calories and weight tendency.
+ *
  * @author Davide Mazzatenta
  */
 public abstract class Statistic {
@@ -41,6 +39,7 @@ public abstract class Statistic {
 
     /**
      * abstract method implemented by the subclass
+     *
      * @param diary the instance of {@link Diary} on which the statistic will be calculated.
      */
     public abstract void calculateStatistic(Diary diary);
@@ -57,16 +56,17 @@ public abstract class Statistic {
      * <b>Method used to extract the <i>random sample</i> from the filtered diary for each
      * {@link AllNutrientNonNutrient nutrient type} which will be used to calculate the statistics</b>
      * <i>(intended as a function of independent random variables of a random sample)</i>
+     *
      * @param diary the instance of {@link Diary} from where the sample is taken.
      * @return an {@link HashMap} containing a random sample for each {@link AllNutrientNonNutrient nutrient type}.
      */
-    protected Map<AllNutrientNonNutrient, ArrayList<Float>> extractAllNutrientNonNutrientSamples(Diary diary){
-        Map<AllNutrientNonNutrient, ArrayList<Float>> result =new HashMap<>();
+    protected Map<AllNutrientNonNutrient, ArrayList<Float>> extractAllNutrientNonNutrientSamples(Diary diary) {
+        Map<AllNutrientNonNutrient, ArrayList<Float>> result = new HashMap<>();
         for (var entry : statsValues.entrySet()) {
             ArrayList<Float> values = new ArrayList<>();
             for (var day : diary.getDayList())
                 values.add(day.calculate(entry.getKey().getReferenceClass()));
-            result.put(entry.getKey(),values);
+            result.put(entry.getKey(), values);
         }
         return result;
     }
@@ -75,24 +75,26 @@ public abstract class Statistic {
      * <b>Method used to extract the <i>random sample</i> of calories from the filtered diary
      * which will be used to calculate the statistics</b>
      * <i>(intended as a function of independent random variables of a random sample)</i>
+     *
      * @param diary the instance of {@link Diary} from where the sample is taken.
      * @return an {@link HashMap} containing a random sample for each {@link AllNutrientNonNutrient nutrient type}.
      */
-    protected ArrayList<Float> extractCalorieSample(Diary diary){
+    protected ArrayList<Float> extractCalorieSample(Diary diary) {
         ArrayList<Float> values = new ArrayList<>();
         for (var day : diary.getDayList())
             values.add(day.getTotalCalories());
-         return values;
+        return values;
     }
 
     /**
      * <b>Method used to extract the <i>random sample</i> of weights from the filtered diary
      * which will be used to calculate the statistics</b>
      * <i>(intended as a function of independent random variables of a random sample)</i>
+     *
      * @param diary the instance of {@link Diary} from where the sample is taken.
      * @return an {@link HashMap} containing a random sample for each {@link AllNutrientNonNutrient nutrient type}.
      */
-    protected ArrayList<Float> extractWeightSample(Diary diary){
+    protected ArrayList<Float> extractWeightSample(Diary diary) {
         ArrayList<Float> values = new ArrayList<>();
         for (var date : diary.getUser().getWeight().keySet())
             values.add(diary.getUser().getWeight().get(date));

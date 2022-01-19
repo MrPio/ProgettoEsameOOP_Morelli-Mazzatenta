@@ -2,9 +2,8 @@ package com.univpm.po.NutritionStats.enums;
 
 /**
  * Represents chomp and edamam API web URL as a string.
- * 
- * @author Valerio Morelli
  *
+ * @author Valerio Morelli
  */
 public enum Api {
     CHOMP("https://chompthis.com/api/"),
@@ -14,7 +13,7 @@ public enum Api {
 
     /**
      * Class constructor that instantiates a API web URL as a string.
-     * 
+     *
      * @param web URL as a string
      */
     Api(String web) {

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Correlation extends Statistic {
 
-    private float correlation=0.0f;
+    private float correlation = 0.0f;
 
     @Override
     public Map<AllNutrientNonNutrient, Float> getStatsValues() {
@@ -21,12 +21,13 @@ public class Correlation extends Statistic {
 
     /**
      * <b>Calculate the correlation between calories and weight tendency based on the sample extracted on the provided filtered diary</b>
+     *
      * @param diary the instance of {@link Diary} on which the statistic will be calculated.
      * @see Mathematics#calculateCorrelation()
      * @see Statistic#extractCalorieSample(Diary)
      * @see Statistic#extractWeightSample(Diary)
      */
     public void calculateStatistic(Diary diary) {
-        correlation=new Mathematics(extractCalorieSample(diary),extractWeightSample(diary)).calculateCorrelation();
+        correlation = new Mathematics(extractCalorieSample(diary), extractWeightSample(diary)).calculateCorrelation();
     }
 }

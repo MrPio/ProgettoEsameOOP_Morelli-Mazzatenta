@@ -1,9 +1,9 @@
 package com.univpm.po.NutritionStats.api;
 
 import com.univpm.po.NutritionStats.enums.AllNutrientNonNutrient;
-import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.enums.Diet;
 import com.univpm.po.NutritionStats.enums.Measure;
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
 import com.univpm.po.NutritionStats.exception.ChompLimitOvercameException;
 import com.univpm.po.NutritionStats.model.Food;
 import com.univpm.po.NutritionStats.model.nutrient.*;
@@ -28,6 +28,7 @@ import java.util.Map;
  *
  * <p>The response gives values always based on 100gr portion weight; thus the values have to be made commensurate with
  * the weight of the portion.
+ *
  * @author Valerio Morelli
  */
 public class ChompBarcodeSearchAPI {
@@ -40,9 +41,9 @@ public class ChompBarcodeSearchAPI {
      * <strong>This method is used to store the response of Chomp api inside an instance of {@link JSONObject}.</strong>
      *
      * @param eanConde the requested ean-code.
-     * @throws ApiFoodNotFoundException when the provided ean-code cannot be found by Chomp api.
-     * @throws ChompLimitOvercameException when the number of requests overcame the limit.
      * @return an instance of {@link JSONObject} containing the response of Chomp api.
+     * @throws ApiFoodNotFoundException    when the provided ean-code cannot be found by Chomp api.
+     * @throws ChompLimitOvercameException when the number of requests overcame the limit.
      */
     public static JSONObject getEanInfo(long eanConde) throws ApiFoodNotFoundException, ChompLimitOvercameException {
         //Check if I already have the information needed:
@@ -61,14 +62,14 @@ public class ChompBarcodeSearchAPI {
         }
 
         //check if I overcame the limit
-        DropboxAPI.downloadFile(DROPBOX_DIR+"limit.txt",DIR+"limit.txt");
-        InputOutput io=new InputOutput(DIR,"limit.txt");
-        String content=io.readFile();
-        int count=Integer.parseInt(content.split(":")[0]);
-        int limit=Integer.parseInt(content.split(":")[1]);
-        if(count>=limit)throw new ChompLimitOvercameException(limit);
-        io.writeFile(++count +":"+ limit);
-        DropboxAPI.uploadFile(new File(io.getFullPath()),DROPBOX_DIR);
+        DropboxAPI.downloadFile(DROPBOX_DIR + "limit.txt", DIR + "limit.txt");
+        InputOutput io = new InputOutput(DIR, "limit.txt");
+        String content = io.readFile();
+        int count = Integer.parseInt(content.split(":")[0]);
+        int limit = Integer.parseInt(content.split(":")[1]);
+        if (count >= limit) throw new ChompLimitOvercameException(limit);
+        io.writeFile(++count + ":" + limit);
+        DropboxAPI.uploadFile(new File(io.getFullPath()), DROPBOX_DIR);
 
         JSONObject result = null;
         HttpStatus httpStatus = null;
@@ -92,18 +93,19 @@ public class ChompBarcodeSearchAPI {
     }
 
     /**
-     *<Strong>This method is used to get an instance of {@link Food} containing all the needed information about requested ean-code</Strong>
+     * <Strong>This method is used to get an instance of {@link Food} containing all the needed information about requested ean-code</Strong>
      * <p>
-     *     <b>NOTE</b>: <i>if a previous request with the same ean-code was made, this method avoids to make the same request;
-     *     as a matter of fact it first looks for a serialized instance of {@link Food} (with the same ean-code) locally and
-     *     {@link DropboxAPI#getFilesInFolder(String) remotely} , then, if the search was a success, it loads that file inside
-     *     an instance of {@link Food}, and returns it, without even connect with Chomp api.</i>
+     * <b>NOTE</b>: <i>if a previous request with the same ean-code was made, this method avoids to make the same request;
+     * as a matter of fact it first looks for a serialized instance of {@link Food} (with the same ean-code) locally and
+     * {@link DropboxAPI#getFilesInFolder(String) remotely} , then, if the search was a success, it loads that file inside
+     * an instance of {@link Food}, and returns it, without even connect with Chomp api.</i>
      * </p>
-     * @param eanCode the requested ean-code.
+     *
+     * @param eanCode       the requested ean-code.
      * @param portionWeight the weight of the portion. It is used to make commensurate the response of Chomp api.
-     * @throws ApiFoodNotFoundException when the provided ean-code cannot be found by Chomp api.
-     * @throws ChompLimitOvercameException when the number of requests overcame the limit.
      * @return an instance of {@link Food} containing all the information filtered from the response of Chomp api.
+     * @throws ApiFoodNotFoundException    when the provided ean-code cannot be found by Chomp api.
+     * @throws ChompLimitOvercameException when the number of requests overcame the limit.
      */
     public static Food getFood(long eanCode, int portionWeight) throws ApiFoodNotFoundException, ChompLimitOvercameException {
         Food foodResult;

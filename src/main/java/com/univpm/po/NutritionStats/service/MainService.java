@@ -4,7 +4,10 @@ import com.univpm.po.NutritionStats.api.ChompBarcodeSearchAPI;
 import com.univpm.po.NutritionStats.api.EdamamNutritionAnalysisAPI;
 import com.univpm.po.NutritionStats.controller.Controller;
 import com.univpm.po.NutritionStats.enums.*;
-import com.univpm.po.NutritionStats.exception.*;
+import com.univpm.po.NutritionStats.exception.ApiFoodNotFoundException;
+import com.univpm.po.NutritionStats.exception.ChompLimitOvercameException;
+import com.univpm.po.NutritionStats.exception.UserAlreadyInDatabase;
+import com.univpm.po.NutritionStats.exception.UserNotFound;
 import com.univpm.po.NutritionStats.model.*;
 import com.univpm.po.NutritionStats.service.filter.Filter;
 import org.json.simple.JSONObject;
@@ -295,9 +298,9 @@ public class MainService {
      * @param token  the token used to identify the {@link User user}.
      * @param method an instance of {@link Method} referring to the method to invoke.
      * @param param  (varargs) an {@link java.lang.reflect.Array Array} of {@link Object objects} which represent
-     * @throws UserNotFound when the token doesn't belong to any registered {@link User user}.
      * @return an instance of {@link ResponseEntity} if the to-be-called method returns void, the response of
      * the method otherwise.
+     * @throws UserNotFound when the token doesn't belong to any registered {@link User user}.
      */
     private Object workOnDiary(String token, Method method, Object... param)
             throws UserNotFound {

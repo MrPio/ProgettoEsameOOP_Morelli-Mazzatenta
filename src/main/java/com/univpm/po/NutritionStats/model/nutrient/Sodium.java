@@ -6,18 +6,17 @@ import java.io.Serializable;
 
 /**
  * Represent a specified mineral salt, the sodium
- * 
- * @author Davide Mazzatenta
  *
+ * @author Davide Mazzatenta
  */
 public class Sodium extends MineralSalt implements Serializable {
 
-	/**
-	 * Class constructor that instantiates sodium with quantity and "label".
-	 * 
-	 * @param quantity of sodium
-	 */
-	public Sodium(float quantity) {
-		super(AllNutrientNonNutrient.SODIUM, quantity);
-	}
+    /**
+     * Class constructor that instantiates sodium with quantity and "label".
+     *
+     * @param quantity of sodium
+     */
+    public Sodium(float quantity) {
+        super(AllNutrientNonNutrient.SODIUM, quantity);
+    }
 }
