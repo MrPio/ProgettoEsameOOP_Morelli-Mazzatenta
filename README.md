@@ -36,8 +36,6 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 > *https://github.com/MrPio/NutritionStats_client*
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-***
-
 <a name="description"></a>
 ## 📋 Description of the Project 📋
 NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given 
@@ -100,7 +98,7 @@ Type | Route | Params | Body | Description
 🟢**GET** | [`/diary/{day_id}`](https://nutritionstatsoop.herokuapp.com/diary/23-12-2021?token=3959de8aeefabfa1385135fa8d03ee21) | `token` | -| Return the data of the user in specified day.
 
 ***
-
+  
 <a name="uml"></a>                                                     
 ## ☀ Application UML ☀:
 ### •🔰 PACKAGES:
