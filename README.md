@@ -2,7 +2,7 @@
 <div align="center">
 <img alt="Logo" height="200" src="graphics/NutritionStatsLogo.jpg" width="200" />
  <div align="left">
-   
+
 # **NutritionStats**
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 
@@ -11,12 +11,13 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 ## 📘 Index 📘
 
-* [Access](#access)
-* [Description](#description)
-* [Endpoints](#endpoints)
-* [Uml](#uml)
-* [Used tools](#tools)
-* [Authors](#authors)
+* [Access](#-access)
+* [Description](#-description-of-the-project-)
+* [Endpoints](#-application-endpoints-)
+* [Returned Data](#-returned-data-)
+* [Uml](#-application-uml-)
+* [Used tools](#-used-tools-)
+* [Authors](#-authors-)
 
 ***
 
@@ -36,10 +37,12 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 > *https://github.com/MrPio/NutritionStats_client*
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+***
+
 <a name="description"></a>
 ## 📋 Description of the Project 📋
-NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given 
-period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of 
+NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given
+period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of
 his lipid intake or the _percentage_ of proteins above macronutrients. This rest api works using Edamam's free database,
 which provides nutritional values on a given food name, and stores in a model (description below).
 
@@ -69,6 +72,7 @@ In the end all the data can be filtered and used to calculate the following stat
 - `Mean`
 - `Variance`
 - `Percentage`
+- `Correlation`
 
 Filter the data means to specify a range of days or a meal type on which calculate the statistics. In fact the client
 can filter his data:
@@ -98,36 +102,161 @@ Type | Route | Params | Body | Description
 🟢**GET** | [`/diary/{day_id}`](https://nutritionstatsoop.herokuapp.com/diary/23-12-2021?token=3959de8aeefabfa1385135fa8d03ee21) | `token` | -| Return the data of the user in specified day.
 
 ***
-  
-<a name="uml"></a>                                                     
+
+<a name="returned data"></a>
+## ⚙️ Returned data ⚙️:
+###Metadata example:
+Calling the endpoint `/diary` or `/diary/{day_id}` you can retrieve all the metadata owned by your account. These data
+will be returned formatted with JSON standard, as you can see in the example below.
+```
+{
+    "diary": {
+        "user": {
+            "nickname": "Valerio_Morelli",
+            "email": "valeriomorelli50@gmail.com",
+            "diet": "CLASSIC",
+            "gender": "MALE",
+            "height": 180,
+            "weight": { ... },
+            "mailBox": { ... },
+            "yearOfBirth": "2001-06-07",
+            "dailyCaloricIntake": 3300
+        },
+        "dayList": [
+            {
+                "date": "2022-01-16",
+                "mealList": [
+                    {
+                        "mealType": "LUNCH",
+                        "foodList": [
+                            {
+                                "name": "melon",
+                                "portionWeight": 86,
+                                "measure": "GR",
+                                "diet": "VEGAN",
+                                "nutrientList": [ ... ],
+                                "notNutrientList": [ ... ],
+                                "totalCalories": 32
+                            },
+                            ...
+                        ],
+                        "totalCalories": 37
+                    }
+                    ...
+                ],
+                "waterList": [ ... ],
+                "sumValues": {
+                    "FIBER": 0.891,
+                    "PROTEIN": 0.8316,
+                    "WATER_FROM_FOOD": 89.2485,
+                    "CALCIUM": 0.00891,
+                    "CARBOHYDRATE": 8.0784,
+                    "SODIUM": 0.015840001,
+                    "POTASSIUM": 0.26433,
+                    "LIPID": 0.1881,
+                    "VITAMIN_C": 0.036333002,
+                    "VITAMIN_A": 1.6730999E-4,
+                    "IRON": 2.0790001E-4
+                },
+                "totalCalories": 37.0
+            } 
+            ...
+        ],
+        "sumValues": {
+            "FIBER": 1.665,
+            "PROTEIN": 6.2790003,
+            "WATER_FROM_FOOD": 171.6015,
+            "CALCIUM": 0.049050003,
+            "CARBOHYDRATE": 74.369995,
+            "SODIUM": 0.3374,
+            "POTASSIUM": 0.62804997,
+            "LIPID": 20.223501,
+            "VITAMIN_C": 0.068795,
+            "VITAMIN_A": 3.3064996E-4,
+            "IRON": 0.0028005
+        },
+        "totalCalories": 503.0
+    }
+}
+```
+
+Of course, as explained, all this metadata can be filtered using the `/filters` endpoint.
+###Statistics example:
+Then you can call the endpoint `/stats` to calculate the statistics on your filtered metadata, here
+you can see an example of response.
+```
+{
+    "result": "success",
+    "MEAN": {
+        "statsValues": {
+            "VITAMIN_C": 0.0343975,
+            "PROTEIN": 3.1395001,
+            "WATER_FROM_FOOD": 85.80075,
+            "LIPID": 10.111751,
+            "CARBOHYDRATE": 37.184998,
+            "CALCIUM": 0.024525002,
+            "POTASSIUM": 0.31402498,
+            "FIBER": 0.8325,
+            "VITAMIN_A": 1.6532498E-4,
+            "SODIUM": 0.1687,
+            "IRON": 0.00140025
+        },
+        "calories": 251.5,
+        "weight": 83.9285
+    },
+    "STANDARD_DEVIATION": {
+        "statsValues": {
+            "VITAMIN_C": 0.0027372113,
+            "PROTEIN": 3.2638636,
+            "WATER_FROM_FOOD": 4.875855,
+            "LIPID": 14.034161,
+            "CARBOHYDRATE": 41.162945,
+            "CALCIUM": 0.022082947,
+            "POTASSIUM": 0.070279345,
+            "FIBER": 0.082731485,
+            "VITAMIN_A": 2.8072209E-6,
+            "SODIUM": 0.21617667,
+            "IRON": 0.0016862374
+        },
+        "calories": 303.34882,
+        "weight": 39.15111
+    },
+    "PERCENTAGE": {
+        "statsValues": {
+            "PROTEIN": 4.993241,
+            "LIPID": 36.18519,
+            "CARBOHYDRATE": 59.141148
+        }
+    }
+    "CORRELATION": {
+        "correlation": 0.5375776
+    },
+}
+```
+***
+<a name="uml"></a>
 ## ☀ Application UML ☀:
 ### •🔰 PACKAGES:
 <img alt="PACKAGES" height="400" src="graphics/UML%20Packages.drawio.jpg"/>
 
 ### •🟪 MODEL:
-<img alt="MODEL" height="240" src="graphics/model.jpg"/>
+<img alt="MODEL" height="280" src="graphics/model.jpg"/>
 
 ### •🟦 NUTRIENT:
-<img alt="NUTRIENT" height="240" src="graphics/nutrient.jpg"/>
+<img alt="NUTRIENT" height="280" src="graphics/nutrient.jpg"/>
 
 ### •🟩 EXCEPTION:
-<img alt="EXCEPTION" height="240" src="graphics/exception.jpg"/>
+<img alt="EXCEPTION" height="280" src="graphics/exception.jpg"/>
 
 ### •🟨 ENUM:
-<img alt="ENUM" height="240" src="graphics/enum.jpg"/>
+<img alt="ENUM" height="280" src="graphics/enum.jpg"/>
 
 ### •🟧 FILTER:
-<img alt="FILTER" height="240" src="graphics/filter.jpg"/>
+<img alt="FILTER" height="280" src="graphics/filter.jpg"/>
 
 ### •🟥 STATISTIC:
-<img alt="STATISTIC" height="240" src="graphics/statistic.jpg"/>
+<img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
 
-### •⬜ UTILITY:
-<img alt="UTILITY" height="240" src="graphics/utility.jpg"/>
-
-### •🟫 API:
-<img alt="API" height="240" src="graphics/api.jpg"/>  
-  
 ***
 
 <a name="tools"></a>
@@ -143,7 +272,7 @@ Type | Route | Params | Body | Description
   - [PostMan](https://www.postman.com) - API platform for building and using APIs.
 
   - [Maven](https://maven.apache.org/) - Software project management and comprehension tool based on the concept of project object model (POM).
-  
+
   - [Draw.io](https://app.diagrams.net/) - Diagram software used for UML
 
 - ###### External REST API:
@@ -151,7 +280,7 @@ Type | Route | Params | Body | Description
   - [Edamam](https://developer.edamam.com/) - First food and nutrition database API.
 
   - [Chomp](https://chompthis.com/api/) - Second food and nutrition database API.
-  
+
   - [Dropbox](https://www.dropbox.com/developers/documentation/http/documentation) - Storage cloud used to backup the serialized objects.
 
 ***
