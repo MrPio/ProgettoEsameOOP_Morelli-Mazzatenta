@@ -5,8 +5,8 @@
 
 # **NutritionStats**
 Project made for the Object-Oriented Programming course a.a. 2021/2022
-####Note:
-######• The code is fully covered with a plentiful documentation (JavaDoc).
+#### Note:
+###### • The code is fully covered with a plentiful documentation (JavaDoc).
 - [Controller](/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java)
 - [Service](/src/main/java/com/univpm/po/NutritionStats/service/MainService.java)
 
