@@ -34,6 +34,8 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
   * [Statistic](#uml_statistic)
   * [Utility](#uml_utility)
   * [Api](#uml_api)
+  * [Controller](#uml_controller)
+  * [Service](#uml_service)
 * [Used tools](#tools)
   * [Software](#tools_software)
   * [Api](#tools_api)
@@ -280,38 +282,44 @@ you can see an example of response.
 <img alt="PACKAGES" height="400" src="graphics/UML%20Packages.drawio.jpg"/>
 
 <a name="uml_model"></a>
-### •🟪 Model:
+### •🟥 Model:
 <img alt="MODEL" height="280" src="graphics/model.jpg"/>
 
 <a name="uml_nutrient"></a>
-### •🟦 Nutrient:
+### •🟧 Nutrient:
 <img alt="NUTRIENT" height="280" src="graphics/nutrient.jpg"/>
 
 <a name="uml_exception"></a>
-### •🟩 Exception:
+### •🟨 Exception:
 <img alt="EXCEPTION" height="280" src="graphics/exception.jpg"/>
 
 <a name="uml_enum"></a>
-### •🟨 Enum:
+### •🟩 Enum:
 <img alt="ENUM" height="280" src="graphics/enum.jpg"/>
 
 <a name="uml_filter"></a>
-### •🟧 Filter:
+### •🟦 Filter:
 <img alt="FILTER" height="280" src="graphics/filter.jpg"/>
 
 <a name="uml_statistic"></a>
-### •🟥 Statistic:
+### •🟪 Statistic:
 <img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
 
 <a name="uml_utility"></a>
-### •🟪 UTILITY:
+### •🟫 Utility:
 <img alt="UTILITY" height="280" src="graphics/utility.jpg"/>
 
 <a name="uml_api"></a>
-### •🟫 API:
+### •⬛ Api:
 <img alt="API" height="280" src="graphics/api.jpg"/>    
   
-  
+<a name="uml_controller"></a>
+### •⬜ Controller:
+<img alt="API" height="280" src="graphics/controller.jpg"/>    
+
+<a name="uml_service"></a>
+### •🟥 Service:
+<img alt="API" height="280" src="graphics/service.jpg"/>    
 ***
 
 <a name="tools"></a>
