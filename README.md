@@ -32,6 +32,8 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
   * [Enum](#uml_enum)
   * [Filter](#uml_filter)
   * [Statistic](#uml_statistic)
+  * [Utility](#uml_utility)
+  * [Api](#uml_api)
 * [Used tools](#tools)
   * [Software](#tools_software)
   * [Api](#tools_api)
@@ -301,6 +303,15 @@ you can see an example of response.
 ### •🟥 Statistic:
 <img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
 
+<a name="uml_utility"></a>
+### •🟪 UTILITY:
+<img alt="UTILITY" height="280" src="graphics/utility.jpg"/>
+
+<a name="uml_api"></a>
+### •🟫 API:
+<img alt="API" height="280" src="graphics/api.jpg"/>    
+  
+  
 ***
 
 <a name="tools"></a>
