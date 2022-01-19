@@ -107,28 +107,28 @@ Type | Route | Params | Body | Description
 <img alt="PACKAGES" height="400" src="graphics/UML%20Packages.drawio.jpg"/>
 
 ### •🟪 MODEL:
-<img alt="MODEL" height="280" src="graphics/model.jpg"/>
+<img alt="MODEL" height="240" src="graphics/model.jpg"/>
 
 ### •🟦 NUTRIENT:
-<img alt="NUTRIENT" height="280" src="graphics/nutrient.jpg"/>
+<img alt="NUTRIENT" height="240" src="graphics/nutrient.jpg"/>
 
 ### •🟩 EXCEPTION:
-<img alt="EXCEPTION" height="280" src="graphics/exception.jpg"/>
+<img alt="EXCEPTION" height="240" src="graphics/exception.jpg"/>
 
 ### •🟨 ENUM:
-<img alt="ENUM" height="280" src="graphics/enum.jpg"/>
+<img alt="ENUM" height="240" src="graphics/enum.jpg"/>
 
 ### •🟧 FILTER:
-<img alt="FILTER" height="280" src="graphics/filter.jpg"/>
+<img alt="FILTER" height="240" src="graphics/filter.jpg"/>
 
 ### •🟥 STATISTIC:
-<img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
+<img alt="STATISTIC" height="240" src="graphics/statistic.jpg"/>
 
 ### •⬜ UTILITY:
-<img alt="UTILITY" height="280" src="graphics/utility.jpg"/>
+<img alt="UTILITY" height="240" src="graphics/utility.jpg"/>
 
 ### •🟫 API:
-<img alt="API" height="280" src="graphics/api.jpg"/>  
+<img alt="API" height="240" src="graphics/api.jpg"/>  
   
 ***
 
