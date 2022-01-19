@@ -22,7 +22,7 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 ***
 
 <a name="access"></a>
-## 💻 Access💻
+## 💻 Access💻 <div align="right"> [📘](#index)
 ### *Remote Access*
 
 >Remote access to this rest API: (***now deployed***):
@@ -40,7 +40,7 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 ***
 
 <a name="description"></a>
-## 📋 Description of the Project 📋
+## 📋 Description of the Project 📋 <div align="right"> [📘](#index)
 NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given
 period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of
 his lipid intake or the _percentage_ of proteins above macronutrients. This rest api works using Edamam's free database,
@@ -84,7 +84,7 @@ can filter his data:
 ***
 
 <a name="endpoints"></a>
-## 🌎 Application endpoints 🌎:
+## 🌎 Application endpoints 🌎: <div align="right"> [📘](#index)
 Type | Route | Params | Body | Description
 ---- | ---- | ---- | ---- | ----  
 🟡**POST** | `/signup` | `nickname`, `email`, `birth`, `height`, `weight`, `diet`, `gender` | -| Register new user.
@@ -236,7 +236,7 @@ you can see an example of response.
 ```
 ***
 <a name="uml"></a>
-## ☀ Application UML ☀:
+## ☀ Application UML ☀: <div align="right"> [📘](#index)
 ### •🔰 PACKAGES:
 <img alt="PACKAGES" height="400" src="graphics/UML%20Packages.drawio.jpg"/>
 
@@ -261,7 +261,7 @@ you can see an example of response.
 ***
 
 <a name="tools"></a>
-## 🛠️ Used tools 🛠️
+## 🛠️ Used tools 🛠️ <div align="right"> [📘](#index)
 - ###### Software:
 
   - [Eclipse](https://www.eclipse.org/) - java IDE
@@ -287,7 +287,7 @@ you can see an example of response.
 ***
 
 <a name="authors"></a>
-## 👥 Authors 👥
+## 👥 Authors 👥 <div align="right"> [📘](#index)
 Name | Email | Github profile |
 --|--|--|
 Morelli Valerio|valeriomorelli50@gmail.com|[GitHub](https://github.com/MrPio)
