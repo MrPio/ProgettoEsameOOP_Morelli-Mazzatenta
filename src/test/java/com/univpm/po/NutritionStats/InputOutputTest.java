@@ -31,7 +31,7 @@ class InputOutputTest {
      */
     @Test
     void readFile() {
-        assertEquals(inputOutput.readFile(),"Hello World!");
+        assertEquals(inputOutput.readFile(), "Hello World!");
     }
 
 

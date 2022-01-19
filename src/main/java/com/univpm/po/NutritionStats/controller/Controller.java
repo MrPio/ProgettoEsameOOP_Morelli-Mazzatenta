@@ -458,7 +458,7 @@ public class Controller {
      * <p>• <strong>Start Date</strong>: the left period range extremity.
      * <p>• <strong>End Date</strong>: the right period range extremity.
      * <p>• <strong>Meal Type</strong>: the type of meals in which the client is interested.
-     * <p>• <strong>Water</strong>: if the client want statistic on his water assumption.
+     * <p>• <strong>Water</strong>: if the client wants statistic on his water assumption.
      * <p>• <strong>Nutrient Name</strong>: a list of nutrients on which the statistics will be calculated
      *
      * <p><p><strong>{@code /stats [POST]}</strong> route.
@@ -501,7 +501,7 @@ public class Controller {
      * <p>• <strong>Start Date</strong>: the left period range extremity.
      * <p>• <strong>End Date</strong>: the right period range extremity.
      * <p>• <strong>Meal Type</strong>: the type of meals in which the client is interested.
-     * <p>• <strong>Water</strong>: if the client want statistic on his water assumption.
+     * <p>• <strong>Water</strong>: if the client wants statistic on his water assumption.
      * <p>• <strong>Nutrient Name</strong>: a list of nutrients on which the statistics will be calculated
      *
      * <p><p><strong>{@code /filters [POST]}</strong> route.

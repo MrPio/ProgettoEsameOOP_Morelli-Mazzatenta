@@ -21,6 +21,14 @@ public class Mean extends Statistic {
         return weight;
     }
 
+    /**
+     * <b>Calculate the sample mean based on the sample extracted on the provided filtered diary</b>
+     * @param diary the instance of {@link Diary} on which the statistic will be calculated.
+     * @see Mathematics#calculateSampleMean(boolean...)
+     * @see Statistic#extractAllNutrientNonNutrientSamples(Diary)
+     * @see Statistic#extractCalorieSample(Diary)
+     * @see Statistic#extractWeightSample(Diary)
+     */
     public void calculateStatistic(Diary diary) {
         var samples = extractAllNutrientNonNutrientSamples(diary);
         for (var entry : statsValues.entrySet())
