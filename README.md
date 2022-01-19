@@ -12,32 +12,45 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 ## 📘 Index 📘
 
 * [Access](#access)
+  * [Remote access](#remote_access)
+  * [Android application](#client)
 * [Description](#description)
+  * [Exceptions](#exceptions)
 * [Endpoints](#endpoints)
 * [Returned data](#data)
+  * [Metadata example](#metadata_example)
+  * [Statistics example](#statistics_example)
 * [Uml](#uml)
+  * [Packages](#uml_packages)
+  * [Model](#uml_model)
+  * [Nutrient](#uml_nutrient)
+  * [Exception](#uml_exception)
+  * [Enum](#uml_enum)
+  * [Filter](#uml_filter)
+  * [Statistic](#uml_statistic)
 * [Used tools](#tools)
+  * [Software](#tools_software)
+  * [Api](#tools_api)
 * [Authors](#authors)
 
 ***
 
 <a name="access"></a>
 ## 💻 Access💻 <div align="right"> [📘](#index)
+<a name="remote_access"></a>
 ### *Remote Access*
 
 >Remote access to this rest API: (***now deployed***):
 >
 > *https://nutritionstatsoop.herokuapp.com/*
 ----------------------------------------------------------------------------------------------------------------------------------------
-
+<a name="client"></a>
 ### *Android application (client)*
 
 >You can find here the client frontend made for this API (***Android application***):
 >
 > *https://github.com/MrPio/NutritionStats_client*
 ----------------------------------------------------------------------------------------------------------------------------------------
-
-***
 
 <a name="description"></a>
 ## 📋 Description of the Project 📋 <div align="right"> [📘](#index)
@@ -81,6 +94,19 @@ can filter his data:
 - `By food name`
 - `By nutrient`
 
+
+<a name="exceptions"></a>
+### 🛑 Exceptions
+Here you can find a list of all the checked exception created in this project. These exceptions are handled inside a `try/catch` block inside the controller.
+
+Class name | Description
+----| ----
+`UserNotFound` | Thrown when the parameter `token` in each endpoint (except `/signup`) doesn't belong to any existing user inside the database.
+`UserAlreadyInDatabase` | Thrown when the client tries to signup with an already registered email.
+`EndDateBeforeStartDateException` | Thrown when the client tries to filter using a value for `start_date` grater than the value of `end_date`.
+`ApiFoodNotFoundException` | Thrown when the requested `food_name`  cannot be found by Edamam api, or when the requested `ean_code` cannot be found by Chomp api. 
+`ChompLimitOvercameException` | Thrown when too many request are made but cannot be handled due to free Chomp api limitation.
+
 ***
 
 <a name="endpoints"></a>
@@ -105,6 +131,7 @@ Type | Route | Params | Body | Description
 
 <a name="data"></a>
 ## ⚙️ Returned data ⚙️: <div align="right"> [📘](#index)
+<a name="metadata_example"></a>
 ###Metadata example:
 Calling the endpoint `/diary` or `/diary/{day_id}` you can retrieve all the metadata owned by your account. These data
 will be returned formatted with JSON standard, as you can see in the example below.
@@ -182,6 +209,7 @@ will be returned formatted with JSON standard, as you can see in the example bel
 ```
 
 Of course, as explained, all this metadata can be filtered using the `/filters` endpoint.
+<a name="statistics_example"></a>
 ###Statistics example:
 Then you can call the endpoint `/stats` to calculate the statistics on your filtered metadata, here
 you can see an example of response.
@@ -237,31 +265,39 @@ you can see an example of response.
 ***
 <a name="uml"></a>
 ## ☀ Application UML ☀: <div align="right"> [📘](#index)
+<a name="uml_packages"></a>
 ### •🔰 PACKAGES:
 <img alt="PACKAGES" height="400" src="graphics/UML%20Packages.drawio.jpg"/>
 
-### •🟪 MODEL:
+<a name="uml_model"></a>
+### •🟪 Model:
 <img alt="MODEL" height="280" src="graphics/model.jpg"/>
 
-### •🟦 NUTRIENT:
+<a name="uml_nutrient"></a>
+### •🟦 Nutrient:
 <img alt="NUTRIENT" height="280" src="graphics/nutrient.jpg"/>
 
-### •🟩 EXCEPTION:
+<a name="uml_exception"></a>
+### •🟩 Exception:
 <img alt="EXCEPTION" height="280" src="graphics/exception.jpg"/>
 
-### •🟨 ENUM:
+<a name="uml_enum"></a>
+### •🟨 Enum:
 <img alt="ENUM" height="280" src="graphics/enum.jpg"/>
 
-### •🟧 FILTER:
+<a name="uml_filter"></a>
+### •🟧 Filter:
 <img alt="FILTER" height="280" src="graphics/filter.jpg"/>
 
-### •🟥 STATISTIC:
+<a name="uml_statistic"></a>
+### •🟥 Statistic:
 <img alt="STATISTIC" height="280" src="graphics/statistic.jpg"/>
 
 ***
 
 <a name="tools"></a>
 ## 🛠️ Used tools 🛠️ <div align="right"> [📘](#index)
+<a name="tools_software"></a>
 - ###### Software:
 
   - [Eclipse](https://www.eclipse.org/) - java IDE
@@ -276,6 +312,7 @@ you can see an example of response.
 
   - [Draw.io](https://app.diagrams.net/) - Diagram software used for UML
 
+<a name="software_api"></a>
 - ###### External REST API:
 
   - [Edamam](https://developer.edamam.com/) - First food and nutrition database API.
