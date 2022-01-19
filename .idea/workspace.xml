@@ -4,20 +4,121 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="api javadoc">
+    <list default="true" id="1167758d-ffe8-478d-98c2-89fa7c646956" name="Changes" comment="Final Commit: code reformat and cleanup.">
+      <change afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Mailbox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/Correlation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/Mathematics.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/FilterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/FilterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Correlation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Correlation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Mean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Percentage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/StandardDeviation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/service/statistic/Statistic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/InputOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/NutritionStatsApplication.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/NutritionStatsApplication.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/DropboxAPI.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/DropboxAPI.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/EdamamNutritionAnalysisAPI.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/api/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/controller/Controller.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/controller/Controller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/controller/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/controller/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/controller/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/controller/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/AllNutrientNonNutrient.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/AllNutrientNonNutrient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Api.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Api.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Diet.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Diet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/FilterType.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/FilterType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Gender.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Gender.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/MealType.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/MealType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Measure.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/Measure.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/StatisticType.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/StatisticType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/enums/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/ApiFoodNotFoundException.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/ApiFoodNotFoundException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/ChompLimitOvercameException.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/ChompLimitOvercameException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/EndDateBeforeStartDateException.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/EndDateBeforeStartDateException.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/UserAlreadyInDatabase.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/UserAlreadyInDatabase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/UserNotFound.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/UserNotFound.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/exception/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Day.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Day.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Diary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Diary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Food.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Food.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Meal.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Meal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Message.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Message.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/User.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/User.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Water.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/Water.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Calcium.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Calcium.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Carbohydrate.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Carbohydrate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Fiber.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Fiber.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Iron.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Iron.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Lipid.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Lipid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/MacroNutrient.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/MacroNutrient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/MicroNutrient.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/MicroNutrient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/MineralSalt.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/MineralSalt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/NotNutrient.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/NotNutrient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Nutrient.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Nutrient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Potassium.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Potassium.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Protein.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Protein.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Sodium.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Sodium.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Vitamin.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/Vitamin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/VitaminA.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/VitaminA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/VitaminC.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/VitaminC.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/WaterFromFood.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/WaterFromFood.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/nutrient/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/model/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/FilterManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/FilterManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/MainService.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/MainService.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/Schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/Schedule.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/Filter.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/Filter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByDate.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByDate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByFood.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByFood.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByMealType.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByMealType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByNutrientNotNutrient.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterByNutrientNotNutrient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterWater.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/FilterWater.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/filter/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/Mean.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/Mean.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/Percentage.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/Percentage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/StandardDeviatiton.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/StandardDeviation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/Statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/Statistic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/service/statistic/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/InputOutput.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/InputOutput.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/InputOutputImpl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/Serialization.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/Serialization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/SerializationImpl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/com/univpm/po/NutritionStats/utility/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-17.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-18.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/serialized-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_doc/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/java_doc/type-search-index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Mathematics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Mathematics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Serialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/utility/Serialization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/InputOutputTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/univpm/po/NutritionStats/InputOutputTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,20 +423,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638956800806</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Added conversion from Edamam/Chomp to our Objects">
-      <created>1639520852342</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1639520852342</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added metadata generation and fixed some minor bugs">
-      <created>1639600179958</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1639600179958</updated>
     </task>
     <task id="LOCAL-00016" summary="Prevent user already signed up to sign up">
       <created>1639605927440</created>
@@ -666,7 +753,21 @@
       <option name="project" value="LOCAL" />
       <updated>1642607446661</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="utility, statistic, FilterManager.java and Schedule.java javadoc">
+      <created>1642613850445</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1642613850445</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Final Commit: code reformat and cleanup.">
+      <created>1642614078959</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1642614078959</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -686,8 +787,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="fixed FilterByNutrientNotNutrient.java, added FilterWater.java," />
-    <MESSAGE value="Added Schedule.java" />
     <MESSAGE value="Small changes for the client" />
     <MESSAGE value="StandardDeviatiton.java fixed missing getters" />
     <MESSAGE value="added readme links" />
@@ -711,45 +810,37 @@
     <MESSAGE value="readme returned data" />
     <MESSAGE value="readme exceptions" />
     <MESSAGE value="api javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="api javadoc" />
+    <MESSAGE value="utility, statistic, FilterManager.java and Schedule.java javadoc" />
+    <MESSAGE value="Final Commit: code reformat and cleanup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Commit: code reformat and cleanup." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java</url>
-          <line>59</line>
+          <line>60</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java</url>
-          <line>63</line>
+          <line>64</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java</url>
-          <line>68</line>
+          <line>69</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/api/ChompBarcodeSearchAPI.java</url>
-          <line>70</line>
+          <line>71</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java</url>
-          <line>30</line>
+          <line>29</line>
           <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java</url>
-          <line>217</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/univpm/po/NutritionStats/model/Diary.java</url>
-          <line>213</line>
-          <option name="timeStamp" value="57" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
