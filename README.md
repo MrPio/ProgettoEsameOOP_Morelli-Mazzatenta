@@ -14,7 +14,7 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 * [Access](#access)
 * [Description](#description)
 * [Endpoints](#endpoints)
-* [Returned data](#returned data)
+* [Returned data](#data)
 * [Uml](#uml)
 * [Used tools](#tools)
 * [Authors](#authors)
@@ -103,8 +103,8 @@ Type | Route | Params | Body | Description
 
 ***
 
-<a name="returned data"></a>
-## ⚙️ Returned data ⚙️: <div align="right"> [📘](#start)
+<a name="data"></a>
+## ⚙️ Returned data ⚙️: <div align="right"> [📘](#index)
 ###Metadata example:
 Calling the endpoint `/diary` or `/diary/{day_id}` you can retrieve all the metadata owned by your account. These data
 will be returned formatted with JSON standard, as you can see in the example below.
