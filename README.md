@@ -183,7 +183,7 @@ will be returned formatted with JSON standard, as you can see in the example bel
 ```
 
 Of course, as explained, all this metadata can be filtered using the `/filters` endpoint.
-###Statistics example:
+### Statistics example:
 Then you can call the endpoint `/stats` to calculate the statistics on your filtered metadata, here
 you can see an example of response.
 ```
