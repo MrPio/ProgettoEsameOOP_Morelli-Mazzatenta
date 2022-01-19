@@ -10,8 +10,6 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 >
 > *https://clever-mccarthy-a6b47e.netlify.app/*
 ----------------------------------------------------------------------------------------------------------------------------------------
-
-***
   
 <a name="index"></a>
 ## 📘 Index 📘
