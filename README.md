@@ -6,7 +6,7 @@
 # **NutritionStats**
 Project made for the Object-Oriented Programming course a.a. 2021/2022
 #### Note:
-> The code is fully covered with a plentiful documentation (JavaDoc): (**now online**)
+> The code is fully covered with plentiful documentation (JavaDoc): (**now online**)
 >
 > *https://clever-mccarthy-a6b47e.netlify.app/*
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -61,20 +61,20 @@ Project made for the Object-Oriented Programming course a.a. 2021/2022
 
 <a name="description"></a>
 ## 📋 Description of the Project 📋 <div align="right"> [📘](#index)
-NutritionStats offer a management on nutrition data provided by the user. It can calculate statistics on a given
-period of time and on a specific sector. User can use these data to find the _mean_ value of his weight, the _variance_ of
-his lipid intake or the _percentage_ of proteins above macronutrients. This rest api works using Edamam's free database,
+NutritionStats offers a management of nutrition data provided by the user. It can calculate statistics on a given
+period and a specific sector. Users can use these data to find the _mean_ value of their weight, the _variance_ of
+their lipid intake or the _percentage_ of proteins above macronutrients. This rest API works using Edamam's free database,
 which provides nutritional values on a given food name, and stores in a model (description below).
 
-In order to calculate useful statistics some good data are needed, so the client should register his consumptions.
-This can be done by adding `Food` by its name or by its ean code to one of the following meals of each day:
+To calculate useful statistics some good data are needed, so the client should register his consumption.
+This can be done by adding `Food` by its name or by its EAN code to one of the following meals of each day:
 - `Breakfast`
 - `Lunch`
 - `Snack`
 - `Dinner`
 
-The food names or the ean codes provide new instances of `Food` filled with the values of the following nutrition filtered in the response
-of Edamam/Chomp api:
+The food names or the EAN codes provide new instances of `Food` filled with the values of the following nutrition filtered in the response
+of Edamam/Chomp API:
 - `Carbohydrate`
 - `Protein`
 - `Lipid`
@@ -87,14 +87,14 @@ of Edamam/Chomp api:
 - `Fiber`
 - `Water`
 
-The client can also add the quantity of water drunk daily or update the value of his weight using the dedicated endpoints.
-In the end all the data can be filtered and used to calculate the following statistics:
+The client can also add the quantity of water drunk daily or update the weight value using the dedicated endpoints.
+In the end, all the data can be filtered and used to calculate the following statistics:
 - `Mean`
 - `Variance`
 - `Percentage`
 - `Correlation`
 
-Filter the data means to specify a range of days or a meal type on which calculate the statistics. In fact the client
+Filtering the data means specifying a range of days or a meal type to calculate the statistics. The client
 can filter his data:
 - `By date`
 - `By meal type`
@@ -104,15 +104,15 @@ can filter his data:
 
 <a name="exceptions"></a>
 ### 🛑 Exceptions
-Here you can find a list of all the checked exception created in this project. These exceptions are handled inside a `try/catch` block inside the controller.
+Here you can find a list of all the checked exceptions created in this project. These exceptions are handled inside the controller's `try/catch` block.
 
 Class name | Description
 ----| ----
 `UserNotFound` | Thrown when the parameter `token` in each endpoint (except `/signup`) doesn't belong to any existing user inside the database.
-`UserAlreadyInDatabase` | Thrown when the client tries to signup with an already registered email.
-`EndDateBeforeStartDateException` | Thrown when the client tries to filter using a value for `start_date` grater than the value of `end_date`.
-`ApiFoodNotFoundException` | Thrown when the requested `food_name`  cannot be found by Edamam api, or when the requested `ean_code` cannot be found by Chomp api. 
-`ChompLimitOvercameException` | Thrown when too many request are made but cannot be handled due to free Chomp api limitation.
+`UserAlreadyInDatabase` | Thrown when the client tries to sign up with an already registered email.
+`EndDateBeforeStartDateException` | Thrown when the client tries to filter using a value for `start_date` greater than the value of `end_date`.
+`ApiFoodNotFoundException` | Thrown when the requested `food_name`  cannot be found by Edamam API, or when the requested `ean_code` cannot be found by Chomp api. 
+`ChompLimitOvercameException` | Thrown when too many requests are made but cannot be handled due to free Chomp API limitation.
 
 ***
 
@@ -139,10 +139,10 @@ Type | Route | Params | Body | Description
 <a name="data"></a>
 ## ⚙️ Returned data ⚙️: <div align="right"> [📘](#index)
 <a name="metadata_example"></a>
-In order to test the beaviour of all the endpoints, we used Postman, where we created a collection of all the routes.
+To test the behaviour of all the endpoints, we used Postman, where we created a collection of all the routes.
   <img alt="Postman collection" height="420" src="graphics/postmanCollection_2x.jpg"/>
   
-Here follow two examples of these requests:
+Here are two examples of these requests:
   ###Metadata example:
  Calling the endpoint `/diary` or `/diary/{day_id}` you can retrieve all the metadata owned by your account. These data
 will be returned formatted with JSON standard, as you can see in the example below.
